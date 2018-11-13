@@ -1,0 +1,47 @@
+object FrmProgress: TFrmProgress
+  Left = 0
+  Top = 0
+  Cursor = crHourGlass
+  BorderStyle = bsNone
+  Caption = 'FrmProgress'
+  ClientHeight = 56
+  ClientWidth = 429
+  Color = clBtnFace
+  DefaultMonitor = dmMainForm
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object cxProgressBar: TcxProgressBar
+    Left = 0
+    Top = 0
+    Align = alTop
+    Properties.AssignedValues.Min = True
+    Properties.Max = 100.000000000000000000
+    Properties.OverloadValue = 100.000000000000000000
+    Properties.PeakValue = 100.000000000000000000
+    Properties.ShowText = False
+    Properties.ShowTextStyle = cxtsPosition
+    TabOrder = 0
+    Width = 429
+  end
+  object cxLabel: TcxLabel
+    Left = 0
+    Top = 21
+    Align = alClient
+    Caption = 'cxLabel'
+    Properties.Alignment.Horz = taCenter
+    Properties.Alignment.Vert = taVCenter
+    Properties.LabelEffect = cxleCool
+    ExplicitLeft = 32
+    ExplicitTop = 27
+    ExplicitWidth = 40
+    ExplicitHeight = 17
+  end
+end

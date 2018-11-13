@@ -1,0 +1,3 @@
+prefix RCDATA "prefix.sql"
+metadata RCDATA "metadata.sql"
+update RCDATA "update.sql"
