@@ -12,7 +12,7 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
     Top = 0
     Width = 574
     Height = 29
-    Images = DM.ImageList
+    Images = dm.ImageList
     BorderInner = fsNone
     BorderOuter = fsGroove
     BorderSides = [sdTop]
@@ -103,15 +103,15 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
     Top = 29
     Width = 574
     Height = 417
-    ActivePage = cxTabSheetGrp
     Align = alClient
-    LookAndFeel.SkinName = 'MoneyTwins'
-    LookAndFeel.SkinName = 'MoneyTwins'
     TabOrder = 1
+    Properties.ActivePage = cxTabSheetGrp
+    Properties.CustomButtons.Buttons = <>
+    LookAndFeel.SkinName = 'MoneyTwins'
     ClientRectBottom = 415
     ClientRectLeft = 2
     ClientRectRight = 572
-    ClientRectTop = 25
+    ClientRectTop = 26
     object cxTabSheetGrp: TcxTabSheet
       Caption = #1043#1088#1091#1087#1087#1099
       ImageIndex = 0
@@ -122,20 +122,19 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
       object cxDBTreeList: TcxDBTreeList
         Left = 0
         Top = 0
-        Width = 570
-        Height = 390
+        Width = 566
+        Height = 389
         Align = alClient
         Bands = <
           item
           end>
-        BufferedPaint = False
         DataController.DataSource = srNsiGrp
         DataController.ParentField = 'F_PARENT'
         DataController.KeyField = 'GRP_ID'
         DragMode = dmAutomatic
         LookAndFeel.NativeStyle = False
         LookAndFeel.SkinName = 'MoneyTwins'
-        LookAndFeel.SkinName = 'MoneyTwins'
+        Navigator.Buttons.CustomButtons = <>
         OptionsBehavior.ExpandOnDblClick = False
         OptionsData.Editing = False
         OptionsSelection.CellSelect = False
@@ -144,17 +143,17 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
         OptionsView.CellAutoHeight = True
         OptionsView.ColumnAutoWidth = True
         RootValue = -1
-        Styles.Selection = DM.cxStyle11
+        Styles.Selection = dm.cxStyle11
         TabOrder = 0
-        OnCustomDrawCell = cxDBTreeListCustomDrawCell
         OnDblClick = cxDBTreeListDblClick
-        ExplicitTop = 3
         object cxDBTreeList1F_ID: TcxDBTreeListColumn
           Visible = False
           DataBinding.FieldName = 'F_ID'
           Position.ColIndex = 0
           Position.RowIndex = 0
           Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
         end
         object cxDBTreeList1F_PARENT: TcxDBTreeListColumn
           Visible = False
@@ -162,6 +161,8 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
           Position.ColIndex = 1
           Position.RowIndex = 0
           Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
         end
         object cxDBTreeList1F_NAME: TcxDBTreeListColumn
           Caption.MultiLine = True
@@ -169,6 +170,8 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
           Position.ColIndex = 2
           Position.RowIndex = 0
           Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
         end
         object cxDBTreeList1F_COLOR: TcxDBTreeListColumn
           Visible = False
@@ -176,6 +179,8 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
           Position.ColIndex = 3
           Position.RowIndex = 0
           Position.BandIndex = 0
+          Summary.FooterSummaryItems = <>
+          Summary.GroupFooterSummaryItems = <>
         end
       end
     end
@@ -186,26 +191,34 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
       ExplicitTop = 0
       ExplicitWidth = 0
       ExplicitHeight = 0
-      object cxDBTreeList1: TcxDBTreeList
+      object cxGrid1: TcxGrid
         Left = 0
         Top = 0
-        Width = 570
-        Height = 390
+        Width = 566
+        Height = 389
         Align = alClient
-        Bands = <
-          item
-          end>
-        BufferedPaint = False
-        LookAndFeel.SkinName = 'MoneyTwins'
-        LookAndFeel.SkinName = 'MoneyTwins'
-        OptionsView.ColumnAutoWidth = True
-        RootValue = -1
         TabOrder = 0
-        object cxDBTreeList1cxDBTreeListColumn1: TcxDBTreeListColumn
-          Caption.Text = #1053#1072#1073#1086#1088'/'#1082#1086#1084#1087#1083#1077#1082#1090
-          Position.ColIndex = 0
-          Position.RowIndex = 0
-          Position.BandIndex = 0
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          OnDblClick = cxGrid1DBTableView1DblClick
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = srAlterneteList
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.GroupByBox = False
+          object cxGrid1DBTableView1F_ID: TcxGridDBColumn
+            DataBinding.FieldName = 'F_ID'
+            Visible = False
+          end
+          object cxGrid1DBTableView1F_NAME: TcxGridDBColumn
+            Caption = #1053#1072#1079#1074#1072#1085#1080#1077' '#1082#1086#1084#1087#1083#1077#1082#1090#1072
+            DataBinding.FieldName = 'F_NAME'
+            Options.Editing = False
+            Options.Grouping = False
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
         end
       end
     end
@@ -222,7 +235,7 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
       'FROM'
       '    sp_T_NSI_GOODS_GRP_s')
     Transaction = pFIBTransaction_frm
-    Database = DM.pFIBDatabase
+    Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
     Left = 112
@@ -230,7 +243,6 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
     object dsNsiGrpF_PARENT: TFIBBCDField
       FieldName = 'F_PARENT'
       Size = 0
-      RoundByScale = True
     end
     object dsNsiGrpF_NAME: TFIBStringField
       DisplayLabel = #1058#1086#1074#1072#1088#1085#1072#1103' '#1075#1088#1091#1087#1087#1072
@@ -241,7 +253,6 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
     object dsNsiGrpGRP_ID: TFIBBCDField
       FieldName = 'GRP_ID'
       Size = 0
-      RoundByScale = True
     end
     object dsNsiGrpF_COLOR: TFIBStringField
       FieldName = 'F_COLOR'
@@ -255,18 +266,27 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
     Top = 248
   end
   object pFIBTransaction_frm: TpFIBTransaction
-    DefaultDatabase = DM.pFIBDatabase
-    TimeoutAction = TARollback
+    DefaultDatabase = dm.pFIBDatabase
     Left = 176
     Top = 296
   end
   object dsAlterneteList: TpFIBDataSet
-    Transaction = DM.pFIBTransaction
-    Database = DM.pFIBDatabase
+    SelectSQL.Strings = (
+      'select * from SP_T_NSI_GOODS_LINKS_S')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
     Left = 352
     Top = 168
+    object dsAlterneteListF_ID: TFIBIntegerField
+      FieldName = 'F_ID'
+    end
+    object dsAlterneteListF_NAME: TFIBStringField
+      FieldName = 'F_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
   end
   object srAlterneteList: TDataSource
     DataSet = dsAlterneteList

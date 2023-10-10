@@ -3,8 +3,7 @@ unit UFrmInputDoc;
 interface
 
 uses
-  UMy_types,
-
+  uinterfaces, UMy_types,
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UFrmPrototype, RzPanel, RzButton, ExtCtrls, Grids, DBGrids, RzDBGrid,
   StdCtrls, RzCmboBx, RzDBCmbo, Mask, RzEdit, RzDBEdit, uDm, FIBDatabase,
@@ -17,10 +16,29 @@ uses
   frxExportXLS, frxExportPDF, Menus, RzStatus, frxDesgn, frxExportRTF,
   frxExportXML, frxExportHTML, frxCross, frxDCtrl, RzForms, FIBQuery, pFIBQuery,
   pFIBStoredProc, cxPropertiesStore, cxCurrencyEdit, cxImage, cxContainer,
-  cxDBEdit, cxCalc, cxImageComboBox;
+  cxDBEdit, cxCalc, cxImageComboBox, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
+  frxDBSet;
 
 type
-  TFrmInputDoc = class(TFrmPrototype)
+  TFrmInputDoc = class(TFrmPrototype, IFrmDoc)
     RzPanel1: TRzPanel;
     dsDocHead: TpFIBDataSet;
     srDocHead: TDataSource;
@@ -92,7 +110,6 @@ type
     dsDocStringsF_GOOD_NAME: TFIBStringField;
     dsDocStringsF_ARTICLE: TFIBStringField;
     dsDocStringsF_ED_IZM_SHORT_NAME: TFIBStringField;
-    dsDocStringsF_SCANCODE: TFIBStringField;
     dsDocStringsF_PICTURE: TFIBStringField;
     dsDocStringsF_GOOD_GRP_COLOR: TFIBStringField;
     cxGrid1DBTableView1F_GOOD_GRP_COLOR: TcxGridDBColumn;
@@ -105,6 +122,12 @@ type
     cxGrid1DBTableView1F_GOOD_DOP_INFO: TcxGridDBColumn;
     dsDocHeadF_DOC_TYPE: TFIBBCDField;
     dsDocHeadF_DOC_SUM: TFIBBCDField;
+    dsDocHeadF_OWNER: TFIBBCDField;
+    dsDocHeadF_SKLAD_F_NAME: TFIBStringField;
+    RzDBButtonEdit4: TRzDBButtonEdit;
+    RzLabel7: TRzLabel;
+    dsDocStringsF_SCANCODE: TFIBBCDField;
+    dsDocStringsF_SCANCODE_VAL: TFIBStringField;
     procedure BtnOKClick(Sender: TObject);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
@@ -130,6 +153,7 @@ type
       Y: Integer; State: TDragState; var Accept: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure dsDocStringsCalcFields(DataSet: TDataSet);
+    procedure RzDBButtonEdit4ButtonClick(Sender: TObject);
   private
     { Private declarations }
     scan  : string;
@@ -137,7 +161,13 @@ type
   public
     { Public declarations }
     procedure InsPosition;
-    procedure CalcFields(Afield : TField; AValue : string);
+    procedure CalcFields(Afield: TField; AValue: string);
+    procedure AddPosition(P_good: Integer; p_cnt: Integer; p_price: Currency);
+    procedure RefreshDoc;
+    function GetTableName: String;
+    function GetDocId: Integer;
+    property TableName: String read GetTableName;
+    property DocId: Integer read GetDocId;
   end;
 
 var
@@ -184,12 +214,14 @@ procedure TFrmInputDoc.CalcFields(Afield :TField; AValue: string);
 var
   val : string;
 begin
-  val:= IntToStr(Afield.Tag)+'='+ AValue;
-  if pos(val,dsDocStringsF_NSI_GOOD_INFO.AsString)=0 then
+//  val:= IntToStr(Afield.Tag)+'='+ AValue;
+  val:= Afield.DisplayLabel+'='+ AValue;
+  if pos(val,dsDocStringsF_GOOD_DOP_INFO.AsString)=0 then
   begin
-    dsDocStringsF_NSI_GOOD_INFO.AsString:=
-      dsDocStringsF_NSI_GOOD_INFO.AsString+val+#10;
+    dsDocStringsF_GOOD_DOP_INFO.AsString:=
+      dsDocStringsF_GOOD_DOP_INFO.AsString+val+#10;
   end;
+  Afield.AsString := AValue;
 end;
 
 procedure TFrmInputDoc.cxGrid1DBTableView1CustomDrawCell(
@@ -227,10 +259,11 @@ procedure TFrmInputDoc.cxGrid1DBTableView1DragOver(Sender, Source: TObject; X,
 begin
   if Source is TcxGridDBTableView then
   begin
-    if TcxGridDBTableView(Source).DataController.DataSet.FindField('f_article')<>nil then
-    begin
-      Accept:=true;
-    end;
+    if sender <> Source then
+      if TcxGridDBTableView(Source).DataController.DataSet.FindField('f_article')<>nil then
+      begin
+        Accept:=true;
+      end;
   end;
 end;
 
@@ -270,34 +303,61 @@ end;
 procedure TFrmInputDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
+  RefreshDs(DataSet,'f_scancode',dsDocStringsF_SCANCODE.Value);
   cxGrid1.SetFocus;
 end;
 
 procedure TFrmInputDoc.dsDocStringsBeforePost(DataSet: TDataSet);
 var
   cnt : integer;
+  vl_dopInfoVal : String;
 begin
   inherited;
   if (dsDocStringsF_GOOD.IsNull and not dsDocStringsF_GOOD_NAME.IsNull) then
   begin
-{    dm.dsGood_ins.Active:=false;
-    dm.dsGood_ins.ParamByName('f_name').Value:=dsDocStringsF_GOOD_NAME.Value;
-    dm.dsGood_ins.ParamByName('f_article').Value:=dsDocStringsF_ARTICLE.Value;
-    dm.dsGood_ins.Active:=true;
-    dm.dsGood_ins.Transaction.CommitRetaining;}
-    dsDocStringsF_GOOD.Value:=dm.InsExtGood(dsDocStringsF_ARTICLE.Value,dsDocStringsF_GOOD_NAME.Value,
-      dsDocStringsF_GOOD_DOP_INFO.Value);
+
+    for cnt := 0 to dsDocStrings.FieldCount - 1 do
+    begin
+      if Copy(dsDocStrings.Fields[cnt].FieldName,1,2)='DF' then
+      begin
+        if dsDocStrings.Fields[cnt].AsString<>'' then
+        begin
+        {
+          dm.dsImportNsiGoodsDopInfo.Active:=false;
+          dm.dsImportNsiGoodsDopInfo.ParamByName('P_GOOD').Value:=dsDocStringsF_GOOD.Value;
+          dm.dsImportNsiGoodsDopInfo.ParamByName('P_GOOD_INFO').value:=dsDocStrings.Fields[cnt].Tag;
+          dm.dsImportNsiGoodsDopInfo.ParamByName('P_GOOD_INFO_VAL').Value:=dsDocStrings.Fields[cnt].AsString;
+          dm.dsImportNsiGoodsDopInfo.Active:=true;
+          dm.dsImportNsiGoodsDopInfo.Transaction.CommitRetaining;
+        }
+          if vl_dopInfoVal.Length > 0 then
+            vl_dopInfoVal := vl_dopInfoVal + Chr(10);
+          vl_dopInfoVal := vl_dopInfoVal + dsDocStrings.Fields[cnt].DisplayLabel + '='
+            +dsDocStrings.Fields[cnt].AsString;
+        end;
+      end;
+    end;
+
+
+    dsDocStringsF_SCANCODE.Value:=dm.InsExtGood(
+      dsDocStringsF_ARTICLE.Value,
+      dsDocStringsF_GOOD_NAME.Value,
+      //dsDocStringsF_GOOD_DOP_INFO.Value,
+      //dsDocStringsF_NSI_GOOD_INFO.Value,
+      vl_dopInfoVal,
+      '',
+      dsDocStringsF_CNT.AsInteger
+      );
 //    dm.dsGood_ins.FieldByName('f_id').Value;
-    if not dsDocStringsF_scancode.IsNull then
+{    if not dsDocStringsF_scancode.IsNull then
     begin
       dm.dsImportScancode.Active:=false;
       dm.dsImportScancode.ParamByName('f_good').Value:=dsDocStringsF_GOOD.Value;
       dm.dsImportScancode.ParamByName('f_scancode').Value:=dsDocStringsF_scancode.value;
       dm.dsImportScancode.Active:=true;
       dm.dsImportScancode.Transaction.CommitRetaining;
-    end;
-    for cnt := 0 to dsDocStrings.FieldCount - 1 do
+    end;}
+ {   for cnt := 0 to dsDocStrings.FieldCount - 1 do
     begin
       if Copy(dsDocStrings.Fields[cnt].FieldName,1,2)='DF' then
       begin
@@ -311,53 +371,24 @@ begin
           dm.dsImportNsiGoodsDopInfo.Transaction.CommitRetaining;
         end;
       end;
-    end;
+    end;}
   end;
 end;
 
 
 procedure TFrmInputDoc.dsDocStringsCalcFields(DataSet: TDataSet);
-var
-  v_ost : string;
-  i:integer;
-  v_val : TStringList;
-  tf: tfield;
 begin
-  v_val := TStringList.Create;
-  v_val.Text:= DataSet.FieldByName('f_NSI_GOOD_INFO').AsString;
-  for I := 0 to v_val.Count - 1 do
-  begin
-    if v_val.Names[i] <>'' then
-      DataSet.FieldByName('DF_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
-  end;
-  v_val.Free;
+  CalcFieldsDopInfo(DataSet);
 end;
 
 procedure TFrmInputDoc.FormCreate(Sender: TObject);
 var
-  tf: TStringField;
+  tf  : TStringField;
+
 begin
   inherited;
-  dm.dsNsiGoodsDopInfo.Active:=false;
-  dm.dsNsiGoodsDopInfo.Active:=true;
-  dm.dsNsiGoodsDopInfo.First;
-  while not dm.dsNsiGoodsDopInfo.eof do
-  begin
-    tf:=TStringField.Create(dsDocStrings);
-    tf.Calculated:=true;
-    tf.Index:=dsDocStrings.FieldCount;
-    tf.FieldName:='DF_'+dm.dsNsiGoodsDopInfo.FieldByName('f_id').AsString;
-    tf.DisplayLabel:=dm.dsNsiGoodsDopInfo.FieldByName('f_name').AsString;
-    tf.tag:=dm.dsNsiGoodsDopInfo.FieldByName('f_id').AsInteger;
-    tf.DataSet:=dsDocStrings;
-    with cxGrid1DBTableView1.CreateColumn do
-    begin
-      DataBinding.FieldName:=tf.FieldName;
-      Caption:=dm.dsNsiGoodsDopInfo.FieldByName('f_name').AsString;
-    end;
-    dm.dsNsiGoodsDopInfo.Next;
-  end;
-  self.RestoreState;  
+  AddInfoColumns(cxGrid1DBTableView1);
+  self.RestoreState;
 end;
 
 procedure TFrmInputDoc.InsPosition;
@@ -374,7 +405,8 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_GOOD.Value:=goods[i];
+      //dsDocStringsF_GOOD.Value:=goods[i];
+      dsDocStringsF_SCANCODE.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,
@@ -491,6 +523,47 @@ begin
     RefreshDs(dsDocHead);
     RefreshDs(dsDocStrings);
   end;
+end;
+
+procedure TFrmInputDoc.RzDBButtonEdit4ButtonClick(Sender: TObject);
+var
+  key : integer;
+begin
+  key:=GetNsiPartner;
+  if key>0 then
+  begin
+    dsDocHead.Edit;
+    dsDocHeadF_OWNER.Value:=key;
+    dsDocHead.Post;
+    refreshDs(dsDocHead);
+  end;
+end;
+
+procedure TFrmInputDoc.AddPosition(P_good: Integer; p_cnt: Integer;
+  p_price: Currency);
+begin
+  raise Exception.Create('Not implemented!'); { TODO: Implement }
+end;
+
+procedure TFrmInputDoc.RefreshDoc;
+begin
+//  raise Exception.Create('Not implemented!'); { TODO: Implement }
+  refreshDs(dsDocStrings);
+end;
+
+function TFrmInputDoc.GetTableName: String;
+begin
+  //raise Exception.Create('Not implemented!'); { TODO: Implement }
+  result := 'T_DOC_IN';
+end;
+
+function TFrmInputDoc.GetDocId: Integer;
+begin
+//  raise Exception.Create('Not implemented!'); { TODO: Implement }
+  if dsDocHead.Active then
+    result := dsDocHeadF_DOC_IN.AsInteger
+  else
+    result := 0;
 end;
 
 end.

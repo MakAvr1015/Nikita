@@ -1,14 +1,18 @@
 program Nikita;
 
-{$R 'Resource\resource.res' 'Resource\resource.rc'}
+{$R 'resource.res' 'Resource\resource.rc'}
 
 uses
   Forms,
   SysUtils,
+  ShlObj,
+  Menus,
+  ActnList,
+  DIALOGS,
   UMainFrm in 'UMainFrm.pas' {FrmMain},
   UDocClass in 'UDocClass.pas',
   UInterfaces in 'UInterfaces.pas',
-  UDM in 'UDM.pas' {DM: TDataModule},
+  UDM in 'UDM.pas' {dm: TDataModule},
   UFrmPrototype in 'UFrmPrototype.pas' {FrmPrototype},
   UFrmDocInpList in 'UFrmDocInpList.pas' {FrmListInputDocs},
   UFrmInputDoc in 'UFrmInputDoc.pas' {FrmInputDoc},
@@ -87,35 +91,115 @@ uses
   UFrmDocView in 'UFrmDocView.pas' {FrmDocView},
   UFrmDocSpisan in 'UFrmDocSpisan.pas' {FrmDocSpisan},
   uDlgImportInputDoc in 'uDlgImportInputDoc.pas' {DlgImportInputDoc},
-  UMy_types in 'UMy_types.pas',
+  UMy_types in 'UMy_types.pas' {,
+    DriverError in 'ShtrihDrv\DriverError.pas',
+    DriverTypes in 'ShtrihDrv\DriverTypes.pas',
+    DrvFRLib_TLB in 'ShtrihDrv\DrvFRLib_TLB.pas',
+    GlobalConst in 'ShtrihDrv\GlobalConst.pas',
+    LogFile in 'ShtrihDrv\LogFile.pas',
+    RegExpr in 'ShtrihDrv\RegExpr.pas',
+    SMDrvFR1CLib_TLB in 'ShtrihDrv\SMDrvFR1CLib_TLB.pas' {/  StringUtils in 'ShtrihDrv\StringUtils.pas';},
   DriverError in 'ShtrihDrv\DriverError.pas',
   DriverTypes in 'ShtrihDrv\DriverTypes.pas',
   DrvFRLib_TLB in 'ShtrihDrv\DrvFRLib_TLB.pas',
   GlobalConst in 'ShtrihDrv\GlobalConst.pas',
   LogFile in 'ShtrihDrv\LogFile.pas',
   RegExpr in 'ShtrihDrv\RegExpr.pas',
-  SMDrvFR1CLib_TLB in 'ShtrihDrv\SMDrvFR1CLib_TLB.pas' {/  StringUtils in 'ShtrihDrv\StringUtils.pas';},
+  SMDrvFR1CLib_TLB in 'ShtrihDrv\SMDrvFR1CLib_TLB.pas' {/  StringUtils in 'ShtrihDrv\StringUtils.pas';},
   uDlgShtrihProperty in 'uDlgShtrihProperty.pas' {DlgShtrihProperty},
-  UFrmInputDocBackRozn in 'UFrmInputDocBackRozn.pas' {FrmInputDocBackRozn};
+  UFrmInputDocBackRozn in 'UFrmInputDocBackRozn.pas' {FrmInputDocBackRozn},
+  UFramBanner in 'UFramBanner.pas' {FramBanner: TFrame},
+  UDocumentsClasses in 'UDocumentsClasses.pas',
+  UQueueProc in 'UQueueProc.pas',
+  UFrmMrkActions in 'UFrmMrkActions.pas' {FrmMrkActions},
+  MoveDocumentServicesImpl1 in 'MoveDocumentServicesImpl1.pas',
+  UFrmListZakaz in 'UFrmListZakaz.pas' {FrmListZakaz},
+  UPluginManager in 'UPluginManager.pas',
+  UPluginAPI in 'Plugins\API\Headers\UPluginAPI.pas',
+  Nikita_TLB in 'Nikita_TLB.pas',
+  UPlanner in 'UPlanner.pas' {FrmPlanner},
+  OutDocumentServicesImpl1 in 'OutDocumentServicesImpl1.pas',
+  UDlgPrgProp in 'UDlgPrgProp.pas' {DlgPrgProp},
+  UFrmZakazList in 'UFrmZakazList.pas' {FrmZakazList},
+  UFrmZakazDoc in 'UFrmZakazDoc.pas' {FrmZakazDoc},
+  UDlgMakeDocFromZakaz in 'UDlgMakeDocFromZakaz.pas',
+  Vcl.ActnMan {DlgMakeDocFromZakaz},
+  UNsiGoodScancodeFrame in 'UNsiGoodScancodeFrame.pas' {NsiGoodScancodeFrame: TFrame};
 
-//  StringUtils in 'ShtrihDrv\StringUtils.pas';
+// StringUtils in 'ShtrihDrv\StringUtils.pas';
 
 {$R *.res}
-//{$R resource.res}
-
-
+// {$R resource.res}
+var
+  vl_index,vl_index2 : integer;
+  vl_actions : TArrayAct;
+  vl_MenuItem: TMenuItem;
+  vl_ActionClient,vl_ActionClient1 : TActionClientItem;
 begin
-  Application.Initialize ;
+  Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.Title := 'Никита';
-  Application.CreateForm(TDM, DM);
-  Prg_path:=ExtractFilePath(Application.ExeName);
+  //Application.Title := 'Никита';
+  Application.CreateForm(Tdm, dm);
+  Prg_path := ExtractFilePath(Application.ExeName);
+  app_data := GetSpecialFolderPath(CSIDL_APPDATA) + '\Nikita';
+  if not directoryexists(app_data) then
+  begin
+    MkDir(app_data);
+  end;
+  ClearLog;
+//  Application.CreateForm(TFrmMain, FrmMain);
   if Login then
   begin
+    Application.Title := Application.Title + ' ' + prg_title;
+    LogMsg('Начинаем грузить форму');
     Application.CreateForm(TFrmMain, FrmMain);
-    ClearLog;
+    LogMsg('Форма загружена');
+    try
+      dm.cxLocalizer1.Active := true;
+      dm.cxLocalizer1.Locale := 1049;
+    except
+      on E : Exception do
+          LogMsg('Ошибка локализации '+E.Message);
+    end;
+    Plugins.LoadPlugins(PluginPath,'.dll');
+    for vl_index := 0 to Plugins.FCount-1 do
+    begin
+     // LogMsg('Загрузка расширения '+Plugins.FItems[vl_index].);
+     try
+      Plugins.FItems[vl_index].ConnectDB(DataBasePath,DM.pFIBDatabase.ConnectParams.UserName,
+        DM.pFIBDatabase.ConnectParams.Password,DM.pFIBDatabase.LibraryName);
+      vl_actions := Plugins.FItems[vl_index].GetActions;
+      vl_ActionClient := FrmMain.ActionManager1.FindItemByCaption('Дополнения');
+      for vl_index2 := 0 to Plugins.FItems[vl_index].FActCount - 1 do
+        begin
+{          with FrmMain.MainMenu1.Items.Find('Дополнения') do
+          begin
+            vl_MenuItem := TMenuItem.Create(FrmMain.MainMenu1);
+            vl_MenuItem.Action := Plugins.FItems[vl_index].FActions[vl_index2];
+            Add(vl_MenuItem);
+          end;}
+          //vl_Action := TAction.Create(FrmMain.ActionManager1);
+          vl_ActionClient1 := TActionClientItem.Create(vl_ActionClient.Items);
+          vl_ActionClient1.Action := Plugins.FItems[vl_index].FActions[vl_index2];
+{          vl_ActionClient := FrmMain.ActionManager1.AddAction(Plugins.FItems[vl_index].FActions[vl_index2],
+            FrmMain.ActionManager1.ActionBars.ActionBars[1].items[0]);}
+
+//          FrmMain.ActionManager1.ActionBars.ActionBars[1].
+//          LogMsg(Plugins.FItems[vl_index].FActions[vl_index2].Caption);
+        end;
+     except
+       on E : Exception do
+          ShowMessage(E.ClassName+' Ошибка подключения расширения : '+E.Message);
+     end;
+    end;
+
     Application.Run;
   end
   else
+  begin
+    Plugins.Destroy;
+    DM.Free;
     Application.Terminate;
+  end;
+
 end.

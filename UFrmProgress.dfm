@@ -39,9 +39,7 @@ object FrmProgress: TFrmProgress
     Properties.Alignment.Horz = taCenter
     Properties.Alignment.Vert = taVCenter
     Properties.LabelEffect = cxleCool
-    ExplicitLeft = 32
-    ExplicitTop = 27
-    ExplicitWidth = 40
-    ExplicitHeight = 17
+    AnchorX = 215
+    AnchorY = 39
   end
 end

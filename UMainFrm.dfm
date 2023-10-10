@@ -2,8 +2,8 @@ object FrmMain: TFrmMain
   Left = 0
   Top = 0
   Caption = #1053#1080#1082#1080#1090#1072
-  ClientHeight = 579
-  ClientWidth = 860
+  ClientHeight = 749
+  ClientWidth = 1028
   Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,27 +11,31 @@ object FrmMain: TFrmMain
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIForm
-  Menu = MainMenu1
+  KeyPreview = True
   OldCreateOrder = False
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 523
-    Top = 116
+    Left = 578
+    Top = 151
     Width = 5
-    Height = 440
+    Height = 575
     Align = alRight
     Visible = False
     ExplicitLeft = 616
+    ExplicitTop = 116
+    ExplicitHeight = 440
   end
   object dxRibbon1: TdxRibbon
     Left = 0
-    Top = 0
-    Width = 860
-    Height = 116
+    Top = 25
+    Width = 1028
+    Height = 126
     BarManager = dxBarManager
     ColorSchemeName = 'Blue'
+    Contexts = <>
     TabOrder = 1
     TabStop = False
     object dxRibbon1Tab1: TdxRibbonTab
@@ -44,6 +48,7 @@ object FrmMain: TFrmMain
         item
           ToolbarName = 'dxBarManagerBar3'
         end>
+      Index = 0
     end
     object dxRibbon1Tab2: TdxRibbonTab
       Caption = #1056#1086#1079#1085#1080#1094#1072
@@ -51,12 +56,13 @@ object FrmMain: TFrmMain
         item
           ToolbarName = 'dxBarManagerBar1'
         end>
+      Index = 1
     end
   end
   object dxRibbonStatusBar1: TdxRibbonStatusBar
     Left = 0
-    Top = 556
-    Width = 860
+    Top = 726
+    Width = 1028
     Height = 23
     Panels = <
       item
@@ -70,10 +76,10 @@ object FrmMain: TFrmMain
     Font.Style = []
   end
   object Panel: TPanel
-    Left = 528
-    Top = 116
-    Width = 332
-    Height = 440
+    Left = 583
+    Top = 151
+    Width = 445
+    Height = 575
     Align = alRight
     Color = clAppWorkSpace
     DockSite = True
@@ -83,41 +89,59 @@ object FrmMain: TFrmMain
     inline FramBufer1: TFramBufer
       Left = 1
       Top = 1
-      Width = 330
-      Height = 438
+      Width = 443
+      Height = 573
       Align = alClient
       TabOrder = 0
       ExplicitLeft = 1
       ExplicitTop = 1
-      ExplicitWidth = 330
-      ExplicitHeight = 438
+      ExplicitWidth = 443
+      ExplicitHeight = 573
       inherited RzToolbar1: TRzToolbar
-        Width = 330
-        ExplicitWidth = 330
+        Width = 443
+        Height = 50
+        ExplicitWidth = 443
+        ExplicitHeight = 50
         ToolbarControls = (
-          BtnMoveAllLeft
+          BtnToDoc
           BtnPrint
           BtnRecycle
-          LkpSklad)
-        inherited BtnMoveAllLeft: TRzToolButton
+          LkpSklad
+          BtnFromDoc)
+        inherited BtnPrint: TRzToolButton
+          Left = 90
+          ExplicitLeft = 90
+        end
+        inherited BtnToDoc: TRzToolButton
           OnClick = FramBufer1BtnMoveAllLeftClick
+        end
+        inherited BtnRecycle: TRzToolButton
+          Left = 155
+          ExplicitLeft = 155
+        end
+        inherited BtnFromDoc: TRzToolButton
+          Left = 225
+          Top = 25
+          OnClick = FramBufer1BtnMoveAllLeftClick
+          ExplicitLeft = 225
+          ExplicitTop = 25
         end
       end
       inherited FramGoodCard1: TFramGoodCard
-        Top = 225
-        Width = 330
-        ExplicitTop = 225
-        ExplicitWidth = 330
+        Top = 360
+        Width = 443
+        ExplicitTop = 360
+        ExplicitWidth = 443
         inherited Panel4: TPanel
-          Width = 129
-          ExplicitWidth = 129
+          Width = 242
+          ExplicitWidth = 242
           inherited cxDBLabel1: TcxDBLabel
-            ExplicitWidth = 127
-            Width = 127
+            ExplicitWidth = 240
+            Width = 240
           end
           inherited cxDBLabel2: TcxDBLabel
-            ExplicitWidth = 127
-            Width = 127
+            ExplicitWidth = 240
+            Width = 240
           end
           inherited cxDBLabel3: TcxDBLabel
             Style.LookAndFeel.SkinName = ''
@@ -125,15 +149,13 @@ object FrmMain: TFrmMain
             StyleDisabled.LookAndFeel.SkinName = ''
             StyleFocused.LookAndFeel.SkinName = ''
             StyleHot.LookAndFeel.SkinName = ''
-            ExplicitWidth = 127
-            Width = 127
+            ExplicitWidth = 240
+            Width = 240
+            AnchorX = 121
           end
           inherited cxGrid1: TcxGrid
-            Width = 127
-            LookAndFeel.SkinName = 'MoneyTwins'
-            ExplicitTop = 212
-            ExplicitWidth = 127
-            ExplicitHeight = 0
+            Width = 240
+            ExplicitWidth = 240
           end
         end
         inherited dsGetGoodsInfo: TpFIBDataSet
@@ -141,10 +163,12 @@ object FrmMain: TFrmMain
         end
       end
       inherited cxGrid: TcxGrid
-        Width = 330
-        Height = 177
-        ExplicitWidth = 330
-        ExplicitHeight = 177
+        Top = 50
+        Width = 443
+        Height = 310
+        ExplicitTop = 50
+        ExplicitWidth = 443
+        ExplicitHeight = 310
         inherited cxGridDBTableViewBuffer: TcxGridDBTableView
           DataController.Summary.DefaultGroupSummaryItems = <
             item
@@ -165,9 +189,9 @@ object FrmMain: TFrmMain
   end
   object PageControl1: TcxPageControl
     Left = 0
-    Top = 116
-    Width = 523
-    Height = 440
+    Top = 151
+    Width = 578
+    Height = 575
     Align = alClient
     BiDiMode = bdLeftToRight
     Color = clAppWorkSpace
@@ -177,19 +201,41 @@ object FrmMain: TFrmMain
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
-    LookAndFeel.Kind = lfFlat
-    LookAndFeel.SkinName = 'MoneyTwins'
-    LookAndFeel.SkinName = 'MoneyTwins'
-    Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
     ParentBackground = False
     ParentBiDiMode = False
     ParentColor = False
     ParentFont = False
-    TabOrder = 7
-    ClientRectBottom = 438
+    TabOrder = 3
+    Properties.CloseButtonMode = cbmEveryTab
+    Properties.CustomButtons.Buttons = <>
+    Properties.MultiLine = True
+    Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
+    LookAndFeel.Kind = lfFlat
+    LookAndFeel.SkinName = 'MoneyTwins'
+    ClientRectBottom = 573
     ClientRectLeft = 2
-    ClientRectRight = 521
+    ClientRectRight = 576
     ClientRectTop = 2
+  end
+  object ActionMainMenuBar1: TActionMainMenuBar
+    Left = 0
+    Top = 0
+    Width = 1028
+    Height = 25
+    UseSystemFont = False
+    ActionManager = ActionManager1
+    Caption = 'ActionMainMenuBar1'
+    Color = clMenuBar
+    ColorMap.DisabledFontColor = 7171437
+    ColorMap.HighlightColor = clWhite
+    ColorMap.BtnSelectedFont = clBlack
+    ColorMap.UnusedColor = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    Spacing = 0
   end
   object RzRegIniFile: TRzRegIniFile
     Path = 'nikita_main'
@@ -203,78 +249,11 @@ object FrmMain: TFrmMain
     Left = 216
     Top = 272
   end
-  object MainMenu1: TMainMenu
-    Left = 312
-    Top = 272
-    object N1: TMenuItem
-      Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
-      object N2: TMenuItem
-        Action = DM.ActDocInp
-      end
-      object N3: TMenuItem
-        Action = DM.ActDocOut
-      end
-      object N15: TMenuItem
-        Action = DM.ActDocMove
-      end
-      object N14: TMenuItem
-        Action = DM.ActDocPrice
-      end
-      object N4: TMenuItem
-        Action = DM.ActDocMoneyInp
-      end
-      object N5: TMenuItem
-        Action = DM.ActDocMoneyOut
-      end
-    end
-    object N6: TMenuItem
-      Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
-      object N7: TMenuItem
-        Action = DM.ActNsiBank
-      end
-      object N8: TMenuItem
-        Action = DM.ActNsiPartner
-      end
-      object N9: TMenuItem
-        Action = DM.ActNsiPrice
-      end
-      object N10: TMenuItem
-        Action = DM.ActNsiSklad
-      end
-      object N11: TMenuItem
-        Action = DM.ActNsiTovar
-      end
-    end
-    object N12: TMenuItem
-      Caption = #1054#1090#1095#1077#1090#1099
-      object N13: TMenuItem
-        Action = DM.ActZapas
-      end
-      object N17: TMenuItem
-        Action = DM.ActReportKKM
-      end
-    end
-    object N18: TMenuItem
-      Caption = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
-      object N19: TMenuItem
-        Caption = #1050#1086#1085#1089#1086#1083#1100
-        OnClick = N19Click
-      end
-    end
-    object NGoodBufer: TMenuItem
-      Caption = #1058#1086#1074#1072#1088#1085#1099#1081' '#1073#1091#1092#1077#1088
-      OnClick = NGoodBuferClick
-    end
-    object N16: TMenuItem
-      Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
-      OnClick = N16Click
-    end
-  end
   object dxBarManager: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Categories.Strings = (
       #1050#1086#1084#1072#1085#1076#1099' '#1087#1088#1086#1075#1088#1072#1084#1084#1099
@@ -291,17 +270,12 @@ object FrmMain: TFrmMain
       True
       True
       True)
-    ImageOptions.LargeImages = DM.ImageListLage
     MenuAnimations = maSlide
     PopupMenuLinks = <>
     UseSystemFont = True
-    Left = 280
-    Top = 272
-    DockControlHeights = (
-      0
-      0
-      0
-      0)
+    Left = 56
+    Top = 280
+    PixelsPerInch = 96
     object dxBarManagerBar2: TdxBar
       AllowClose = False
       Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
@@ -342,7 +316,7 @@ object FrmMain: TFrmMain
     object dxBarManagerBar3: TdxBar
       Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
       CaptionButtons = <>
-      DockedLeft = 390
+      DockedLeft = 407
       DockedTop = 0
       FloatLeft = 281
       FloatTop = 352
@@ -403,80 +377,78 @@ object FrmMain: TFrmMain
       Visible = True
       WholeRow = False
     end
-    object dxBarListItem: TdxBarListItem
-      Caption = #1054#1090#1082#1088#1099#1090#1099#1077' '#1086#1082#1085#1072
-      Category = 3
-      Visible = ivAlways
-      OnClick = dxBarListItemClick
-      OnGetData = dxBarListItemGetData
-      ShowCheck = True
-    end
     object dxBarButton1: TdxBarButton
-      Action = DM.ActDocInp
+      Action = ActDocOutBack
       Category = 0
     end
     object dxBarButton2: TdxBarButton
-      Action = DM.ActDocOut
+      Action = ActDocOut
       Category = 0
     end
     object dxBarButton3: TdxBarButton
-      Action = DM.ActDocMoneyInp
+      Action = ActDocMoneyInp
       Category = 0
     end
     object dxBarButton4: TdxBarButton
-      Action = DM.ActDocMoneyOut
+      Action = ActDocMoneyOut
       Category = 0
     end
     object dxBarButton5: TdxBarButton
-      Action = DM.ActDocPrice
+      Action = ActDocInp
       Category = 0
     end
     object dxBarButton6: TdxBarButton
-      Action = DM.ActDocMove
+      Action = ActDocMoveSpisan
       Category = 0
     end
     object dxBarButton7: TdxBarButton
-      Action = DM.ActNsiPartner
+      Action = ActNsiPartner
       Category = 0
     end
     object dxBarButton8: TdxBarButton
-      Action = DM.ActNsiBank
+      Action = ActNsiBank
       Category = 0
     end
     object dxBarButton9: TdxBarButton
-      Action = DM.ActNsiSklad
+      Action = ActNsiTovar
       Category = 0
     end
     object dxBarButton10: TdxBarButton
-      Action = DM.ActNsiTovar
+      Action = ActNsiTovarType
       Category = 0
     end
     object dxBarButton11: TdxBarButton
-      Action = DM.ActNsiStatus
       Category = 0
+      Visible = ivAlways
     end
     object dxBarButton13: TdxBarButton
-      Action = DM.ActNsiPrice
+      Action = ActNsiPrice
       Category = 0
     end
     object dxBarButton14: TdxBarButton
-      Action = DM.ActInventory
-      Category = 0
-    end
-    object dxBarButton16: TdxBarButton
-      Action = DM.ActDocOutBack
+      Action = ActDocMove
       Category = 0
     end
     object dxBarButton15: TdxBarButton
-      Action = DM.ActDocInpBack
+      Action = ActDocInpBack
       Category = 0
     end
     object dxBarButton12: TdxBarButton
-      Action = DM.ActDocMoveSpisan
+      Action = ActDocTemplate
       Category = 0
     end
-    object dxBarButton29: TdxBarButton
-      Action = DM.ActNsiGoodsInfo
+    object dxBarButton31: TdxBarButton
+      Action = ActDocInp
+      Category = 0
+    end
+    object dxBarSubItem13: TdxBarSubItem
+      Caption = 'New SubItem'
+      Category = 0
+      Visible = ivAlways
+      ItemLinks = <>
+    end
+    object dxBarButton16: TdxBarButton
+      Action = ActDocZakaz
       Category = 0
     end
     object dxBarSubItem1: TdxBarSubItem
@@ -506,7 +478,7 @@ object FrmMain: TFrmMain
         end>
     end
     object dxBarButton19: TdxBarButton
-      Action = DM.ActDocMovePrihod
+      Action = ActInventory
       Category = 1
     end
     object dxBarButton17: TdxBarButton
@@ -540,7 +512,15 @@ object FrmMain: TFrmMain
         end
         item
           Visible = True
+          ItemName = 'dxBarButton31'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarButton15'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton16'
         end>
     end
     object dxBarSubItem4: TdxBarSubItem
@@ -555,19 +535,16 @@ object FrmMain: TFrmMain
         item
           Visible = True
           ItemName = 'dxBarButton1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton16'
         end>
     end
     object dxBarButton18: TdxBarButton
-      Action = DM.ActDocTemplate
+      Action = ActDocMovePrihod
       Category = 1
     end
     object dxBarButton20: TdxBarButton
-      Action = DM.ActNsiDiscount
+      Caption = #1057#1082#1080#1076#1086#1095#1085#1099#1077' '#1082#1072#1088#1090#1099
       Category = 1
+      Visible = ivAlways
     end
     object dxBarButton21: TdxBarButton
       Caption = #1053#1086#1074#1072#1103' '#1082#1085#1086#1087#1082#1072
@@ -576,7 +553,7 @@ object FrmMain: TFrmMain
       Visible = ivAlways
     end
     object dxBarSubItem5: TdxBarSubItem
-      Caption = #1050#1086#1085#1090#1088#1072#1075#1077#1085#1090#1099
+      Caption = #1055#1072#1088#1090#1085#1077#1088#1099
       Category = 1
       Visible = ivAlways
       ItemLinks = <
@@ -617,10 +594,6 @@ object FrmMain: TFrmMain
         item
           Visible = True
           ItemName = 'dxBarButton23'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarButton29'
         end>
     end
     object dxBarSubItem8: TdxBarSubItem
@@ -638,8 +611,9 @@ object FrmMain: TFrmMain
         end>
     end
     object dxBarButton23: TdxBarButton
-      Action = DM.ActNsiTovarType
+      Caption = #1057#1074#1086#1081#1089#1090#1074#1072' '#1085#1086#1084#1077#1085#1082#1083#1072#1090#1091#1088#1099
       Category = 1
+      Visible = ivAlways
     end
     object dxBarSubItem9: TdxBarSubItem
       Caption = #1061#1086#1079'.'#1076#1077#1103#1090#1077#1083#1100#1085#1086#1089#1090#1100
@@ -656,7 +630,7 @@ object FrmMain: TFrmMain
         end>
     end
     object dxBarButton24: TdxBarButton
-      Action = DM.ActDocInpHz
+      Action = ActDocInpHz
       Category = 1
     end
     object dxBarSubItem10: TdxBarSubItem
@@ -678,11 +652,11 @@ object FrmMain: TFrmMain
       ItemLinks = <>
     end
     object dxBarButton26: TdxBarButton
-      Action = DM.ActDocOutHZ
+      Action = ActDocOutHZ
       Category = 1
     end
     object dxBarButton27: TdxBarButton
-      Action = DM.ActNsiDocProperty
+      Action = ActNsiDocProperty
       Category = 1
     end
     object dxBarButton28: TdxBarButton
@@ -708,93 +682,128 @@ object FrmMain: TFrmMain
       Visible = ivAlways
     end
     object dxBarLargeButton1: TdxBarLargeButton
-      Action = DM.ActInventory
       Category = 1
+      Visible = ivAlways
     end
     object dxBarRoznSale: TdxBarLargeButton
-      Action = DM.ActDocOut
       Category = 2
+      Visible = ivAlways
       PaintStyle = psCaption
     end
     object dxBarRoznBack: TdxBarLargeButton
-      Action = DM.ActDocInpBack
       Category = 2
+      Visible = ivAlways
     end
     object dxBarRoznMove: TdxBarLargeButton
-      Action = DM.ActDocMove
       Category = 2
+      Visible = ivAlways
+    end
+    object dxBarListItem: TdxBarListItem
+      Caption = #1054#1090#1082#1088#1099#1090#1099#1077' '#1086#1082#1085#1072
+      Category = 3
+      Visible = ivAlways
+      OnClick = dxBarListItemClick
+      OnGetData = dxBarListItemGetData
+      ShowCheck = True
     end
   end
   object dxDockingManager: TdxDockingManager
     Color = clBtnFace
+    DefaultHorizContainerSiteProperties.CustomCaptionButtons.Buttons = <>
     DefaultHorizContainerSiteProperties.Dockable = True
     DefaultHorizContainerSiteProperties.ImageIndex = -1
+    DefaultVertContainerSiteProperties.CustomCaptionButtons.Buttons = <>
     DefaultVertContainerSiteProperties.Dockable = True
     DefaultVertContainerSiteProperties.ImageIndex = -1
+    DefaultTabContainerSiteProperties.CustomCaptionButtons.Buttons = <>
     DefaultTabContainerSiteProperties.Dockable = True
     DefaultTabContainerSiteProperties.ImageIndex = -1
+    DefaultTabContainerSiteProperties.TabsProperties.CustomButtons.Buttons = <>
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'MS Sans Serif'
     Font.Style = []
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
     LookAndFeel.SkinName = 'Office2007Black'
-    LookAndFeel.SkinName = 'Office2007Black'
-    ViewStyle = vsStandard
     Left = 408
     Top = 240
+    PixelsPerInch = 96
   end
   object frxPDFExport1: TfrxPDFExport
     UseFileCache = True
     ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    EmbedFontsIfProtected = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
-    Background = False
     Creator = 'FastReport (http://www.fast-report.com)'
-    HTMLTags = True
-    Left = 216
-    Top = 168
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
+    Left = 160
+    Top = 176
   end
   object frxHTMLExport1: TfrxHTMLExport
     UseFileCache = True
     ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    OpenAfterExport = False
     FixedWidth = True
     Background = False
-    Left = 248
-    Top = 168
-  end
-  object frxXLSExport1: TfrxXLSExport
-    UseFileCache = True
-    ShowProgress = True
-    OpenExcelAfterExport = True
-    Wysiwyg = False
-    AsText = True
-    Background = False
-    FastExport = True
-    PageBreaks = True
+    Centered = False
     EmptyLines = True
-    SuppressPageHeadersFooters = False
-    Left = 280
-    Top = 168
+    Print = False
+    PictureType = gpJPG
+    Outline = False
+    Left = 160
+    Top = 224
   end
   object frxXMLExport1: TfrxXMLExport
     UseFileCache = True
     ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
     Background = True
     Creator = 'FastReport'
     EmptyLines = True
     SuppressPageHeadersFooters = False
+    RowsCount = 0
+    Split = ssNotSplit
     Left = 312
-    Top = 168
+    Top = 176
   end
   object frxRTFExport1: TfrxRTFExport
     UseFileCache = True
     ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PictureType = gpJPG
+    OpenAfterExport = False
     Wysiwyg = True
     Creator = 'FastReport http://www.fast-report.com'
-    Left = 344
+    SuppressPageHeadersFooters = False
+    HeaderFooterMode = hfText
+    AutoSize = False
+    Left = 416
     Top = 168
   end
   object frxCrossObject1: TfrxCrossObject
@@ -806,7 +815,6 @@ object FrmMain: TFrmMain
     Top = 128
   end
   object frxFIBComponents2: TfrxFIBComponents
-    DefaultDatabase = DM.pFIBDatabase
     Left = 280
     Top = 128
   end
@@ -823,13 +831,413 @@ object FrmMain: TFrmMain
     DefaultBottomMargin = 10.000000000000000000
     DefaultPaperSize = 9
     DefaultOrientation = poPortrait
+    GradientEnd = 11982554
+    GradientStart = clWindow
+    TemplatesExt = 'fr3'
     Restrictions = []
     RTLLanguage = False
+    MemoParentFont = False
     Left = 312
     Top = 128
   end
   object frxBarCodeObject1: TfrxBarCodeObject
     Left = 344
     Top = 128
+  end
+  object frxXLSXExport1: TfrxXLSXExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    ChunkSize = 0
+    OpenAfterExport = False
+    PictureType = gpJPG
+    Left = 240
+    Top = 350
+  end
+  object frxHTML5DivExport1: TfrxHTML5DivExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    OpenAfterExport = False
+    MultiPage = False
+    Formatted = False
+    PictureFormat = pfJPG
+    UnifiedPictures = True
+    Navigation = True
+    EmbeddedPictures = True
+    EmbeddedCSS = True
+    Outline = False
+    HTML5 = True
+    AllPictures = False
+    ExportAnchors = True
+    PictureTag = 0
+    Left = 360
+    Top = 398
+  end
+  object frxODSExport1: TfrxODSExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    CreationTime = 0.000000000000000000
+    DataOnly = False
+    PictureType = gpJPG
+    OpenAfterExport = False
+    Background = True
+    Creator = 'FastReport'
+    SingleSheet = False
+    Language = 'en'
+    SuppressPageHeadersFooters = False
+    Left = 192
+    Top = 398
+  end
+  object frxPPTXExport1: TfrxPPTXExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    OpenAfterExport = False
+    PictureType = gpPNG
+    Left = 184
+    Top = 454
+  end
+  object frxODTExport1: TfrxODTExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    CreationTime = 0.000000000000000000
+    DataOnly = False
+    PictureType = gpJPG
+    OpenAfterExport = False
+    Background = True
+    Creator = 'FastReport'
+    SingleSheet = False
+    Language = 'en'
+    SuppressPageHeadersFooters = False
+    Left = 272
+    Top = 454
+  end
+  object frxBIFFExport1: TfrxBIFFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    OpenAfterExport = False
+    RowHeightScale = 1.000000000000000000
+    ChunkSize = 0
+    Inaccuracy = 10.000000000000000000
+    FitPages = False
+    Pictures = True
+    ParallelPages = 0
+    Left = 360
+    Top = 462
+  end
+  object ActionList: TActionList
+    Left = 600
+    Top = 240
+    object ActNsiTovar: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1058#1086#1074#1072#1088#1099
+      OnExecute = ActNsiTovarExecute
+    end
+    object ActNsiPartner: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1055#1072#1088#1090#1085#1077#1088#1099
+      OnExecute = ActNsiPartnerExecute
+    end
+    object ActNsiSklad: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1057#1082#1083#1072#1076#1099
+      OnExecute = ActNsiSkladExecute
+    end
+    object ActNsiStatus: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1057#1090#1072#1090#1091#1089#1099
+      OnExecute = ActNsiStatusExecute
+    end
+    object ActDocInp: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1055#1088#1080#1093#1086#1076#1099
+      OnExecute = ActDocInpExecute
+    end
+    object ActDocOut: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1056#1077#1072#1083#1080#1079#1072#1094#1080#1103
+      OnExecute = ActDocOutExecute
+    end
+    object ActDocMoneyInp: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1042#1093#1086#1076#1103#1097#1080#1077' '#1087#1083#1072#1090#1077#1078#1080
+      OnExecute = ActDocMoneyInpExecute
+    end
+    object ActDocMoneyOut: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1048#1089#1093#1086#1076#1103#1097#1080#1077' '#1087#1083#1072#1090#1077#1078#1080
+      OnExecute = ActDocMoneyOutExecute
+    end
+    object ActNsiPrice: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1062#1077#1085#1099
+      OnExecute = ActNsiPriceExecute
+    end
+    object ActNsiBank: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1041#1072#1085#1082#1080
+      OnExecute = ActNsiBankExecute
+    end
+    object ActZapas: TAction
+      Category = #1054#1090#1095#1077#1090#1099
+      Caption = #1047#1072#1087#1072#1089#1099
+      OnExecute = ActZapasExecute
+    end
+    object ActDocPrice: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1062#1077#1085#1086#1086#1073#1088#1072#1079#1086#1074#1072#1085#1080#1077
+      OnExecute = ActDocPriceExecute
+    end
+    object ActDocMove: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1055#1077#1088#1077#1084#1077#1097#1077#1085#1080#1103' '#1084#1077#1078#1076#1091' '#1089#1082#1083#1072#1076#1072#1084#1080
+      OnExecute = ActDocMoveExecute
+    end
+    object ActInventory: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1048#1085#1074#1077#1085#1090#1072#1088#1080#1079#1072#1094#1080#1103
+      OnExecute = ActInventoryExecute
+    end
+    object ActDocInpBack: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1042#1086#1079#1074#1088#1072#1090#1099' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1077#1081
+      OnExecute = ActDocInpBackExecute
+    end
+    object ActDocOutBack: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1042#1086#1079#1074#1088#1072#1090#1099' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1072#1084
+      OnExecute = ActDocOutBackExecute
+    end
+    object ActDocMoveSpisan: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1057#1087#1080#1089#1072#1085#1080#1103
+      OnExecute = ActDocMoveSpisanExecute
+    end
+    object ActDocMovePrihod: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1054#1087#1088#1080#1093#1086#1076#1086#1074#1072#1085#1080#1077' '#1080#1079#1083#1080#1096#1082#1086#1074
+      OnExecute = ActDocMovePrihodExecute
+    end
+    object ActDocTemplate: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1047#1072#1075#1086#1090#1086#1074#1082#1080
+      OnExecute = ActDocTemplateExecute
+    end
+    object ActNsiDiscount: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1057#1082#1080#1076#1086#1095#1085#1099#1077' '#1082#1072#1088#1090#1099
+      OnExecute = ActNsiDiscountExecute
+    end
+    object ActReportKKM: TAction
+      Category = #1054#1090#1095#1077#1090#1099
+      Caption = #1054#1090#1095#1077#1090' '#1087#1086' '#1050#1050#1052
+      OnExecute = ActReportKKMExecute
+    end
+    object ActNsiTovarType: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1058#1080#1087' '#1085#1086#1084#1077#1085#1082#1083#1072#1090#1091#1088#1099
+      OnExecute = ActNsiTovarTypeExecute
+    end
+    object ActDocInpHz: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1061#1086#1079'.'#1076#1086#1082#1091#1084#1077#1085#1090#1099'('#1087#1088#1080#1093#1086#1076')'
+      OnExecute = ActDocInpHzExecute
+    end
+    object ActDocOutHZ: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1061#1086#1079'.'#1076#1086#1082#1091#1084#1077#1085#1090#1099'('#1088#1072#1089#1093#1086#1076')'
+      OnExecute = ActDocOutHZExecute
+    end
+    object ActNsiDocProperty: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1040#1090#1088#1080#1073#1091#1090#1099
+      OnExecute = ActNsiDocPropertyExecute
+    end
+    object ActNsiGoodsInfo: TAction
+      Category = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+      Caption = #1057#1074#1086#1081#1089#1090#1074#1072' '#1085#1086#1084#1077#1085#1082#1083#1072#1090#1091#1088#1099
+      OnExecute = ActNsiGoodsInfoExecute
+    end
+    object WindowCascade1: TWindowCascade
+      Category = 'Window'
+      Caption = '&Cascade'
+      Enabled = False
+      Hint = 'Cascade'
+      ImageIndex = 17
+    end
+    object ActDocZakaz: TAction
+      Category = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+      Caption = #1047#1072#1082#1072#1079#1099
+      OnExecute = ActDocZakazExecute
+    end
+    object ActTovarBufer: TAction
+      Category = #1055#1088#1086#1095#1077#1077
+      Caption = #1058#1086#1074#1072#1088#1085#1099#1081' '#1073#1091#1092#1077#1088
+      OnExecute = ActTovarBuferExecute
+    end
+    object ActTools: TAction
+      Category = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+      Caption = #1050#1086#1085#1089#1086#1083#1100
+      OnExecute = ActToolsExecute
+    end
+    object ActPlanner: TAction
+      Category = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+      Caption = #1055#1083#1072#1085#1080#1088#1086#1074#1097#1080#1082
+      OnExecute = ActPlannerExecute
+    end
+    object ActSendSales: TAction
+      Category = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+      Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1100' '#1087#1088#1086#1076#1072#1078#1080
+      OnExecute = ActSendSalesExecute
+    end
+  end
+  object ActionManager1: TActionManager
+    ActionBars = <
+      item
+      end
+      item
+        Items = <
+          item
+            Items = <
+              item
+                Action = ActDocInp
+              end
+              item
+                Action = ActDocOut
+              end
+              item
+                Action = ActDocMoneyInp
+              end
+              item
+                Action = ActDocMoneyOut
+              end
+              item
+                Action = ActDocPrice
+              end
+              item
+                Action = ActDocMove
+              end
+              item
+                Action = ActInventory
+              end
+              item
+                Action = ActDocInpBack
+              end
+              item
+                Action = ActDocOutBack
+              end
+              item
+                Action = ActDocMoveSpisan
+              end
+              item
+                Action = ActDocMovePrihod
+              end
+              item
+                Action = ActDocTemplate
+              end
+              item
+                Action = ActDocInpHz
+              end
+              item
+                Action = ActDocOutHZ
+              end
+              item
+                Action = ActDocZakaz
+              end>
+            Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+          end
+          item
+            Items = <
+              item
+                Action = ActNsiTovar
+              end
+              item
+                Action = ActNsiPartner
+              end
+              item
+                Action = ActNsiSklad
+              end
+              item
+                Action = ActNsiStatus
+              end
+              item
+                Action = ActNsiPrice
+              end
+              item
+                Action = ActNsiBank
+              end
+              item
+                Action = ActNsiDiscount
+              end
+              item
+                Action = ActNsiTovarType
+              end
+              item
+                Action = ActNsiDocProperty
+              end
+              item
+                Action = ActNsiGoodsInfo
+              end>
+            Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082#1080
+          end
+          item
+            Items = <
+              item
+                Action = ActZapas
+              end
+              item
+                Action = ActReportKKM
+              end>
+            Caption = #1054#1090#1095#1077#1090#1099
+          end
+          item
+            Items = <
+              item
+                Action = ActTools
+              end
+              item
+                Action = ActPlanner
+              end
+              item
+                Action = ActSendSales
+              end>
+            Caption = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+          end
+          item
+            Action = ActTovarBufer
+          end
+          item
+            Items = <
+              item
+                Caption = #1042#1086#1079#1074#1088#1072#1090#1099' '#1087#1086#1082#1091#1087#1072#1090#1077#1083#1077#1081
+              end>
+            Caption = #1044#1086#1087#1086#1083#1085#1077#1085#1080#1103
+          end
+          item
+            Items = <
+              item
+                Action = WindowCascade1
+                ImageIndex = 17
+              end>
+            Caption = '&Window'
+          end>
+        ActionBar = ActionMainMenuBar1
+      end>
+    LinkedActionLists = <
+      item
+        ActionList = ActionList
+        Caption = 'ActionList'
+      end>
+    Left = 520
+    Top = 350
+    StyleName = 'Platform Default'
   end
 end

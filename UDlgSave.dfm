@@ -3,7 +3,7 @@ object DlgSave: TDlgSave
   Top = 0
   BorderStyle = bsDialog
   Caption = #1055#1072#1088#1072#1084#1077#1090#1088#1099' '#1074#1099#1075#1088#1091#1079#1082#1080
-  ClientHeight = 191
+  ClientHeight = 151
   ClientWidth = 410
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,14 +18,7 @@ object DlgSave: TDlgSave
     Left = 8
     Top = 8
     Width = 313
-    Height = 171
-  end
-  object Label1: TLabel
-    Left = 14
-    Top = 133
-    Width = 110
-    Height = 13
-    Caption = #1060#1072#1081#1083' '#1076#1083#1103' '#1089#1086#1093#1088#1072#1085#1077#1085#1080#1103
+    Height = 137
   end
   object GroupBox1: TGroupBox
     Left = 14
@@ -53,7 +46,6 @@ object DlgSave: TDlgSave
       Top = 17
       Caption = #1042#1099#1075#1088#1091#1078#1072#1090#1100' '#1080#1079#1086#1073#1088#1072#1078#1077#1085#1080#1103
       TabOrder = 0
-      Width = 150
     end
     object editDateFrom: TcxDateEdit
       Left = 112
@@ -90,26 +82,9 @@ object DlgSave: TDlgSave
     ModalResult = 2
     TabOrder = 2
   end
-  object sFilenameEdit: TsFilenameEdit
-    Left = 14
-    Top = 151
-    Width = 299
-    Height = 21
-    AutoSize = False
-    MaxLength = 255
-    TabOrder = 3
-    OnChange = sFilenameEditChange
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'Tahoma'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
-    SkinData.SkinSection = 'EDIT'
-    GlyphMode.Blend = 0
-    GlyphMode.Grayed = False
+  object RzSaveDialog: TRzSaveDialog
+    Filter = #1060#1072#1081#1083#1099' '#1101#1082#1089#1087#1086#1088#1090#1072'|*.xml'
+    Left = 336
+    Top = 96
   end
 end

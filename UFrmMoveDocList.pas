@@ -11,8 +11,25 @@ uses
   dxSkinscxPCPainter, cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage,
   cxEdit, DB, cxDBData, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, FIBDataSet,
-  pFIBDataSet,xmldom, XMLIntf, msxmldom,XMLDoc, FIBQuery, pFIBQuery,
-  pFIBStoredProc, FIBDatabase, pFIBDatabase, ComCtrls, ToolWin;
+  pFIBDataSet, xmldom, XMLIntf, msxmldom, XMLDoc, FIBQuery, pFIBQuery,
+  pFIBStoredProc, FIBDatabase, pFIBDatabase, ComCtrls, ToolWin, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog;
 
 type
   TFrmMoveDocList = class(TFrmPrototype)
@@ -91,101 +108,108 @@ var
 implementation
 
 {$R *.dfm}
+
 uses
- uDocClass,udm,upublic,uDlgSave;
+  uDocClass, udm, upublic, uDlgSave;
 
 procedure TFrmMoveDocList.BtnEditClick(Sender: TObject);
 var
-  key : integer;
+  key: integer;
 begin
-  key:=dsMoveDocsListF_ID.Value;
-//  inherited;
+  key := dsMoveDocsListF_ID.Value;
+  // inherited;
   with TMoveDoc.Create(key) do
   begin
-    doc_type:=self.tag;
+    doc_type := self.tag;
     OpenEditFrm;
   end;
 end;
 
 procedure TFrmMoveDocList.BtnNewClick(Sender: TObject);
 var
-  key : integer;
+  key: integer;
 begin
-  key:=-10;
+  key := -10;
   inherited;
   with TMoveDoc.Create(key) do
   begin
-    doc_type:=self.Tag;
+    doc_type := self.tag;
     OpenEditFrm;
   end;
 end;
 
 procedure TFrmMoveDocList.BtnOpenClick(Sender: TObject);
 var
-  base_id,i,j,k,id                          : integer;
-  xmlDocument                               : TxmlDocument;
-  NodeDocs,NewDoc,nodeBody,newPos,ValueDoc  : IXmlNode;
-  docList                                   : IXmlNode;
-  f_summ                                    : Currency;
-  f_sklad,f_good                            : integer;
-  commitDocs                                : boolean;
+  base_id, i, j, k, id: integer;
+  xmlDocument: TxmlDocument;
+  NodeDocs, NewDoc, nodeBody, newPos, ValueDoc: IXmlNode;
+  docList: IXmlNode;
+  f_summ: Currency;
+  f_sklad, f_good: integer;
+  commitDocs: boolean;
 begin
   commitDocs := false;
-  base_id:=GetImportBase;
+  base_id := GetImportBase;
   if OpenDialog.Execute(self.Handle) then
   begin
-    if MessageDlg('Проводить документы после загрузки?',mtConfirmation,[mbYes,mbNo],0) = 6 then
-      commitDocs:=true;
-    xmlDocument:=TxmlDocument.Create(self);
+    if MessageDlg('Проводить документы после загрузки?', mtConfirmation,
+      [mbYes, mbNo], 0) = 6 then
+      commitDocs := true;
+    xmlDocument := TxmlDocument.Create(self);
     xmlDocument.LoadFromFile(OpenDialog.FileName);
     xmlDocument.Active;
-    docList:=xmlDocument.DocumentElement.ChildNodes['MoveDocs'];
-    f_sklad:=GetNsiSklad;
+    docList := xmlDocument.DocumentElement.ChildNodes['MoveDocs'];
+    f_sklad := GetNsiSklad;
     try
       if not dm.IdFTP.Connected then
-       dm.IdFTP.Connect;
+        dm.IdFTP.Connect;
     except
 
     end;
-    for I := 0 to docList.ChildNodes.Count - 1 do
+    for i := 0 to docList.ChildNodes.Count - 1 do
     begin
 
-      NodeDocs:=docList.ChildNodes[i];
-      dsImportDoc.Active:=false;
-      dsImportDoc.ParamByName('f_sklad').Value:=f_sklad;
-      //spImportPartner.FieldByName('f_id').Value;
-      dsImportDoc.ParamByName('f_doc_type').Value:=NodeDocs.Attributes['DocType'];
-      dsImportDoc.ParamByName('f_ext_id').Value:=NodeDocs.Attributes['Id'];
-      dsImportDoc.ParamByName('f_ext_base').Value:=base_id;
-      NewDoc:=NodeDocs.ChildNodes['DocUser'];
-      dsImportDoc.ParamByName('f_user').Value:=NewDoc.Text;
-      NewDoc:=NodeDocs.ChildNodes['wbNumber'];
-      dsImportDoc.ParamByName('f_number').Value:=NewDoc.Text;
-      NewDoc:=NodeDocs.ChildNodes['wbDate'];
-      dsImportDoc.ParamByName('f_date').Value:=NewDoc.Text;
-      dsImportDoc.Active:=true;
-      nodeBody:=NodeDocs.ChildNodes['DocBody'];
-      spInsDocStr.ParamByName('f_doc_move').Value:=dsImportDoc.FieldByName('f_id').Value;
+      NodeDocs := docList.ChildNodes[i];
+      dsImportDoc.Active := false;
+      dsImportDoc.ParamByName('f_sklad').Value := f_sklad;
+      // spImportPartner.FieldByName('f_id').Value;
+      dsImportDoc.ParamByName('f_doc_type').Value := NodeDocs.Attributes
+        ['DocType'];
+      dsImportDoc.ParamByName('f_ext_id').Value := NodeDocs.Attributes['Id'];
+      dsImportDoc.ParamByName('f_ext_base').Value := base_id;
+      NewDoc := NodeDocs.ChildNodes['DocUser'];
+      dsImportDoc.ParamByName('f_user').Value := NewDoc.Text;
+      NewDoc := NodeDocs.ChildNodes['wbNumber'];
+      dsImportDoc.ParamByName('f_number').Value := NewDoc.Text;
+      NewDoc := NodeDocs.ChildNodes['wbDate'];
+      dsImportDoc.ParamByName('f_date').Value := NewDoc.Text;
+      NewDoc := NodeDocs.ChildNodes['wbDopInfo'];
+      dsImportDoc.ParamByName('F_DOP_INFO').Value := NewDoc.Text;
+      dsImportDoc.Active := true;
+      nodeBody := NodeDocs.ChildNodes['DocBody'];
+      spInsDocStr.ParamByName('f_doc_move').Value :=
+        dsImportDoc.FieldByName('f_id').Value;
       dsImportDoc.Transaction.CommitRetaining;
       for j := 0 to nodeBody.ChildNodes.Count - 1 do
       begin
-        newPos:=nodeBody.ChildNodes[j];
-        f_summ:=StrToCurr(newPos.ChildNodes['Summ'].Text);
+        newPos := nodeBody.ChildNodes[j];
+        f_summ := StrToCurr(newPos.ChildNodes['Summ'].Text);
 
-        spInsDocStr.ParamByName('f_cnt').Value:=newPos.ChildNodes['Kol'].Text;
-        spInsDocStr.ParamByName('f_price_val').Value:=f_summ/spInsDocStr.ParamByName('f_cnt').Value;
+        spInsDocStr.ParamByName('f_cnt').Value := newPos.ChildNodes['Kol'].Text;
+        spInsDocStr.ParamByName('f_price_val').Value := f_summ /
+          spInsDocStr.ParamByName('f_cnt').Value;
 
-        NewDoc:=newPos.ChildNodes['T_NSI_GOOD'];
-        f_good:=dm.ImportGood(NewDoc,base_id);
-        spInsDocStr.ParamByName('f_good').Value:=f_good;
+        NewDoc := newPos.ChildNodes['T_NSI_GOOD'];
+        f_good := dm.ImportGood(NewDoc, base_id);
+        spInsDocStr.ParamByName('f_good').Value := f_good;
         spInsDocStr.ExecProc;
 
       end;
       dsImportDoc.Transaction.CommitRetaining;
-      id:=dsImportDoc.FieldByName('f_id').AsInteger;
+      id := dsImportDoc.FieldByName('f_id').AsInteger;
       if commitDocs then
       begin
-        with TMoveDoc.Create(id)do
+        with TMoveDoc.Create(id) do
         begin
           ChangeState(3);
           free;
@@ -195,22 +219,22 @@ begin
     end;
     try
       if dm.IdFTP.Connected then
-       dm.IdFTP.Disconnect;
+        dm.IdFTP.Disconnect;
     except
 
     end;
 
   end;
-  dm.refreshNsiGood:=true;
-  DM.TimerRefreshNsiGoodTimer(sender);
+  dm.refreshNsiGood := true;
+  dm.TimerRefreshNsiGoodTimer(Sender);
 end;
 
 procedure TFrmMoveDocList.BtnRefreshClick(Sender: TObject);
 begin
   inherited;
 
-  if not dsMoveDocsListF_id.IsNull then
-    RefreshDs(dsMoveDocsList,'f_id',dsMoveDocsListF_id.Value)
+  if not dsMoveDocsListF_ID.IsNull then
+    RefreshDs(dsMoveDocsList, 'f_id', dsMoveDocsListF_ID.Value)
   else
     RefreshDs(dsMoveDocsList);
 
@@ -218,49 +242,59 @@ end;
 
 procedure TFrmMoveDocList.BtnSaveClick(Sender: TObject);
 var
-  i         : integer;
-  ARowIndex : Integer;
-  ARowInfo  : TcxRowInfo;
-  expFile   : TstringList;
+  i: integer;
+  ARowIndex: integer;
+  ARowInfo: TcxRowInfo;
+  expFile: TstringList;
 begin
   inherited;
   with TDlgSave.Create(self) do
   begin
-    if ShowModal=mrOk then
+    if ShowModal = mrOk then
     begin
-      expFile:=TstringList.Create;
-      expFile.Add('<?xml version="1.0" encoding="windows-1251"?>');
-      expFile.Add('<Export>');
-      expFile.Add('<MoveDocs>');
-      for I := 0 to cxGrid1DBTableView1.Controller.SelectedRecordCount - 1 do
+      if RzSaveDialog.Execute then
       begin
-        dsExportDoc.Active:=false;
-        ARowIndex:=cxGrid1DBTableView1.DataController.GetSelectedRowIndex(i);
-        ARowInfo:=cxGrid1DBTableView1.DataController.GetRowInfo(ARowIndex);
-        dsExportDoc.ParamByName('f_id').Value:=cxGrid1DBTableView1.DataController.GetRowValue(ARowInfo,dsMoveDocsListF_ID.Index);
-        dsExportDoc.Active:=true;
-        while not dsExportDoc.Eof do
+        expFile := TstringList.Create;
+        expFile.Add('<?xml version="1.0" encoding="windows-1251"?>');
+        expFile.Add('<Export>');
+        expFile.Add('<MoveDocs>');
+        for i := 0 to cxGrid1DBTableView1.Controller.SelectedRecordCount - 1 do
         begin
-          if not dsExportDocF_VALUE.IsNull then
-            expFile.Add(dsExportDocF_VALUE.AsString);
-          dsExportDoc.Next;
-        end;
-        if SaveImg.Checked then
-        begin
-          dsDocStrings.ParamByName('doc_id').Value:=cxGrid1DBTableView1.DataController.GetRowValue(ARowInfo,dsMoveDocsListF_ID.Index);
-          dsDocStrings.Active:=true;
-          while not dsDocStrings.Eof do
+          dsExportDoc.Active := false;
+          ARowIndex := cxGrid1DBTableView1.DataController.
+            GetSelectedRowIndex(i);
+          ARowInfo := cxGrid1DBTableView1.DataController.GetRowInfo(ARowIndex);
+          dsExportDoc.ParamByName('f_id').Value :=
+            cxGrid1DBTableView1.DataController.GetRowValue(ARowInfo,
+            dsMoveDocsListF_ID.Index);
+          dsExportDoc.Active := true;
+          while not dsExportDoc.Eof do
           begin
-            DM.UploadPhoto(dsDocStringsF_ARTICLE.AsString,DirToSave.Path,editDateFrom.Date);
-            dsDocStrings.Next;
+            if not dsExportDocF_VALUE.IsNull then
+              expFile.Add(dsExportDocF_VALUE.AsString);
+            dsExportDoc.Next;
           end;
-          dsDocStrings.Active:=false;
+          if SaveImg.Checked then
+          begin
+            dsDocStrings.ParamByName('doc_id').Value :=
+              cxGrid1DBTableView1.DataController.GetRowValue(ARowInfo,
+              dsMoveDocsListF_ID.Index);
+            dsDocStrings.Active := true;
+            while not dsDocStrings.Eof do
+            begin
+              dm.UploadPhoto(dsDocStringsF_ARTICLE.AsString, DirToSave.Path,
+                editDateFrom.Date);
+              dsDocStrings.Next;
+            end;
+            dsDocStrings.Active := false;
+          end;
         end;
+        expFile.Add('</MoveDocs>');
+        expFile.Add('</Export>');
+        expFile.SaveToFile(RzSaveDialog.FileName);
+        expFile.free;
+        ShowMessage('Документы сохранены');
       end;
-      expFile.Add('</MoveDocs>');
-      expFile.Add('</Export>');
-      expFile.SaveToFile(sFilenameEdit.FileName);
-      expFile.Free;
     end;
     free;
   end;
@@ -269,32 +303,33 @@ end;
 procedure TFrmMoveDocList.BtnViewClick(Sender: TObject);
 begin
   inherited;
-  ShowDoc('T_DOC_MOVE',dsMoveDocsListF_id.Value);
+  ShowDoc('T_DOC_MOVE', dsMoveDocsListF_ID.Value);
 end;
 
 procedure TFrmMoveDocList.dsMoveDocsListBeforeOpen(DataSet: TDataSet);
 begin
   inherited;
-  dsMoveDocsList.ParamByName('doc_move').Value:=self.Tag;
-  dsMoveDocsList.ParamByName('str_date').Value:=EditStr_date.Date;
-  dsMoveDocsList.ParamByName('end_date').Value:=EditEnd_date.Date;
+  dsMoveDocsList.ParamByName('doc_move').Value := self.tag;
+  dsMoveDocsList.ParamByName('str_date').Value := Editstr_date.Date;
+  dsMoveDocsList.ParamByName('end_date').Value := Editend_date.Date;
 end;
 
 procedure TFrmMoveDocList.dsMoveDocsListCalcFields(DataSet: TDataSet);
 var
-  v_ost : string;
-  i:integer;
-  v_val : TStringList;
+  v_ost: string;
+  i: integer;
+  v_val: TstringList;
   tf: tfield;
 begin
-  v_val := TStringList.Create;
-  v_val.Text:= DataSet.FieldByName('F_DOC_PROPERTY').AsString;
-  for I := 0 to v_val.Count - 1 do
+  v_val := TstringList.Create;
+  v_val.Text := DataSet.FieldByName('F_DOC_PROPERTY').AsString;
+  for i := 0 to v_val.Count - 1 do
   begin
-    if v_val.Names[i] <>'' then
-      DataSet.FieldByName('DF_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+    if v_val.Names[i] <> '' then
+      DataSet.FieldByName('DF_' + v_val.Names[i]).Value :=
+        v_val.Values[v_val.Names[i]];
   end;
-  v_val.Free;
+  v_val.free;
 end;
 
 procedure TFrmMoveDocList.FormCreate(Sender: TObject);
@@ -302,24 +337,24 @@ var
   tf: TStringField;
 begin
   inherited;
-  Editstr_date.Date:=date;
-  Editend_date.Date:=date;
-  dm.dsNsiDocProp.Active:=false;
-  dm.dsNsiDocProp.active:=true;
+  Editstr_date.Date := Date;
+  Editend_date.Date := Date;
+  dm.dsNsiDocProp.Active := false;
+  dm.dsNsiDocProp.Active := true;
   dm.dsNsiDocProp.First;
-  while not dm.dsNsiDocProp.eof do
+  while not dm.dsNsiDocProp.Eof do
   begin
-    tf:=TStringField.Create(dsMoveDocsList);
-    tf.Calculated:=true;
-    tf.Index:=dsMoveDocsList.FieldCount;
-    tf.FieldName:='DF_'+dm.dsNsiDocProp.FieldByName('f_id').AsString;
-    tf.DisplayLabel:=dm.dsNsiDocProp.FieldByName('f_name').AsString;
-    tf.tag:=dm.dsNsiDocProp.FieldByName('f_id').AsInteger;
-    tf.DataSet:=dsMoveDocsList;
+    tf := TStringField.Create(dsMoveDocsList);
+    tf.Calculated := true;
+    tf.Index := dsMoveDocsList.FieldCount;
+    tf.FieldName := 'DF_' + dm.dsNsiDocProp.FieldByName('f_id').AsString;
+    tf.DisplayLabel := dm.dsNsiDocProp.FieldByName('f_name').AsString;
+    tf.tag := dm.dsNsiDocProp.FieldByName('f_id').AsInteger;
+    tf.DataSet := dsMoveDocsList;
     with cxGrid1DBTableView1.CreateColumn do
     begin
-      DataBinding.FieldName:=tf.FieldName;
-      Caption:=dm.dsNsiDocProp.FieldByName('f_name').AsString;
+      DataBinding.FieldName := tf.FieldName;
+      Caption := dm.dsNsiDocProp.FieldByName('f_name').AsString;
     end;
     dm.dsNsiDocProp.Next;
   end;

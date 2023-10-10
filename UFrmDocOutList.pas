@@ -13,7 +13,26 @@ uses
   frxClass, frxExportPDF, frxCross, frxBarcode, frxDCtrl, frxDesgn,
   frxFIBComponents,xmldom, XMLIntf, msxmldom,XMLDoc, FIBQuery, pFIBQuery,
   pFIBStoredProc, cxPropertiesStore, StdCtrls, ComCtrls, ToolWin,
-  cxColorComboBox, cxCheckBox;
+  cxColorComboBox, cxCheckBox, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
+  frxDBSet;
 
 type
   TFrmDocOutList = class(TFrmPrototype)
@@ -30,28 +49,28 @@ type
     dsDocListF_SKLAD_NAME: TFIBStringField;
     dsDocListF_PARTNER_NAME: TFIBStringField;
     srDocList: TDataSource;
-    cxGrid1DBTableView1F_PARTNER: TcxGridDBColumn;
-    cxGrid1DBTableView1F_NUMBER: TcxGridDBColumn;
-    cxGrid1DBTableView1F_DATE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_STATE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_STATE_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1F_SKLAD_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1F_PARTNER_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PARTNER1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_NUMBER1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_DATE1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_STATE1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_STATE_NAME1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_SKLAD_NAME1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PARTNER_NAME1: TcxGridDBColumn;
     dsDocListF_SKLAD: TFIBBCDField;
-    cxGrid1DBTableView1F_SKLAD: TcxGridDBColumn;
+    cxGrid1DBTableView1F_SKLAD1: TcxGridDBColumn;
     dsDocListF_DOC_COUNT: TFIBFloatField;
     dsDocListF_DOC_SUM: TFIBBCDField;
-    cxGrid1DBTableView1F_DOC_COUNT: TcxGridDBColumn;
-    cxGrid1DBTableView1F_DOC_SUM: TcxGridDBColumn;
+    cxGrid1DBTableView1F_DOC_COUNT1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_DOC_SUM1: TcxGridDBColumn;
     dsExportDoc: TpFIBDataSet;
     dsExportDocF_VALUE: TFIBStringField;
     SaveDialog: TSaveDialog;
     dsDocListF_DOC_SKIDKA: TFIBBCDField;
-    cxGrid1DBTableView1F_DOC_SKIDKA: TcxGridDBColumn;
+    cxGrid1DBTableView1F_DOC_SKIDKA1: TcxGridDBColumn;
     OpenDialog: TOpenDialog;
     dsImportDoc: TpFIBDataSet;
     dsDocListF_PAYDATE_PLAN: TFIBDateField;
-    cxGrid1DBTableView1F_PAYDATE_PLAN: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PAYDATE_PLAN1: TcxGridDBColumn;
     NewDocMenu: TPopupMenu;
     N1: TMenuItem;
     N2: TMenuItem;
@@ -62,25 +81,50 @@ type
     dsExportPriceF_VALUE: TFIBStringField;
     dsDocListF_PRICE_NAME: TFIBStringField;
     dsDocListF_DOC_SKIDKA_PERCENT: TFIBBCDField;
-    cxGrid1DBTableView1F_PRICE_NAME: TcxGridDBColumn;
-    cxGrid1DBTableView1F_DOC_SKIDKA_PERCENT: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PRICE_NAME1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_DOC_SKIDKA_PERCENT1: TcxGridDBColumn;
     spInsDocStr: TpFIBStoredProc;
     N6: TMenuItem;
     dsDocListF_DOC_OUT: TFIBBCDField;
-    cxGrid1DBTableView1F_DOC_OUT: TcxGridDBColumn;
+    cxGrid1DBTableView1F_DOC_OUT1: TcxGridDBColumn;
     dsDocListF_PAY_SUM: TFIBBCDField;
-    cxGrid1DBTableView1F_PAY_SUM: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PAY_SUM1: TcxGridDBColumn;
     ToolBar1: TToolBar;
     Editstr_date: TDateTimePicker;
     Editend_date: TDateTimePicker;
     dsDocListTYPE: TFIBStringField;
-    cxGrid1DBTableView1TYPE: TcxGridDBColumn;
+    cxGrid1DBTableView1TYPE1: TcxGridDBColumn;
     dsDocListF_PAY_TYPE: TFIBBCDField;
     dsDocListF_USER: TFIBStringField;
-    cxGrid1DBTableView1F_PAY_TYPE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_USER: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PAY_TYPE1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_USER1: TcxGridDBColumn;
     dsDocListF_PROPERTY_1: TFIBStringField;
-    cxGrid1DBTableView1F_PROPERTY_1: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PROPERTY_11: TcxGridDBColumn;
+    dsReservedDoc: TpFIBDataSet;
+    dsReservedDocF_DOC_OUT: TFIBBCDField;
+    dsReservedDocTYPE: TFIBStringField;
+    dsReservedDocF_SKLAD: TFIBBCDField;
+    dsReservedDocF_PARTNER: TFIBBCDField;
+    dsReservedDocF_NUMBER: TFIBStringField;
+    dsReservedDocF_DATE: TFIBDateField;
+    dsReservedDocF_PAYDATE_PLAN: TFIBDateField;
+    dsReservedDocF_STATE: TFIBBCDField;
+    dsReservedDocF_STATE_NAME: TFIBStringField;
+    dsReservedDocF_SKLAD_NAME: TFIBStringField;
+    dsReservedDocF_PARTNER_NAME: TFIBStringField;
+    dsReservedDocF_DOC_COUNT: TFIBFloatField;
+    dsReservedDocF_DOC_SUM: TFIBBCDField;
+    dsReservedDocF_DOC_SKIDKA: TFIBBCDField;
+    dsReservedDocF_PRICE_NAME: TFIBStringField;
+    dsReservedDocF_DOC_SKIDKA_PERCENT: TFIBBCDField;
+    dsReservedDocF_PAY_SUM: TFIBBCDField;
+    dsReservedDocF_PAY_TYPE: TFIBBCDField;
+    dsReservedDocF_USER: TFIBStringField;
+    dsReservedDocF_PROPERTY_1: TFIBStringField;
+    dsDocListF_OWNER: TFIBIntegerField;
+    dsDocListF_OWNER_NAME: TFIBStringField;
+    cxGrid1DBTableView1F_OWNER: TcxGridDBColumn;
+    cxGrid1DBTableView1F_OWNER_NAME: TcxGridDBColumn;
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
     procedure BtnEditClick(Sender: TObject);
@@ -106,7 +150,7 @@ var
 
 implementation
 uses
-  udm,uDocClass,upublic, UdlgPeriod;
+  udm,uDocClass,upublic, UdlgPeriod, cxGridDBDataDefinitions;
 {$R *.dfm}
 
 procedure TFrmDocOutList.BtnEditClick(Sender: TObject);
@@ -114,9 +158,9 @@ var
   key : integer;
 begin
 
-  key:=dsDocListF_doc_out.Value;
+  key:=srDocList.DataSet.FieldByName('F_DOC_OUT').AsInteger;
   inherited;
-  with TOutDoc.Create(key,dsDocList) do
+  with TOutDoc.Create(key,srDocList.DataSet) do
   begin
     doc_type:=1;
     OpenEditFrm;
@@ -160,11 +204,12 @@ begin
   base_id:=GetImportBase;
   sklad_id:=GetNsiSklad;
   LogMsg('Начинаем загрузку');
-  if OpenDialog.Execute(self.Handle) then
+  if OpenDialog.Execute then
   begin
     if MessageDlg('Проводить документы после загрузки?',mtConfirmation,[mbYes,mbNo],0) = 6 then
       commitDocs:=true;
     xmlDocument:=TxmlDocument.Create(self);
+    LogMsg('Файл для загрузки:'+OpenDialog.FileName);
     xmlDocument.LoadFromFile(OpenDialog.FileName);
     xmlDocument.Active;
     docList:=xmlDocument.DocumentElement.ChildNodes['MoveDocs'];
@@ -178,7 +223,7 @@ begin
       dsImportDoc.Active:=false;
       dsImportDoc.ParamByName('f_partner').Value:=f_partner;
       dsImportDoc.ParamByName('f_doc_type').Value:=NodeDocs.Attributes['DocType'];
-      dsImportDoc.ParamByName('f_doc_type').Value:=NodeDocs.Attributes['DocType'];
+//      dsImportDoc.ParamByName('f_doc_type').Value:=NodeDocs.Attributes['DocType'];
       dsImportDoc.ParamByName('f_ext_id').Value:=NodeDocs.Attributes['Id'];
       dsImportDoc.ParamByName('f_ext_base').Value:=base_id;
       dsImportDoc.ParamByName('f_sklad').Value:=sklad_id;
@@ -331,10 +376,14 @@ procedure TFrmDocOutList.cxGrid1DBTableView1CustomDrawCell(
   Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
   AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
-{  if (AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_DOC_SUM.Index]<=AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_PAY_SUM.Index]) then
+  if TcxGridItemDBDataBinding(AviewInfo.Item.DataBinding).FieldName = 'F_DOC_SUM' then
   begin
-    ACanvas.Font.Color:=clGreen;
-  end;}
+    if (AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_DOC_SUM1.Index]<=AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_PAY_SUM1.Index]) then
+    begin
+      ACanvas.Font.Color:=clGreen;
+      Acanvas.Brush.Color:=clCream;
+    end;
+  end;
 end;
 
 procedure TFrmDocOutList.dsDocListBeforeOpen(DataSet: TDataSet);

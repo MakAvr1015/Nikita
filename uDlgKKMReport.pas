@@ -31,7 +31,7 @@ implementation
 
 {$R *.dfm}
 uses
-  uDm,DrvFRLib_TLB,upublic;
+  uDm{,DrvFRLib_TLB},upublic;
 
 
 procedure TDlgKKMReport.Button1Click(Sender: TObject);
@@ -132,17 +132,17 @@ begin
 end;
 
 procedure TDlgKKMReport.PrintKKMSHtr;
-var
-  Drv: TDrvFR;
+{var
+  Drv: TDrvFR;}
 begin
-  Drv := TDrvFR.Create(nil);
+{  Drv := TDrvFR.Create(nil);
   try
     Drv.ConnectionType := 6; // подключение через TCP socket     Drv.ProtocolType := 0; // Стандартный протокол
-    Drv.IPAddress := '192.168.0.2'; // IP адрес ККТ     Drv.UseIPAddress := True; // Используем свойство IPAddress                               // для указания адреса ККТ                               // (в противном случае будет                               // использоваться свойство                               // ComputerName)     Drv.TCPPort := 7778; // TCP Порт ККТ     Drv.Timeout := 5000; // Таймаут в мс     Drv.Password := 30;  // Пароль системного администратора 
+    Drv.IPAddress := '192.168.0.2'; // IP адрес ККТ     Drv.UseIPAddress := True; // Используем свойство IPAddress                               // для указания адреса ККТ                               // (в противном случае будет                               // использоваться свойство                               // ComputerName)     Drv.TCPPort := 7778; // TCP Порт ККТ     Drv.Timeout := 5000; // Таймаут в мс     Drv.Password := 30;  // Пароль системного администратора
     if Drv.Connect <> 0 then // Проверяем подключение
       raise Exception.Create(Drv.ResultCodeDescription);
   finally
     Drv.Free; // Освобождаем объект драйвера   end;end;
-  end;
+  end;}
 end;
 end.

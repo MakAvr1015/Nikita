@@ -2,8 +2,8 @@ object DlgImportInputDoc: TDlgImportInputDoc
   Left = 0
   Top = 0
   Caption = #1048#1084#1087#1086#1088#1090' '#1087#1088#1080#1093#1086#1076#1072
-  ClientHeight = 170
-  ClientWidth = 294
+  ClientHeight = 130
+  ClientWidth = 285
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,75 +13,51 @@ object DlgImportInputDoc: TDlgImportInputDoc
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 16
-    Top = 21
-    Width = 96
-    Height = 13
-    Caption = #1060#1072#1081#1083' '#1076#1083#1103' '#1079#1072#1075#1088#1091#1079#1082#1080
-  end
   object CheckCalcCurrency: TCheckBox
-    Left = 16
-    Top = 101
+    Left = 8
+    Top = 41
     Width = 169
     Height = 17
     Caption = #1055#1077#1088#1077#1089#1095#1080#1090#1072#1090#1100' '#1094#1077#1085#1099' '#1087#1086' '#1082#1091#1088#1089#1091
-    TabOrder = 2
+    TabOrder = 1
   end
   object EditCource: TRzNumericEdit
-    Left = 191
-    Top = 99
+    Left = 183
+    Top = 39
     Width = 90
     Height = 21
-    TabOrder = 3
+    TabOrder = 2
     DisplayFormat = ',0;(,0)'
   end
   object CheckExecDoc: TCheckBox
-    Left = 16
-    Top = 68
+    Left = 8
+    Top = 8
     Width = 265
     Height = 17
     Caption = #1055#1088#1086#1074#1086#1076#1080#1090#1100' '#1076#1086#1082#1091#1084#1077#1085#1090#1099' '#1087#1086#1089#1083#1077' '#1079#1072#1075#1088#1091#1079#1082#1080
-    TabOrder = 1
-  end
-  object ImportFile: TsFilenameEdit
-    Left = 16
-    Top = 40
-    Width = 265
-    Height = 21
-    AutoSize = False
-    MaxLength = 255
     TabOrder = 0
-    BoundLabel.Indent = 0
-    BoundLabel.Font.Charset = DEFAULT_CHARSET
-    BoundLabel.Font.Color = clWindowText
-    BoundLabel.Font.Height = -11
-    BoundLabel.Font.Name = 'Tahoma'
-    BoundLabel.Font.Style = []
-    BoundLabel.Layout = sclLeft
-    BoundLabel.MaxWidth = 0
-    BoundLabel.UseSkinColor = True
-    SkinData.SkinSection = 'EDIT'
-    GlyphMode.Blend = 0
-    GlyphMode.Grayed = False
-    Filter = #1060#1072#1081#1083#1099' '#1080#1084#1087#1086#1088#1090#1072'|*.xml'
   end
   object Button1: TButton
-    Left = 110
-    Top = 136
+    Left = 102
+    Top = 80
     Width = 75
     Height = 25
     Caption = #1053#1072#1095#1072#1090#1100
     ModalResult = 1
     TabOrder = 4
+    OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 206
-    Top = 136
+    Left = 198
+    Top = 80
     Width = 75
     Height = 25
     Caption = #1054#1090#1084#1077#1085#1072
     ModalResult = 2
-    TabOrder = 5
+    TabOrder = 3
+  end
+  object OpenDialog: TOpenDialog
+    Left = 32
+    Top = 72
   end
 end

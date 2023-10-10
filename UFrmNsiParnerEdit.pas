@@ -12,7 +12,27 @@ uses
   cxGridTableView, cxGridDBTableView, cxGrid, cxLabel, Menus, RzStatus, RzTabs,
   cxPropertiesStore, RzForms, frxExportRTF, frxExportXML, frxExportXLS,
   frxExportHTML, frxClass, frxExportPDF, frxCross, frxBarcode, frxDCtrl,
-  frxDesgn, frxFIBComponents, cxDBLookupComboBox, RzDBLbl;
+  frxDesgn, frxFIBComponents, cxDBLookupComboBox, RzDBLbl, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
+  cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
+  frxDBSet;
 
 type
   TFrmNsiParnerEdit = class(TFrmPrototype)
@@ -125,6 +145,12 @@ type
     procedure dsDopInfoAfterPost(DataSet: TDataSet);
     procedure cxGridDBTableView1NavigatorButtonsButtonClick(Sender: TObject;
       AButtonIndex: Integer; var ADone: Boolean);
+    procedure cxGrid2DBTableView1F_VALUEGetPropertiesForEdit
+      (Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AProperties: TcxCustomEditProperties);
+    procedure cxGrid2DBTableView1F_VALUEGetProperties
+      (Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AProperties: TcxCustomEditProperties);
   private
     { Private declarations }
   public
@@ -137,62 +163,126 @@ var
 implementation
 
 uses
-  uDm,upublic;
+  uDm, upublic;
 {$R *.dfm}
 
 procedure TFrmNsiParnerEdit.BtnOKClick(Sender: TObject);
 begin
-  PostAllDS(self,true);
+  PostAllDS(self, true);
   inherited;
 end;
 
-procedure TFrmNsiParnerEdit.cxGrid1DBTableView1NavigatorButtonsButtonClick(
-  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+procedure TFrmNsiParnerEdit.cxGrid1DBTableView1NavigatorButtonsButtonClick
+  (Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
 var
-  key : integer;
+  key: Integer;
 begin
-  key:=0;
-  case AbuttonIndex of
+  key := 0;
+  case AButtonIndex of
     6:
       begin
-        key:=GetNsiBank;
-        if Key>0 then
+        key := GetNsiBank;
+        if key > 0 then
         begin
           dsPartnerBanls.Insert;
-          dsPartnerBanlsF_BANK.Value:=key;
-          dsPartnerBanlsF_PARTNER.Value:=dsEditNsiPartnerF_ID.Value;
+          dsPartnerBanlsF_BANK.Value := key;
+          dsPartnerBanlsF_PARTNER.Value := dsEditNsiPartnerF_ID.Value;
           dsPartnerBanls.Post;
           RefreshDs(dsPartnerBanls);
         end;
-        ADone:=true;
+        ADone := true;
       end;
-    else
-      ADone:=true;
+  else
+    ADone := true;
   end;
 end;
 
-procedure TFrmNsiParnerEdit.cxGridDBTableView1NavigatorButtonsButtonClick(
-  Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+procedure TFrmNsiParnerEdit.cxGrid2DBTableView1F_VALUEGetProperties
+  (Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AProperties: TcxCustomEditProperties);
 var
-  key : integer;
+  info_id: Integer;
+  editItem: TcxEditRepositoryItem;
 begin
-  key:=0;
-  case AbuttonIndex of
+  if ARecord.ValueCount > 0 then
+  begin
+    if ARecord.Values[2] <> null then
+    begin
+      info_id := ARecord.Values[2];
+      case info_id of
+        11:
+          begin
+            editItem := dm.cxEditRepository.ItemByName
+              ('cxEditRepositorydsPrice');
+            if editItem <> nil then
+            begin
+              AProperties := editItem.Properties;
+            end;
+          end;
+        12 .. 13:
+          begin
+            editItem := dm.cxEditRepository.ItemByName
+              ('cxEditRepositoryDateItem1');
+            if editItem <> nil then
+            begin
+              AProperties := editItem.Properties;
+            end;
+          end;
+      end;
+    end;
+  end;
+end;
+
+procedure TFrmNsiParnerEdit.cxGrid2DBTableView1F_VALUEGetPropertiesForEdit
+  (Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AProperties: TcxCustomEditProperties);
+var
+  info_id: Integer;
+  editItem: TcxEditRepositoryItem;
+begin
+  info_id := ARecord.Values[2];
+  case info_id of
+    11:
+      begin
+        editItem := dm.cxEditRepository.ItemByName('cxEditRepositorydsPrice');
+        if editItem <> nil then
+        begin
+          AProperties := editItem.Properties;
+        end;
+      end;
+    12 .. 13:
+      begin
+        editItem := dm.cxEditRepository.ItemByName('cxEditRepositoryDateItem1');
+        if editItem <> nil then
+        begin
+          AProperties := editItem.Properties;
+        end;
+      end;
+  end;
+end;
+
+procedure TFrmNsiParnerEdit.cxGridDBTableView1NavigatorButtonsButtonClick
+  (Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
+var
+  key: Integer;
+begin
+  key := 0;
+  case AButtonIndex of
     6:
       begin
-        key:=GetNsiDiscountCard;
-        if Key>0 then
+        key := GetNsiDiscountCard;
+        if key > 0 then
         begin
           dsDiscountCards.Insert;
-          dsDiscountCardsF_DISCOUNT_ID.Value:=key;
-          dsDiscountCardsF_PARTNER.Value:=dsEditNsiPartnerF_ID.Value;
+          dsDiscountCardsF_DISCOUNT_ID.Value := key;
+          dsDiscountCardsF_PARTNER.Value := dsEditNsiPartnerF_ID.Value;
           dsDiscountCards.Post;
           RefreshDs(dsDiscountCards);
         end;
-        ADone:=true;
+        ADone := true;
       end;
-    else
-      ADone:=true;
+  else
+    ADone := true;
   end;
 end;
 
@@ -205,11 +295,11 @@ end;
 procedure TFrmNsiParnerEdit.dsEditNsiPartnerAfterOpen(DataSet: TDataSet);
 begin
   inherited;
-  dsDiscountCards.Active:=true;
-  dsPartnerCard.Active:=true;
-  dsPartnerBanls.Active:=true;
-  dsListNames.Active:=true;
-  dsDopInfo.Active:=true;
+  dsDiscountCards.Active := true;
+  dsPartnerCard.Active := true;
+  dsPartnerBanls.Active := true;
+  dsListNames.Active := true;
+  dsDopInfo.Active := true;
 end;
 
 end.

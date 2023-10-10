@@ -2,8 +2,8 @@ inherited FrmZapas: TFrmZapas
   Caption = #1058#1086#1074#1072#1088#1085#1099#1077' '#1079#1072#1087#1072#1089#1099
   ClientHeight = 660
   ClientWidth = 1059
-  ExplicitWidth = 1067
-  ExplicitHeight = 687
+  ExplicitWidth = 1075
+  ExplicitHeight = 698
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
@@ -27,7 +27,9 @@ inherited FrmZapas: TFrmZapas
     end
     inherited RzToolbar: TRzToolbar
       Width = 1057
+      Height = 25
       ExplicitWidth = 1057
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -42,18 +44,61 @@ inherited FrmZapas: TFrmZapas
         BtnDelete
         BtnSave
         BtnExit)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 0
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
+        Top = 0
         OnClick = nil
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnDelete: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
+        Top = 0
         Visible = True
+        ExplicitTop = 0
+      end
+      inherited BtnExit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
+        Top = 0
         Visible = False
+        ExplicitTop = 0
       end
     end
     object cxGridSklad: TcxGrid
@@ -64,9 +109,8 @@ inherited FrmZapas: TFrmZapas
       Align = alLeft
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      LookAndFeel.SkinName = 'MoneyTwins'
       object cxGridSkladDBTableView1: TcxGridDBTableView
-        NavigatorButtons.ConfirmDelete = False
+        Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = srLIstSklad
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -120,11 +164,10 @@ inherited FrmZapas: TFrmZapas
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
-        LookAndFeel.SkinName = 'MoneyTwins'
         object cxGrid2DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid2DBTableView1DblClick
           OnKeyPress = cxGrid2DBTableView1KeyPress
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           OnCustomDrawCell = cxGrid2DBTableView1CustomDrawCell
           DataController.DataSource = srListZapas
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -281,12 +324,12 @@ inherited FrmZapas: TFrmZapas
             StyleHot.LookAndFeel.SkinName = ''
             ExplicitWidth = 510
             Width = 510
+            AnchorX = 256
           end
           inherited cxGrid1: TcxGrid
             Top = 177
             Width = 510
             Height = 8
-            LookAndFeel.SkinName = 'MoneyTwins'
             ExplicitTop = 177
             ExplicitWidth = 510
             ExplicitHeight = 8

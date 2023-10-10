@@ -1,0 +1,42 @@
+
+MAKVM7	Thu Apr 21 17:58:22 2022
+	INET/inet_error: read errno = 10054, server host = 10.8.1.14, address = 10.8.1.14/3050
+
+
+MAKVM7	Thu Apr 21 17:59:26 2022
+	INET/inet_error: read errno = 10054, server host = 10.8.1.14, address = 10.8.1.14/3050
+
+
+MAKVM7	Thu Apr 21 17:59:26 2022
+	REMOTE INTERFACE/gds__detach: Unsuccesful detach from database.
+	Uncommitted work may have been lost.
+	Error writing data to the connection.
+
+
+MAKVM7	Wed Jul 27 13:43:25 2022
+	INET/inet_error: send errno = 10054, server host = 10.8.1.1, address = 10.8.1.1/3050
+
+
+MAKVM7	Sun Aug 21 17:28:28 2022
+	INET/inet_error: read errno = 10054, server host = 10.8.1.1, address = 10.8.1.1/3050
+
+
+MAKVM7	Sun Aug 21 17:28:47 2022
+	INET/inet_error: read errno = 10054, server host = 10.8.1.1, address = 10.8.1.1/3050
+
+
+MAKVM7	Sun Aug 21 17:28:47 2022
+	REMOTE INTERFACE/gds__detach: Unsuccesful detach from database.
+	Uncommitted work may have been lost.
+	Error writing data to the connection.
+
+
+MAKVM7	Tue Mar 14 09:03:03 2023
+	INET/inet_error: send errno = 10054, server host = 10.8.1.1, address = 10.8.1.1/3050
+
+
+MAKVM7	Tue Mar 14 09:03:03 2023
+	REMOTE INTERFACE/gds__detach: Unsuccesful detach from database.
+	Uncommitted work may have been lost.
+	Error writing data to the connection.
+

@@ -3,8 +3,8 @@ unit uAboutBox;
 interface
 
 uses Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls,
-  Buttons, ExtCtrls, pFIBScripter, ComCtrls, acPNG, FIBDatabase, pFIBDatabase,
-  dialogs, IB_Services;
+  Buttons, ExtCtrls, pFIBScripter, ComCtrls,{ acPNG,} FIBDatabase, pFIBDatabase,
+  dialogs, IB_Services, dxGDIPlusClasses;
 
 type
   TAboutBox = class(TForm)

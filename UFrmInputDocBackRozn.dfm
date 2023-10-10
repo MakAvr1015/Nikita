@@ -1,7 +1,7 @@
 inherited FrmInputDocBackRozn: TFrmInputDocBackRozn
   Caption = #1056#1086#1079#1085#1080#1095#1085#1099#1081' '#1074#1086#1079#1074#1088#1072#1090
   ClientHeight = 553
-  ExplicitHeight = 580
+  ExplicitHeight = 591
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
@@ -12,8 +12,6 @@ inherited FrmInputDocBackRozn: TFrmInputDocBackRozn
     Height = 534
     ExplicitHeight = 534
     inherited RzToolbar: TRzToolbar
-      Height = 25
-      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -28,61 +26,8 @@ inherited FrmInputDocBackRozn: TFrmInputDocBackRozn
         BtnDelete
         BtnSave
         BtnExit)
-      inherited BtnNew: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnOpen: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnFind: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnPrint: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnRefresh: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnEdit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnDelete: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnSave: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnView: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
     end
     inherited RzPanel1: TRzPanel
-      Top = 26
       Visible = False
       inherited RzLabel5: TRzLabel
         Visible = False
@@ -107,17 +52,16 @@ inherited FrmInputDocBackRozn: TFrmInputDocBackRozn
       end
     end
     inherited Panel1: TPanel
-      Top = 177
-      Height = 273
-      ExplicitTop = 177
-      ExplicitHeight = 273
+      Top = 181
+      Height = 269
+      ExplicitTop = 181
+      ExplicitHeight = 269
       inherited Splitter1: TSplitter
-        Height = 271
+        Height = 267
         ExplicitHeight = 271
       end
       inherited cxGrid1: TcxGrid
-        Height = 271
-        LookAndFeel.SkinName = 'MoneyTwins'
+        Height = 267
         ExplicitHeight = 271
         inherited cxGrid1DBTableView1: TcxGridDBTableView
           Styles.Background = nil
@@ -125,15 +69,15 @@ inherited FrmInputDocBackRozn: TFrmInputDocBackRozn
           Styles.ContentEven = nil
           Styles.ContentOdd = nil
           Styles.FilterBox = nil
-          Styles.Inactive = nil
           Styles.IncSearch = nil
-          Styles.Selection = nil
           Styles.Footer = nil
           Styles.Group = nil
           Styles.GroupByBox = nil
           Styles.Header = nil
+          Styles.Inactive = nil
           Styles.Indicator = nil
           Styles.Preview = nil
+          Styles.Selection = nil
           inherited cxGrid1DBTableView1F_OLD_PRICE_VAL: TcxGridDBColumn
             Visible = False
           end
@@ -156,18 +100,19 @@ inherited FrmInputDocBackRozn: TFrmInputDocBackRozn
         end
       end
       inherited cxDBImage1: TcxDBImage
-        ExplicitHeight = 271
-        Height = 271
+        ExplicitHeight = 267
+        Height = 267
       end
     end
     object RzPanel2: TRzPanel
       Left = 1
-      Top = 98
+      Top = 102
       Width = 876
       Height = 79
       Align = alTop
       Color = clGradientActiveCaption
       TabOrder = 3
+      ExplicitTop = 98
       object RzClockStatus1: TRzClockStatus
         Left = 8
         Top = 6

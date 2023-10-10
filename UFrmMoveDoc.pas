@@ -17,10 +17,29 @@ uses
   pFIBStoredProc, cxPropertiesStore, cxImage, cxContainer, cxDBEdit,
 
   uDocClass,
-  cxColorComboBox;
+  cxColorComboBox, cxLookAndFeels, cxLookAndFeelPainters, dxSkinBlack,
+  dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom,
+  dxSkinDarkSide, dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, UInterfaces,
+  System.ImageList, Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit;
 
 type
-  TFrmMoveDoc = class(TFrmPrototype)
+  TFrmMoveDoc = class(TFrmPrototype, IFrmDoc)
     RzPanel1: TRzPanel;
     dsDocHead: TpFIBDataSet;
     srDocHead: TDataSource;
@@ -66,19 +85,6 @@ type
     dsDocHeadF_PRICE: TFIBBCDField;
     dsDocHeadF_PRICE_NAME: TFIBStringField;
     dsDocHeadF_DOC_SUM: TFIBBCDField;
-    dsDocStringsF_ID: TFIBBCDField;
-    dsDocStringsF_DOC_MOVE: TFIBBCDField;
-    dsDocStringsF_GOOD_NAME: TFIBStringField;
-    dsDocStringsF_GOOD_DOP_INFO: TFIBStringField;
-    dsDocStringsF_SCANCODE: TFIBStringField;
-    dsDocStringsF_ED_IZM_SHORT_NAME: TFIBStringField;
-    dsDocStringsF_ED_IZM_NAME: TFIBStringField;
-    dsDocStringsF_ARTICLE: TFIBStringField;
-    dsDocStringsF_GOOD: TFIBBCDField;
-    dsDocStringsF_PRICE: TFIBBCDField;
-    dsDocStringsF_CNT: TFIBBCDField;
-    dsDocStringsF_PRICE_VAL: TFIBBCDField;
-    dsDocStringsF_SUM: TFIBFloatField;
     cxGrid1DBTableView1F_ID: TcxGridDBColumn;
     cxGrid1DBTableView1F_DOC_MOVE: TcxGridDBColumn;
     cxGrid1DBTableView1F_GOOD_NAME: TcxGridDBColumn;
@@ -92,9 +98,7 @@ type
     cxGrid1DBTableView1F_CNT: TcxGridDBColumn;
     cxGrid1DBTableView1F_PRICE_VAL: TcxGridDBColumn;
     cxGrid1DBTableView1F_SUM: TcxGridDBColumn;
-    dsDocStringsf_sklad_ost: TFloatField;
     cxGrid1DBTableView1f_sklad_ost: TcxGridDBColumn;
-    dsDocStringsF_SKLAD_TO_OST: TFIBFloatField;
     cxGrid1DBTableView1F_SKLAD_TO_OST: TcxGridDBColumn;
     dsDocHeadF_DOC_MOVE: TFIBBCDField;
     dsDocHeadF_DOP_INFO: TFIBStringField;
@@ -107,10 +111,32 @@ type
     Splitter1: TSplitter;
     dsGoodPhoto: TpFIBDataSet;
     srGoodPhoto: TDataSource;
-    dsDocStringsF_GOOD_GRP_COLOR: TFIBStringField;
     cxGrid1DBTableView1F_GOOD_GRP_COLOR: TcxGridDBColumn;
-    dsDocStringsF_DESCR: TFIBStringField;
     cxGrid1DBTableView1F_DESCR: TcxGridDBColumn;
+    RzDBMemo1: TRzDBMemo;
+    dsDocHeadF_SKLAD_TO_PREFIX: TFIBStringField;
+    dsDocHeadF_SKLAD_FROM_PREFIX: TFIBStringField;
+    dsDocHeadF_GUID: TFIBStringField;
+    dsDocHeadF_USER: TFIBStringField;
+    dsDocStringsF_ID: TFIBBCDField;
+    dsDocStringsF_DOC_MOVE: TFIBBCDField;
+    dsDocStringsF_GOOD_NAME: TFIBStringField;
+    dsDocStringsF_GOOD_DOP_INFO: TFIBStringField;
+    dsDocStringsF_SCANCODE_VAL: TFIBStringField;
+    dsDocStringsF_ED_IZM_SHORT_NAME: TFIBStringField;
+    dsDocStringsF_ED_IZM_NAME: TFIBStringField;
+    dsDocStringsF_ARTICLE: TFIBStringField;
+    dsDocStringsF_GOOD: TFIBBCDField;
+    dsDocStringsF_PRICE: TFIBBCDField;
+    dsDocStringsF_CNT: TFIBBCDField;
+    dsDocStringsF_PRICE_VAL: TFIBBCDField;
+    dsDocStringsF_SUM: TFIBBCDField;
+    dsDocStringsF_SKLAD_OST: TFIBFloatField;
+    dsDocStringsF_SKLAD_TO_OST: TFIBFloatField;
+    dsDocStringsF_GOOD_GRP_COLOR: TFIBStringField;
+    dsDocStringsF_DESCR: TFIBStringField;
+    cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn;
+    dsDocStringsF_SCANCODE: TFIBBCDField;
     procedure BtnOKClick(Sender: TObject);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
@@ -137,6 +163,8 @@ type
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
     procedure dsDocStringsAfterScroll(DataSet: TDataSet);
+    procedure FormCreate(Sender: TObject);
+    procedure dsDocStringsCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
     scan  : string;
@@ -146,6 +174,13 @@ type
     { Public declarations }
     doc : TMoveDoc;
     procedure InsPosition;
+
+    procedure AddPosition(P_good : integer; p_cnt : integer; p_price : Currency = 0);
+    procedure RefreshDoc;
+    function GetTableName : string;
+    function GetDocId : integer;
+    property TableName : string read GetTableName;
+    property DocId : integer read GetDocId;
   end;
 
 var
@@ -154,6 +189,11 @@ var
 implementation
   uses upublic,uDlgCopyDoc2Price, UTypes;
 {$R *.dfm}
+
+procedure TFrmMoveDoc.AddPosition(P_good, p_cnt: integer; p_price: Currency);
+begin
+
+end;
 
 procedure TFrmMoveDoc.BtnExecuteClick(Sender: TObject);
 begin
@@ -293,7 +333,10 @@ end;
 procedure TFrmMoveDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
+  if not dsDocStringsF_SCANCODE.IsNull then
+    RefreshDs(DataSet,'f_scancode',dsDocStringsF_SCANCODE.AsInteger)
+  else
+    RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.AsInteger);
   cxGrid1.SetFocus;
 end;
 
@@ -319,6 +362,31 @@ begin
   end;
 end;
 
+procedure TFrmMoveDoc.dsDocStringsCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  CalcFieldsDopInfo(DataSet);
+end;
+
+procedure TFrmMoveDoc.FormCreate(Sender: TObject);
+begin
+  inherited;
+  AddInfoColumns(cxGrid1DBTableView1);
+end;
+
+function TFrmMoveDoc.GetDocId: integer;
+begin
+  if dsDocHead.Active then
+    result := dsDocHeadDOC_ID.AsInteger
+  else
+    result := 0;
+end;
+
+function TFrmMoveDoc.GetTableName: string;
+begin
+   result := 'T_DOC_MOVE';
+end;
+
 procedure TFrmMoveDoc.InsPosition;
 var
   i     : integer;
@@ -327,10 +395,10 @@ var
 begin
 //  goods:=GetNsiGood(date(),scan);
   if not dsDocHeadF_SKLAD_FROM.IsNull then
-    goods:=GetNsiGood(dsDocHeadF_DATE.Value,scan,dsDocHeadF_SKLAD_FROM.Value,dsDocHeadF_PRICE.Value)
-  else 
+    goods:=GetNsiGood(dsDocHeadF_DATE.Value,scan,dsDocHeadF_SKLAD_FROM.AsInteger,dsDocHeadF_PRICE.AsInteger)
+  else
   begin
-    goods:=GetNsiGood(dsDocHeadF_DATE.Value,scan,0,dsDocHeadF_PRICE.Value);
+    goods:=GetNsiGood(dsDocHeadF_DATE.Value,scan,0,dsDocHeadF_PRICE.AsInteger);
   end;
   cnt:=length(goods);
   if cnt>0 then
@@ -338,7 +406,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_GOOD.Value:=goods[i];
+      dsDocStringsF_Scancode.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,
@@ -387,6 +455,11 @@ begin
     doc_type:=2;
     OpenEditFrm;
   end;
+end;
+
+procedure TFrmMoveDoc.RefreshDoc;
+begin
+  RefreshDs(dsDocStrings,'F_ID');
 end;
 
 procedure TFrmMoveDoc.RzDBButtonEdit1ButtonClick(Sender: TObject);

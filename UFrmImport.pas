@@ -9,7 +9,25 @@ uses
   Dialogs, UFrmPrototype, RzButton, RzPanel, ExtCtrls, StdCtrls, RzLstBox, db,
   RzCmboBx, ADODB, Grids, ValEdit, Buttons, Menus, RzStatus, frxExportRTF,
   frxExportXML, frxExportXLS, frxExportHTML, frxClass, frxExportPDF, frxCross,
-  frxBarcode, frxDCtrl, frxDesgn, frxFIBComponents, RzForms, cxPropertiesStore;
+  frxBarcode, frxDCtrl, frxDesgn, frxFIBComponents, RzForms, cxPropertiesStore,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
+  cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxClasses, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
+  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE;
 
 type
   TFrmImport = class(TFrmPrototype)
@@ -21,12 +39,16 @@ type
     ADOTable: TADOTable;
     ValueListEditor: TValueListEditor;
     BitBtn: TBitBtn;
-    StringGridSample: TStringGrid;
     StaticText: TStaticText;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    SaveDialog1: TSaveDialog;
     procedure BtnOpenClick(Sender: TObject);
     procedure ComboSheetListChange(Sender: TObject);
     procedure BitBtnClick(Sender: TObject);
     procedure BtnExecuteClick(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
     DataSet : pointer;
@@ -44,9 +66,41 @@ var
 
 implementation
 
+
+
 {$R *.dfm}
 
 { TFrmImport }
+
+procedure TFrmImport.BitBtn1Click(Sender: TObject);
+var
+  vl_list : TStrings;
+  vl_idx  : integer;
+  vl_field_name : string;
+begin
+  if OpenDialog.Execute then
+  begin
+    vl_list := TstringList.Create;
+    vl_list.LoadFromFile(OpenDialog.FileName);
+    for vl_idx := 0 to vl_list.Count - 1 do
+      begin
+        vl_field_name := vl_list.ValueFromIndex[vl_idx];
+        if EdFIeldList.FindItem(vl_field_name) then
+        begin
+          ValueListEditor.Strings.AddObject(vl_list.Strings[vl_idx],
+            EdFIeldList.Items.Objects[EdFIeldList.IndexOf(vl_field_name)]);
+        end;
+
+      end;
+    vl_list.Free;
+  end;
+end;
+
+procedure TFrmImport.BitBtn2Click(Sender: TObject);
+begin
+  if SaveDialog1.Execute then
+    ValueListEditor.Strings.SaveToFile(SaveDialog1.FileName);
+end;
 
 procedure TFrmImport.BitBtnClick(Sender: TObject);
 begin
@@ -95,21 +149,21 @@ begin
         ImpRow.Delimiter:=';';
         ReadLn(ImpFile,ImpStr);
         ImpRow.DelimitedText:=ImpStr;
-        StringGridSample.ColCount:=ImpRow.Count;
+//        StringGridSample.ColCount:=ImpRow.Count;
         XLSList.Items.Clear;
         for I := 0 to ImpRow.Count - 1 do
         begin
           XLSList.Items.Add(IntToStr(i));
-          StringGridSample.Rows[0].Strings[i]:=IntToStr(i);
+//          StringGridSample.Rows[0].Strings[i]:=IntToStr(i);
         end;
         for I := 1 to 4 do
         begin
           ReadLn(ImpFile,ImpStr);
           ImpRow.DelimitedText:=ImpStr;
-          for j := 0 to StringGridSample.ColCount-1 do
+{          for j := 0 to StringGridSample.ColCount-1 do
           begin
             StringGridSample.Rows[i].Strings[j]:=ImpRow[j];
-          end;
+          end;}
         end;
         ImpRow.Free;
         closeFile(ImpFile);
@@ -127,8 +181,8 @@ begin
   inherited;
   ADOTable.TableName:='['+ComboSheetList.Text+']';
   ADOTable.GetFieldNames(XLSList.Items);
-  StringGridSample.ColCount:=ADOTable.FieldCount;
-  StringGridSample.Rows[1]:=XLSList.Items;
+  //StringGridSample.ColCount:=ADOTable.FieldCount;
+//  StringGridSample.Rows[1]:=XLSList.Items;
   AdoTable.Active:=true;
 {  ADOTable.First;
   for I := 1 to 4 do
@@ -202,8 +256,17 @@ begin
     for I := 0 to ValueListEditor.Strings.Count - 1 do
     begin
       if not TField(ValueListEditor.Strings.Objects[i]).Calculated then
-        TField(ValueListEditor.Strings.Objects[i]).Value:=Variant(
-          AdoTable.FieldByName(ValueListEditor.Keys[i+1]).AsString)
+      begin
+        try
+          if not AdoTable.FieldByName(ValueListEditor.Keys[i+1]).IsNull then
+            TField(ValueListEditor.Strings.Objects[i]).Value:=Variant(
+              AdoTable.FieldByName(ValueListEditor.Keys[i+1]).AsString);
+        except
+          on E: Exception do MessageDlg('Ошибка импорта поля '+
+            TField(ValueListEditor.Strings.Objects[i]).Name + ': '+
+            E.Message, mtInformation, [mbOk],E.HelpContext);
+        end;
+      end
       else
         if @CalcFields<>nil then
         begin
@@ -211,6 +274,7 @@ begin
         end;
 //        AdoTable.FieldValues[ValueListEditor.Keys[i+1]]);
     end;
+    TDataSet(DataSet^).post;
     AdoTable.Next;
   end;
 end;

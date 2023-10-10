@@ -3,8 +3,8 @@ inherited FrmRoznSale: TFrmRoznSale
   Caption = #1056#1086#1079#1085#1080#1095#1085#1072#1103' '#1087#1088#1086#1076#1072#1078#1072
   ClientHeight = 573
   ClientWidth = 1016
-  ExplicitWidth = 1024
-  ExplicitHeight = 600
+  ExplicitWidth = 1032
+  ExplicitHeight = 611
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
@@ -13,6 +13,9 @@ inherited FrmRoznSale: TFrmRoznSale
     TabOrder = 1
     ExplicitTop = 554
     ExplicitWidth = 1016
+    inherited DsFormName: TRzStatusPane
+      Caption = 'dsDocStrings'
+    end
   end
   inherited Panel3: TPanel
     Width = 1016
@@ -22,9 +25,9 @@ inherited FrmRoznSale: TFrmRoznSale
     ExplicitHeight = 554
     inherited RzToolbar: TRzToolbar
       Width = 1014
-      Height = 25
+      Height = 29
       ExplicitWidth = 1014
-      ExplicitHeight = 25
+      ExplicitHeight = 29
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -40,57 +43,59 @@ inherited FrmRoznSale: TFrmRoznSale
         BtnSave
         BtnExit)
       inherited BtnNew: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnOpen: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnFind: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnPrint: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnOK: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnCancel: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnRefresh: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnEdit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnDelete: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        Enabled = True
+        Visible = True
+        ExplicitTop = 2
       end
       inherited BtnSave: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnExit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnView: TRzToolButton
-        Top = 0
+        Top = 2
         Visible = False
-        ExplicitTop = 0
+        ExplicitTop = 2
       end
     end
     object Panel1: TPanel
@@ -237,13 +242,14 @@ inherited FrmRoznSale: TFrmRoznSale
     end
     object Panel2: TPanel
       Left = 1
-      Top = 26
+      Top = 30
       Width = 1014
       Height = 60
       Align = alTop
       Color = clGradientActiveCaption
       ParentBackground = False
       TabOrder = 3
+      ExplicitTop = 26
       object RzClockStatus1: TRzClockStatus
         Left = 4
         Top = 25
@@ -331,22 +337,24 @@ inherited FrmRoznSale: TFrmRoznSale
         OnExit = RzDBSpinEdit1Exit
         OnKeyUp = RzDBSpinEdit1KeyUp
         AllowKeyEdit = True
+        Max = 100.000000000000000000
         Value = 1.000000000000000000
       end
       object PrintKKM: TRzCheckBox
         Left = 567
         Top = 25
-        Width = 161
-        Height = 31
+        Width = 139
+        Height = 25
         AlignmentVertical = avCenter
         Caption = #1055#1077#1095#1072#1090#1072#1090#1100' '#1095#1077#1082
+        Checked = True
         Font.Charset = RUSSIAN_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
         Font.Name = 'Arial Black'
         Font.Style = [fsBold]
         ParentFont = False
-        State = cbUnchecked
+        State = cbChecked
         TabOrder = 1
       end
       object RzDBButtonEdit1: TRzDBButtonEdit
@@ -357,6 +365,8 @@ inherited FrmRoznSale: TFrmRoznSale
         DataSource = srDocHead
         DataField = 'F_PARTNER_NAME'
         TabOrder = 2
+        AltBtnWidth = 15
+        ButtonWidth = 15
         OnButtonClick = RzDBButtonEdit1ButtonClick
       end
       object RzDBEdit1: TRzDBEdit
@@ -372,12 +382,14 @@ inherited FrmRoznSale: TFrmRoznSale
     end
     object Panel4: TPanel
       Left = 1
-      Top = 86
+      Top = 90
       Width = 1014
-      Height = 394
+      Height = 390
       Align = alClient
       Caption = 'Panel4'
       TabOrder = 1
+      ExplicitTop = 86
+      ExplicitHeight = 394
       object Splitter1: TSplitter
         Left = 805
         Top = 1
@@ -395,10 +407,9 @@ inherited FrmRoznSale: TFrmRoznSale
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
-        LookAndFeel.SkinName = 'MoneyTwins'
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnKeyPress = cxGrid1DBTableView1KeyPress
-          NavigatorButtons.ConfirmDelete = False
+          Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = srDocStrings
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
@@ -521,10 +532,10 @@ inherited FrmRoznSale: TFrmRoznSale
           Align = alClient
           DataBinding.DataField = 'f_photo'
           DataBinding.DataSource = srGoodPhoto
-          Properties.GraphicClassName = 'TJPEGImage'
-          Properties.Stretch = True
+          Properties.FitMode = ifmProportionalStretch
+          Properties.GraphicClassName = 'TdxSmartImage'
           TabOrder = 0
-          Height = 390
+          Height = 386
           Width = 203
         end
       end

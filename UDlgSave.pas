@@ -6,8 +6,24 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, ShlObj, cxShellCommon, dxSkinsCore, dxSkinsDefaultPainters,
   StdCtrls, cxCalendar, cxCheckBox, cxControls, cxContainer, cxEdit, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit, cxShellComboBox, ExtCtrls, Mask, sMaskEdit,
-  sCustomComboEdit, sTooledit;
+  cxMaskEdit, cxDropDownEdit, cxShellComboBox, ExtCtrls, Mask, cxGraphics,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxCore, cxDateUtils, RzShellDialogs{, sMaskEdit,
+  sCustomComboEdit, sTooledit};
 
 type
   TDlgSave = class(TForm)
@@ -20,8 +36,7 @@ type
     CancelBtn: TButton;
     Label4: TLabel;
     DirToSave: TcxShellComboBox;
-    sFilenameEdit: TsFilenameEdit;
-    Label1: TLabel;
+    RzSaveDialog: TRzSaveDialog;
     procedure sFilenameEditChange(Sender: TObject);
   private
     { Private declarations }
@@ -38,7 +53,7 @@ implementation
 
 procedure TDlgSave.sFilenameEditChange(Sender: TObject);
 begin
-  DirToSave.Path:=ExtractFilePath(sFilenameEdit.FileName);
+//  DirToSave.Path:=ExtractFilePath(sFilenameEdit.FileName);
 end;
 
 end.

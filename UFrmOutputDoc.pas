@@ -3,7 +3,8 @@ unit UFrmOutputDoc;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  uinterfaces, Windows, Messages, SysUtils, Variants, Classes, Graphics,
+  Controls, Forms,
   Dialogs, UFrmPrototype, RzButton, RzPanel, ExtCtrls, cxStyles, dxSkinsCore,
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxCustomData, cxGraphics,
   cxFilter, cxData, cxDataStorage, cxEdit, DB, cxDBData, cxLabel, FIBDatabase,
@@ -14,10 +15,30 @@ uses
   Menus, RzStatus, frxExportRTF, frxExportXLS, frxExportHTML, frxCross,
   frxDCtrl, frxDesgn, RzTabs, RzForms, cxButtonEdit, FIBQuery, pFIBQuery,
   pFIBStoredProc, RzSpnEdt, RzDBSpin, cxPropertiesStore, cxImage, cxContainer,
-  cxCheckBox, cxDBEdit, cxTextEdit, cxCurrencyEdit;
+  cxCheckBox, cxDBEdit, cxTextEdit, cxCurrencyEdit, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog,
+  UDocumentsClasses, cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject,
+  frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList,
+  Vcl.ImgList, frxDBSet;
 
 type
-  TFrmOutputDoc = class(TFrmPrototype)
+  TFrmOutputDoc = class(TFrmPrototype, IFrmDoc)
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -120,6 +141,20 @@ type
     cxGrid1DBTableView1F_GOOD_GRP_COLOR: TcxGridDBColumn;
     dsDocStringsF_GOOD_DOP_INFO: TFIBStringField;
     cxGrid1DBTableView1F_GOOD_DOP_INFO: TcxGridDBColumn;
+    dsDocStringsF_RESERVED: TFIBFloatField;
+    cxGrid1DBTableView1F_RESERVED: TcxGridDBColumn;
+    BtnSend: TButton;
+    dsDocHeadF_PARTNER_INN: TFIBStringField;
+    dsDocHeadF_PARTNER_ADRES: TFIBStringField;
+    dsDocHeadF_GUID: TFIBStringField;
+    dsDocHeadF_USER: TFIBStringField;
+    dsDocHeadF_SKLAD_PREF: TFIBStringField;
+    dsDocHeadF_OWNER: TFIBIntegerField;
+    dsDocHeadF_SKLAD_F_NAME: TFIBStringField;
+    RzDBButtonEdit4: TRzDBButtonEdit;
+    RzLabel9: TRzLabel;
+    dsDocStringsF_SCANCODE: TFIBBCDField;
+    cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn;
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);
@@ -144,13 +179,25 @@ type
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
     procedure dsDocStringsAfterScroll(DataSet: TDataSet);
-  private
+    procedure BtnSendClick(Sender: TObject);
+    procedure cxGrid1DBTableView1KeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure RzDBButtonEdit4ButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure dsDocStringsCalcFields(DataSet: TDataSet);
     { Private declarations }
   public
     { Public declarations }
     scan  : string;
     scan_time : TTime;
     procedure InsPosition;
+    function SyncWebService: TResultSoap;
+    procedure AddPosition(P_good: Integer; p_cnt: Integer; p_price: Currency);
+    procedure RefreshDoc;
+    function GetTableName: String;
+    function GetDocId: Integer;
+    property TableName: String read GetTableName;
+    property DocId: Integer read GetDocId;
   end;
 
 var
@@ -159,7 +206,7 @@ var
 implementation
 
 uses
-  udm,upublic, UTypes;
+  udm,upublic, UTypes, UNsiClass;
 {$R *.dfm}
 
 procedure TFrmOutputDoc.BtnMakePayClick(Sender: TObject);
@@ -189,6 +236,11 @@ begin
   StartImport(@dsDocStrings);
 end;
 
+procedure TFrmOutputDoc.BtnSendClick(Sender: TObject);
+begin
+  SyncWebService;
+end;
+
 procedure TFrmOutputDoc.cxGrid1DBTableView1CellDblClick(
   Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
@@ -209,6 +261,11 @@ begin
     cxGrid1DBTableView1F_DESCR.Options.Editing:=true;
   end
   else
+  if (ACellViewInfo.Item.Name='cxGrid1DBTableView1F_RESERVED') and (dsDocStringsF_RESERVED.AsInteger>0) then
+  begin
+    GetReservDocByArticle(dsDocStringsF_good.AsInteger,dsDocStringsF_article.AsString);
+  end
+  else
   begin
     ShowNsiGoodEdit(dsDocStringsF_GOOD.AsInteger);
   end;
@@ -223,7 +280,9 @@ begin
     ACanvas.Font.Color:=AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_GOOD_GRP_COLOR.Index];
   end;
 
-  if ((AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_sklad_OST.Index]<0)
+  if ((AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_sklad_OST.Index]
+      -AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_reserved.Index]
+    <0)
     and (AviewInfo.Item.Name='cxGrid1DBTableView1F_CNT')
   )then
   begin
@@ -250,10 +309,11 @@ procedure TFrmOutputDoc.cxGrid1DBTableView1DragOver(Sender, Source: TObject; X,
 begin
   if Source is TcxGridDBTableView then
   begin
-    if TcxGridDBTableView(Source).DataController.DataSet.FindField('f_article')<>nil then
-    begin
-      Accept:=true;
-    end;
+    if sender <> Source then
+      if TcxGridDBTableView(Source).DataController.DataSet.FindField('f_article')<>nil then
+      begin
+        Accept:=true;
+      end;
   end;
 end;
 
@@ -276,6 +336,13 @@ begin
   end;
 end;
 
+
+procedure TFrmOutputDoc.cxGrid1DBTableView1KeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (Shift=[ssCtrl]) and (Key=vk_F1) then
+    BtnSend.Visible:=true;
+end;
 
 procedure TFrmOutputDoc.dsDocHeadAfterOpen(DataSet: TDataSet);
 begin
@@ -303,7 +370,10 @@ begin
   cxGrid1DBTableView1F_PRICE_VAL.Options.Editing:=false;
   cxGrid1DBTableView1F_DESCR.Options.Editing:=false;
   dsDocStrings.Transaction.CommitRetaining;
-  RefreshDs(DataSet,'F_GOOD',dsDocStringsF_GOOD.Value);
+  if  not dsDocStringsF_SCANCODE.IsNull then
+    RefreshDs(DataSet,'F_SCANCODE',dsDocStringsF_SCANCODE.AsInteger)
+  else
+    RefreshDs(DataSet,'F_GOOD',dsDocStringsF_GOOD.AsInteger);
   cxGrid1.SetFocus;
 end;
 
@@ -317,10 +387,22 @@ begin
 
 end;
 
+procedure TFrmOutputDoc.dsDocStringsCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  CalcFieldsDopInfo(DataSet);
+end;
+
 procedure TFrmOutputDoc.dsPaymentsListAfterDelete(DataSet: TDataSet);
 begin
   inherited;
   cxGrid2.SetFocus;
+end;
+
+procedure TFrmOutputDoc.FormCreate(Sender: TObject);
+begin
+  inherited;
+  AddInfoColumns(cxGrid1DBTableView1);
 end;
 
 procedure TFrmOutputDoc.InsPosition;
@@ -336,7 +418,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_GOOD.Value:=goods[i];
+      dsDocStringsF_Scancode.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,
@@ -394,6 +476,20 @@ begin
   end;
 end;
 
+procedure TFrmOutputDoc.RzDBButtonEdit4ButtonClick(Sender: TObject);
+var
+  key : integer;
+begin
+  key:=GetNsiPartner;
+  if key>0 then
+  begin
+    dsDocHead.Edit;
+    dsDocHeadF_OWNER.Value:=key;
+    dsDocHead.Post;
+    refreshDs(dsDocHead);
+  end;
+end;
+
 procedure TFrmOutputDoc.RzDBSpinEdit1Exit(Sender: TObject);
 begin
   inherited;
@@ -403,6 +499,77 @@ begin
     RefreshDs(dsDocHead);
     RefreshDs(dsDocStrings);
   end;
+end;
+
+function TFrmOutputDoc.SyncWebService :TResultSoap;
+var
+  doc : TOutDocument;
+  partner : TNsiPartner;
+  sklad   : TNsiSklad;
+  vl_docPosition : TDocPosition;
+begin
+  doc:=TOutDocument.Create();
+  doc.SetF_number(self.dsDocHeadF_NUMBER.AsString);
+  doc.SetF_state(self.dsDocHeadF_STATE.AsInteger);
+  doc.SetF_type(self.dsDocHeadF_TYPE.AsInteger);
+  doc.SetF_date(self.dsDocHeadF_Date.AsDateTime);
+  partner:=TNsiPartner.Create;
+  partner.SetName(self.dsDocHeadF_PARTNER_NAME.AsString);
+  partner.SetInn(self.dsDocHeadF_PARTNER_INN.AsString);
+  partner.SetAddress(self.dsDocHeadF_PARTNER_ADRES.AsString);
+  sklad:= TnsiSklad.Create();
+  sklad.SetPrefix(self.dsDocHeadF_SKLAD_PREF.AsString);
+  doc.SetF_partner(partner);
+  doc.setF_sklad(sklad);
+  doc.SetF_guid(self.dsDocHeadF_Guid.AsString);
+  doc.SetF_user(self.dsDocHeadF_USER.AsString);
+  //self.dsDocHeadF_GUID);
+  doc.SetF_date(self.dsDocHeadF_DATE.AsDateTime);
+  dsDocStrings.First;
+  while not dsDocStrings.Eof do
+  begin
+    vl_docPosition.f_quant:=self.dsDocStringsF_CNT.AsInteger;
+    vl_docPosition.f_good:=TNsiGood.Create();
+    vl_docPosition.f_good.SetArticle(dsDocStringsF_article.AsString);
+    vl_docPosition.f_price_val:=self.dsDocStringsF_PRICE_VAL.AsFloat;
+    vl_docPosition.f_price:=self.dsDocStringsF_PRICE_WO_SKIDKA.AsFloat;
+    vl_docPosition.f_descr:=self.dsDocStringsF_DESCR.AsString;
+    vl_docPosition.f_summ:=self.dsDocStringsF_SUM.AsFloat;
+//    vl_docPosition.f_discount_prc:=self.dsDocStr
+    doc.SetF_psition(vl_docPosition);
+    dsDocStrings.Next;
+  end;
+  result:=doc.Synchcronyze;
+  partner.Free;
+  sklad.Free;
+  doc.Free;
+end;
+
+procedure TFrmOutputDoc.AddPosition(P_good: Integer; p_cnt: Integer;
+  p_price: Currency);
+begin
+  raise Exception.Create('Not implemented!'); { TODO: Implement }
+end;
+
+procedure TFrmOutputDoc.RefreshDoc;
+begin
+//  raise Exception.Create('Not implemented!'); { TODO: Implement }
+  RefreshDs(dsDocStrings);
+end;
+
+function TFrmOutputDoc.GetTableName: String;
+begin
+  //raise Exception.Create('Not implemented!'); { TODO: Implement }
+  result := 'T_DOC_OUT';
+end;
+
+function TFrmOutputDoc.GetDocId: Integer;
+begin
+//  raise Exception.Create('Not implemented!'); { TODO: Implement }
+  if dsDocHead.Active then
+    result := dsDocHeadF_DOC_OUT.AsInteger
+  else
+    result := 0;
 end;
 
 end.

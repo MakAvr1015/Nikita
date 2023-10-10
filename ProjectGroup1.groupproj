@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5D8C5A15-D0C2-47FC-A8D9-309EFFF45703}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Nikita.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\GetMoveDocs\GetMoveDocs.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\CRM\CRM.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\DocZakaz\DocZakaz.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\Payment\YouKassaPayment.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Nikita">
+        <MSBuild Projects="Nikita.dproj"/>
+    </Target>
+    <Target Name="Nikita:Clean">
+        <MSBuild Projects="Nikita.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Nikita:Make">
+        <MSBuild Projects="Nikita.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GetMoveDocs">
+        <MSBuild Projects="..\GetMoveDocs\GetMoveDocs.dproj"/>
+    </Target>
+    <Target Name="GetMoveDocs:Clean">
+        <MSBuild Projects="..\GetMoveDocs\GetMoveDocs.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GetMoveDocs:Make">
+        <MSBuild Projects="..\GetMoveDocs\GetMoveDocs.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CRM">
+        <MSBuild Projects="..\CRM\CRM.dproj"/>
+    </Target>
+    <Target Name="CRM:Clean">
+        <MSBuild Projects="..\CRM\CRM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CRM:Make">
+        <MSBuild Projects="..\CRM\CRM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DocZakaz">
+        <MSBuild Projects="..\DocZakaz\DocZakaz.dproj"/>
+    </Target>
+    <Target Name="DocZakaz:Clean">
+        <MSBuild Projects="..\DocZakaz\DocZakaz.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DocZakaz:Make">
+        <MSBuild Projects="..\DocZakaz\DocZakaz.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="YouKassaPayment">
+        <MSBuild Projects="..\Payment\YouKassaPayment.dproj"/>
+    </Target>
+    <Target Name="YouKassaPayment:Clean">
+        <MSBuild Projects="..\Payment\YouKassaPayment.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="YouKassaPayment:Make">
+        <MSBuild Projects="..\Payment\YouKassaPayment.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Nikita;GetMoveDocs;CRM;DocZakaz;YouKassaPayment"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Nikita:Clean;GetMoveDocs:Clean;CRM:Clean;DocZakaz:Clean;YouKassaPayment:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Nikita:Make;GetMoveDocs:Make;CRM:Make;DocZakaz:Make;YouKassaPayment:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

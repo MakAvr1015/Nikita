@@ -16,7 +16,25 @@ uses
   cxCustomData, cxFilter, cxData, cxDataStorage, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
   cxClasses, cxGridCustomView, cxGrid, cxInplaceContainer, cxVGrid, cxDBVGrid,
-  cxOI, cxLabel;
+  cxOI, cxLabel, cxLookAndFeels, cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE;
 
 type
   TFrmNsiGoodsEdit = class(TFrmPrototype)
@@ -112,20 +130,12 @@ var
   info_id : integer;
   editItem :TcxEditRepositoryItem;
 begin
-  inherited;
   info_id:=Arecord.Values[2];
-//  if info_id=3 then
-//  begin
-//  with //dm.cxEditRepositoryComboBoxItem1 do
   editItem:=dm.cxEditRepository.ItemByName('Editor'+IntToStr(info_id));
-//  do
-//  begin
-//    Properties.Assign(AProperties);
     if editItem <> nil then
     begin
       AProperties:=editItem.Properties;
     end;
-//  end;
 end;
 
 procedure TFrmNsiGoodsEdit.FormShow(Sender: TObject);

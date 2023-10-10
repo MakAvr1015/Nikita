@@ -11,7 +11,24 @@ uses
   cxGridDBTableView, cxGrid, cxLabel, cxSpinEdit, UFramGoodCard, FIBDataSet,
   pFIBDataSet, cxContainer, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, DBCtrls, FIBDatabase,
-  pFIBDatabase;
+  pFIBDatabase, cxLookAndFeels, cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, FIBQuery, pFIBQuery,
+  pFIBStoredProc;
 
 type
   TFramBufer = class(TFrame)
@@ -38,8 +55,13 @@ type
     dsGoodBufferF_OST: TFIBFloatField;
     cxGridDBTableViewBufferF_OST: TcxGridDBColumn;
     BtnPrint: TRzToolButton;
-    BtnMoveAllLeft: TRzToolButton;
+    BtnToDoc: TRzToolButton;
     BtnRecycle: TRzToolButton;
+    spCopyToDoc: TpFIBStoredProc;
+    BtnFromDoc: TRzToolButton;
+    spCopyFromDoc: TpFIBStoredProc;
+    dsGoodBufferF_SCANCODE: TFIBBCDField;
+    cxGridDBTableViewBufferF_SCANCODE: TcxGridDBColumn;
     procedure cxGridDBTableViewBufferDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
     procedure cxGridDBTableViewBufferDragDrop(Sender, Source: TObject; X,
@@ -47,12 +69,13 @@ type
     procedure RzToolButton5Click(Sender: TObject);
     procedure LkpSkladPropertiesChange(Sender: TObject);
     procedure cxGridDBTableViewBufferKeyPress(Sender: TObject; var Key: Char);
+    procedure BtnToDocClick(Sender: TObject);
   private
     { Private declarations }
     scan  : string;
     scan_time : ttime;
   public
-
+    activeForm  : integer;
     { Public declarations }
   end;
 
@@ -65,6 +88,18 @@ uses
 
 
 
+
+procedure TFramBufer.BtnToDocClick(Sender: TObject);
+begin
+{  case activeForm of
+    IdxDocIn:
+      break;
+    IdxDocOut:
+      break;
+    IdxDocMove:
+      break;
+  end;}
+end;
 
 procedure TFramBufer.cxGridDBTableViewBufferDragDrop(Sender, Source: TObject; X,
   Y: Integer);
@@ -109,7 +144,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsGoodBuffer.Insert;
-      dsGoodBufferF_GOOD.Value:=goods[i];
+      dsGoodBufferF_SCANCODE.Value:=goods[i];
       dsGoodBufferF_CNT.Value:=1;
       dsGoodBuffer.Post;
       dsGoodBuffer.Transaction.CommitRetaining;

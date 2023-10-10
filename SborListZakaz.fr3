@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.0.7" DotMatrixReport="False" EngineOptions.PrintIfEmpty="False" IniFile="\Software\Fast Reports" PreviewOptions.AllowEdit="False" PreviewOptions.Buttons="4095" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PreviewOptions.ZoomMode="zmWholePage" PrintOptions.Printer="По умолчанию" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="44922.3473545023" ReportOptions.Description.Text="" ReportOptions.Name="Сборочный лист" ReportOptions.LastChange="44922.3891689931" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="dsBody" DataSetName="dsBody"/>
+    <item DataSet="dsHead" DataSetName="dsHead"/>
+  </Datasets>
+  <Variables>
+    <item Name="TFrmZakazDoc"/>
+    <item Name="F_NUMBER"/>
+    <item Name="F_DATE"/>
+    <item Name="F_PARTNER"/>
+    <item Name="F_PARTNER_NAME"/>
+    <item Name="F_STATE"/>
+    <item Name="F_STATE_NAME"/>
+    <item Name="F_PRICE"/>
+    <item Name="F_PRICE_NAME"/>
+    <item Name="F_USER"/>
+    <item Name="F_DESCR"/>
+    <item Name="F_CNT"/>
+    <item Name="F_SUM"/>
+    <item Name="F_DISCOUNT"/>
+    <item Name="F_DISCOUNT_SUM"/>
+    <item Name="F_DOC"/>
+    <item Name="F_ID"/>
+    <item Name="F_GOOD"/>
+    <item Name="F_GOOD_NAME"/>
+    <item Name="F_GOOD_ARTICLE"/>
+    <item Name="F_CNT_FACT"/>
+    <item Name="F_PRICE_VAL"/>
+    <item Name="F_OST"/>
+    <item Name="F_SKLAD"/>
+    <item Name="F_SKLAD_NAME"/>
+    <item Name="F_DOP_INFO"/>
+    <item Name="F_USR"/>
+    <item Name="F_DOC_OUT"/>
+    <item Name="F_PHOTO"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000">
+    <TfrxFIBQuery Name="dsBody" UserName="dsBody" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="select&#13;&#10;  f_good_name,&#13;&#10;  F_GOOD_ARTICLE,&#13;&#10;  F_CNT,        &#13;&#10;  (select first 1 f_memo from T_NSI_GOODS_MMEDIA where f_good=o.f_good) as f_photo      &#13;&#10;from pak_t_doc_zakaz.get_doc_body(:doc)o  " PropData="05704C65667403C4000470546F700394000A506172616D65746572730101063D204E616D653D22646F63222044617461547970653D226674496E7465676572222045787072657373696F6E3D22262336303B465F444F43262336323B220000"/>
+    <TfrxFIBQuery Name="dsHead" UserName="dsHead" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="select f_number,f_date,f_partner_name from pak_t_doc_zakaz.get_doc(:DOC)                                    " PropData="05704C656674027C0470546F700394000A506172616D65746572730101063D204E616D653D22444F43222044617461547970653D226674496E7465676572222045787072657373696F6E3D22262336303B465F444F43262336323B220000"/>
+  </TfrxDataPage>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="98.26778" Left="0" Top="18.89765" Width="755.906">
+      <TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="22.67718" Width="755.906" Height="30.23624" Font.Charset="1" Font.Color="-16777208" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Сборочный лист № [dsHead.&#34;F_NUMBER&#34;] от [dsHead.&#34;F_DATE&#34;]">
+        <Formats>
+          <item/>
+          <item/>
+        </Formats>
+      </TfrxMemoView>
+      <TfrxMemoView Name="Memo2" Left="22.67718" Top="68.03154" Width="653.85869" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-16" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" VAlign="vaCenter" Text="Покупатель [dsHead.&#34;F_PARTNER_NAME&#34;]"/>
+    </TfrxReportTitle>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="105.82684" Left="0" Top="222.99227" Width="755.906" ColumnWidth="0" ColumnGap="0" DataSet="dsBody" DataSetName="dsBody" RowCount="0">
+      <TfrxMemoView Name="Memo3" Left="0" Top="0" Width="60.47248" Height="18.89765" StretchMode="smMaxHeight" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" VAlign="vaCenter" Text="[Line#]"/>
+      <TfrxMemoView Name="dsBodyF_GOOD_ARTICLE" IndexTag="1" Left="60.47248" Top="0" Width="128.50402" Height="18.89765" StretchMode="smMaxHeight" DataField="F_GOOD_ARTICLE" DataSet="dsBody" DataSetName="dsBody" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[dsBody.&#34;F_GOOD_ARTICLE&#34;]"/>
+      <TfrxMemoView Name="dsBodyF_GOOD_NAME" IndexTag="1" Left="188.9765" Top="0" Width="359.05535" Height="18.89765" StretchMode="smMaxHeight" DataField="F_GOOD_NAME" DataSet="dsBody" DataSetName="dsBody" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[dsBody.&#34;F_GOOD_NAME&#34;]"/>
+      <TfrxMemoView Name="dsBodyF_CNT" IndexTag="1" Left="547.59091" Top="0" Width="86.92919" Height="18.89765" StretchMode="smMaxHeight" DataField="F_CNT" DataSet="dsBody" DataSetName="dsBody" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[dsBody.&#34;F_CNT&#34;]"/>
+      <TfrxPictureView Name="Picture1" ShiftMode="smDontShift" Left="634.96104" Top="0" Width="117.16543" Height="105.82684" DataField="F_PHOTO" DataSet="dsBody" DataSetName="dsBody" Frame.Typ="15" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+    </TfrxMasterData>
+    <TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="177.63791" Width="755.906">
+      <TfrxMemoView Name="Memo4" Left="0" Top="3.77953" Width="60.47248" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="№ п/п"/>
+      <TfrxMemoView Name="Memo5" Left="60.47248" Top="3.77953" Width="128.50402" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Артикул"/>
+      <TfrxMemoView Name="Memo6" Left="188.9765" Top="3.77953" Width="359.05535" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Наименование"/>
+      <TfrxMemoView Name="Memo7" Left="547.59091" Top="3.77953" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Количество"/>
+    </TfrxHeader>
+    <TfrxFooter Name="Footer1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22.67718" Left="0" Top="351.49629" Width="755.906">
+      <TfrxSysMemoView Name="SysMemo1" Left="547.59091" Top="0" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[SUM(&#60;dsBody.&#34;F_CNT&#34;&#62;,MasterData1)]"/>
+      <TfrxMemoView Name="Memo8" Left="415.7483" Top="0" Width="132.28355" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" VAlign="vaCenter" Text="Итого"/>
+    </TfrxFooter>
+  </TfrxReportPage>
+</TfrxReport>

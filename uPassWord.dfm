@@ -3,8 +3,8 @@ object PasswordDlg: TPasswordDlg
   Top = 108
   BorderStyle = bsDialog
   Caption = 'Password Dialog'
-  ClientHeight = 218
-  ClientWidth = 237
+  ClientHeight = 248
+  ClientWidth = 538
   Color = clBtnFace
   ParentFont = True
   OldCreateOrder = True
@@ -15,29 +15,29 @@ object PasswordDlg: TPasswordDlg
   TextHeight = 13
   object Label1: TLabel
     Left = 5
-    Top = 162
+    Top = 191
     Width = 37
     Height = 13
     Caption = #1055#1072#1088#1086#1083#1100
   end
   object Label2: TLabel
     Left = 5
-    Top = 134
+    Top = 163
     Width = 72
     Height = 13
     Caption = #1055#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1100
   end
   object Label3: TLabel
     Left = 5
-    Top = 75
-    Width = 71
-    Height = 18
+    Top = 104
+    Width = 23
+    Height = 13
     Caption = #1041#1072#1079#1072
     OnDblClick = EdBaseDblClick
   end
   object Password: TEdit
     Left = 82
-    Top = 158
+    Top = 187
     Width = 144
     Height = 21
     PasswordChar = '*'
@@ -45,7 +45,7 @@ object PasswordDlg: TPasswordDlg
   end
   object OKBtn: TButton
     Left = 70
-    Top = 185
+    Top = 215
     Width = 75
     Height = 25
     Caption = 'OK'
@@ -55,7 +55,7 @@ object PasswordDlg: TPasswordDlg
   end
   object CancelBtn: TButton
     Left = 151
-    Top = 185
+    Top = 215
     Width = 75
     Height = 25
     Cancel = True
@@ -63,16 +63,9 @@ object PasswordDlg: TPasswordDlg
     ModalResult = 2
     TabOrder = 2
   end
-  object EdUser: TEdit
-    Left = 82
-    Top = 131
-    Width = 144
-    Height = 21
-    TabOrder = 4
-  end
   object EdBase: TEdit
     Left = 82
-    Top = 72
+    Top = 101
     Width = 144
     Height = 21
     Enabled = False
@@ -82,9 +75,9 @@ object PasswordDlg: TPasswordDlg
     Left = 5
     Top = -1
     Width = 221
-    Height = 65
+    Height = 42
     Caption = #1050#1050#1052
-    TabOrder = 5
+    TabOrder = 4
   end
   object Atol: TRadioButton
     Left = 8
@@ -93,25 +86,62 @@ object PasswordDlg: TPasswordDlg
     Height = 17
     Caption = #1040#1090#1086#1083
     Checked = True
-    TabOrder = 6
+    TabOrder = 5
     TabStop = True
   end
   object Strih: TRadioButton
-    Left = 8
-    Top = 39
-    Width = 113
+    Left = 127
+    Top = 16
+    Width = 90
     Height = 17
     Caption = #1064#1090#1088#1080#1093'-'#1052
-    TabOrder = 7
+    TabOrder = 6
   end
   object LangSelect: TComboBox
     Left = 82
-    Top = 102
+    Top = 131
     Width = 144
     Height = 21
     Style = csDropDownList
-    ItemHeight = 13
+    TabOrder = 7
+  end
+  object cxShellComboBox: TcxShellComboBox
+    Left = 8
+    Top = 48
+    Enabled = False
+    Properties.ShowFullPath = sfpAlways
+    Properties.ViewOptions = []
     TabOrder = 8
+    OnDblClick = cxShellComboBoxDblClick
+    Width = 218
+  end
+  object BaseName: TEdit
+    Left = 82
+    Top = 75
+    Width = 144
+    Height = 21
+    Enabled = False
+    TabOrder = 9
+  end
+  object StringGridBase: TStringGrid
+    Left = 232
+    Top = 5
+    Width = 291
+    Height = 204
+    ColCount = 2
+    DefaultColWidth = 150
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+    TabOrder = 10
+    OnDblClick = StringGridBaseDblClick
+  end
+  object EdUser: TComboBox
+    Left = 81
+    Top = 160
+    Width = 145
+    Height = 21
+    Sorted = True
+    TabOrder = 11
   end
   object cxPropertiesStore: TcxPropertiesStore
     Components = <
@@ -121,7 +151,7 @@ object PasswordDlg: TPasswordDlg
           'Checked')
       end
       item
-        Component = EdUser
+        Component = BaseName
         Properties.Strings = (
           'Text')
       end

@@ -2,8 +2,8 @@ inherited FrmPriceDoc: TFrmPriceDoc
   Caption = #1048#1079#1084#1077#1085#1077#1085#1080#1077' '#1094#1077#1085#1099
   ClientHeight = 367
   ClientWidth = 946
-  ExplicitWidth = 954
-  ExplicitHeight = 394
+  ExplicitWidth = 962
+  ExplicitHeight = 406
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
@@ -44,6 +44,11 @@ inherited FrmPriceDoc: TFrmPriceDoc
       end
       inherited BtnView: TRzToolButton
         Visible = False
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 2
+        Properties.OnChange = nil
+        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
@@ -105,7 +110,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
         DataSource = srPriceDocHead
         KeyField = 'f_id'
         ListField = 'f_name'
-        ListSource = DM.srStateSource
+        ListSource = dm.srStateSource
         TabOrder = 1
       end
       object RzDBDateTimeEdit1: TRzDBDateTimeEdit
@@ -126,6 +131,8 @@ inherited FrmPriceDoc: TFrmPriceDoc
         DataSource = srPriceDocHead
         DataField = 'F_PRICE_NAME'
         TabOrder = 3
+        AltBtnWidth = 15
+        ButtonWidth = 15
         OnButtonClick = RzDBButtonEdit3ButtonClick
       end
     end
@@ -154,13 +161,12 @@ inherited FrmPriceDoc: TFrmPriceDoc
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
-        LookAndFeel.SkinName = 'MoneyTwins'
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDragDrop = cxGrid1DBTableView1DragDrop
           OnDragOver = cxGrid1DBTableView1DragOver
           OnKeyPress = cxGrid1DBTableView1KeyPress
-          NavigatorButtons.ConfirmDelete = False
-          NavigatorButtons.Insert.Visible = False
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.Insert.Visible = False
           OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
           DataController.DataSource = srPriceDocBody
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -174,7 +180,6 @@ inherited FrmPriceDoc: TFrmPriceDoc
           OptionsView.ColumnAutoWidth = True
           OptionsView.GroupByBox = False
           OptionsView.HeaderAutoHeight = True
-          Styles.StyleSheet = DM.GridTableViewStyleSheetDevExpress
           object cxGrid1DBTableView1F_ID: TcxGridDBColumn
             DataBinding.FieldName = 'F_ID'
             Visible = False
@@ -222,8 +227,8 @@ inherited FrmPriceDoc: TFrmPriceDoc
         Align = alRight
         DataBinding.DataField = 'f_photo'
         DataBinding.DataSource = srGoodPhoto
-        Properties.GraphicClassName = 'TJPEGImage'
-        Properties.Stretch = True
+        Properties.FitMode = ifmProportionalStretch
+        Properties.GraphicClassName = 'TdxSmartImage'
         TabOrder = 1
         Height = 239
         Width = 140
@@ -255,7 +260,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
       '    :F_PARENT_PRICE_DOC) ')
     AfterOpen = dsPriceDocHeadAfterOpen
     Transaction = pFIBTransaction
-    Database = DM.pFIBDatabase
+    Database = dm.pFIBDatabase
     AutoCommit = True
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
@@ -271,17 +276,14 @@ inherited FrmPriceDoc: TFrmPriceDoc
     object dsPriceDocHeadF_PARENT: TFIBBCDField
       FieldName = 'F_PARENT'
       Size = 0
-      RoundByScale = True
     end
     object dsPriceDocHeadF_STATE: TFIBBCDField
       FieldName = 'F_STATE'
       Size = 0
-      RoundByScale = True
     end
     object dsPriceDocHeadF_PRICE: TFIBBCDField
       FieldName = 'F_PRICE'
       Size = 0
-      RoundByScale = True
     end
     object dsPriceDocHeadF_PRICE_NAME: TFIBStringField
       FieldName = 'F_PRICE_NAME'
@@ -296,7 +298,6 @@ inherited FrmPriceDoc: TFrmPriceDoc
     object dsPriceDocHeadF_DOC_HEAD: TFIBBCDField
       FieldName = 'F_DOC_HEAD'
       Size = 0
-      RoundByScale = True
     end
   end
   object dsPriceDocBody: TpFIBDataSet
@@ -332,7 +333,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
     AfterDelete = dsPriceDocBodyAfterDelete
     AfterPost = dsPriceDocBodyAfterPost
     Transaction = pFIBTransaction
-    Database = DM.pFIBDatabase
+    Database = dm.pFIBDatabase
     AutoCommit = True
     DataSource = srPriceDocHead
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -343,27 +344,23 @@ inherited FrmPriceDoc: TFrmPriceDoc
       FieldName = 'F_ID'
       Visible = False
       Size = 0
-      RoundByScale = True
     end
     object dsPriceDocBodyF_GOOD: TFIBBCDField
       FieldName = 'F_GOOD'
       Visible = False
       Size = 0
-      RoundByScale = True
     end
     object dsPriceDocBodyF_PRICE: TFIBBCDField
       DisplayLabel = #1062#1077#1085#1072
       FieldName = 'F_PRICE'
       DisplayFormat = '0.00'
       Size = 3
-      RoundByScale = True
     end
     object dsPriceDocBodyF_DOC_PRICE: TFIBBCDField
       FieldName = 'F_DOC_PRICE'
       Visible = False
       DisplayFormat = '0.00'
       Size = 0
-      RoundByScale = True
     end
     object dsPriceDocBodyF_GOOD_NAME: TFIBStringField
       DisplayLabel = #1053#1086#1084#1077#1085#1082#1083#1072#1090#1091#1088#1072
@@ -377,7 +374,6 @@ inherited FrmPriceDoc: TFrmPriceDoc
       ReadOnly = True
       DisplayFormat = '0.00'
       Size = 3
-      RoundByScale = True
     end
     object dsPriceDocBodyF_IN_PRICE: TFIBFloatField
       DisplayLabel = #1042#1093#1086#1076#1103#1097#1072#1103' '#1094#1077#1085#1072
@@ -396,8 +392,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
     end
   end
   object pFIBTransaction: TpFIBTransaction
-    DefaultDatabase = DM.pFIBDatabase
-    TimeoutAction = TARollback
+    DefaultDatabase = dm.pFIBDatabase
     Left = 176
     Top = 216
   end
@@ -415,7 +410,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
     SelectSQL.Strings = (
       'select f_memo as f_photo from SP_T_NSI_GOODS_MMEDIA_S(:f_good)')
     Transaction = pFIBTransaction
-    Database = DM.pFIBDatabase
+    Database = dm.pFIBDatabase
     DataSource = srPriceDocBody
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'

@@ -18,9 +18,6 @@ inherited FrmMoveDocSpisan: TFrmMoveDocSpisan
         BtnSave
         BtnExit
         BtnView)
-      inherited BtnNew: TRzToolButton
-        ExplicitTop = 2
-      end
       inherited BtnOpen: TRzToolButton
         Left = 54
         ExplicitLeft = 54
@@ -75,16 +72,6 @@ inherited FrmMoveDocSpisan: TFrmMoveDocSpisan
       inherited RzDBButtonEdit1: TRzDBButtonEdit
         Visible = False
       end
-      object RzDBMemo1: TRzDBMemo
-        Left = 2
-        Top = 75
-        Width = 872
-        Height = 54
-        Align = alBottom
-        DataField = 'F_DOP_INFO'
-        DataSource = srDocHead
-        TabOrder = 6
-      end
       object RzDBLookupComboBox2: TRzDBLookupComboBox
         Left = 632
         Top = 39
@@ -95,45 +82,44 @@ inherited FrmMoveDocSpisan: TFrmMoveDocSpisan
         KeyField = 'f_value'
         ListField = 'f_value'
         ListSource = srNsiPropertyVal
-        TabOrder = 7
+        TabOrder = 6
       end
     end
     inherited Panel1: TPanel
       Top = 157
-      Height = 262
+      Height = 535
       ExplicitTop = 157
-      ExplicitHeight = 262
+      ExplicitHeight = 535
       inherited Splitter1: TSplitter
-        Height = 260
+        Height = 533
         ExplicitHeight = 256
       end
       inherited cxGrid1: TcxGrid
-        Height = 260
-        LookAndFeel.SkinName = 'MoneyTwins'
-        ExplicitHeight = 260
+        Height = 533
+        ExplicitHeight = 533
         inherited cxGrid1DBTableView1: TcxGridDBTableView
           Styles.Background = nil
           Styles.Content = nil
           Styles.ContentEven = nil
           Styles.ContentOdd = nil
           Styles.FilterBox = nil
-          Styles.Inactive = nil
           Styles.IncSearch = nil
-          Styles.Selection = nil
           Styles.Footer = nil
           Styles.Group = nil
           Styles.GroupByBox = nil
           Styles.Header = nil
+          Styles.Inactive = nil
           Styles.Indicator = nil
           Styles.Preview = nil
+          Styles.Selection = nil
           inherited cxGrid1DBTableView1F_SKLAD_TO_OST: TcxGridDBColumn
             Visible = False
           end
         end
       end
       inherited cxDBImage1: TcxDBImage
-        ExplicitHeight = 260
-        Height = 260
+        ExplicitHeight = 533
+        Height = 533
       end
     end
   end

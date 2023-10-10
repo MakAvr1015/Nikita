@@ -7,7 +7,27 @@ uses
   Dialogs, cxGraphics, cxCustomData, cxStyles, cxTL, cxMaskEdit, dxSkinsCore,
   dxSkinsDefaultPainters, RzButton, ExtCtrls, RzPanel, FIBDatabase,
   pFIBDatabase, cxInplaceContainer, cxDBTL, cxControls, cxTLData, DB,
-  FIBDataSet, pFIBDataSet, dxSkinscxPCPainter, cxPC;
+  FIBDataSet, pFIBDataSet, dxSkinscxPCPainter, cxPC, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxBarBuiltInMenu, cxTLdxBarBuiltInMenu,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridCustomTableView,
+  cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView,
+  cxGrid;
 
 type
   TFramNsiGoodsGrp = class(TFrame)
@@ -36,26 +56,33 @@ type
     cxPageControl1: TcxPageControl;
     cxTabSheetGrp: TcxTabSheet;
     cxTabSheetGrpExt: TcxTabSheet;
-    cxDBTreeList1: TcxDBTreeList;
     dsAlterneteList: TpFIBDataSet;
     srAlterneteList: TDataSource;
-    cxDBTreeList1cxDBTreeListColumn1: TcxDBTreeListColumn;
+    dsAlterneteListF_ID: TFIBIntegerField;
+    dsAlterneteListF_NAME: TFIBStringField;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1F_ID: TcxGridDBColumn;
+    cxGrid1DBTableView1F_NAME: TcxGridDBColumn;
     procedure BtnNewClick(Sender: TObject);
     procedure cxDBTreeListDblClick(Sender: TObject);
     procedure BtnRecycleClick(Sender: TObject);
     procedure cxDBTreeListCustomDrawCell(Sender: TObject; ACanvas: TcxCanvas;
       AViewInfo: TcxTreeListEditCellViewInfo; var ADone: Boolean);
+    procedure cxGrid1DBTableView1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure Initframe;
   end;
 
 implementation
 
 {$R *.dfm}
 uses
-  udm,ufrmEdinNsiGrp;
+ udm, ufrmEdinNsiGrp, uPublic;
 
 procedure TFramNsiGoodsGrp.BtnNewClick(Sender: TObject);
 begin
@@ -74,7 +101,14 @@ begin
         end;
         free;
       end;
+    1:
+    begin
+      GetGoodsLink(0);
+      refreshDs(dsAlterneteList);
     end;
+  end;
+
+
 end;
 
 procedure TFramNsiGoodsGrp.BtnRecycleClick(Sender: TObject);
@@ -121,6 +155,18 @@ begin
     end;
     free;
   end;
+end;
+
+procedure TFramNsiGoodsGrp.cxGrid1DBTableView1DblClick(Sender: TObject);
+begin
+  ShowGoodsLink(dsAlterneteListF_ID.Value);
+  refreshDs(dsAlterneteList);
+end;
+
+procedure TFramNsiGoodsGrp.Initframe;
+begin
+ refreshDS(dsNsiGrp);
+ refreshDs(dsAlterneteList);
 end;
 
 end.

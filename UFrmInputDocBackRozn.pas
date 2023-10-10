@@ -12,7 +12,23 @@ uses
   cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxClasses, cxControls, cxGridCustomView, cxGrid, ExtCtrls, StdCtrls, RzDBBnEd,
   RzDBEdit, DBCtrls, RzDBCmbo, Mask, RzEdit, RzLabel, RzPanel, RzButton,
-  RzStatus, RzRadChk, RzDBLbl;
+  RzStatus, RzRadChk, RzDBLbl, cxLookAndFeels, cxLookAndFeelPainters,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog;
 
 type
   TFrmInputDocBackRozn = class(TFrmInputDoc)
@@ -48,7 +64,7 @@ var
 implementation
 
 uses
-upublic,uTypes,udm;
+upublic,UDocumentsClasses,udm,UNsiClass, Utypes;
 {$R *.dfm}
 
 procedure TFrmInputDocBackRozn.BtnCloseClick(Sender: TObject);
@@ -101,7 +117,7 @@ procedure TFrmInputDocBackRozn.PrintKKM_proc;
 var
   i,errCode : integer;
   str : string;
-  v_listSales : TGoodSaleList;
+  v_listSales : TDocPositionList;
 begin
     dsDocStrings.First;
     dsDocStrings.Last;
@@ -111,15 +127,15 @@ begin
     begin
       if dsDocStringsF_CNT.value <=0 then
         continue;
-
+      v_listSales[dsDocStrings.RecNo-1].f_good:=TnsiGood.Create();
       if Pos('(', dsDocStringsF_GOOD_NAME.Value)>0 then
-        v_listSales[dsDocStrings.RecNo-1].name:= 'арт.'+dsDocStringsF_ARTICLE.AsString+' '+copy(dsDocStringsF_GOOD_NAME.Value,1,Pos('(', dsDocStringsF_GOOD_NAME.Value)-1)
+        v_listSales[dsDocStrings.RecNo-1].f_good.SetName('арт.'+dsDocStringsF_ARTICLE.AsString+' '+copy(dsDocStringsF_GOOD_NAME.Value,1,Pos('(', dsDocStringsF_GOOD_NAME.Value)-1))
       else
-        v_listSales[dsDocStrings.RecNo-1].name:= 'арт.'+dsDocStringsF_ARTICLE.AsString+' '+dsDocStringsF_GOOD_NAME.Value;
-       v_listSales[dsDocStrings.RecNo-1].price:=0;
-      LogMsg('Восврат по ККМ: '+v_listSales[dsDocStrings.RecNo-1].name);
-      v_listSales[dsDocStrings.RecNo-1].quant:=dsDocStringsF_CNT.AsInteger;;
-      v_listSales[dsDocStrings.RecNo-1].summ:=v_listSales[dsDocStrings.RecNo-1].quant*v_listSales[dsDocStrings.RecNo-1].price;
+        v_listSales[dsDocStrings.RecNo-1].f_good.SetName('арт.'+dsDocStringsF_ARTICLE.AsString+' '+dsDocStringsF_GOOD_NAME.Value);
+       v_listSales[dsDocStrings.RecNo-1].f_price:=0;
+      LogMsg('Восврат по ККМ: '+v_listSales[dsDocStrings.RecNo-1].f_good.GetName());
+      v_listSales[dsDocStrings.RecNo-1].f_quant:=dsDocStringsF_CNT.AsInteger;;
+      v_listSales[dsDocStrings.RecNo-1].f_summ:=v_listSales[dsDocStrings.RecNo-1].f_quant*v_listSales[dsDocStrings.RecNo-1].f_price;
       dsDocStrings.Next;
     end;
   str:=kkm.PrintBack(v_listSales);
