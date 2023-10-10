@@ -8,7 +8,27 @@ uses
   RzPanel, ExtCtrls, DB, FIBDatabase, pFIBDatabase, FIBDataSet, pFIBDataSet,
   RzLabel, Menus, RzStatus, RzForms, frxExportRTF, frxExportXML, frxExportXLS,
   frxExportHTML, frxClass, frxExportPDF, frxCross, frxBarcode, frxDCtrl,
-  frxDesgn, frxFIBComponents, cxPropertiesStore;
+  frxDesgn, frxFIBComponents, cxPropertiesStore, cxGraphics, cxControls,
+  cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxCustomData, cxStyles, cxTL,
+  cxTLdxBarBuiltInMenu, cxDataControllerConditionalFormattingRulesManagerDialog,
+  cxInplaceContainer, cxTLData, cxDBTL, System.ImageList, Vcl.ImgList, frxDBSet,
+  frxChBox, frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
+  cxClasses, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNsiSkladEdit = class(TFrmPrototype)
@@ -41,6 +61,21 @@ type
     RzLabel7: TRzLabel;
     edPrefix: TRzDBEdit;
     dsEditSkladF_PREFIX: TFIBStringField;
+    cxDBTreeSkladStruct: TcxDBTreeList;
+    dsSkladStruct: TpFIBDataSet;
+    srSkladStruct: TDataSource;
+    dsSkladStructF_ID: TFIBBCDField;
+    dsSkladStructF_SKLAD: TFIBBCDField;
+    dsSkladStructF_PARENT: TFIBBCDField;
+    dsSkladStructF_ADDRES: TFIBStringField;
+    dsSkladStructF_FULL_ADDRES: TFIBStringField;
+    dsSkladStructF_DESCR: TFIBStringField;
+    cxDBTreeSkladStructF_ID: TcxDBTreeListColumn;
+    cxDBTreeSkladStructF_SKLAD: TcxDBTreeListColumn;
+    cxDBTreeSkladStructF_PARENT: TcxDBTreeListColumn;
+    cxDBTreeSkladStructF_ADDRES: TcxDBTreeListColumn;
+    cxDBTreeSkladStructF_FULL_ADDRES: TcxDBTreeListColumn;
+    cxDBTreeSkladStructF_DESCR: TcxDBTreeListColumn;
     procedure BtnEdPartnerButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);
