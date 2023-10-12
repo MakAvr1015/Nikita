@@ -28,7 +28,8 @@ uses
   cxTLdxBarBuiltInMenu, cxDataControllerConditionalFormattingRulesManagerDialog,
   cxInplaceContainer, cxTLData, cxDBTL, System.ImageList, Vcl.ImgList, frxDBSet,
   frxChBox, frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
-  cxClasses, cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  cxClasses, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.ComCtrls, dxtree,
+  dxdbtree, cxNavigator, cxDBNavigator;
 
 type
   TFrmNsiSkladEdit = class(TFrmPrototype)
@@ -61,7 +62,6 @@ type
     RzLabel7: TRzLabel;
     edPrefix: TRzDBEdit;
     dsEditSkladF_PREFIX: TFIBStringField;
-    cxDBTreeSkladStruct: TcxDBTreeList;
     dsSkladStruct: TpFIBDataSet;
     srSkladStruct: TDataSource;
     dsSkladStructF_ID: TFIBBCDField;
@@ -70,12 +70,8 @@ type
     dsSkladStructF_ADDRES: TFIBStringField;
     dsSkladStructF_FULL_ADDRES: TFIBStringField;
     dsSkladStructF_DESCR: TFIBStringField;
-    cxDBTreeSkladStructF_ID: TcxDBTreeListColumn;
-    cxDBTreeSkladStructF_SKLAD: TcxDBTreeListColumn;
-    cxDBTreeSkladStructF_PARENT: TcxDBTreeListColumn;
-    cxDBTreeSkladStructF_ADDRES: TcxDBTreeListColumn;
-    cxDBTreeSkladStructF_FULL_ADDRES: TcxDBTreeListColumn;
-    cxDBTreeSkladStructF_DESCR: TcxDBTreeListColumn;
+    dsEditSkladF_SKLAD: TFIBBCDField;
+    dxDBTreeView1: TdxDBTreeView;
     procedure BtnEdPartnerButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);
