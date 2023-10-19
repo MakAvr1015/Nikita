@@ -281,7 +281,11 @@ end;
 procedure TFrmTemplateDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
+
+  if  not dsDocStringsF_SCANCODE.IsNull then
+    RefreshDs(DataSet,'F_SCANCODE',dsDocStringsF_SCANCODE.AsInteger)
+  else
+    RefreshDs(DataSet,'F_GOOD',dsDocStringsF_GOOD.AsInteger);
   cxGrid1.SetFocus;
 
 end;

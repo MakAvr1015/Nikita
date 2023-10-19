@@ -1,46 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TfrxReport Name="" Version="3.21" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" ReportOptions.CreateDate="40322.9335935417" ReportOptions.Description.Text="" ReportOptions.Name="�������� ������" ReportOptions.LastChange="40517.7833743403" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;procedure Button1OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  Report.Variables.Variables['str_date']:=Date_start.Date;&#13;&#10;  Report.Variables.Variables['end_date']:=Date_end.Date;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end." PropData="044C65667403180103546F70027008446174617365747301010C2C00000020446174615365743D224649425175657279312220446174615365744E616D653D224649425175657279312200010C2C00000020446174615365743D224649425175657279322220446174615365744E616D653D22464942517565727932220000095661726961626C657301010C0E000000204E616D653D222044657363722200010C14000000204E616D653D225446726D496E707574446F632200010C15000000204E616D653D225446726D4F7574707574446F632200010C11000000204E616D653D225446726D5A617061732200010C0F000000204E616D653D22204669656C64732200010C0E000000204E616D653D22444F435F49442200010C0F000000204E616D653D22465F534B4C41442200010C11000000204E616D653D22465F504152544E45522200010C10000000204E616D653D22465F4E554D4245522200010C0E000000204E616D653D22465F444154452200010C0F000000204E616D653D22465F53544154452200010C16000000204E616D653D22465F504152544E45525F4E414D452200010C14000000204E616D653D22465F53544154455F4E414D452200010C14000000204E616D653D22465F534B4C41445F4E414D452200010C0F000000204E616D653D22465F50524943452200010C14000000204E616D653D22465F50524943455F4E414D452200010C0C000000204E616D653D22465F49442200010C0E000000204E616D653D22465F4E414D452200010C10000000204E616D653D22465F504152454E542200010C13000000204E616D653D22465F474F4F445F4E414D452200010C0D000000204E616D653D22465F434E542200010C0D000000204E616D653D22465F53554D2200010C10000000204E616D653D22465F444F435F494E2200010C19000000204E616D653D22465F474F4F44222056616C75653D2234342200010C13000000204E616D653D22465F50524943455F56414C2200010C11000000204E616D653D22465F41525449434C452200010C1B000000204E616D653D22465F45445F495A4D5F53484F52545F4E414D452200010C12000000204E616D653D22465F5343414E434F44452200010C0F000000204E616D653D2220506172616D732200010C10000000204E616D653D225374725F646174652200010C10000000204E616D653D22456E645F64617465220000055374796C650100">
-  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" Height="111" Left="598" Top="382" Width="211">
-    <TfrxDateEditControl Name="Date_start" Left="4" Top="24" Width="89" Height="21" Color="-16777211" Date="40322.9366060532" Time="40322.9366060532"/>
-    <TfrxDateEditControl Name="Date_end" Left="108" Top="24" Width="85" Height="21" Color="-16777211" Date="40322.9367387963" Time="40322.9367387963"/>
-    <TfrxButtonControl Name="Button1" Left="4" Top="52" Width="91" Height="25" Caption="������������" ModalResult="1" OnClick="Button1OnClick"/>
-    <TfrxButtonControl Name="Button2" Left="108" Top="52" Width="83" Height="25" Cancel="True" Caption="������" ModalResult="2"/>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.0.7" DotMatrixReport="False" EngineOptions.PrintIfEmpty="False" IniFile="\Software\Fast Reports" PreviewOptions.AllowEdit="False" PreviewOptions.Buttons="4095" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PreviewOptions.ZoomMode="zmWholePage" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="40322,9335935417" ReportOptions.Description.Text="" ReportOptions.Name="Движение Товара" ReportOptions.LastChange="43426,3469144329" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;procedure Button1OnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  Report.Variables.Variables['str_date']:=Date_start.Date;&#13;&#10;  Report.Variables.Variables['end_date']:=Date_end.Date;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="FIBQuery1" DataSetName="FIBQuery1"/>
+    <item DataSet="FIBQuery2" DataSetName="FIBQuery2"/>
+  </Datasets>
+  <Variables>
+    <item Name=" Descr"/>
+    <item Name="TFrmInputDoc"/>
+    <item Name="TFrmOutputDoc"/>
+    <item Name="TFrmZapas"/>
+    <item Name=" Fields"/>
+    <item Name="DOC_ID"/>
+    <item Name="F_SKLAD"/>
+    <item Name="F_PARTNER"/>
+    <item Name="F_NUMBER"/>
+    <item Name="F_DATE"/>
+    <item Name="F_STATE"/>
+    <item Name="F_PARTNER_NAME"/>
+    <item Name="F_STATE_NAME"/>
+    <item Name="F_SKLAD_NAME"/>
+    <item Name="F_PRICE"/>
+    <item Name="F_PRICE_NAME"/>
+    <item Name="F_ID"/>
+    <item Name="F_NAME"/>
+    <item Name="F_PARENT"/>
+    <item Name="F_GOOD_NAME"/>
+    <item Name="F_CNT"/>
+    <item Name="F_SUM"/>
+    <item Name="F_DOC_IN"/>
+    <item Name="F_GOOD" Value="44"/>
+    <item Name="F_PRICE_VAL"/>
+    <item Name="F_ARTICLE"/>
+    <item Name="F_ED_IZM_SHORT_NAME"/>
+    <item Name="F_SCANCODE"/>
+    <item Name=" Params"/>
+    <item Name="Str_date"/>
+    <item Name="End_date"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000">
+    <TfrxFIBQuery Name="FIBQuery1" UserName="FIBQuery1" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="select * from sp_get_good_moove(:f_good,:start_date,:end_date)" PropData="05704C656674023C0470546F7002140A506172616D657465727301010642204E616D653D22665F676F6F64222044617461547970653D2266744C61726765696E74222045787072657373696F6E3D22262336303B465F474F4F44262336323B2200010644204E616D653D2273746172745F64617465222044617461547970653D22667444617465222045787072657373696F6E3D22262336303B5374725F64617465262336323B2200010642204E616D653D22656E645F64617465222044617461547970653D22667444617465222045787072657373696F6E3D22262336303B456E645F64617465262336323B220000"/>
+    <TfrxFIBQuery Name="FIBQuery2" UserName="FIBQuery2" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="select * from sp_t_nsi_goods_get(:f_good,null)" PropData="05704C656674027C0470546F7002140A506172616D657465727301010642204E616D653D22665F676F6F64222044617461547970653D2266744C61726765696E74222045787072657373696F6E3D22262336303B465F474F4F44262336323B220000"/>
+  </TfrxDataPage>
+  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" DoubleBuffered="False" Height="125" ClientHeight="87" Left="598" Top="382" Width="214" Scaled="True" ClientWidth="198">
+    <TfrxDateEditControl Name="Date_start" Left="4" Top="24" Width="89" Height="21" ShowHint="True" Color="-16777211" Date="40322,9366060532" Time="40322,9366060532" WeekNumbers="False"/>
+    <TfrxDateEditControl Name="Date_end" Left="108" Top="24" Width="85" Height="21" ShowHint="True" Color="-16777211" Date="40322,9367387963" Time="40322,9367387963" WeekNumbers="False"/>
+    <TfrxButtonControl Name="Button1" Left="4" Top="52" Width="91" Height="25" ShowHint="True" Caption="Сформировать" ModalResult="1" OnClick="Button1OnClick"/>
+    <TfrxButtonControl Name="Button2" Left="108" Top="52" Width="83" Height="25" ShowHint="True" Cancel="True" Caption="Отмена" ModalResult="2"/>
   </TfrxDialogPage>
-  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="20" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
-    <TfrxFIBQuery Name="FIBQuery1" UserName="FIBQuery1" CloseDataSource="True" FieldAliases.Text="" SQL.Text="select * from sp_get_good_moove(:f_good,:start_date,:end_date)" PropData="0A506172616D657465727301010C42000000204E616D653D22665F676F6F64222044617461547970653D2266744C61726765696E74222045787072657373696F6E3D22262336303B465F474F4F44262336323B2200010C44000000204E616D653D2273746172745F64617465222044617461547970653D22667444617465222045787072657373696F6E3D22262336303B5374725F64617465262336323B2200010C42000000204E616D653D22656E645F64617465222044617461547970653D22667444617465222045787072657373696F6E3D22262336303B456E645F64617465262336323B220000"/>
-    <TfrxReportTitle Name="ReportTitle1" Height="79.37013" Left="0" Top="18.89765" Width="680.3154">
-      <TfrxMemoView Name="Memo13" Left="3.77953" Top="0" Width="317.48052" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Движение товарной позиции за период с "/>
-      <TfrxMemoView Name="Memo14" Left="3.77953" Top="26.45671" Width="90.70872" Height="18.89765" Text="Артикул"/>
-      <TfrxMemoView Name="Memo15" Left="0" Top="45.35436" Width="94.48825" Height="18.89765" Text="Наименвание"/>
-      <TfrxMemoView Name="Memo16" Left="98.26778" Top="26.45671" Width="215.43321" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[FIBQuery2.&#34;F_ARTICLE&#34;]"/>
-      <TfrxMemoView Name="Memo17" Left="98.26778" Top="45.35436" Width="215.43321" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[FIBQuery2.&#34;F_NAME&#34;]"/>
-      <TfrxMemoView Name="Memo18" Left="325.03958" Top="0" Width="94.48825" Height="18.89765" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="dd.mm.yyyy" DisplayFormat.Kind="fkDateTime" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[Str_date]"/>
-      <TfrxMemoView Name="Memo19" Left="423.30736" Top="0" Width="22.67718" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="по"/>
-      <TfrxMemoView Name="Memo20" Left="449.76407" Top="0" Width="94.48825" Height="18.89765" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="dd.mm.yyyy" DisplayFormat.Kind="fkDateTime" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="[End_date]"/>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="20" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="79,37013" Left="0" Top="18,89765" Width="680,3154">
+      <TfrxMemoView Name="Memo13" Left="3,77953" Top="0" Width="317,48052" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Движение товарной позиции за период с "/>
+      <TfrxMemoView Name="Memo14" Left="3,77953" Top="26,45671" Width="90,70872" Height="18,89765" Frame.Typ="0" Text="Артикул"/>
+      <TfrxMemoView Name="Memo15" Left="0" Top="45,35436" Width="94,48825" Height="18,89765" Frame.Typ="0" Text="Наименвание"/>
+      <TfrxMemoView Name="Memo16" Left="98,26778" Top="26,45671" Width="215,43321" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[FIBQuery2.&#34;F_ARTICLE&#34;]"/>
+      <TfrxMemoView Name="Memo17" Left="98,26778" Top="45,35436" Width="215,43321" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[FIBQuery2.&#34;F_NAME&#34;]"/>
+      <TfrxMemoView Name="Memo18" Left="325,03958" Top="0" Width="94,48825" Height="18,89765" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="dd.mm.yyyy" DisplayFormat.Kind="fkDateTime" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[Str_date]"/>
+      <TfrxMemoView Name="Memo19" Left="423,30736" Top="0" Width="22,67718" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" Frame.Typ="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="по"/>
+      <TfrxMemoView Name="Memo20" Left="449,76407" Top="0" Width="94,48825" Height="18,89765" DisplayFormat.DecimalSeparator="," DisplayFormat.FormatStr="dd.mm.yyyy" DisplayFormat.Kind="fkDateTime" Font.Charset="1" Font.Color="0" Font.Height="-15" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="[End_date]"/>
     </TfrxReportTitle>
-    <TfrxMasterData Name="MasterData1" Height="18.89765" Left="0" Top="204.09462" Width="680.3154" ColumnWidth="0" ColumnGap="0" DataSet="FIBQuery1" DataSetName="FIBQuery1" RowCount="0">
-      <TfrxMemoView Name="Memo1" Left="3.77953" Top="0" Width="79.37013" Height="18.89765" DataField="F_DOC_ID" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_DOC_ID&#34;]"/>
-      <TfrxMemoView Name="Memo2" Left="83.14966" Top="0" Width="79.37013" Height="18.89765" DataField="F_DOC_DATE" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_DOC_DATE&#34;]"/>
-      <TfrxMemoView Name="Memo3" Left="162.51979" Top="0" Width="75.5906" Height="18.89765" DataField="F_DOC_NUM" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_DOC_NUM&#34;]"/>
-      <TfrxMemoView Name="Memo4" Left="238.11039" Top="0" Width="257.00804" Height="18.89765" DataField="F_PARTNER" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_PARTNER&#34;]"/>
-      <TfrxMemoView Name="Memo5" Left="495.11843" Top="0" Width="79.37013" Height="18.89765" DataField="F_IN_CNT" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_IN_CNT&#34;]"/>
-      <TfrxMemoView Name="Memo6" Left="574.48856" Top="0" Width="79.37013" Height="18.89765" DataField="F_OUT_CNT" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_OUT_CNT&#34;]"/>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="18,89765" Left="0" Top="204,09462" Width="680,3154" ColumnWidth="0" ColumnGap="0" DataSet="FIBQuery1" DataSetName="FIBQuery1" RowCount="0">
+      <TfrxMemoView Name="Memo1" Left="3,77953" Top="0" Width="79,37013" Height="18,89765" DataField="F_DOC_ID" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_DOC_ID&#34;]"/>
+      <TfrxMemoView Name="Memo2" Left="83,14966" Top="0" Width="79,37013" Height="18,89765" DataField="F_DOC_DATE" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_DOC_DATE&#34;]"/>
+      <TfrxMemoView Name="Memo3" Left="162,51979" Top="0" Width="75,5906" Height="18,89765" DataField="F_DOC_NUM" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_DOC_NUM&#34;]"/>
+      <TfrxMemoView Name="Memo4" Left="238,11039" Top="0" Width="257,00804" Height="18,89765" DataField="F_PARTNER" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_PARTNER&#34;]"/>
+      <TfrxMemoView Name="Memo5" Left="495,11843" Top="0" Width="79,37013" Height="18,89765" DataField="F_IN_CNT" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_IN_CNT&#34;]"/>
+      <TfrxMemoView Name="Memo6" Left="574,48856" Top="0" Width="79,37013" Height="18,89765" DataField="F_OUT_CNT" DataSet="FIBQuery1" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_OUT_CNT&#34;]"/>
     </TfrxMasterData>
-    <TfrxHeader Name="Header1" Height="22.67718" Left="0" Top="158.74026" Width="680.3154">
-      <TfrxMemoView Name="Memo7" Left="3.77953" Top="3.77952999999999" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="ID"/>
-      <TfrxMemoView Name="Memo8" Left="83.14966" Top="3.77952999999999" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Дата"/>
-      <TfrxMemoView Name="Memo9" Left="162.51979" Top="3.77953" Width="75.5906" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Номер"/>
-      <TfrxMemoView Name="Memo10" Left="238.11039" Top="3.77953" Width="257.00804" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Партнер"/>
-      <TfrxMemoView Name="Memo11" Left="495.11843" Top="3.77952999999999" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Приход"/>
-      <TfrxMemoView Name="Memo12" Left="574.48856" Top="3.77952999999999" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Расход"/>
+    <TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="158,74026" Width="680,3154">
+      <TfrxMemoView Name="Memo7" Left="3,77953" Top="3,77952999999999" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="ID"/>
+      <TfrxMemoView Name="Memo8" Left="83,14966" Top="3,77952999999999" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Дата"/>
+      <TfrxMemoView Name="Memo9" Left="162,51979" Top="3,77953" Width="75,5906" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Номер"/>
+      <TfrxMemoView Name="Memo10" Left="238,11039" Top="3,77953" Width="257,00804" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Партнер"/>
+      <TfrxMemoView Name="Memo11" Left="495,11843" Top="3,77952999999999" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Приход"/>
+      <TfrxMemoView Name="Memo12" Left="574,48856" Top="3,77952999999999" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Расход"/>
     </TfrxHeader>
-    <TfrxFIBQuery Name="FIBQuery2" UserName="FIBQuery2" CloseDataSource="True" FieldAliases.Text="" SQL.Text="select * from sp_t_nsi_goods_get(:f_good,null)" PropData="0A506172616D657465727301010C42000000204E616D653D22665F676F6F64222044617461547970653D2266744C61726765696E74222045787072657373696F6E3D22262336303B465F474F4F44262336323B220000"/>
-    <TfrxFooter Name="Footer1" Height="56.69295" Left="0" Top="245.66945" Width="680.3154">
-      <TfrxMemoView Name="Memo24" Left="400.63018" Top="30.23624" Width="173.85838" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" ParentFont="False" Text="Исходящий остаток"/>
-      <TfrxMemoView Name="Memo25" Left="574.48856" Top="30.23624" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="[SUM(&#60;FIBQuery1.&#34;F_IN_CNT&#34;&#62;,MasterData1)-SUM(&#60;FIBQuery1.&#34;F_OUT_CNT&#34;&#62;,MasterData1)]"/>
-      <TfrxMemoView Name="Memo21" Left="400.63018" Top="7.55905999999999" Width="94.48825" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="Итого"/>
-      <TfrxMemoView Name="Memo22" Left="495.11843" Top="7.55905999999999" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="[SUM(&#60;FIBQuery1.&#34;F_IN_CNT&#34;&#62;,MasterData1)]"/>
-      <TfrxMemoView Name="Memo23" Left="574.48856" Top="7.55905999999999" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="[SUM(&#60;FIBQuery1.&#34;F_OUT_CNT&#34;&#62;,MasterData1)]"/>
+    <TfrxFooter Name="Footer1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="56,69295" Left="0" Top="245,66945" Width="680,3154">
+      <TfrxMemoView Name="Memo24" Left="400,63018" Top="30,23624" Width="173,85838" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="0" ParentFont="False" Text="Исходящий остаток"/>
+      <TfrxMemoView Name="Memo25" Left="574,48856" Top="30,23624" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="[SUM(&#60;FIBQuery1.&#34;F_IN_CNT&#34;&#62;,MasterData1)-SUM(&#60;FIBQuery1.&#34;F_OUT_CNT&#34;&#62;,MasterData1)]"/>
+      <TfrxMemoView Name="Memo21" Left="400,63018" Top="7,55905999999999" Width="94,48825" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="Итого"/>
+      <TfrxMemoView Name="Memo22" Left="495,11843" Top="7,55905999999999" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="[SUM(&#60;FIBQuery1.&#34;F_IN_CNT&#34;&#62;,MasterData1)]"/>
+      <TfrxMemoView Name="Memo23" Left="574,48856" Top="7,55905999999999" Width="79,37013" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-13" Font.Name="Arial" Font.Style="1" Frame.Typ="15" ParentFont="False" Text="[SUM(&#60;FIBQuery1.&#34;F_OUT_CNT&#34;&#62;,MasterData1)]"/>
     </TfrxFooter>
   </TfrxReportPage>
 </TfrxReport>
