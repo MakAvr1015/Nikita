@@ -401,8 +401,8 @@ end;
 
 procedure TFrmOutputDoc.FormCreate(Sender: TObject);
 begin
-  inherited;
   AddInfoColumns(cxGrid1DBTableView1);
+  inherited;
 end;
 
 procedure TFrmOutputDoc.InsPosition;

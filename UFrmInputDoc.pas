@@ -378,7 +378,7 @@ end;
 
 procedure TFrmInputDoc.dsDocStringsCalcFields(DataSet: TDataSet);
 begin
-  CalcFieldsDopInfo(DataSet);
+  CalcFieldsDopInfo(DataSet,'f_NSI_GOOD_INFO');
 end;
 
 procedure TFrmInputDoc.FormCreate(Sender: TObject);

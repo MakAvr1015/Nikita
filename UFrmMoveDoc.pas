@@ -370,8 +370,9 @@ end;
 
 procedure TFrmMoveDoc.FormCreate(Sender: TObject);
 begin
-  inherited;
   AddInfoColumns(cxGrid1DBTableView1);
+  inherited;
+
 end;
 
 function TFrmMoveDoc.GetDocId: integer;
