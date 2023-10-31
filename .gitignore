@@ -67,3 +67,8 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+*.dcu
+Nikita.exe
+Nikita.dproj.local
+Nikita.drc
+ModelSupport_Nikita/default.txaPackage
