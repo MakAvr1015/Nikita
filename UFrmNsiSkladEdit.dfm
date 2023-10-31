@@ -11,7 +11,7 @@ inherited FrmNsiSkladEdit: TFrmNsiSkladEdit
     Top = 464
     Width = 721
     ExplicitTop = 464
-    ExplicitWidth = 853
+    ExplicitWidth = 721
   end
   inherited Panel3: TPanel
     Width = 721
@@ -178,25 +178,77 @@ inherited FrmNsiSkladEdit: TFrmNsiSkladEdit
       DataField = 'F_PREFIX'
       TabOrder = 2
     end
-    object dxDBTreeView1: TdxDBTreeView
+    object cxDBTreeList1: TcxDBTreeList
       Left = 407
-      Top = 57
+      Top = 55
       Width = 306
-      Height = 401
-      ShowNodeHint = True
-      DataSource = srSkladStruct
-      DisplayField = 'F_ADDRES;F_DESCR'
-      KeyField = 'F_ID'
-      ListField = 'F_DESCR'
-      ParentField = 'F_PARENT'
-      RootValue = Null
-      SeparatedSt = ' - '
-      RaiseOnError = True
-      Indent = 19
-      ParentColor = False
-      Options = [trDBCanDelete, trDBConfirmDelete, trCanDBNavigate, trSmartRecordCopy, trCheckHasChildren]
-      SelectedIndex = -1
+      Height = 403
+      Bands = <
+        item
+        end>
+      DataController.DataSource = srSkladStruct
+      DataController.ParentField = 'F_PARENT'
+      DataController.KeyField = 'F_ID'
+      Navigator.Buttons.CustomButtons = <>
+      Navigator.Visible = True
+      OptionsData.Inserting = True
+      OptionsView.CellAutoHeight = True
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.DropNodeIndicator = True
+      RootValue = -1
       TabOrder = 8
+      object cxDBTreeList1F_ID: TcxDBTreeListColumn
+        Visible = False
+        DataBinding.FieldName = 'F_ID'
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object cxDBTreeList1F_SKLAD: TcxDBTreeListColumn
+        Visible = False
+        DataBinding.FieldName = 'F_SKLAD'
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object cxDBTreeList1F_PARENT: TcxDBTreeListColumn
+        Visible = False
+        DataBinding.FieldName = 'F_PARENT'
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object cxDBTreeList1F_ADDRES: TcxDBTreeListColumn
+        DataBinding.FieldName = 'F_ADDRES'
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object cxDBTreeList1F_FULL_ADDRES: TcxDBTreeListColumn
+        DataBinding.FieldName = 'F_FULL_ADDRES'
+        Options.Editing = False
+        Position.ColIndex = 4
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object cxDBTreeList1F_DESCR: TcxDBTreeListColumn
+        DataBinding.FieldName = 'F_DESCR'
+        Position.ColIndex = 5
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
     end
   end
   inherited frxReport2: TfrxReport
@@ -206,7 +258,7 @@ inherited FrmNsiSkladEdit: TFrmNsiSkladEdit
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2325,28 +2377,23 @@ inherited FrmNsiSkladEdit: TFrmNsiSkladEdit
       '    T_struct.F_ID,'
       '    T_struct.F_SKLAD,'
       '    T_struct.F_PARENT,'
-      '    T_struct.F_ADDRES,'
-      '    T_struct.F_FULL_ADDRES,'
+      '    T_struct.F_ADDRESS F_ADDRES,'
+      '    T_struct.F_FULL_ADDRESS F_FULL_ADDRES,'
       '    T_struct.F_DESCR'
       'FROM'
-      '    T_NSI_SKLAD_STRUCT T_struct'
-      'where( '
-      '    T_struct.F_SKLAD = :F_SKLAD'
-      '     ) and (     T_STRUCT.F_ID = :OLD_F_ID'
-      '     )'
-      '    ')
+      '    PAK_NSI_SKLAD.get_struct(:F_SKLAD) T_struct'
+      'where'
+      '    T_struct.F_ID = :OLD_F_ID')
     SelectSQL.Strings = (
       'SELECT'
       '    T_struct.F_ID,'
       '    T_struct.F_SKLAD,'
       '    T_struct.F_PARENT,'
-      '    T_struct.F_ADDRES,'
-      '    T_struct.F_FULL_ADDRES,'
+      '    T_struct.F_ADDRESS F_ADDRES,'
+      '    T_struct.F_FULL_ADDRESS F_FULL_ADDRES,'
       '    T_struct.F_DESCR'
       'FROM'
-      '    T_NSI_SKLAD_STRUCT T_struct'
-      'where'
-      '    T_struct.F_SKLAD = :F_SKLAD')
+      '    PAK_NSI_SKLAD.get_struct(:F_SKLAD) T_struct')
     AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
       'F_SKLAD=F_SKLAD')
     Transaction = dm.pFIBTransaction

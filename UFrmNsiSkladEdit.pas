@@ -71,7 +71,13 @@ type
     dsSkladStructF_FULL_ADDRES: TFIBStringField;
     dsSkladStructF_DESCR: TFIBStringField;
     dsEditSkladF_SKLAD: TFIBBCDField;
-    dxDBTreeView1: TdxDBTreeView;
+    cxDBTreeList1: TcxDBTreeList;
+    cxDBTreeList1F_ID: TcxDBTreeListColumn;
+    cxDBTreeList1F_SKLAD: TcxDBTreeListColumn;
+    cxDBTreeList1F_PARENT: TcxDBTreeListColumn;
+    cxDBTreeList1F_ADDRES: TcxDBTreeListColumn;
+    cxDBTreeList1F_FULL_ADDRES: TcxDBTreeListColumn;
+    cxDBTreeList1F_DESCR: TcxDBTreeListColumn;
     procedure BtnEdPartnerButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);
