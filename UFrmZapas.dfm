@@ -105,8 +105,6 @@ inherited FrmZapas: TFrmZapas
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
-      ExplicitTop = 26
-      ExplicitHeight = 614
       object Splitter2: TSplitter
         Left = 1
         Top = 422
@@ -350,7 +348,7 @@ inherited FrmZapas: TFrmZapas
         Align = alBottom
         TabOrder = 2
         ExplicitLeft = 1
-        ExplicitTop = 427
+        ExplicitTop = 425
         ExplicitWidth = 802
         ExplicitHeight = 186
         inherited Panel4: TPanel
@@ -616,7 +614,7 @@ inherited FrmZapas: TFrmZapas
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2726,7 +2724,6 @@ inherited FrmZapas: TFrmZapas
         'E,:P_PRICE,:P_SCANCODE) order by f_good')
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
-    DataSource = srLIstSklad
     Left = 912
     Top = 176
     WaitEndMasterScroll = True

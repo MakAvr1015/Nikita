@@ -1,44 +1,152 @@
 object FramGoodCard: TFramGoodCard
   Left = 0
   Top = 0
-  Width = 448
-  Height = 291
+  Width = 451
+  Height = 283
   Align = alBottom
   TabOrder = 0
   object Panel4: TPanel
-    Left = 201
+    Left = 153
     Top = 0
-    Width = 247
-    Height = 291
+    Width = 298
+    Height = 283
     Align = alClient
     Color = clGradientActiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 250
-    ExplicitHeight = 262
-    object cxDBLabel1: TcxDBLabel
+    object Panel1: TPanel
+      Left = 149
+      Top = 81
+      Width = 148
+      Height = 201
+      Align = alRight
+      Caption = 'Panel1'
+      TabOrder = 0
+      ExplicitTop = 73
+      ExplicitHeight = 209
+      object cxGrid2: TcxGrid
+        Left = 1
+        Top = 1
+        Width = 146
+        Height = 199
+        Align = alClient
+        TabOrder = 0
+        ExplicitHeight = 207
+        object cxGrid2DBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = srGoodOst
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '### ### ###'
+              Kind = skSum
+              Column = cxGrid2DBTableView1Column2
+            end>
+          DataController.Summary.SummaryGroups = <>
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.CellSelect = False
+          OptionsView.CellAutoHeight = True
+          OptionsView.Footer = True
+          OptionsView.GroupByBox = False
+          OptionsView.Header = False
+          object cxGrid2DBTableView1Column1: TcxGridDBColumn
+            Caption = #1057#1082#1083#1072#1076
+            DataBinding.FieldName = 'F_NAME'
+            Width = 80
+          end
+          object cxGrid2DBTableView1Column2: TcxGridDBColumn
+            Caption = #1054#1089#1090#1072#1090#1086#1082
+            DataBinding.FieldName = 'F_END_OST'
+            Width = 60
+          end
+        end
+        object cxGrid2Level1: TcxGridLevel
+          GridView = cxGrid2DBTableView1
+        end
+      end
+    end
+    object Panel2: TPanel
       Left = 1
-      Top = 57
-      Align = alTop
-      DataBinding.DataField = 'F_NAME'
-      DataBinding.DataSource = srGetGoodsInfo
-      Properties.WordWrap = True
-      Style.BorderStyle = ebsFlat
-      ExplicitWidth = 248
-      Height = 41
-      Width = 245
+      Top = 81
+      Width = 148
+      Height = 201
+      Align = alClient
+      Caption = 'Panel2'
+      TabOrder = 1
+      ExplicitTop = 73
+      ExplicitHeight = 209
+      object cxDBLabel1: TcxDBLabel
+        Left = 1
+        Top = 1
+        Align = alTop
+        DataBinding.DataField = 'F_NAME'
+        DataBinding.DataSource = srGetGoodsInfo
+        Properties.WordWrap = True
+        Style.BorderStyle = ebsFlat
+        Height = 41
+        Width = 146
+      end
+      object cxGrid1: TcxGrid
+        Left = 1
+        Top = 42
+        Width = 146
+        Height = 158
+        Align = alClient
+        TabOrder = 1
+        LookAndFeel.SkinName = 'MoneyTwins'
+        ExplicitHeight = 166
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          Navigator.Buttons.Insert.Visible = False
+          Navigator.Buttons.Append.Visible = False
+          Navigator.Buttons.Delete.Visible = False
+          Navigator.Buttons.Edit.Visible = False
+          Navigator.Visible = True
+          DataController.DataSource = srGoodsDopInfo
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.CellAutoHeight = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          object cxGrid1DBTableView1F_ID: TcxGridDBColumn
+            DataBinding.FieldName = 'F_ID'
+            Visible = False
+          end
+          object cxGrid1DBTableView1F_GOOD: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD'
+            Visible = False
+          end
+          object cxGrid1DBTableView1F_GOOD_INFO: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_INFO'
+            Visible = False
+          end
+          object cxGrid1DBTableView1F_GOOD_INFO_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_INFO_NAME'
+            PropertiesClassName = 'TcxLabelProperties'
+          end
+          object cxGrid1DBTableView1F_GOOD_INFO_VAL: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_INFO_VAL'
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
+        end
+      end
     end
     object cxDBLabel2: TcxDBLabel
       Left = 1
-      Top = 98
+      Top = 41
       Align = alTop
       DataBinding.DataField = 'F_DOP_INFO'
       DataBinding.DataSource = srGetGoodsInfo
       Properties.WordWrap = True
       Style.BorderStyle = ebsFlat
-      ExplicitWidth = 248
-      Height = 54
-      Width = 245
+      ExplicitTop = 33
+      Height = 40
+      Width = 296
     end
     object cxDBLabel3: TcxDBLabel
       Left = 1
@@ -59,58 +167,9 @@ object FramGoodCard: TFramGoodCard
       StyleDisabled.LookAndFeel.SkinName = ''
       StyleFocused.LookAndFeel.SkinName = ''
       StyleHot.LookAndFeel.SkinName = ''
-      ExplicitWidth = 248
-      Height = 56
-      Width = 245
-      AnchorX = 124
-    end
-    object cxGrid1: TcxGrid
-      Left = 1
-      Top = 152
-      Width = 245
-      Height = 138
-      Align = alClient
-      TabOrder = 3
-      LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitWidth = 248
-      ExplicitHeight = 109
-      object cxGrid1DBTableView1: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        Navigator.Buttons.Insert.Visible = False
-        Navigator.Buttons.Append.Visible = False
-        Navigator.Buttons.Delete.Visible = False
-        Navigator.Buttons.Edit.Visible = False
-        Navigator.Visible = True
-        DataController.DataSource = srGoodsDopInfo
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-        OptionsView.CellAutoHeight = True
-        OptionsView.ColumnAutoWidth = True
-        OptionsView.GroupByBox = False
-        object cxGrid1DBTableView1F_ID: TcxGridDBColumn
-          DataBinding.FieldName = 'F_ID'
-          Visible = False
-        end
-        object cxGrid1DBTableView1F_GOOD: TcxGridDBColumn
-          DataBinding.FieldName = 'F_GOOD'
-          Visible = False
-        end
-        object cxGrid1DBTableView1F_GOOD_INFO: TcxGridDBColumn
-          DataBinding.FieldName = 'F_GOOD_INFO'
-          Visible = False
-        end
-        object cxGrid1DBTableView1F_GOOD_INFO_NAME: TcxGridDBColumn
-          DataBinding.FieldName = 'F_GOOD_INFO_NAME'
-          PropertiesClassName = 'TcxLabelProperties'
-        end
-        object cxGrid1DBTableView1F_GOOD_INFO_VAL: TcxGridDBColumn
-          DataBinding.FieldName = 'F_GOOD_INFO_VAL'
-        end
-      end
-      object cxGrid1Level1: TcxGridLevel
-        GridView = cxGrid1DBTableView1
-      end
+      Height = 40
+      Width = 296
+      AnchorX = 149
     end
   end
   object cxDBImage1: TcxDBImage
@@ -122,9 +181,8 @@ object FramGoodCard: TFramGoodCard
     Properties.FitMode = ifmProportionalStretch
     Properties.GraphicClassName = 'TdxPNGImage'
     TabOrder = 1
-    ExplicitHeight = 262
-    Height = 291
-    Width = 201
+    Height = 283
+    Width = 153
   end
   object dsGetGoodsInfo: TpFIBDataSet
     SelectSQL.Strings = (
@@ -141,8 +199,8 @@ object FramGoodCard: TFramGoodCard
       '  '
       'from sp_t_nsi_goods_get(:f_good,null)'
       '')
-    Transaction = DM.pFIBTransaction
-    Database = DM.pFIBDatabase
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
     Left = 64
@@ -202,8 +260,8 @@ object FramGoodCard: TFramGoodCard
       'select * from SP_T_NSI_GOODS_DOP_INFO_S(:f_id)')
     AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
       'F_GOOD=F_ID')
-    Transaction = DM.pFIBTransaction
-    Database = DM.pFIBDatabase
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
     AutoCommit = True
     DataSource = srGetGoodsInfo
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -248,5 +306,25 @@ object FramGoodCard: TFramGoodCard
     DataSet = dsGoodsDopInfo
     Left = 128
     Top = 168
+  end
+  object dsGoodOst: TpFIBDataSet
+    SelectSQL.Strings = (
+      'select S.F_NAME, cast(O.F_END_OST as integer) F_END_OST'
+      'from t_ost o'
+      'inner join t_nsi_sklad s on o.f_sklad = s.f_id'
+      'where o.f_good = :F_ID')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    DataSource = srGetGoodsInfo
+    Left = 377
+    Top = 152
+    WaitEndMasterScroll = True
+    dcForceMasterRefresh = True
+    dcForceOpen = True
+  end
+  object srGoodOst: TDataSource
+    DataSet = dsGoodOst
+    Left = 401
+    Top = 144
   end
 end

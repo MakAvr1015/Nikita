@@ -64,7 +64,6 @@ type
     Splitter2: TSplitter;
     RzSelectFolderDialog: TRzSelectFolderDialog;
     spImportPictures: TpFIBStoredProc;
-    cxGrid1DBTableView1F_PICTURE: TcxGridDBColumn;
     FramGoodCard1: TFramGoodCard;
     cxGrid1DBTableView1F_COLOR: TcxGridDBColumn;
     dsGetGoodByScanF_GOOD: TFIBBCDField;
@@ -97,7 +96,6 @@ type
     N3: TMenuItem;
     N4: TMenuItem;
     cxGrid1DBTableView1F_CRE_DATE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_GOOD_TYPE: TcxGridDBColumn;
     Image1: TImage;
     dsGoodScancodes: TpFIBDataSet;
     dsGoodScancodesF_ID: TFIBBCDField;
@@ -114,6 +112,8 @@ type
     cxGrid2DBTableView1F_CNT: TcxGridDBColumn;
     cxGrid2DBTableView1F_DOP_INFO_VAL: TcxGridDBColumn;
     cxGrid2DBTableView1F_GOOD: TcxGridDBColumn;
+    cxGrid1DBTableView1F_MMEDIA_EXISTS: TcxGridDBColumn;
+    cxGrid1DBTableView1F_GOOD_INFO_VAL1: TcxGridDBColumn;
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
@@ -132,7 +132,6 @@ type
       var ADone: Boolean);
     procedure FramNsiGoodsGrp1cxDBTreeListSelectionChanged(Sender: TObject);
     procedure RzEditFindChange(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure ShowAllGoodsClick(Sender: TObject);
@@ -379,12 +378,6 @@ begin
   end;
 end;
 
-procedure TFrmNsiGoods.FormActivate(Sender: TObject);
-begin
-  inherited;
-  // dm.TimerRefreshNsiGood.Enabled:=false;
-end;
-
 procedure TFrmNsiGoods.FormCreate(Sender: TObject);
 var
     tf  : TStringField;
@@ -411,11 +404,8 @@ begin
       Caption:=dm.dsNsiGoodsDopInfo.FieldByName('f_name').AsString;
     end;
     dm.dsNsiGoodsDopInfo.Next;
-  inherited;
-
   end;
-
-
+  inherited;
 end;
 
 procedure TFrmNsiGoods.FormDestroy(Sender: TObject);

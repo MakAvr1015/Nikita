@@ -86,25 +86,57 @@ object FramBufer: TFramBufer
     ExplicitWidth = 501
     ExplicitHeight = 213
     inherited Panel4: TPanel
-      Width = 300
+      Width = 348
       Height = 213
-      ExplicitWidth = 300
+      ExplicitWidth = 348
       ExplicitHeight = 213
-      inherited cxDBLabel1: TcxDBLabel
-        Top = 106
-        ExplicitTop = 106
-        ExplicitWidth = 298
+      inherited Panel1: TPanel
+        Left = 199
+        Top = 73
+        Height = 139
+        ExplicitLeft = 199
+        ExplicitTop = 175
         ExplicitHeight = 37
-        Height = 37
-        Width = 298
+        inherited cxGrid2: TcxGrid
+          Height = 137
+          ExplicitHeight = 35
+          inherited cxGrid2DBTableView1: TcxGridDBTableView
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+                Column = FramGoodCard1.cxGrid2DBTableView1Column2
+              end>
+          end
+        end
+      end
+      inherited Panel2: TPanel
+        Top = 73
+        Width = 198
+        Height = 139
+        ExplicitTop = 175
+        ExplicitWidth = 198
+        ExplicitHeight = 37
+        inherited cxDBLabel1: TcxDBLabel
+          ExplicitWidth = 196
+          ExplicitHeight = 37
+          Height = 37
+          Width = 196
+        end
+        inherited cxGrid1: TcxGrid
+          Top = 38
+          Width = 196
+          Height = 100
+          ExplicitTop = 38
+          ExplicitWidth = 196
+          ExplicitHeight = 0
+        end
       end
       inherited cxDBLabel2: TcxDBLabel
-        Top = 143
-        ExplicitTop = 143
-        ExplicitWidth = 298
-        ExplicitHeight = 69
-        Height = 69
-        Width = 298
+        ExplicitTop = 41
+        ExplicitWidth = 346
+        ExplicitHeight = 32
+        Height = 32
+        Width = 346
       end
       inherited cxDBLabel3: TcxDBLabel
         Properties.WordWrap = True
@@ -113,19 +145,9 @@ object FramBufer: TFramBufer
         StyleDisabled.LookAndFeel.SkinName = ''
         StyleFocused.LookAndFeel.SkinName = ''
         StyleHot.LookAndFeel.SkinName = ''
-        ExplicitWidth = 298
-        ExplicitHeight = 105
-        Height = 105
-        Width = 298
-        AnchorX = 150
-      end
-      inherited cxGrid1: TcxGrid
-        Top = 212
-        Width = 298
-        Height = 0
-        ExplicitTop = 212
-        ExplicitWidth = 298
-        ExplicitHeight = 0
+        ExplicitWidth = 346
+        Width = 346
+        AnchorX = 174
       end
     end
     inherited cxDBImage1: TcxDBImage
