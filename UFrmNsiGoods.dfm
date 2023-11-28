@@ -2,7 +2,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1090#1086#1074#1072#1088#1086#1074
   ClientHeight = 622
   ClientWidth = 1039
-  ExplicitTop = -90
+  ExplicitLeft = -159
   ExplicitWidth = 1055
   ExplicitHeight = 661
   PixelsPerInch = 96
@@ -180,7 +180,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
       inherited BtnNew: TRzToolButton
         Top = 0
         OnClick = BtnNewClick
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -474,40 +473,45 @@ inherited FrmNsiGoods: TFrmNsiGoods
         Left = 207
         Width = 597
         Height = 254
-        ExplicitLeft = 361
-        ExplicitWidth = 443
+        ExplicitLeft = 207
+        ExplicitWidth = 597
         ExplicitHeight = 254
         inherited Panel1: TPanel
           Left = 448
           Height = 172
-          ExplicitLeft = 294
-          ExplicitTop = 81
+          ExplicitLeft = 448
           ExplicitHeight = 172
           inherited cxGrid2: TcxGrid
             Height = 170
             ExplicitHeight = 170
+            inherited cxGrid2DBTableView1: TcxGridDBTableView
+              DataController.Summary.FooterSummaryItems = <
+                item
+                  Format = '### ### ###'
+                  Kind = skSum
+                  Column = FramGoodCard1.cxGrid2DBTableView1Column2
+                end>
+            end
           end
         end
         inherited Panel2: TPanel
           Width = 447
           Height = 172
-          ExplicitTop = 81
-          ExplicitWidth = 293
+          ExplicitWidth = 447
           ExplicitHeight = 172
           inherited cxDBLabel1: TcxDBLabel
-            ExplicitWidth = 291
+            ExplicitWidth = 445
             Width = 445
           end
           inherited cxGrid1: TcxGrid
             Width = 445
             Height = 129
-            ExplicitWidth = 291
+            ExplicitWidth = 445
             ExplicitHeight = 129
           end
         end
         inherited cxDBLabel2: TcxDBLabel
-          ExplicitTop = 41
-          ExplicitWidth = 441
+          ExplicitWidth = 595
           Width = 595
         end
         inherited cxDBLabel3: TcxDBLabel
@@ -516,7 +520,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
           StyleDisabled.LookAndFeel.SkinName = ''
           StyleFocused.LookAndFeel.SkinName = ''
           StyleHot.LookAndFeel.SkinName = ''
-          ExplicitWidth = 441
+          ExplicitWidth = 595
           Width = 595
           AnchorX = 299
         end
@@ -651,7 +655,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2782,7 +2786,9 @@ inherited FrmNsiGoods: TFrmNsiGoods
     SelectSQL.Strings = (
       
         'select f_id,f_cnt,f_value,f_dop_info_val,cast(:f_good as integer' +
-        ') as f_good from pak_nsi_good.scancode_sel(:F_GOOD)')
+        ') as f_good,'
+      'F_OST'
+      'from pak_nsi_good.scancode_sel(:F_GOOD)')
     OnCalcFields = dsGoodScancodesCalcFields
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
@@ -2811,6 +2817,11 @@ inherited FrmNsiGoods: TFrmNsiGoods
     end
     object dsGoodScancodesF_GOOD: TFIBIntegerField
       FieldName = 'F_GOOD'
+    end
+    object dsGoodScancodesF_OST: TFIBStringField
+      FieldName = 'F_OST'
+      Size = 1000
+      EmptyStrToNull = True
     end
   end
   object srGoodScancodes: TDataSource

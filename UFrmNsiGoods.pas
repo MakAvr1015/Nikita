@@ -114,6 +114,7 @@ type
     cxGrid2DBTableView1F_GOOD: TcxGridDBColumn;
     cxGrid1DBTableView1F_MMEDIA_EXISTS: TcxGridDBColumn;
     cxGrid1DBTableView1F_GOOD_INFO_VAL1: TcxGridDBColumn;
+    dsGoodScancodesF_OST: TFIBStringField;
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
@@ -337,7 +338,17 @@ var
   i,j   : integer;
   v_val : TStringList;
   tf: tfield;
+  v_ost : string;
 begin
+  v_val := TStringList.Create;
+  v_val.Text:= DataSet.FieldByName('f_ost').AsString;
+  for I := 0 to v_val.Count - 1 do
+  begin
+    DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+  end;
+  v_val.Free;
+
+
   v_val := TStringList.Create;
   v_val.Text:= DataSet.FieldByName('F_DOP_INFO_VAL').AsString;
   for I := 0 to v_val.Count - 1 do
@@ -405,6 +416,27 @@ begin
     end;
     dm.dsNsiGoodsDopInfo.Next;
   end;
+
+
+  dm.dsSklad.First;
+
+  while not dm.dsSklad.Eof do
+  begin
+    tf:=TStringField.Create(dsGoodScancodes);
+    tf.Calculated:=true;
+    tf.Index:=dsGoodScancodes.FieldCount;
+    tf.FieldName:='Sklad_'+dm.dsSklad.FieldByName('f_id').AsString;
+    tf.tag:=dm.dsSklad.FieldByName('f_id').AsInteger;
+    tf.DataSet:=dsGoodScancodes;
+    with cxGrid2DBTableView1.CreateColumn do
+    begin
+      DataBinding.FieldName:=tf.FieldName;
+//      Summary.FooterKind:=skSum;
+      Caption:=dm.dsSklad.FieldByName('f_name').AsString;
+    end;
+    dm.dsSklad.Next;
+  end;
+
   inherited;
 end;
 
