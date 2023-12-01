@@ -162,7 +162,9 @@ var
   FindedFile: TSearchRec;
   varName: string;
   MnItem: TMenuItem;
-  i: integer;
+  GrItem : TMenuItem;
+  strArray : TArray<String>;
+  i,j: integer;
 begin
   PrList := TstringList.Create;
   if FindFirst(Prg_path + '\*.fr3', faAnyFile, FindedFile) = 0 then
@@ -173,10 +175,37 @@ begin
       begin
         i := PrList.Add(Prg_path + '\' + FindedFile.Name);
         MnItem := TMenuItem.Create(PrnMenu);
-        MnItem.Caption := frxReport2.ReportOptions.Name;
+        varName := frxReport2.ReportOptions.Name;
+        strArray := varName.split(['|'],2);
+        if length(strArray)>1 then
+          varName := strArray[1];
+        MnItem.Caption := varName;//frxReport2.ReportOptions.Name;
         MnItem.Tag := i + 1;
         MnItem.OnClick := ActPrnForm;
-        PrnMenu.Items.Add(MnItem);
+
+        if length(strArray)>1 then
+        begin
+          varName := strArray[0];
+          GrItem := nil;
+          for j:=0 to PrnMenu.Items.count - 1 do
+          begin
+            if PrnMenu.Items[j].caption = varName then
+            begin
+              GrItem := PrnMenu.Items[j];
+              break;
+            end;
+          end;
+          if not Assigned(GrItem) then
+          begin
+            GrItem := TMenuItem.Create(PrnMenu);
+            GrItem.caption := varName;
+            PrnMenu.Items.Add(GrItem);
+          end;
+          GrItem.Add(MnItem);
+        end
+        else
+          PrnMenu.Items.Add(MnItem);
+
       end;
     until FindNext(FindedFile) <> 0;
   end;
