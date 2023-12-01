@@ -250,7 +250,7 @@ object FrmPrototype: TFrmPrototype
     end
   end
   object frxReport2: TfrxReport
-    Version = '6.0.7'
+    Version = '6.9.14'
     DotMatrixReport = True
     EngineOptions.DoublePass = True
     EngineOptions.PrintIfEmpty = False
@@ -392,6 +392,8 @@ object FrmPrototype: TFrmPrototype
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    EmbedFontsIfProtected = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
     OpenAfterExport = False
     PrintOptimized = False
     Outline = False
@@ -409,6 +411,8 @@ object FrmPrototype: TFrmPrototype
     CenterWindow = False
     PrintScaling = False
     PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 400
     Top = 480
   end
@@ -438,7 +442,7 @@ object FrmPrototype: TFrmPrototype
     Left = 680
     Top = 184
     Bitmap = {
-      494C01013A00D000BC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
