@@ -72,3 +72,7 @@ Nikita.exe
 Nikita.dproj.local
 Nikita.drc
 ModelSupport_Nikita/default.txaPackage
+*.txvpck
+*.txaPackage
+Nikita.dproj.local
+Nikita.identcache
