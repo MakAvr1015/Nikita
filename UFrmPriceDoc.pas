@@ -30,7 +30,8 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
-  cxMaskEdit, cxDropDownEdit;
+  cxMaskEdit, cxDropDownEdit, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
+  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE;
 
 type
   TFrmPriceDoc = class(TFrmPrototype)
@@ -95,6 +96,8 @@ type
       Y: Integer);
     procedure cxGrid1DBTableView1DragOver(Sender, Source: TObject; X,
       Y: Integer; State: TDragState; var Accept: Boolean);
+    procedure BtnOpenClick(Sender: TObject);
+    procedure dsPriceDocBodyBeforePost(DataSet: TDataSet);
   private
     scan  : string;
     { Private declarations }
@@ -117,6 +120,12 @@ begin
   PostAllDS(Self,true);
   refreshDs(dsPriceDocBody);
   inherited;
+end;
+
+procedure TFrmPriceDoc.BtnOpenClick(Sender: TObject);
+begin
+  inherited;
+  StartImport(@dsPriceDocBody);
 end;
 
 procedure TFrmPriceDoc.cxGrid1DBTableView1CustomDrawCell(
@@ -186,6 +195,21 @@ begin
   cxGrid1.SetFocus;
 end;
 
+
+procedure TFrmPriceDoc.dsPriceDocBodyBeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  if (dsPriceDocBodyF_GOOD.IsNull and not dsPriceDocBodyF_GOOD_NAME.IsNull) then
+  begin
+
+    dm.dsGood_ins.Active:=false;
+    dm.dsGood_ins.ParamByName('f_name').Value:=dsPriceDocBodyF_GOOD_NAME.Value;
+    dm.dsGood_ins.ParamByName('f_article').Value:=dsPriceDocBodyF_ARTICLE.Value;
+    dm.dsGood_ins.Active:=true;
+    dm.dsGood_ins.Transaction.CommitRetaining;
+    dsPriceDocBodyF_GOOD.Value:=dm.dsGood_ins.FieldByName('f_id').Value;
+  end;
+end;
 
 procedure TFrmPriceDoc.dsPriceDocHeadAfterOpen(DataSet: TDataSet);
 begin
