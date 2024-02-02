@@ -1239,5 +1239,10 @@ object FrmMain: TFrmMain
     Left = 520
     Top = 350
     StyleName = 'Platform Default'
+    object ActBkp: TAction
+      Category = #1048#1085#1089#1090#1088#1091#1084#1077#1085#1090#1099
+      Caption = #1056#1077#1079#1077#1088#1074#1080#1088#1086#1074#1072#1085#1080#1077
+      OnExecute = ActBkpExecute
+    end
   end
 end

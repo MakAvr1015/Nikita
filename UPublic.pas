@@ -89,6 +89,10 @@ procedure SendOutDocToMain(p_doc : integer);
 /// Журнал заказов
 ///  </summary>
 procedure ShowZakazList;
+///<summary>
+///  Резервирование, восстановление
+///  </summary>
+procedure ShowMakeBkp;
 /// <summary>
 ///  Процедура импорта документов из XML
 ///  </summary>
@@ -132,11 +136,18 @@ uses
   uAboutBox, UFrmOutputPayList, UFrmNsiGoodsEdit, uFrmMoveDocListSpisan,
   uFrmMoveDocListPrihod,
   UFrmDocList_template, uFrmNsiDiscountCardList, uDlgKKMReport, UFrmNsiGoodsGrp,
-  UFrmViewDoc,
+  UFrmViewDoc, uFrmMakeBkp,
   uFrmNSIGoodType, UFrmListInputDocsHz, UFrmDocOutListHz, uFrmNSIDocProperty,
   uContextPasswordDlg, OutDocumentServicesImpl11,
   uFrmConsole, UNsiClass, uFrmNSIGoodsInfo, uFrmZapasNew, UFrmNSIGoodsLinks,
   UDocumentsClasses, UPlanner, UFrmZakazList, System.Classes;
+
+procedure ShowMakeBkp;
+begin
+  with TFrmMakeBkp.Create(Application.MainForm) do
+    showasDialog;
+end;
+
 
 procedure AddInfoColumns(p_Grid : TcxGridDBTableView);
 var

@@ -124,7 +124,8 @@ uses
   UFrmZakazDoc in 'UFrmZakazDoc.pas' {FrmZakazDoc},
   UDlgMakeDocFromZakaz in 'UDlgMakeDocFromZakaz.pas',
   Vcl.ActnMan {DlgMakeDocFromZakaz},
-  UNsiGoodScancodeFrame in 'UNsiGoodScancodeFrame.pas' {NsiGoodScancodeFrame: TFrame};
+  UNsiGoodScancodeFrame in 'UNsiGoodScancodeFrame.pas' {NsiGoodScancodeFrame: TFrame},
+  UFrmMakeBkp in 'UFrmMakeBkp.pas' {FrmMakeBkp};
 
 // StringUtils in 'ShtrihDrv\StringUtils.pas';
 

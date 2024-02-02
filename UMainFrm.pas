@@ -149,6 +149,7 @@ type
     ActSendSales: TAction;
     dxBarSubItem13: TdxBarSubItem;
     dxBarButton16: TdxBarButton;
+    ActBkp: TAction;
     procedure dxBarListItemGetData(Sender: TObject);
     procedure dxBarListItemClick(Sender: TObject);
     procedure N16Click(Sender: TObject);
@@ -191,6 +192,7 @@ type
     procedure ActToolsExecute(Sender: TObject);
     procedure ActPlannerExecute(Sender: TObject);
     procedure ActSendSalesExecute(Sender: TObject);
+    procedure ActBkpExecute(Sender: TObject);
   private
     { Private declarations }
     scan: string;
@@ -213,6 +215,11 @@ implementation
 uses
   upublic, UInterfaces, pFIBStoredProc, UDlgPrgProp, UDocumentsClasses,
   UFrmPrototype, uDocClass;
+
+procedure TFrmMain.ActBkpExecute(Sender: TObject);
+begin
+  ShowMakeBkp;
+end;
 
 procedure TFrmMain.ActDocInpBackExecute(Sender: TObject);
 begin
