@@ -99,8 +99,8 @@ inherited FrmMakeBkp: TFrmMakeBkp
   end
   object BtnBckp: TButton [2]
     Left = 8
-    Top = 79
-    Width = 219
+    Top = 87
+    Width = 273
     Height = 25
     Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
     TabOrder = 2
@@ -111,7 +111,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
     Top = 40
     Properties.ShowFullPath = sfpAlways
     TabOrder = 3
-    Width = 219
+    Width = 273
   end
   inherited frxReport2: TfrxReport
     Datasets = <>
@@ -120,7 +120,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2114,26 +2114,5 @@ inherited FrmMakeBkp: TFrmMakeBkp
     WaitForRestoreConnect = 0
     Left = 632
     Top = 88
-  end
-  object pFIBBackupService: TpFIBBackupService
-    ServerName = '192.168.0.201'
-    Protocol = TCP
-    Params.Strings = (
-      'USER_NAME=SYSDBA;'
-      'PASSWORD=951;'
-      'Character Set=WIN1251;')
-    LoginPrompt = False
-    Verbose = True
-    BlockingFactor = 0
-    DatabaseName = 'nbase_dev'
-    Options = [MetadataOnly]
-    Left = 408
-    Top = 96
-  end
-  object pFIBRestoreService1: TpFIBRestoreService
-    PageBuffers = 0
-    Options = [Replace, CreateNewDB]
-    Left = 408
-    Top = 152
   end
 end

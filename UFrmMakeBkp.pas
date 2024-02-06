@@ -34,8 +34,6 @@ type
     localDbase: TpFIBDatabase;
     Panel1: TPanel;
     BtnBckp: TButton;
-    pFIBBackupService: TpFIBBackupService;
-    pFIBRestoreService1: TpFIBRestoreService;
     cxShellComboBox: TcxShellComboBox;
     Memo1: TMemo;
     procedure BtnBckpClick(Sender: TObject);
@@ -57,15 +55,7 @@ uses
 
 procedure TFrmMakeBkp.BtnBckpClick(Sender: TObject);
 begin
-//  pFIBBackupService.ServerName := DataBasePath;
-  pFIBBackupService.BackupFile.Clear;
-  pFIBBackupService.BackupFile.Add(cxShellComboBox.Path + '\nbase.bkp');
-  pFIBBackupService.Active := true;
-//  pFIBBackupService.Verbose := true;
-  pFIBBackupService.ServiceStart;
-  while not pFIBBackupService.Eof do
-    Memo1.Lines.Add(pFIBBackupService.GetNextLine);
-  pFIBBackupService.Active := False;
+//
 end;
 
 end.
