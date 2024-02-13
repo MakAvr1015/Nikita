@@ -1201,6 +1201,9 @@ object FrmMain: TFrmMain
           item
             Items = <
               item
+                Action = ActBkp
+              end
+              item
                 Action = ActTools
               end
               item

@@ -23,7 +23,6 @@ inherited FrmMakeBkp: TFrmMakeBkp
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -86,32 +85,36 @@ inherited FrmMakeBkp: TFrmMakeBkp
       Align = alLeft
       Caption = 'Panel1'
       TabOrder = 1
+      object cxShellComboBox: TcxShellComboBox
+        Left = 8
+        Top = 16
+        Properties.ShowFullPath = sfpAlways
+        TabOrder = 0
+        Width = 273
+      end
+      object BtnBckp: TButton
+        Left = 8
+        Top = 43
+        Width = 273
+        Height = 25
+        Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
+        TabOrder = 1
+        OnClick = BtnBckpClick
+      end
     end
-    object Memo1: TMemo
-      Left = 306
-      Top = 32
-      Width = 511
-      Height = 225
-      Lines.Strings = (
-        'Memo1')
+    object Panel2: TPanel
+      Left = 294
+      Top = 26
+      Width = 535
+      Height = 579
+      Align = alClient
+      Caption = 'Panel2'
       TabOrder = 2
+      ExplicitLeft = 306
+      ExplicitTop = 263
+      ExplicitWidth = 511
+      ExplicitHeight = 322
     end
-  end
-  object BtnBckp: TButton [2]
-    Left = 8
-    Top = 87
-    Width = 273
-    Height = 25
-    Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
-    TabOrder = 2
-    OnClick = BtnBckpClick
-  end
-  object cxShellComboBox: TcxShellComboBox [3]
-    Left = 8
-    Top = 40
-    Properties.ShowFullPath = sfpAlways
-    TabOrder = 3
-    Width = 273
   end
   inherited frxReport2: TfrxReport
     Datasets = <>
@@ -120,7 +123,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

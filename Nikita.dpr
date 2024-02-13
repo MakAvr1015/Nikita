@@ -125,7 +125,7 @@ uses
   UDlgMakeDocFromZakaz in 'UDlgMakeDocFromZakaz.pas',
   Vcl.ActnMan {DlgMakeDocFromZakaz},
   UNsiGoodScancodeFrame in 'UNsiGoodScancodeFrame.pas' {NsiGoodScancodeFrame: TFrame},
-  UFrmMakeBkp in 'UFrmMakeBkp.pas' {FrmMakeBkp};
+  UFrmMakeBkp in 'UFrmMakeBkp.pas', Winapi.Windows {FrmMakeBkp};
 
 // StringUtils in 'ShtrihDrv\StringUtils.pas';
 
@@ -136,12 +136,18 @@ var
   vl_actions : TArrayAct;
   vl_MenuItem: TMenuItem;
   vl_ActionClient,vl_ActionClient1 : TActionClientItem;
+  vl_sysInfo : SYSTEM_INFO;
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   //Application.Title := 'Никита';
   Application.CreateForm(Tdm, dm);
   Prg_path := ExtractFilePath(Application.ExeName);
+  GetNativeSystemInfo(vl_sysInfo);
+  if vl_sysInfo.wProcessorArchitecture = PROCESSOR_ARCHITECTURE_AMD64 then
+    Gbak_path := prg_path + '\FBFiles\W64'
+  else
+    Gbak_path := prg_path + '\FBFiles\W32';
   app_data := GetSpecialFolderPath(CSIDL_APPDATA) + '\Nikita';
   if not directoryexists(app_data) then
   begin

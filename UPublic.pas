@@ -100,6 +100,7 @@ procedure ImportXmlDoc(DocsNode: IXmlNode; Ds: pointer);
 var
   Prg_path: string;
   Prg_title : string;
+  Gbak_path : string;
   Curr_transaction: TFibTransaction;
   DataBasePath: string = 'base\nbase.gdb';
   Prg_version: string;

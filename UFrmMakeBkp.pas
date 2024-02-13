@@ -3,7 +3,7 @@ unit UFrmMakeBkp;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UFrmPrototype, cxGraphics, cxControls,
   cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, dxSkinsCore,
   dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
@@ -35,7 +35,7 @@ type
     Panel1: TPanel;
     BtnBckp: TButton;
     cxShellComboBox: TcxShellComboBox;
-    Memo1: TMemo;
+    Panel2: TPanel;
     procedure BtnBckpClick(Sender: TObject);
   private
     { Private declarations }
@@ -49,13 +49,17 @@ var
 implementation
 
 uses
-  uPublic;
+  uPublic, Winapi.ShellAPI, Windows;
 
 {$R *.dfm}
 
 procedure TFrmMakeBkp.BtnBckpClick(Sender: TObject);
+var
+  h,h1 : hwnd;
 begin
-//
+  panel2.Caption := Gbak_path;
+  { TODO : Добавить создание дочернего процесса с перехватом консоли }
+  h1 := ShellExecute(Panel2.Handle,nil,'cmd',nil,Pchar(Gbak_path),SW_SHOW);
 end;
 
 end.
