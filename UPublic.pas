@@ -8,7 +8,7 @@ uses
   Forms, Controls, SysUtils, Dialogs, Windows, Db, cxCustomData, Variants,
   UTypes, IniFiles,
   FIBDatabase, dxDockPanel, cxGridDbTableView, pFIBDataSet, TypInfo, SHFolder,
-  Xml.XMLIntf;
+  Xml.XMLIntf, System.Classes;
 
 
 procedure ShowNsiPartner;
@@ -97,6 +97,11 @@ procedure ShowMakeBkp;
 ///  Процедура импорта документов из XML
 ///  </summary>
 procedure ImportXmlDoc(DocsNode: IXmlNode; Ds: pointer);
+/// <summary>
+///  Запуск консольного потока с перехватом возврата
+///  </summary>
+Function GetDosOutput( const CommandLine, WorkDir: String;
+                      var ResultCode: Cardinal ): TStringS;
 var
   Prg_path: string;
   Prg_title : string;
@@ -141,7 +146,7 @@ uses
   uFrmNSIGoodType, UFrmListInputDocsHz, UFrmDocOutListHz, uFrmNSIDocProperty,
   uContextPasswordDlg, OutDocumentServicesImpl11,
   uFrmConsole, UNsiClass, uFrmNSIGoodsInfo, uFrmZapasNew, UFrmNSIGoodsLinks,
-  UDocumentsClasses, UPlanner, UFrmZakazList, System.Classes;
+  UDocumentsClasses, UPlanner, UFrmZakazList;
 
 procedure ShowMakeBkp;
 begin
@@ -1089,6 +1094,109 @@ begin
   begin
     showAsChild;
   end;
+end;
+
+Function GetDosOutput( const CommandLine, WorkDir: String;
+                      var ResultCode: Cardinal ): TStringS;
+var StdOutPipeRead, StdOutPipeWrite, StrErrPipeRead, StdErrPipeWrite : THandle;
+   SA                             : TSecurityAttributes;
+   SI                             : TStartupInfo;
+   PI                             : TProcessInformation;
+   WasOK                          : Boolean;
+   Buffer                         : array[0..255] of AnsiChar;
+   BytesRead                      : Cardinal;
+   Line                           : String;
+   vl_result                      : TStringList;
+Begin
+   Application.ProcessMessages;
+   vl_result := TStringList.Create;
+//   Buffer := AnsiStrAlloc(256);
+   With SA do
+   Begin
+      nLength := SizeOf( SA );
+      bInheritHandle := True;
+      lpSecurityDescriptor := nil;
+   end;
+   // создаём пайп для перенаправления стандартного вывода
+   CreatePipe( StdOutPipeRead,  // дескриптор чтения
+               StdOutPipeWrite, // дескриптор записи
+               @SA,              // аттрибуты безопасности
+               0                // количество байт принятых для пайпа - 0 по умолчанию
+              );
+   CreatePipe( StrErrPipeRead,  // дескриптор чтения
+               StdErrPipewrite, // дескриптор записи
+               @SA,              // аттрибуты безопасности
+               0                // количество байт принятых для пайпа - 0 по умолчанию
+              );
+
+   try
+    // Создаём дочерний процесс, используя StdOutPipeWrite в качестве стандартного вывода,
+    // а так же проверяем, чтобы он не показывался на экране.
+    with SI do
+    Begin
+       FillChar( SI, SizeOf( SI ), 0 );
+       cb := SizeOf( SI );
+       dwFlags := STARTF_USESHOWWINDOW or STARTF_USESTDHANDLES;
+       wShowWindow := SW_HIDE; //не показывать окно
+       hStdInput := GetStdHandle( STD_INPUT_HANDLE ); // стандартный ввод не перенаправляем
+       hStdOutput := StdOutPipeWrite;
+       hStdError := StdOutPipeWrite;
+    end;
+
+    // Запускаем компилятор из командной строки
+    //WorkDir := ExtractFilePath(CommandLine);
+    WasOK := CreateProcess( nil,
+                            PChar( CommandLine ),
+                            nil,
+                            nil,
+                            True,
+                            0,
+                            nil,
+                            PChar( WorkDir ),
+                            SI,
+                            PI );
+    // Теперь, когда дескриптор получен, для безопасности закрываем запись.
+    // Нам не нужно, чтобы произошло случайное чтение или запись.
+    CloseHandle( StdOutPipeWrite );
+    // если процесс может быть создан, то дескриптор, это его вывод
+    if not WasOK then
+     raise Exception.Create( 'Ошибка выполнения или компиляции: ' +
+            Chr( 10 ) + Chr( 13 ) + CommandLine )
+    else
+      try
+        // получаем весь вывод до тех пор, пока DOS-приложение не будет завершено
+        Line := '';
+        Repeat
+           // читаем блок символов (могут содержать возвраты каретки и переводы строки)
+           WasOK := ReadFile( StdOutPipeRead, Buffer, SizeOf(Buffer), BytesRead, nil );
+           // есть ли что-нибудь ещё для чтения?
+           if BytesRead > 0 then
+           Begin
+              // завершаем буфер PChar-ом
+//              Buffer[BytesRead] := #0;
+              // добавляем буфер в общий вывод
+              OemToCharA(@Buffer, @Buffer);
+              Line := String(Buffer);
+              vl_result.Add(line);
+           end;
+           Application.ProcessMessages;
+        Until not WasOK or ( BytesRead = 0 );
+        // ждём, пока завершится консольное приложение
+        WaitForSingleObject( PI.hProcess, INFINITE );
+        ResultCode := 0;
+        GetExitCodeProcess( PI.hProcess, ResultCode );
+      finally
+        // Закрываем все оставшиеся дескрипторы
+        CloseHandle( PI.hThread );
+        CloseHandle( PI.hProcess );
+      end;
+   finally
+//     StrDispose(Buffer);
+     Result := vl_result;
+     CloseHandle( StdOutPipeRead );
+     closeHandle(StrErrPipeRead);
+
+ end;
 end;
 
 end.
