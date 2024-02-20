@@ -101,7 +101,8 @@ procedure ImportXmlDoc(DocsNode: IXmlNode; Ds: pointer);
 ///  «апуск консольного потока с перехватом возврата
 ///  </summary>
 Function GetDosOutput( const CommandLine, WorkDir: String;
-                      var ResultCode: Cardinal ): TStringS;
+                      var ResultCode: Cardinal;
+                      LogStr :pointer ): TStringS;
 var
   Prg_path: string;
   Prg_title : string;
@@ -1097,7 +1098,9 @@ begin
 end;
 
 Function GetDosOutput( const CommandLine, WorkDir: String;
-                      var ResultCode: Cardinal ): TStringS;
+                      var ResultCode: Cardinal;
+                      LogStr :Pointer
+                      ): TStringS;
 var StdOutPipeRead, StdOutPipeWrite, StrErrPipeRead, StdErrPipeWrite : THandle;
    SA                             : TSecurityAttributes;
    SI                             : TStartupInfo;
@@ -1107,9 +1110,19 @@ var StdOutPipeRead, StdOutPipeWrite, StrErrPipeRead, StdErrPipeWrite : THandle;
    BytesRead                      : Cardinal;
    Line                           : String;
    vl_result                      : TStringList;
+   vl_log                         : ^TStringS;
 Begin
-   Application.ProcessMessages;
-   vl_result := TStringList.Create;
+  Application.ProcessMessages;
+  if TObject(LogStr^) is TStrings then
+  begin
+    vl_log := LogStr;
+  end
+  else
+  begin
+    vl_result := TStringList.Create;
+    vl_log := @vl_result;
+  end;
+
 //   Buffer := AnsiStrAlloc(256);
    With SA do
    Begin
@@ -1177,7 +1190,7 @@ Begin
               // добавл€ем буфер в общий вывод
               OemToCharA(@Buffer, @Buffer);
               Line := String(Buffer);
-              vl_result.Add(line);
+              vl_log^.Add(line);
            end;
            Application.ProcessMessages;
         Until not WasOK or ( BytesRead = 0 );

@@ -23,6 +23,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -83,7 +84,6 @@ inherited FrmMakeBkp: TFrmMakeBkp
       Width = 293
       Height = 579
       Align = alLeft
-      Caption = 'Panel1'
       TabOrder = 1
       object cxShellComboBox: TcxShellComboBox
         Left = 8
@@ -93,8 +93,8 @@ inherited FrmMakeBkp: TFrmMakeBkp
         Width = 273
       end
       object BtnBckp: TButton
-        Left = 8
-        Top = 43
+        Left = 14
+        Top = 539
         Width = 273
         Height = 25
         Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100
@@ -110,11 +110,47 @@ inherited FrmMakeBkp: TFrmMakeBkp
       Align = alClient
       Caption = 'Panel2'
       TabOrder = 2
-      ExplicitLeft = 306
-      ExplicitTop = 263
-      ExplicitWidth = 511
-      ExplicitHeight = 322
+      object MemoLog: TMemo
+        Left = 1
+        Top = 1
+        Width = 533
+        Height = 392
+        Align = alTop
+        ReadOnly = True
+        ScrollBars = ssBoth
+        TabOrder = 0
+      end
     end
+  end
+  object cxRadioButtonFull: TcxRadioButton [2]
+    Left = 9
+    Top = 80
+    Width = 113
+    Height = 17
+    Caption = #1055#1086#1083#1085#1072#1103' '#1082#1086#1087#1080#1103
+    Checked = True
+    TabOrder = 2
+    TabStop = True
+  end
+  object cxRadioButtonStock: TcxRadioButton [3]
+    Left = 9
+    Top = 184
+    Width = 113
+    Height = 17
+    Caption = #1050#1086#1087#1080#1103' '#1089#1082#1083#1072#1076#1072
+    TabOrder = 3
+  end
+  object cxRadioButtonEmpty: TcxRadioButton [4]
+    Left = 9
+    Top = 295
+    Width = 113
+    Height = 17
+    Caption = #1053#1086#1074#1099#1081' '#1089#1082#1083#1072#1076
+    TabOrder = 4
+  end
+  inherited PrnMenu: TPopupMenu
+    Left = 280
+    Top = 64
   end
   inherited frxReport2: TfrxReport
     Datasets = <>
@@ -123,7 +159,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

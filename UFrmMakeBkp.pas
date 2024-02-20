@@ -27,7 +27,7 @@ uses
   cxClasses, cxPropertiesStore, RzForms, Vcl.Menus, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, RzButton, RzPanel, Vcl.ExtCtrls, RzStatus, Vcl.ComCtrls,
   Winapi.ShlObj, cxShellCommon, cxTreeView, cxShellTreeView, cxShellComboBox,
-  IB_Services, Vcl.StdCtrls, FIBDatabase, pFIBDatabase;
+  IB_Services, Vcl.StdCtrls, FIBDatabase, pFIBDatabase, cxRadioGroup;
 
 type
   TFrmMakeBkp = class(TFrmPrototype)
@@ -36,6 +36,10 @@ type
     BtnBckp: TButton;
     cxShellComboBox: TcxShellComboBox;
     Panel2: TPanel;
+    MemoLog: TMemo;
+    cxRadioButtonFull: TcxRadioButton;
+    cxRadioButtonStock: TcxRadioButton;
+    cxRadioButtonEmpty: TcxRadioButton;
     procedure BtnBckpClick(Sender: TObject);
   private
     { Private declarations }
@@ -49,17 +53,29 @@ var
 implementation
 
 uses
-  uPublic, Winapi.ShellAPI, Windows;
+  uPublic, Winapi.ShellAPI, Windows, uPassWord;
 
 {$R *.dfm}
 
 procedure TFrmMakeBkp.BtnBckpClick(Sender: TObject);
 var
-  h,h1 : hwnd;
+  ResultCode: Cardinal;
+  gbak_str : String;
+  vl_log  : Tstrings;
 begin
-  panel2.Caption := Gbak_path;
-  { TODO : Добавить создание дочернего процесса с перехватом консоли }
-  h1 := ShellExecute(Panel2.Handle,nil,'cmd',nil,Pchar(Gbak_path),SW_SHOW);
+    with TPasswordDlg.Create(Application) do
+    begin
+      if ShowModal = mrOk then
+      begin
+        gbak_str := '-b -m -v '+ EdBase.Text + ' ' +cxShellComboBox.Path + '\nbase.bkp -user ' +
+          EdUser.Text + ' -password ' + Password.Text;
+        vl_log := GetDosOutput( Gbak_path + '\gbak' + ' ' +gbak_str, Gbak_path, ResultCode, @MemoLog.Lines);
+      end;
+
+      free;
+    end;
+
+
 end;
 
 end.
