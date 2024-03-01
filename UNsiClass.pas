@@ -248,8 +248,8 @@ begin
         else
         begin
           setLength(result, 1);
-          //result[0] := srNsiGoods.DataSet.FieldByName('f_good').Value;
-          result[0] := dsGoodScancodesF_ID.Value;
+          result[0] := srNsiGoods.DataSet.FieldByName('f_good').Value;
+          //result[0] := dsGoodScancodesF_ID.Value;
           //srNsiGoods.DataSet.FieldByName('f_good').Value;
         end;
       end;
