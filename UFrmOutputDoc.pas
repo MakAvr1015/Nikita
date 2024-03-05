@@ -153,8 +153,6 @@ type
     dsDocHeadF_SKLAD_F_NAME: TFIBStringField;
     RzDBButtonEdit4: TRzDBButtonEdit;
     RzLabel9: TRzLabel;
-    dsDocStringsF_SCANCODE: TFIBBCDField;
-    cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn;
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);

@@ -519,9 +519,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
                 DataBinding.FieldName = 'F_GOOD_DOP_INFO'
                 Visible = False
               end
-              object cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn
-                DataBinding.FieldName = 'F_SCANCODE'
-              end
             end
             object cxGrid1Level1: TcxGridLevel
               GridView = cxGrid1DBTableView1
@@ -764,23 +761,21 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   object dsDocStrings: TpFIBDataSet [4]
     UpdateSQL.Strings = (
-      'execute procedure PAK_DOC.DOC_out_STR_U('
+      'execute procedure SP_T_DOC_OUT_STR_U('
       '    :F_ID,'
       '    :F_DOC_out,'
       '    :F_GOOD,'
-      '    :F_SCANCODE,'
       '    :f_price_val,'
       '    :F_CNT,'
       '    :F_SUM,'
       '    :f_descr)')
     DeleteSQL.Strings = (
-      'execute procedure PAK_DOC.DOC_OUT_STR_D(:f_id)')
+      'execute procedure SP_T_DOC_OUT_STR_D(:f_id)')
     InsertSQL.Strings = (
-      'execute procedure pak_doc.DOC_OUT_STR_I'
+      'execute procedure SP_T_DOC_OUT_STR_I'
       '(   :F_ID,'
       '    :F_DOC_out,'
       '    :F_GOOD,'
-      '    :F_SCANCODE,'
       '    :F_PRICE_VAL,'
       '    :F_CNT,'
       '    :F_SUM,'
@@ -822,7 +817,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
       '    f_ed_izm_short_name,'
       '    f_sklad_ost,'
       '    f_skidka,'
-      '    f_scancode,'
       '    coalesce(f_skidka,0)+f_sum as f_sum_wo_skidka,'
       
         '    cast((coalesce(f_skidka,0)+f_sum)/f_cnt as numeric(15,3)) as' +
@@ -835,7 +829,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
       '    f_good_dop_info,'
       '    coalesce(f_reserved,0) f_reserved'
       'FROM'
-      '    PAK_DOC.DOC_OUT_STR_S(:f_doc_out)')
+      '    SP_T_DOC_OUT_STR_S(:f_doc_out)')
     AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
       'F_DOC_OUT=F_DOC_OUT')
     AfterDelete = dsDocStringsAfterDelete
@@ -954,10 +948,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
       DisplayLabel = #1047#1072#1088#1077#1079#1077#1088#1074#1080#1088#1086#1074#1072#1085#1086
       FieldName = 'F_RESERVED'
     end
-    object dsDocStringsF_SCANCODE: TFIBBCDField
-      FieldName = 'F_SCANCODE'
-      Size = 0
-    end
   end
   object srDocStrings: TDataSource [5]
     DataSet = dsDocStrings
@@ -1073,9 +1063,13 @@ inherited FrmOutputDoc: TFrmOutputDoc
     Left = 880
     Top = 152
   end
+  inherited frxFIBComponents1: TfrxFIBComponents
+    Left = 776
+    Top = 408
+  end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
