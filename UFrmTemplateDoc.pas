@@ -103,7 +103,6 @@ type
     dsDocStringsF_RESERVED: TFIBBCDField;
     cxGrid1DBTableView1F_RESERVED: TcxGridDBColumn;
     cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn;
     dsDocStringsF_SCANCODE: TStringField;
     procedure RzDBButtonEdit3ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);

@@ -275,10 +275,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             Visible = False
             Width = 233
           end
-          object cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn
-            DataBinding.FieldName = 'F_SCANCODE_VAL'
-            Width = 199
-          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
@@ -418,7 +414,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
