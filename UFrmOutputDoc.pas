@@ -368,8 +368,8 @@ begin
   cxGrid1DBTableView1F_PRICE_VAL.Options.Editing:=false;
   cxGrid1DBTableView1F_DESCR.Options.Editing:=false;
   dsDocStrings.Transaction.CommitRetaining;
-  if  not dsDocStringsF_SCANCODE.IsNull then
-    RefreshDs(DataSet,'F_SCANCODE',dsDocStringsF_SCANCODE.AsInteger)
+  if  not dsDocStringsF_GOOD.IsNull then
+    RefreshDs(DataSet,'F_GOOD',dsDocStringsF_GOOD.AsInteger)
   else
     RefreshDs(DataSet,'F_GOOD',dsDocStringsF_GOOD.AsInteger);
   cxGrid1.SetFocus;
@@ -416,7 +416,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_Scancode.Value:=goods[i];
+      dsDocStringsF_Good.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,
