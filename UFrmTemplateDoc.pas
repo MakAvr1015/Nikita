@@ -391,7 +391,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_SCANCODE.Value:=goods[i];
+      dsDocStringsF_GOOD.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,
