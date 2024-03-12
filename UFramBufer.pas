@@ -142,7 +142,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsGoodBuffer.Insert;
-      dsGoodBufferF_SCANCODE.Value:=goods[i];
+      dsGoodBufferF_GOOD.Value:=goods[i];
       dsGoodBufferF_CNT.Value:=1;
       dsGoodBuffer.Post;
       dsGoodBuffer.Transaction.CommitRetaining;

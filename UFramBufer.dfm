@@ -232,18 +232,14 @@ object FramBufer: TFramBufer
   end
   object dsGoodBuffer: TpFIBDataSet
     UpdateSQL.Strings = (
-      
-        'execute procedure SP_T_USER_BUFFER_SET(:F_SCANCODE,:F_good,:F_CN' +
-        'T);')
+      'execute procedure SP_T_USER_BUFFER_SET(:F_good,:F_CNT);')
     DeleteSQL.Strings = (
       'DELETE FROM'
       '    T_USER_BUFER'
       'WHERE'
       '  f_id=:f_id        ')
     InsertSQL.Strings = (
-      
-        'execute procedure SP_T_USER_BUFFER_SET(:F_SCANCODE,:F_GOOD,:F_CN' +
-        'T);')
+      'execute procedure SP_T_USER_BUFFER_SET(:F_GOOD,:F_CNT);')
     RefreshSQL.Strings = (
       '')
     SelectSQL.Strings = (
@@ -253,7 +249,6 @@ object FramBufer: TFramBufer
       '    f_article,'
       '    F_GOOD_NAME,'
       '    F_CNT,'
-      '    F_SCANCODE,'
       '    f_ost'
       'FROM'
       '    SP_GET_USER_BUFFER(:f_sklad)')
