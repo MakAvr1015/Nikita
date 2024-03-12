@@ -23,9 +23,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     ExplicitHeight = 562
     inherited RzToolbar: TRzToolbar
       Width = 1061
-      Height = 25
       ExplicitWidth = 1061
-      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -41,67 +39,19 @@ inherited FrmOutputDoc: TFrmOutputDoc
         BtnSave
         BtnExit
         cxComboBoxStyles)
-      inherited BtnNew: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
       inherited BtnOpen: TRzToolButton
-        Top = 0
         OnClick = BtnOpenClick
-        ExplicitTop = 0
-      end
-      inherited BtnFind: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
-        Top = 0
         AllowAllUp = True
         OnClick = nil
-        ExplicitTop = 0
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnRefresh: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnEdit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Top = 0
         Enabled = True
         Visible = True
-        ExplicitTop = 0
-      end
-      inherited BtnSave: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
-        Top = 0
         Visible = False
-        ExplicitTop = 0
-      end
-      inherited cxComboBoxStyles: TcxComboBox
-        Top = 2
-        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
@@ -542,6 +492,10 @@ inherited FrmOutputDoc: TFrmOutputDoc
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1054#1087#1083#1072#1090#1072
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
@@ -1069,7 +1023,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

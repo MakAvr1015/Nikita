@@ -19,9 +19,7 @@ inherited FrmInputDoc: TFrmInputDoc
     ExplicitHeight = 544
     inherited RzToolbar: TRzToolbar
       Width = 957
-      Height = 25
       ExplicitWidth = 957
-      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -37,79 +35,39 @@ inherited FrmInputDoc: TFrmInputDoc
         BtnSave
         BtnExit
         cxComboBoxStyles)
-      inherited BtnNew: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
       inherited BtnOpen: TRzToolButton
-        Top = 0
         Enabled = True
         OnClick = BtnOpenClick
-        ExplicitTop = 0
-      end
-      inherited BtnFind: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
-        Top = 0
         OnClick = nil
-        ExplicitTop = 0
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnRefresh: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnEdit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnExecute: TRzToolButton
-        Top = 0
         Width = 39
         DropDownMenu = PopupMenuExecute
         ToolStyle = tsDropDown
         Enabled = True
         OnClick = BtnExecuteClick
-        ExplicitTop = 0
         ExplicitWidth = 39
       end
       inherited BtnDelete: TRzToolButton
         Left = 282
-        Top = 0
         ExplicitLeft = 282
-        ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
         Left = 307
-        Top = 0
         ExplicitLeft = 307
-        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
         Left = 332
-        Top = 0
         ExplicitLeft = 332
-        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
-        Top = 0
         Visible = False
-        ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
         Left = 357
-        Top = 2
         ExplicitLeft = 357
-        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
@@ -819,7 +777,7 @@ inherited FrmInputDoc: TFrmInputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000FC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000000110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
