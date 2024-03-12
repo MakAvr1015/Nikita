@@ -60,8 +60,6 @@ type
     spCopyToDoc: TpFIBStoredProc;
     BtnFromDoc: TRzToolButton;
     spCopyFromDoc: TpFIBStoredProc;
-    dsGoodBufferF_SCANCODE: TFIBBCDField;
-    cxGridDBTableViewBufferF_SCANCODE: TcxGridDBColumn;
     procedure cxGridDBTableViewBufferDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
     procedure cxGridDBTableViewBufferDragDrop(Sender, Source: TObject; X,

@@ -215,10 +215,6 @@ object FramBufer: TFramBufer
         Options.Editing = False
         Width = 66
       end
-      object cxGridDBTableViewBufferF_SCANCODE: TcxGridDBColumn
-        DataBinding.FieldName = 'F_SCANCODE'
-        Visible = False
-      end
     end
     object cxGridLevel1: TcxGridLevel
       GridView = cxGridDBTableViewBuffer
@@ -296,10 +292,6 @@ object FramBufer: TFramBufer
     object dsGoodBufferF_OST: TFIBFloatField
       DisplayLabel = #1054#1089#1090#1072#1090#1086#1082
       FieldName = 'F_OST'
-    end
-    object dsGoodBufferF_SCANCODE: TFIBBCDField
-      FieldName = 'F_SCANCODE'
-      Size = 0
     end
   end
   object pFIBTransaction1: TpFIBTransaction
