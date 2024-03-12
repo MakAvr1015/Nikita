@@ -340,7 +340,7 @@ procedure TFrmTemplateDoc.FormCreate(Sender: TObject);
 var
   tf: tStringfield;
 begin
-  inherited;
+
   dm.dsSklad.First;
 
   while not dm.dsSklad.Eof do
@@ -360,7 +360,7 @@ begin
     dm.dsSklad.Next;
   end;
   AddInfoColumns(cxGrid1DBTableView1);
-  self.RestoreState;
+  inherited;
 end;
 
 function TFrmTemplateDoc.GetDocId: integer;
