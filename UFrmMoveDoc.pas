@@ -331,9 +331,9 @@ end;
 procedure TFrmMoveDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  if not dsDocStringsF_SCANCODE.IsNull then
+{  if not dsDocStringsF_SCANCODE.IsNull then
     RefreshDs(DataSet,'f_scancode',dsDocStringsF_SCANCODE.AsInteger)
-  else
+  else}
     RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.AsInteger);
   cxGrid1.SetFocus;
 end;

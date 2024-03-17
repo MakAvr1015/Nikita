@@ -302,7 +302,8 @@ end;
 procedure TFrmInputDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
+  if not dsDocStringsF_GOOD.IsNull then
+    RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
   cxGrid1.SetFocus;
 end;
 

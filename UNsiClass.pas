@@ -173,8 +173,8 @@ begin
         1:
           begin
             setLength(result, 1);
-            result[0] := dm.dsGetGoodByScanF_SCANCODE.AsInteger;
-              //dm.dsGetGoodByScanf_good.AsInteger;
+            result[0] := //dm.dsGetGoodByScanF_SCANCODE.AsInteger;
+              dm.dsGetGoodByScanf_good.AsInteger;
             exit;
           end;
       else
