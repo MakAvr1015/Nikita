@@ -411,10 +411,8 @@ begin
       Caption:=dm.dsNsiGoodsDopInfo.FieldByName('f_name').AsString;
     end;
     dm.dsNsiGoodsDopInfo.Next;
-  inherited;
-
   end;
-
+  inherited;
 
 end;
 
