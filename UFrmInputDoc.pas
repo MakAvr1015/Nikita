@@ -357,7 +357,7 @@ begin
       dm.dsImportScancode.Active:=true;
       dm.dsImportScancode.Transaction.CommitRetaining;
     end;}
- {   for cnt := 0 to dsDocStrings.FieldCount - 1 do
+   for cnt := 0 to dsDocStrings.FieldCount - 1 do
     begin
       if Copy(dsDocStrings.Fields[cnt].FieldName,1,2)='DF' then
       begin
@@ -371,7 +371,7 @@ begin
           dm.dsImportNsiGoodsDopInfo.Transaction.CommitRetaining;
         end;
       end;
-    end;}
+    end;
   end;
 end;
 
