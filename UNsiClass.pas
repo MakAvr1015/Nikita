@@ -173,8 +173,8 @@ begin
         1:
           begin
             setLength(result, 1);
-            result[0] := dm.dsGetGoodByScanF_SCANCODE.AsInteger;
-              //dm.dsGetGoodByScanf_good.AsInteger;
+            result[0] := //dm.dsGetGoodByScanF_SCANCODE.AsInteger;
+              dm.dsGetGoodByScanf_good.AsInteger;
             exit;
           end;
       else
@@ -248,8 +248,8 @@ begin
         else
         begin
           setLength(result, 1);
-          //result[0] := srNsiGoods.DataSet.FieldByName('f_good').Value;
-          result[0] := dsGoodScancodesF_ID.Value;
+          result[0] := srNsiGoods.DataSet.FieldByName('f_good').Value;
+          //result[0] := dsGoodScancodesF_ID.Value;
           //srNsiGoods.DataSet.FieldByName('f_good').Value;
         end;
       end;

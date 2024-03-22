@@ -28,7 +28,11 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxNavigator,
-  cxDataControllerConditionalFormattingRulesManagerDialog;
+  cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxExportRTF, frxExportPDF, frxExportXML, frxExportXLS,
+  frxFIBComponents, frxChBox, frxTableObject, frxCross, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxDCtrl, frxOLE, frxDesgn, frxBarcode,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmInputDocBackRozn = class(TFrmInputDoc)
@@ -38,7 +42,6 @@ type
     PrintKKM: TRzCheckBox;
     RzPanel3: TRzPanel;
     BtnClose: TRzButton;
-    RzLabel7: TRzLabel;
     RzDBLabel1: TRzDBLabel;
     RzLabel8: TRzLabel;
     RzButton1: TRzButton;
