@@ -79,7 +79,7 @@ procedure GetReservDocByArticle(p_good : integer; p_article : string);
 ///<summary>
 ///  Распарсить доп.инфо по столбцам
 ///</summary>
-procedure CalcFieldsDopInfo(p_data_set : TdataSet);
+procedure CalcFieldsDopInfo(p_data_set : TdataSet; p_dop_fld_name : String);
 ///<summary>
 ///  Добавить столбцы для доп.параметров товара в Грид
 ///</summary>
@@ -165,7 +165,7 @@ begin
   end;
 end;
 
-procedure CalcFieldsDopInfo(p_data_set : TdataSet);
+procedure CalcFieldsDopInfo(p_data_set : TdataSet; p_dop_fld_name : String);
 var
   i,j   : integer;
   v_val : TStringList;
@@ -173,12 +173,14 @@ var
   vl_info_field : Tfield;
 begin
   v_val := TStringList.Create;
+  vl_info_field := p_data_set.FindField(p_dop_fld_name);
+  {
   vl_info_field := p_data_set.FindField('F_DOP_INFO_VAL');
   if vl_info_field = nil then
     vl_info_field := p_data_set.FindField('F_GOOD_DOP_INFO');
   if vl_info_field = nil then
     vl_info_field := p_data_set.FindField('f_NSI_GOOD_INFO');
-
+  }
   if vl_info_field <> nil then
   begin
     v_val.Text := vl_info_field.AsString;
