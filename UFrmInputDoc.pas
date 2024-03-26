@@ -382,12 +382,9 @@ begin
 end;
 
 procedure TFrmInputDoc.FormCreate(Sender: TObject);
-var
-  tf  : TStringField;
-
 begin
-  inherited;
   AddInfoColumns(cxGrid1DBTableView1);
+  inherited;
   self.RestoreState;
 end;
 
