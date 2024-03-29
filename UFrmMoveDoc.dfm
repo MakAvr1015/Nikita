@@ -39,35 +39,73 @@ inherited FrmMoveDoc: TFrmMoveDoc
         BtnDelete
         BtnSave
         BtnExit)
+      inherited BtnNew: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 2
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 2
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnPrint: TRzToolButton
+        Top = 2
         OnClick = nil
+        ExplicitTop = 2
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnExecute: TRzToolButton
+        Top = 2
         Width = 39
         DropDownMenu = PopupMenuExecute
         ToolStyle = tsDropDown
         Enabled = True
         OnClick = BtnExecuteClick
+        ExplicitTop = 2
         ExplicitWidth = 39
       end
       inherited BtnDelete: TRzToolButton
         Left = 282
+        Top = 2
         ExplicitLeft = 282
+        ExplicitTop = 2
       end
       inherited BtnSave: TRzToolButton
         Left = 307
+        Top = 2
         ExplicitLeft = 307
+        ExplicitTop = 2
       end
       inherited BtnExit: TRzToolButton
         Left = 332
+        Top = 2
         ExplicitLeft = 332
+        ExplicitTop = 2
       end
       inherited BtnView: TRzToolButton
+        Top = 2
         Visible = False
+        ExplicitTop = 2
       end
       inherited cxComboBoxStyles: TcxComboBox
         Top = 0
@@ -765,7 +803,7 @@ inherited FrmMoveDoc: TFrmMoveDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

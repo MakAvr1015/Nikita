@@ -22,8 +22,9 @@ inherited FrmNsiPartner: TFrmNsiPartner
     ExplicitHeight = 353
     inherited RzToolbar: TRzToolbar
       Width = 843
-      Height = 27
+      Height = 29
       ExplicitWidth = 843
+      ExplicitHeight = 29
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -38,60 +39,84 @@ inherited FrmNsiPartner: TFrmNsiPartner
         BtnSave
         BtnExit)
       inherited BtnNew: TRzToolButton
+        Top = 2
         OnClick = BtnNewClick
+        ExplicitTop = 2
       end
       inherited BtnOpen: TRzToolButton
+        Top = 2
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 2
       end
       inherited BtnFind: TRzToolButton
         Left = 104
+        Top = 2
         ExplicitLeft = 104
+        ExplicitTop = 2
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnRefresh: TRzToolButton
         Left = 129
+        Top = 2
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 129
+        ExplicitTop = 2
       end
       inherited BtnEdit: TRzToolButton
+        Top = 2
         Enabled = True
         OnClick = BtnEditClick
-      end
-      inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        ExplicitTop = 2
       end
       inherited BtnDelete: TRzToolButton
         Left = 243
+        Top = 2
         Enabled = True
         Visible = True
         ExplicitLeft = 243
+        ExplicitTop = 2
       end
       inherited BtnSave: TRzToolButton
         Left = 268
+        Top = 2
         ExplicitLeft = 268
+        ExplicitTop = 2
       end
       inherited BtnExit: TRzToolButton
         Left = 293
+        Top = 2
         ExplicitLeft = 293
+        ExplicitTop = 2
       end
       inherited BtnView: TRzToolButton
-        Visible = False
-      end
-      inherited cxComboBoxStyles: TcxComboBox
         Top = 2
+        Visible = False
         ExplicitTop = 2
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 28
+      Top = 30
       Width = 843
-      Height = 324
+      Height = 322
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitTop = 28
+      ExplicitHeight = 324
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -143,7 +168,7 @@ inherited FrmNsiPartner: TFrmNsiPartner
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
