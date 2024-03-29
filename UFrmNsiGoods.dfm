@@ -180,7 +180,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
       inherited BtnNew: TRzToolButton
         Top = 0
         OnClick = BtnNewClick
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
