@@ -363,7 +363,7 @@ end;
 procedure TFrmMoveDoc.dsDocStringsCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  CalcFieldsDopInfo(DataSet);
+  CalcFieldsDopInfo(DataSet,'F_GOOD_DOP_INFO');
 end;
 
 procedure TFrmMoveDoc.FormCreate(Sender: TObject);

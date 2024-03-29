@@ -333,7 +333,7 @@ begin
     DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
   end;
   v_val.Free;
-  CalcFieldsDopInfo(DataSet);
+  CalcFieldsDopInfo(DataSet,'F_GOOD_DOP_INFO');
 end;
 
 procedure TFrmTemplateDoc.FormCreate(Sender: TObject);

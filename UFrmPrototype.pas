@@ -279,7 +279,7 @@ begin
     if self.Components[i] is TcxGridDBTableView then
     begin
       TcxGridDBTableView(self.Components[i]).StoreToIniFile(fl.FileName, false,
-        [gsoUseFilter, gsoUseSummary], self.Components[i].Name);
+        [{gsoUseFilter, gsoUseSummary}], self.Components[i].Name);
     end;
   end;
   fl.Free;

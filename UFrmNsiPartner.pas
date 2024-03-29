@@ -152,7 +152,7 @@ procedure TFrmNsiPartner.FormCreate(Sender: TObject);
 var
   tf: tStringfield;
 begin
-  inherited;
+
   dsPartnerProp.active := true;
   dsPartnerProp.First;
 
@@ -172,7 +172,7 @@ begin
     end;
     dsPartnerProp.Next;
   end;
-  self.RestoreState;
+  inherited;
 end;
 
 end.
