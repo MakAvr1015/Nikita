@@ -915,7 +915,7 @@ begin
   if name <> '' then
     dsImportNsiGood.ParamByName('f_name').Value := name;
   dsImportNsiGood.ParamByName('f_article').Value := Article;
-//  dsImportNsiGood.ParamByName('f_dop_info').Value := dop_info;
+  dsImportNsiGood.ParamByName('f_dop_info').Value := dop_info;
   dsImportNsiGood.ParamByName('f_good_type').Value := good_type;
 //  dsImportNsiGood.ParamByName('f_cnt').Value := p_cnt;
   dsImportNsiGood.Active := true;
