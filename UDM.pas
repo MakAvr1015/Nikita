@@ -248,7 +248,8 @@ type
     srPrice: TDataSource;
     cxEditRepositoryDateItem1: TcxEditRepositoryDateItem;
     cxLocalizer1: TcxLocalizer;
-    dsGetGoodByScanF_SCANCODE: TStringField;
+    dsGetGoodByScanF_SCANCODE: TFIBBCDField;
+    dsGetGoodByScanF_SCANCODE_VAL: TFIBStringField;
     procedure DummyAct(Sender: TObject);
     procedure ActDocInpExecute(Sender: TObject);
     procedure ActNsiPartnerExecute(Sender: TObject);
@@ -917,7 +918,7 @@ begin
   dsImportNsiGood.ParamByName('f_article').Value := Article;
   dsImportNsiGood.ParamByName('f_dop_info').Value := dop_info;
   dsImportNsiGood.ParamByName('f_good_type').Value := good_type;
-//  dsImportNsiGood.ParamByName('f_cnt').Value := p_cnt;
+  dsImportNsiGood.ParamByName('f_cnt').Value := p_cnt;
   dsImportNsiGood.Active := true;
   dsImportNsiGood.Transaction.CommitRetaining;
   result := dsImportNsiGood.FieldByName('f_good_id').AsInteger;

@@ -41,7 +41,6 @@ inherited FrmMoveDoc: TFrmMoveDoc
         BtnExit)
       inherited BtnNew: TRzToolButton
         Top = 2
-        ExplicitTop = 2
       end
       inherited BtnOpen: TRzToolButton
         Top = 2
@@ -52,6 +51,9 @@ inherited FrmMoveDoc: TFrmMoveDoc
       inherited BtnFind: TRzToolButton
         Top = 2
         ExplicitTop = 2
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 2
       end
       inherited BtnPrint: TRzToolButton
         Top = 2
@@ -73,6 +75,18 @@ inherited FrmMoveDoc: TFrmMoveDoc
       inherited BtnEdit: TRzToolButton
         Top = 2
         ExplicitTop = 2
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 2
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 2
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 2
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 2
       end
       inherited BtnExecute: TRzToolButton
         Top = 2
@@ -386,6 +400,9 @@ inherited FrmMoveDoc: TFrmMoveDoc
             Properties.CustomColors = <>
             Visible = False
           end
+          object cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn
+            DataBinding.FieldName = 'F_SCANCODE_VAL'
+          end
         end
         object cxGrid1Level1: TcxGridLevel
           GridView = cxGrid1DBTableView1
@@ -601,7 +618,7 @@ inherited FrmMoveDoc: TFrmMoveDoc
   end
   object dsDocStrings: TpFIBDataSet [6]
     UpdateSQL.Strings = (
-      'execute procedure  SP_T_DOC_MOVE_STR_U('
+      'execute procedure PAK_DOC.DOC_MOVE_STR_U('
       '    :F_ID,'
       '    :F_DOC_MOVE,'
       '    :F_GOOD,'
@@ -610,15 +627,16 @@ inherited FrmMoveDoc: TFrmMoveDoc
       '    :F_PRICE_VAL,'
       '    :F_DESCR);')
     DeleteSQL.Strings = (
-      'execute procedure  SP_T_DOC_MOVE_STR_D(:f_id)')
+      'execute procedure PAK_DOC.DOC_MOVE_STR_D(:f_id)')
     InsertSQL.Strings = (
-      'execute procedure SP_T_DOC_MOVE_STR_I('
+      'execute procedure PAK_DOC.DOC_MOVE_STR_I('
       '    :F_ID,'
       '    :F_DOC_MOVE,'
       '    :F_GOOD,'
       '    :F_PRICE,'
       '    :F_CNT,'
       '    :F_PRICE_VAL,'
+      '    :F_SCANCODE,'
       '    :F_DESCR);')
     SelectSQL.Strings = (
       'SELECT'
@@ -626,6 +644,7 @@ inherited FrmMoveDoc: TFrmMoveDoc
       '    F_DOC_MOVE,'
       '    F_GOOD_NAME,'
       '    F_GOOD_DOP_INFO,'
+      '    F_SCANCODE_VAL,'
       '    F_SCANCODE,'
       '    F_ED_IZM_SHORT_NAME,'
       '    F_ED_IZM_NAME,'
@@ -640,7 +659,7 @@ inherited FrmMoveDoc: TFrmMoveDoc
       '    F_GOOD_GRP_COLOR,'
       '    F_DESCR'
       'FROM'
-      '   SP_T_DOC_MOVE_STR_S(:DOC_id)')
+      '    PAK_DOC.DOC_MOVE_STR_S(:DOC_id) ')
     AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
       'F_DOC_MOVE=DOC_ID')
     AfterDelete = dsDocStringsAfterDelete
@@ -673,6 +692,11 @@ inherited FrmMoveDoc: TFrmMoveDoc
       DisplayLabel = #1048#1085#1092#1086#1088#1084#1072#1094#1080#1103
       FieldName = 'F_GOOD_DOP_INFO'
       Size = 10000
+      EmptyStrToNull = True
+    end
+    object dsDocStringsF_SCANCODE_VAL: TFIBStringField
+      DisplayLabel = #1064#1090#1088#1080#1093#1082#1086#1076
+      FieldName = 'F_SCANCODE_VAL'
       EmptyStrToNull = True
     end
     object dsDocStringsF_ED_IZM_SHORT_NAME: TFIBStringField
@@ -735,9 +759,9 @@ inherited FrmMoveDoc: TFrmMoveDoc
       Size = 255
       EmptyStrToNull = True
     end
-    object dsDocStringsF_SCANCODE: TStringField
+    object dsDocStringsF_SCANCODE: TFIBBCDField
       FieldName = 'F_SCANCODE'
-      Size = 10000
+      Size = 0
     end
   end
   object srDocStrings: TDataSource [7]
@@ -803,7 +827,7 @@ inherited FrmMoveDoc: TFrmMoveDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

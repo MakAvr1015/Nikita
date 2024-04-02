@@ -86,25 +86,57 @@ object FramBufer: TFramBufer
     ExplicitWidth = 501
     ExplicitHeight = 213
     inherited Panel4: TPanel
-      Width = 300
+      Width = 348
       Height = 213
-      ExplicitWidth = 300
+      ExplicitWidth = 348
       ExplicitHeight = 213
-      inherited cxDBLabel1: TcxDBLabel
-        Top = 106
-        ExplicitTop = 106
-        ExplicitWidth = 298
+      inherited Panel1: TPanel
+        Left = 199
+        Top = 73
+        Height = 139
+        ExplicitLeft = 199
+        ExplicitTop = 175
         ExplicitHeight = 37
-        Height = 37
-        Width = 298
+        inherited cxGrid2: TcxGrid
+          Height = 137
+          ExplicitHeight = 35
+          inherited cxGrid2DBTableView1: TcxGridDBTableView
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+                Column = FramGoodCard1.cxGrid2DBTableView1Column2
+              end>
+          end
+        end
+      end
+      inherited Panel2: TPanel
+        Top = 73
+        Width = 198
+        Height = 139
+        ExplicitTop = 175
+        ExplicitWidth = 198
+        ExplicitHeight = 37
+        inherited cxDBLabel1: TcxDBLabel
+          ExplicitWidth = 196
+          ExplicitHeight = 37
+          Height = 37
+          Width = 196
+        end
+        inherited cxGrid1: TcxGrid
+          Top = 38
+          Width = 196
+          Height = 100
+          ExplicitTop = 38
+          ExplicitWidth = 196
+          ExplicitHeight = 0
+        end
       end
       inherited cxDBLabel2: TcxDBLabel
-        Top = 143
-        ExplicitTop = 143
-        ExplicitWidth = 298
-        ExplicitHeight = 69
-        Height = 69
-        Width = 298
+        ExplicitTop = 41
+        ExplicitWidth = 346
+        ExplicitHeight = 32
+        Height = 32
+        Width = 346
       end
       inherited cxDBLabel3: TcxDBLabel
         Properties.WordWrap = True
@@ -113,19 +145,9 @@ object FramBufer: TFramBufer
         StyleDisabled.LookAndFeel.SkinName = ''
         StyleFocused.LookAndFeel.SkinName = ''
         StyleHot.LookAndFeel.SkinName = ''
-        ExplicitWidth = 298
-        ExplicitHeight = 105
-        Height = 105
-        Width = 298
-        AnchorX = 150
-      end
-      inherited cxGrid1: TcxGrid
-        Top = 212
-        Width = 298
-        Height = 0
-        ExplicitTop = 212
-        ExplicitWidth = 298
-        ExplicitHeight = 0
+        ExplicitWidth = 346
+        Width = 346
+        AnchorX = 174
       end
     end
     inherited cxDBImage1: TcxDBImage
@@ -215,6 +237,10 @@ object FramBufer: TFramBufer
         Options.Editing = False
         Width = 66
       end
+      object cxGridDBTableViewBufferF_SCANCODE: TcxGridDBColumn
+        DataBinding.FieldName = 'F_SCANCODE'
+        Visible = False
+      end
     end
     object cxGridLevel1: TcxGridLevel
       GridView = cxGridDBTableViewBuffer
@@ -232,14 +258,18 @@ object FramBufer: TFramBufer
   end
   object dsGoodBuffer: TpFIBDataSet
     UpdateSQL.Strings = (
-      'execute procedure SP_T_USER_BUFFER_SET(:F_good,:F_CNT);')
+      
+        'execute procedure SP_T_USER_BUFFER_SET(:F_SCANCODE,:F_good,:F_CN' +
+        'T);')
     DeleteSQL.Strings = (
       'DELETE FROM'
       '    T_USER_BUFER'
       'WHERE'
       '  f_id=:f_id        ')
     InsertSQL.Strings = (
-      'execute procedure SP_T_USER_BUFFER_SET(:F_GOOD,:F_CNT);')
+      
+        'execute procedure SP_T_USER_BUFFER_SET(:F_SCANCODE,:F_GOOD,:F_CN' +
+        'T);')
     RefreshSQL.Strings = (
       '')
     SelectSQL.Strings = (
@@ -249,6 +279,7 @@ object FramBufer: TFramBufer
       '    f_article,'
       '    F_GOOD_NAME,'
       '    F_CNT,'
+      '    F_SCANCODE,'
       '    f_ost'
       'FROM'
       '    SP_GET_USER_BUFFER(:f_sklad)')
@@ -287,6 +318,10 @@ object FramBufer: TFramBufer
     object dsGoodBufferF_OST: TFIBFloatField
       DisplayLabel = #1054#1089#1090#1072#1090#1086#1082
       FieldName = 'F_OST'
+    end
+    object dsGoodBufferF_SCANCODE: TFIBBCDField
+      FieldName = 'F_SCANCODE'
+      Size = 0
     end
   end
   object pFIBTransaction1: TpFIBTransaction

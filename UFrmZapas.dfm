@@ -19,17 +19,17 @@ inherited FrmZapas: TFrmZapas
     ExplicitHeight = 641
     object Splitter1: TSplitter [0]
       Left = 251
-      Top = 30
-      Height = 610
+      Top = 28
+      Height = 612
       ExplicitLeft = 313
       ExplicitTop = 36
       ExplicitHeight = 401
     end
     inherited RzToolbar: TRzToolbar
       Width = 1057
-      Height = 29
+      Height = 27
       ExplicitWidth = 1057
-      ExplicitHeight = 29
+      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -44,69 +44,29 @@ inherited FrmZapas: TFrmZapas
         BtnDelete
         BtnSave
         BtnExit)
-      inherited BtnNew: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
-      end
       inherited BtnOpen: TRzToolButton
-        Top = 2
         Enabled = True
         OnClick = BtnOpenClick
-        ExplicitTop = 2
-      end
-      inherited BtnFind: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
       end
       inherited BtnPrint: TRzToolButton
-        Top = 2
         OnClick = nil
-        ExplicitTop = 2
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
-      end
-      inherited BtnRefresh: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
-      end
-      inherited BtnEdit: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
-      end
-      inherited BtnExecute: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
-      end
-      inherited BtnDelete: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
       end
       inherited BtnSave: TRzToolButton
-        Top = 2
         Visible = True
-        ExplicitTop = 2
-      end
-      inherited BtnExit: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
       end
       inherited BtnView: TRzToolButton
-        Top = 2
         Visible = False
-        ExplicitTop = 2
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 0
+        ExplicitTop = 0
       end
     end
     object cxGridSklad: TcxGrid
       Left = 1
-      Top = 30
+      Top = 28
       Width = 250
-      Height = 610
+      Height = 612
       Align = alLeft
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
@@ -141,18 +101,15 @@ inherited FrmZapas: TFrmZapas
     end
     object Panel1: TPanel
       Left = 254
-      Top = 30
+      Top = 28
       Width = 804
-      Height = 610
+      Height = 612
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
-      ExplicitTop = 26
-      ExplicitWidth = 49
-      ExplicitHeight = 155
       object Splitter2: TSplitter
         Left = 1
-        Top = 420
+        Top = 422
         Width = 802
         Height = 3
         Cursor = crVSplit
@@ -164,7 +121,7 @@ inherited FrmZapas: TFrmZapas
         Left = 1
         Top = 1
         Width = 802
-        Height = 419
+        Height = 421
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
@@ -175,6 +132,7 @@ inherited FrmZapas: TFrmZapas
           Navigator.Buttons.CustomButtons = <>
           OnCustomDrawCell = cxGrid2DBTableView1CustomDrawCell
           DataController.DataSource = srListZapas
+          DataController.KeyFieldNames = 'F_GOOD'
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
             item
@@ -275,8 +233,100 @@ inherited FrmZapas: TFrmZapas
             Visible = False
           end
         end
+        object cxGrid2DBTableView2: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = srGoodScancodes
+          DataController.DetailKeyFieldNames = 'F_GOOD'
+          DataController.KeyFieldNames = 'F_ID'
+          DataController.MasterKeyFieldNames = 'F_GOOD'
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.CellAutoHeight = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          object cxGrid2DBTableView2F_ID: TcxGridDBColumn
+            DataBinding.FieldName = 'F_ID'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_SCANCODE: TcxGridDBColumn
+            DataBinding.FieldName = 'F_SCANCODE'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_SKLAD: TcxGridDBColumn
+            DataBinding.FieldName = 'F_SKLAD'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_DATE: TcxGridDBColumn
+            DataBinding.FieldName = 'F_DATE'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_STR_OST: TcxGridDBColumn
+            DataBinding.FieldName = 'F_STR_OST'
+            Width = 145
+          end
+          object cxGrid2DBTableView2F_MOVE_IN: TcxGridDBColumn
+            DataBinding.FieldName = 'F_MOVE_IN'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_WAIT_IN: TcxGridDBColumn
+            DataBinding.FieldName = 'F_WAIT_IN'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_MOVE_OUT: TcxGridDBColumn
+            DataBinding.FieldName = 'F_MOVE_OUT'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_WAIT_OUT: TcxGridDBColumn
+            DataBinding.FieldName = 'F_WAIT_OUT'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_END_OST: TcxGridDBColumn
+            DataBinding.FieldName = 'F_END_OST'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_GRP: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_GRP'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_NAME'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_ARTICLE: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_ARTICLE'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_GRP_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_GRP_NAME'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_GRP_COLOR: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_GRP_COLOR'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_PRICE_VAL: TcxGridDBColumn
+            DataBinding.FieldName = 'F_PRICE_VAL'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_DOP_INFO: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_DOP_INFO'
+            Width = 525
+          end
+          object cxGrid2DBTableView2F_PHOTO_EXISTS: TcxGridDBColumn
+            DataBinding.FieldName = 'F_PHOTO_EXISTS'
+            Visible = False
+          end
+        end
         object cxGrid2Level1: TcxGridLevel
           GridView = cxGrid2DBTableView1
+          object cxGrid2Level2: TcxGridLevel
+            GridView = cxGrid2DBTableView2
+          end
         end
       end
       object LkpPrice: TcxLookupComboBox
@@ -295,14 +345,14 @@ inherited FrmZapas: TFrmZapas
       end
       inline FramGoodCard1: TFramGoodCard
         Left = 1
-        Top = 423
+        Top = 425
         Width = 802
         Height = 186
         Align = alBottom
         TabOrder = 2
         ExplicitLeft = 1
-        ExplicitTop = -32
-        ExplicitWidth = 47
+        ExplicitTop = 425
+        ExplicitWidth = 802
         ExplicitHeight = 186
         inherited Panel4: TPanel
           Left = 290
@@ -445,7 +495,9 @@ inherited FrmZapas: TFrmZapas
       '    F_GOOD_GRP_COLOR,'
       '    F_GOOD_DOP_INFO'
       'FROM'
-      '    SP_T_REG_GOOD_S(:F_SKLAD_IN,:F_DATE_IN,:f_price,:f_scan)')
+      
+        '    SP_T_REG_GOOD_S(:F_SKLAD_IN,:F_DATE_IN,:f_price,:f_scan) ord' +
+        'er by f_good')
     OnCalcFields = dsListZapasCalcFields
     BeforeRefresh = dsListZapasBeforeRefresh
     Transaction = dm.pFIBTransaction
@@ -453,7 +505,7 @@ inherited FrmZapas: TFrmZapas
     DataSource = srLIstSklad
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
-    Left = 272
+    Left = 280
     Top = 72
     object dsListZapasF_ID: TFIBBCDField
       Tag = 1
@@ -2667,5 +2719,112 @@ inherited FrmZapas: TFrmZapas
     DataSet = dsGetGoodsInfo
     Left = 512
     Top = 240
+  end
+  object dsGoodScancodes: TpFIBDataSet
+    SelectSQL.Strings = (
+      
+        'select * from PAK_T_REG_GOOD.GET_REG_SCANCODE(:F_SKLAD_IN,:P_DAT' +
+        'E,:P_PRICE,:P_SCANCODE) order by f_good')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    Left = 912
+    Top = 176
+    WaitEndMasterScroll = True
+    dcForceOpen = True
+    object dsGoodScancodesF_ID: TFIBBCDField
+      FieldName = 'F_ID'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_GOOD: TFIBBCDField
+      FieldName = 'F_GOOD'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_SCANCODE: TFIBBCDField
+      FieldName = 'F_SCANCODE'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_SKLAD: TFIBBCDField
+      FieldName = 'F_SKLAD'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_DATE: TFIBDateField
+      FieldName = 'F_DATE'
+      Visible = False
+    end
+    object dsGoodScancodesF_STR_OST: TFIBFloatField
+      DisplayLabel = #1054#1089#1090#1072#1090#1086#1082
+      FieldName = 'F_STR_OST'
+    end
+    object dsGoodScancodesF_MOVE_IN: TFIBFloatField
+      FieldName = 'F_MOVE_IN'
+      Visible = False
+    end
+    object dsGoodScancodesF_WAIT_IN: TFIBFloatField
+      FieldName = 'F_WAIT_IN'
+      Visible = False
+    end
+    object dsGoodScancodesF_MOVE_OUT: TFIBFloatField
+      FieldName = 'F_MOVE_OUT'
+      Visible = False
+    end
+    object dsGoodScancodesF_WAIT_OUT: TFIBFloatField
+      FieldName = 'F_WAIT_OUT'
+      Visible = False
+    end
+    object dsGoodScancodesF_END_OST: TFIBFloatField
+      FieldName = 'F_END_OST'
+      Visible = False
+    end
+    object dsGoodScancodesF_GOOD_GRP: TFIBBCDField
+      FieldName = 'F_GOOD_GRP'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_GOOD_NAME: TFIBStringField
+      FieldName = 'F_GOOD_NAME'
+      Visible = False
+      Size = 255
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_GOOD_ARTICLE: TFIBStringField
+      FieldName = 'F_GOOD_ARTICLE'
+      Visible = False
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_GOOD_GRP_NAME: TFIBStringField
+      FieldName = 'F_GOOD_GRP_NAME'
+      Visible = False
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_GOOD_GRP_COLOR: TFIBStringField
+      FieldName = 'F_GOOD_GRP_COLOR'
+      Visible = False
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_PRICE_VAL: TFIBBCDField
+      FieldName = 'F_PRICE_VAL'
+      Visible = False
+      Size = 3
+    end
+    object dsGoodScancodesF_GOOD_DOP_INFO: TFIBStringField
+      FieldName = 'F_GOOD_DOP_INFO'
+      Size = 10000
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_PHOTO_EXISTS: TFIBSmallIntField
+      FieldName = 'F_PHOTO_EXISTS'
+      Visible = False
+    end
+  end
+  object srGoodScancodes: TDataSource
+    DataSet = dsGoodScancodes
+    Left = 936
+    Top = 184
   end
 end

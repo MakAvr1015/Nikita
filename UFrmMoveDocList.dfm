@@ -24,14 +24,14 @@ inherited FrmMoveDocList: TFrmMoveDocList
     ExplicitHeight = 341
     inherited RzToolbar: TRzToolbar
       Width = 1009
-      Height = 101
+      Height = 103
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoCustom
       ExplicitWidth = 1009
-      ExplicitHeight = 101
+      ExplicitHeight = 103
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -159,15 +159,15 @@ inherited FrmMoveDocList: TFrmMoveDocList
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 80
-        ExplicitTop = 80
+        Top = 82
+        ExplicitTop = 82
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 131
+      Top = 133
       Width = 1009
-      Height = 209
+      Height = 207
       Align = alClient
       TabOrder = 1
       LookAndFeel.ScrollbarMode = sbmClassic
@@ -276,7 +276,7 @@ inherited FrmMoveDocList: TFrmMoveDocList
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 102
+      Top = 104
       Width = 1009
       Height = 29
       Caption = 'ToolBar1'
