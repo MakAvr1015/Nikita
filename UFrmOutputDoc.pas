@@ -390,7 +390,7 @@ end;
 procedure TFrmOutputDoc.dsDocStringsCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  CalcFieldsDopInfo(DataSet);
+  CalcFieldsDopInfo(DataSet,'f_good_dop_info');
 end;
 
 procedure TFrmOutputDoc.dsPaymentsListAfterDelete(DataSet: TDataSet);

@@ -46,6 +46,11 @@ inherited FrmMoveDoc: TFrmMoveDoc
         Top = 2
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 2
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnFind: TRzToolButton
         Top = 2
@@ -53,6 +58,23 @@ inherited FrmMoveDoc: TFrmMoveDoc
       inherited BtnPrint: TRzToolButton
         Top = 2
         OnClick = nil
+        ExplicitTop = 2
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnOK: TRzToolButton
         Top = 2
@@ -73,26 +95,31 @@ inherited FrmMoveDoc: TFrmMoveDoc
         ToolStyle = tsDropDown
         Enabled = True
         OnClick = BtnExecuteClick
+        ExplicitTop = 2
         ExplicitWidth = 39
       end
       inherited BtnDelete: TRzToolButton
         Left = 282
         Top = 2
         ExplicitLeft = 282
+        ExplicitTop = 2
       end
       inherited BtnSave: TRzToolButton
         Left = 307
         Top = 2
         ExplicitLeft = 307
+        ExplicitTop = 2
       end
       inherited BtnExit: TRzToolButton
         Left = 332
         Top = 2
         ExplicitLeft = 332
+        ExplicitTop = 2
       end
       inherited BtnView: TRzToolButton
         Top = 2
         Visible = False
+        ExplicitTop = 2
       end
       inherited cxComboBoxStyles: TcxComboBox
         Top = 0

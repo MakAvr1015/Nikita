@@ -214,12 +214,16 @@ procedure TFrmInputDoc.CalcFields(Afield :TField; AValue: string);
 var
   val : string;
 begin
-//  val:= IntToStr(Afield.Tag)+'='+ AValue;
-  val:= Afield.DisplayLabel+'='+ AValue;
+  val:= IntToStr(Afield.Tag)+'='+ AValue;
+//  val:= Afield.DisplayLabel+'='+ AValue;
   if pos(val,dsDocStringsF_GOOD_DOP_INFO.AsString)=0 then
   begin
+    dsDocStringsf_NSI_GOOD_INFO.AsString:=
+      dsDocStringsf_NSI_GOOD_INFO.AsString+val+#10;
+  {
     dsDocStringsF_GOOD_DOP_INFO.AsString:=
       dsDocStringsF_GOOD_DOP_INFO.AsString+val+#10;
+}
   end;
   Afield.AsString := AValue;
 end;
@@ -312,7 +316,7 @@ var
   cnt : integer;
   vl_dopInfoVal : String;
 begin
-  inherited;
+//  inherited;
   if (dsDocStringsF_GOOD.IsNull and not dsDocStringsF_GOOD_NAME.IsNull) then
   begin
 
@@ -342,9 +346,9 @@ begin
     dsDocStringsF_SCANCODE.Value:=dm.InsExtGood(
       dsDocStringsF_ARTICLE.Value,
       dsDocStringsF_GOOD_NAME.Value,
-      //dsDocStringsF_GOOD_DOP_INFO.Value,
+      dsDocStringsF_GOOD_DOP_INFO.Value,
       //dsDocStringsF_NSI_GOOD_INFO.Value,
-      vl_dopInfoVal,
+      //vl_dopInfoVal,
       '',
       dsDocStringsF_CNT.AsInteger
       );
@@ -378,7 +382,7 @@ end;
 
 procedure TFrmInputDoc.dsDocStringsCalcFields(DataSet: TDataSet);
 begin
-  CalcFieldsDopInfo(DataSet,'f_NSI_GOOD_INFO');
+  CalcFieldsDopInfo(DataSet,'F_NSI_GOOD_INFO');
 end;
 
 procedure TFrmInputDoc.FormCreate(Sender: TObject);

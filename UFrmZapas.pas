@@ -452,7 +452,6 @@ procedure TFrmZapas.FormCreate(Sender: TObject);
 var
   tf: TStringField;
 begin
-  inherited;
   dm.dsNsiGoodsDopInfo.Active:=false;
   dm.dsNsiGoodsDopInfo.Active:=true;
   dm.dsNsiGoodsDopInfo.First;
@@ -472,7 +471,7 @@ begin
     end;
     dm.dsNsiGoodsDopInfo.Next;
   end;
-  self.RestoreState;  
+  inherited;
 end;
 
 procedure TFrmZapas.FormShow(Sender: TObject);

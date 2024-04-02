@@ -70,6 +70,8 @@ inherited FrmZapas: TFrmZapas
       Align = alLeft
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitTop = 26
+      ExplicitHeight = 614
       object cxGridSkladDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = srLIstSklad
@@ -123,6 +125,7 @@ inherited FrmZapas: TFrmZapas
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
+        ExplicitHeight = 423
         object cxGrid2DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid2DBTableView1DblClick
           OnKeyPress = cxGrid2DBTableView1KeyPress
