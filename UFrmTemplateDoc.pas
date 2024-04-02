@@ -312,7 +312,7 @@ begin
     dm.dsGood_ins.Active:=true;
     dm.dsGood_ins.Transaction.CommitRetaining;
     dsDocStringsF_GOOD.Value:=dm.dsGood_ins.FieldByName('f_id').Value; }
-    dsDocStringsF_GOOD.Value:=dm.InsExtGood(dsDocStringsF_ARTICLE.AsString,dsDocStringsF_GOOD_NAME.AsString,
+    dsDocStringsF_GOOD.Value:=dm.InsExtGood(dsDocStringsF_ARTICLE.AsString,dsDocStringsF_GOOD_NAME.AsString,'',
       '');
     if not dsDocStringsF_scancode.IsNull then
     begin

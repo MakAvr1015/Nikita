@@ -346,6 +346,7 @@ begin
     dsDocStringsF_SCANCODE.Value:=dm.InsExtGood(
       dsDocStringsF_ARTICLE.Value,
       dsDocStringsF_GOOD_NAME.Value,
+      vl_dopInfoVal,
       dsDocStringsF_GOOD_DOP_INFO.Value,
       //dsDocStringsF_NSI_GOOD_INFO.Value,
       //vl_dopInfoVal,

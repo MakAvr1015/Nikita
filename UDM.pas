@@ -305,8 +305,10 @@ type
     procedure UploadPhoto(Article: string; Path: string; ChDate: TDateTime);
     function ImportGood(GoodNode: IXmlNode; ext_base: Integer): Integer;
     function ImportPartner(PartnerNode: IXmlNode; ext_base: Integer): Integer;
-    function InsExtGood(Article: string; name: string; dop_info: string = '';
-      good_type: string = '';p_cnt : integer = 0): Integer;
+    ///  <summary>
+    ///  Импорт Товара с описанием и доп.реквизитами
+    ///  </summary>
+    function InsExtGood(Article, name, NSI_DOP_INFO_VAL : string; dop_info: string = ''; good_type: string = ''; p_cnt: Integer = 0): Integer;
     function GetSYSValue(sysParam: string): string;
 
   end;
@@ -907,8 +909,7 @@ begin
   result := spImportPartner.FieldByName('f_id').AsInteger;
 end;
 
-function Tdm.InsExtGood(Article, name: string; dop_info: string = '';
-  good_type: string = '';p_cnt : integer = 0): Integer;
+function Tdm.InsExtGood(Article, name, NSI_DOP_INFO_VAL : string; dop_info: string = ''; good_type: string = ''; p_cnt: Integer = 0): Integer;
 begin
   dsImportNsiGood.Active := false;
   dsImportNsiGood.Params.ClearValues;

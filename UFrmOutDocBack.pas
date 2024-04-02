@@ -211,7 +211,7 @@ end;
 procedure TFrmOutDocBack.dsDocStringsCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  CalcFieldsDopInfo(DataSet);
+  //CalcFieldsDopInfo(DataSet);
 end;
 
 procedure TFrmOutDocBack.FormCreate(Sender: TObject);
