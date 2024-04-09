@@ -2,7 +2,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
   Caption = #1057#1087#1088#1072#1074#1086#1095#1085#1080#1082' '#1090#1086#1074#1072#1088#1086#1074
   ClientHeight = 622
   ClientWidth = 1039
-  ExplicitLeft = -159
   ExplicitWidth = 1055
   ExplicitHeight = 661
   PixelsPerInch = 96
@@ -180,6 +179,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
       inherited BtnNew: TRzToolButton
         Top = 0
         OnClick = BtnNewClick
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -480,6 +480,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
           Left = 448
           Height = 172
           ExplicitLeft = 448
+          ExplicitTop = 81
           ExplicitHeight = 172
           inherited cxGrid2: TcxGrid
             Height = 170
@@ -618,6 +619,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
         OnKeyPress = cxGrid2DBTableView1KeyPress
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = srGoodScancodes
+        DataController.KeyFieldNames = 'F_ID'
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
@@ -655,7 +657,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2671,6 +2673,8 @@ inherited FrmNsiGoods: TFrmNsiGoods
     DefaultFormats.DisplayFormatTime = 'hh:mm'
     Left = 256
     Top = 224
+    dcForceMasterRefresh = True
+    dcForceOpen = True
     oFetchAll = True
     object dsGetGoodByScanF_NAME: TFIBStringField
       DisplayLabel = #1053#1086#1084#1077#1085#1082#1083#1072#1090#1091#1088#1072
@@ -2786,16 +2790,20 @@ inherited FrmNsiGoods: TFrmNsiGoods
     SelectSQL.Strings = (
       
         'select f_id,f_cnt,f_value,f_dop_info_val,cast(:f_good as integer' +
-        ') as f_good,'
-      'F_OST'
-      'from pak_nsi_good.scancode_sel(:F_GOOD)')
+        ') as f_good,F_OST'
+      'from pak_nsi_good.scancode_sel(:f_good)')
+    AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
+      'F_GOOD=F_GOOD')
+    AutoUpdateOptions.AutoParamsToFields = True
     OnCalcFields = dsGoodScancodesCalcFields
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
+    AutoCommit = True
     DataSource = srNsiGoods
     Left = 809
     Top = 152
     WaitEndMasterScroll = True
+    dcForceMasterRefresh = True
     dcForceOpen = True
     object dsGoodScancodesF_ID: TFIBBCDField
       FieldName = 'F_ID'
@@ -2820,7 +2828,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
     end
     object dsGoodScancodesF_OST: TFIBStringField
       FieldName = 'F_OST'
-      Size = 1000
+      Size = 10000
       EmptyStrToNull = True
     end
   end

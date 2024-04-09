@@ -72,7 +72,7 @@ inherited FrmInputDoc: TFrmInputDoc
     end
     object RzPanel1: TRzPanel
       Left = 1
-      Top = 26
+      Top = 30
       Width = 957
       Height = 111
       Align = alTop
@@ -85,6 +85,7 @@ inherited FrmInputDoc: TFrmInputDoc
       GradientColorStop = clGradientActiveCaption
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 26
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -226,16 +227,16 @@ inherited FrmInputDoc: TFrmInputDoc
     end
     object Panel1: TPanel
       Left = 1
-      Top = 137
+      Top = 141
       Width = 957
-      Height = 406
+      Height = 402
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
       object Splitter1: TSplitter
         Left = 813
         Top = 1
-        Height = 404
+        Height = 400
         Align = alRight
         ExplicitLeft = 696
         ExplicitTop = 88
@@ -245,10 +246,11 @@ inherited FrmInputDoc: TFrmInputDoc
         Left = 1
         Top = 1
         Width = 812
-        Height = 404
+        Height = 400
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
+        ExplicitHeight = 404
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid1DBTableView1DblClick
           OnDragDrop = cxGrid1DBTableView1DragDrop
@@ -397,7 +399,7 @@ inherited FrmInputDoc: TFrmInputDoc
         Properties.GraphicClassName = 'TdxSmartImage'
         Properties.ReadOnly = True
         TabOrder = 1
-        Height = 404
+        Height = 400
         Width = 140
       end
     end
@@ -786,7 +788,7 @@ inherited FrmInputDoc: TFrmInputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000000110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000040110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

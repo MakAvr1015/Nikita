@@ -340,6 +340,7 @@ var
   tf: tfield;
   v_ost : string;
 begin
+
   v_val := TStringList.Create;
   v_val.Text:= DataSet.FieldByName('f_ost').AsString;
   for I := 0 to v_val.Count - 1 do
@@ -436,7 +437,6 @@ begin
     end;
     dm.dsSklad.Next;
   end;
-
   inherited;
 end;
 

@@ -349,7 +349,6 @@ begin
       vl_dopInfoVal,
       dsDocStringsF_GOOD_DOP_INFO.Value,
       //dsDocStringsF_NSI_GOOD_INFO.Value,
-      //vl_dopInfoVal,
       '',
       dsDocStringsF_CNT.AsInteger
       );
