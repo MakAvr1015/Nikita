@@ -100,6 +100,7 @@ inherited FrmZapas: TFrmZapas
         Top = 2
         Visible = False
         ExplicitTop = 2
+
       end
     end
     object cxGridSklad: TcxGrid
@@ -175,6 +176,7 @@ inherited FrmZapas: TFrmZapas
           Navigator.Buttons.CustomButtons = <>
           OnCustomDrawCell = cxGrid2DBTableView1CustomDrawCell
           DataController.DataSource = srListZapas
+          DataController.KeyFieldNames = 'F_GOOD'
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <
             item
@@ -275,8 +277,100 @@ inherited FrmZapas: TFrmZapas
             Visible = False
           end
         end
+        object cxGrid2DBTableView2: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = srGoodScancodes
+          DataController.DetailKeyFieldNames = 'F_GOOD'
+          DataController.KeyFieldNames = 'F_ID'
+          DataController.MasterKeyFieldNames = 'F_GOOD'
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.CellAutoHeight = True
+          OptionsView.ColumnAutoWidth = True
+          OptionsView.GroupByBox = False
+          object cxGrid2DBTableView2F_ID: TcxGridDBColumn
+            DataBinding.FieldName = 'F_ID'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_SCANCODE: TcxGridDBColumn
+            DataBinding.FieldName = 'F_SCANCODE'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_SKLAD: TcxGridDBColumn
+            DataBinding.FieldName = 'F_SKLAD'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_DATE: TcxGridDBColumn
+            DataBinding.FieldName = 'F_DATE'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_STR_OST: TcxGridDBColumn
+            DataBinding.FieldName = 'F_STR_OST'
+            Width = 145
+          end
+          object cxGrid2DBTableView2F_MOVE_IN: TcxGridDBColumn
+            DataBinding.FieldName = 'F_MOVE_IN'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_WAIT_IN: TcxGridDBColumn
+            DataBinding.FieldName = 'F_WAIT_IN'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_MOVE_OUT: TcxGridDBColumn
+            DataBinding.FieldName = 'F_MOVE_OUT'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_WAIT_OUT: TcxGridDBColumn
+            DataBinding.FieldName = 'F_WAIT_OUT'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_END_OST: TcxGridDBColumn
+            DataBinding.FieldName = 'F_END_OST'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_GRP: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_GRP'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_NAME'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_ARTICLE: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_ARTICLE'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_GRP_NAME: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_GRP_NAME'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_GRP_COLOR: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_GRP_COLOR'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_PRICE_VAL: TcxGridDBColumn
+            DataBinding.FieldName = 'F_PRICE_VAL'
+            Visible = False
+          end
+          object cxGrid2DBTableView2F_GOOD_DOP_INFO: TcxGridDBColumn
+            DataBinding.FieldName = 'F_GOOD_DOP_INFO'
+            Width = 525
+          end
+          object cxGrid2DBTableView2F_PHOTO_EXISTS: TcxGridDBColumn
+            DataBinding.FieldName = 'F_PHOTO_EXISTS'
+            Visible = False
+          end
+        end
         object cxGrid2Level1: TcxGridLevel
           GridView = cxGrid2DBTableView1
+          object cxGrid2Level2: TcxGridLevel
+            GridView = cxGrid2DBTableView2
+          end
         end
       end
       object LkpPrice: TcxLookupComboBox
@@ -445,7 +539,9 @@ inherited FrmZapas: TFrmZapas
       '    F_GOOD_GRP_COLOR,'
       '    F_GOOD_DOP_INFO'
       'FROM'
-      '    SP_T_REG_GOOD_S(:F_SKLAD_IN,:F_DATE_IN,:f_price,:f_scan)')
+      
+        '    SP_T_REG_GOOD_S(:F_SKLAD_IN,:F_DATE_IN,:f_price,:f_scan) ord' +
+        'er by f_good')
     OnCalcFields = dsListZapasCalcFields
     BeforeRefresh = dsListZapasBeforeRefresh
     Transaction = dm.pFIBTransaction
@@ -453,7 +549,7 @@ inherited FrmZapas: TFrmZapas
     DataSource = srLIstSklad
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
-    Left = 272
+    Left = 280
     Top = 72
     object dsListZapasF_ID: TFIBBCDField
       Tag = 1
@@ -2667,5 +2763,112 @@ inherited FrmZapas: TFrmZapas
     DataSet = dsGetGoodsInfo
     Left = 512
     Top = 240
+  end
+  object dsGoodScancodes: TpFIBDataSet
+    SelectSQL.Strings = (
+      
+        'select * from PAK_T_REG_GOOD.GET_REG_SCANCODE(:F_SKLAD_IN,:P_DAT' +
+        'E,:P_PRICE,:P_SCANCODE) order by f_good')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    Left = 912
+    Top = 176
+    WaitEndMasterScroll = True
+    dcForceOpen = True
+    object dsGoodScancodesF_ID: TFIBBCDField
+      FieldName = 'F_ID'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_GOOD: TFIBBCDField
+      FieldName = 'F_GOOD'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_SCANCODE: TFIBBCDField
+      FieldName = 'F_SCANCODE'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_SKLAD: TFIBBCDField
+      FieldName = 'F_SKLAD'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_DATE: TFIBDateField
+      FieldName = 'F_DATE'
+      Visible = False
+    end
+    object dsGoodScancodesF_STR_OST: TFIBFloatField
+      DisplayLabel = #1054#1089#1090#1072#1090#1086#1082
+      FieldName = 'F_STR_OST'
+    end
+    object dsGoodScancodesF_MOVE_IN: TFIBFloatField
+      FieldName = 'F_MOVE_IN'
+      Visible = False
+    end
+    object dsGoodScancodesF_WAIT_IN: TFIBFloatField
+      FieldName = 'F_WAIT_IN'
+      Visible = False
+    end
+    object dsGoodScancodesF_MOVE_OUT: TFIBFloatField
+      FieldName = 'F_MOVE_OUT'
+      Visible = False
+    end
+    object dsGoodScancodesF_WAIT_OUT: TFIBFloatField
+      FieldName = 'F_WAIT_OUT'
+      Visible = False
+    end
+    object dsGoodScancodesF_END_OST: TFIBFloatField
+      FieldName = 'F_END_OST'
+      Visible = False
+    end
+    object dsGoodScancodesF_GOOD_GRP: TFIBBCDField
+      FieldName = 'F_GOOD_GRP'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodScancodesF_GOOD_NAME: TFIBStringField
+      FieldName = 'F_GOOD_NAME'
+      Visible = False
+      Size = 255
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_GOOD_ARTICLE: TFIBStringField
+      FieldName = 'F_GOOD_ARTICLE'
+      Visible = False
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_GOOD_GRP_NAME: TFIBStringField
+      FieldName = 'F_GOOD_GRP_NAME'
+      Visible = False
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_GOOD_GRP_COLOR: TFIBStringField
+      FieldName = 'F_GOOD_GRP_COLOR'
+      Visible = False
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_PRICE_VAL: TFIBBCDField
+      FieldName = 'F_PRICE_VAL'
+      Visible = False
+      Size = 3
+    end
+    object dsGoodScancodesF_GOOD_DOP_INFO: TFIBStringField
+      FieldName = 'F_GOOD_DOP_INFO'
+      Size = 10000
+      EmptyStrToNull = True
+    end
+    object dsGoodScancodesF_PHOTO_EXISTS: TFIBSmallIntField
+      FieldName = 'F_PHOTO_EXISTS'
+      Visible = False
+    end
+  end
+  object srGoodScancodes: TDataSource
+    DataSet = dsGoodScancodes
+    Left = 936
+    Top = 184
   end
 end

@@ -64,7 +64,6 @@ type
     Splitter2: TSplitter;
     RzSelectFolderDialog: TRzSelectFolderDialog;
     spImportPictures: TpFIBStoredProc;
-    cxGrid1DBTableView1F_PICTURE: TcxGridDBColumn;
     FramGoodCard1: TFramGoodCard;
     cxGrid1DBTableView1F_COLOR: TcxGridDBColumn;
     dsGetGoodByScanF_GOOD: TFIBBCDField;
@@ -97,7 +96,6 @@ type
     N3: TMenuItem;
     N4: TMenuItem;
     cxGrid1DBTableView1F_CRE_DATE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_GOOD_TYPE: TcxGridDBColumn;
     Image1: TImage;
     dsGoodScancodes: TpFIBDataSet;
     dsGoodScancodesF_ID: TFIBBCDField;
@@ -114,6 +112,9 @@ type
     cxGrid2DBTableView1F_CNT: TcxGridDBColumn;
     cxGrid2DBTableView1F_DOP_INFO_VAL: TcxGridDBColumn;
     cxGrid2DBTableView1F_GOOD: TcxGridDBColumn;
+    cxGrid1DBTableView1F_MMEDIA_EXISTS: TcxGridDBColumn;
+    cxGrid1DBTableView1F_GOOD_INFO_VAL1: TcxGridDBColumn;
+    dsGoodScancodesF_OST: TFIBStringField;
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
@@ -132,7 +133,6 @@ type
       var ADone: Boolean);
     procedure FramNsiGoodsGrp1cxDBTreeListSelectionChanged(Sender: TObject);
     procedure RzEditFindChange(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure ShowAllGoodsClick(Sender: TObject);
@@ -338,7 +338,17 @@ var
   i,j   : integer;
   v_val : TStringList;
   tf: tfield;
+  v_ost : string;
 begin
+  v_val := TStringList.Create;
+  v_val.Text:= DataSet.FieldByName('f_ost').AsString;
+  for I := 0 to v_val.Count - 1 do
+  begin
+    DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+  end;
+  v_val.Free;
+
+
   v_val := TStringList.Create;
   v_val.Text:= DataSet.FieldByName('F_DOP_INFO_VAL').AsString;
   for I := 0 to v_val.Count - 1 do
@@ -379,12 +389,6 @@ begin
   end;
 end;
 
-procedure TFrmNsiGoods.FormActivate(Sender: TObject);
-begin
-  inherited;
-  // dm.TimerRefreshNsiGood.Enabled:=false;
-end;
-
 procedure TFrmNsiGoods.FormCreate(Sender: TObject);
 var
     tf  : TStringField;
@@ -412,8 +416,28 @@ begin
     end;
     dm.dsNsiGoodsDopInfo.Next;
   end;
-  inherited;
 
+
+  dm.dsSklad.First;
+
+  while not dm.dsSklad.Eof do
+  begin
+    tf:=TStringField.Create(dsGoodScancodes);
+    tf.Calculated:=true;
+    tf.Index:=dsGoodScancodes.FieldCount;
+    tf.FieldName:='Sklad_'+dm.dsSklad.FieldByName('f_id').AsString;
+    tf.tag:=dm.dsSklad.FieldByName('f_id').AsInteger;
+    tf.DataSet:=dsGoodScancodes;
+    with cxGrid2DBTableView1.CreateColumn do
+    begin
+      DataBinding.FieldName:=tf.FieldName;
+//      Summary.FooterKind:=skSum;
+      Caption:=dm.dsSklad.FieldByName('f_name').AsString;
+    end;
+    dm.dsSklad.Next;
+  end;
+
+  inherited;
 end;
 
 procedure TFrmNsiGoods.FormDestroy(Sender: TObject);

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.0.7" DotMatrixReport="False" EngineOptions.PrintIfEmpty="False" IniFile="\Software\Fast Reports" PreviewOptions.AllowEdit="False" PreviewOptions.Buttons="4095" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PreviewOptions.ZoomMode="zmWholePage" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41439,6763908333" ReportOptions.Description.Text="" ReportOptions.Name="Отчет по продажам по поставщику в приходных ценах" ReportOptions.LastChange="43426,3290825579" ScriptLanguage="PascalScript" ScriptText.Text="&#13;&#10;procedure DialogPage1OnShow(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  str_date.date:=date;&#13;&#10;  end_date.date:=date;&#13;&#10;end;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;procedure BtnOkOnClick(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  Report.Variables.Variables['d_start']:=str_date.Date;&#13;&#10;  Report.Variables.Variables['d_end']:=end_date.Date;&#13;&#10;end;&#13;&#10;&#13;&#10;begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="ReportQ" DataSetName="ReportQ"/>
+  </Datasets>
+  <Variables>
+    <item Name=" local"/>
+    <item Name="TFrmNsiPartner"/>
+    <item Name="F_ID"/>
+    <item Name="F_NAME"/>
+    <item Name="F_U_NAME"/>
+    <item Name="F_U_ADDRES"/>
+    <item Name="F_INN"/>
+    <item Name="F_KPP"/>
+    <item Name="d_start"/>
+    <item Name="d_end"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000">
+    <TfrxFIBQuery Name="ReportQ" UserName="ReportQ" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="--select * from t_nsi_goods&#13;&#10;select&#13;&#10;    g.f_id,&#13;&#10;    g.f_article,&#13;&#10;    g.f_name,&#13;&#10;    (select f_value from sp_t_price_get(4,g.f_id)),&#13;&#10;    sum(s.f_cnt) as f_cnt,&#13;&#10;    sum(s.f_price_val*s.f_cnt) as f_sum&#13;&#10;--    sum(sp.f_cnt) as f_party_cnt&#13;&#10;from&#13;&#10;t_doc_out d&#13;&#10;inner join t_doc_out_str s on d.f_id=s.f_doc_out&#13;&#10;inner join t_nsi_goods g on s.f_good=g.f_id and g.f_partner=:partner&#13;&#10;--left join t_doc_out_str_party sp on s.f_id=sp.f_doc_out_str&#13;&#10;where&#13;&#10;d.f_state&#62;=3&#13;&#10;and d.f_type in (1,2)&#13;&#10;and d.f_date between :d1 and :d2&#13;&#10;group by g.f_id,&#13;&#10;    g.f_article,&#13;&#10;    g.f_name&#13;&#10;order by f_article&#13;&#10;--    s.f_cnt,s.f_price_val&#13;&#10;--having sum(sp.f_cnt) is null&#13;&#10;&#13;&#10;--select * from t_nsi_goods where f_id =47469" PropData="05704C656674023C0470546F7002140A506172616D657465727301010640204E616D653D22706172746E6572222044617461547970653D226674496E7465676572222045787072657373696F6E3D22262336303B465F4944262336323B220001063B204E616D653D226431222044617461547970653D22667444617465222045787072657373696F6E3D22262336303B645F7374617274262336323B2200010639204E616D653D226432222044617461547970653D22667444617465222045787072657373696F6E3D22262336303B645F656E64262336323B220000"/>
+  </TfrxDataPage>
+  <TfrxDialogPage Name="DialogPage1" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Tahoma" Font.Style="0" BorderStyle="bsDialog" DoubleBuffered="False" Height="137" ClientHeight="99" Left="713" Top="239" Width="259" Scaled="True" ClientWidth="243" OnShow="DialogPage1OnShow">
+    <TfrxDateEditControl Name="str_date" Left="12" Top="28" Width="93" Height="21" ShowHint="True" Color="-16777211" Date="41439,6786134838" Time="41439,6786134838" WeekNumbers="False"/>
+    <TfrxDateEditControl Name="end_date" Left="128" Top="28" Width="97" Height="21" ShowHint="True" Color="-16777211" Date="41439,678717662" Time="41439,678717662" WeekNumbers="False"/>
+    <TfrxBitBtnControl Name="BtnCancel" Left="128" Top="60" Width="99" Height="25" ShowHint="True" Caption="Отмена" ModalResult="2"/>
+    <TfrxBitBtnControl Name="BtnOk" Left="12" Top="60" Width="96" Height="24" ShowHint="True" Caption="Сформировать" ModalResult="1" OnClick="BtnOkOnClick"/>
+    <TfrxLabelControl Name="Label1" Left="12" Top="8" Width="83" Height="13" ShowHint="True" Caption="Начало периода" Color="-16777201"/>
+    <TfrxLabelControl Name="Label2" Left="128" Top="8" Width="77" Height="13" ShowHint="True" Caption="Конец периода" Color="-16777201"/>
+  </TfrxDialogPage>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="181,41744" Left="0" Top="18,89765" Width="755,906">
+      <TfrxMemoView Name="Memo1" Left="45,35436" Top="18,89765" Width="702,99258" Height="71,81107" Font.Charset="1" Font.Color="0" Font.Height="-24" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="Отчет по продажам по поставщику в приходных ценах за период с [DateToStr(&#60;d_start&#62;)] по [DateToStr(&#60;d_end&#62;)]"/>
+      <TfrxMemoView Name="Memo2" Left="41,57483" Top="105,82684" Width="706,77211" Height="26,45671" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="[F_NAME]"/>
+    </TfrxReportTitle>
+    <TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="41,57483" Left="0" Top="260,78757" Width="755,906" ReprintOnNewPage="True">
+      <TfrxMemoView Name="Memo3" Left="22,67718" Top="3,77953" Width="94,48825" Height="37,7953" Frame.Typ="15" Frame.Width="2" Text="Артикул"/>
+      <TfrxMemoView Name="Memo4" Left="117,16543" Top="3,77953" Width="347,71676" Height="37,7953" Frame.Typ="15" Frame.Width="2" Text="Наименование"/>
+      <TfrxMemoView Name="Memo5" Left="464,88219" Top="3,77953" Width="83,14966" Height="37,7953" Frame.Typ="15" Frame.Width="2" Text="Количество"/>
+      <TfrxMemoView Name="Memo6" Left="548,03185" Top="3,77953" Width="113,3859" Height="37,7953" Frame.Typ="15" Frame.Width="2" Text="Сумма во входящих ценах"/>
+      <TfrxMemoView Name="Memo7" Left="661,41775" Top="3,77953" Width="94,48825" Height="37,7953" Frame.Typ="15" Frame.Width="2" Text="Сумма реализации"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="18,89765" Left="0" Top="325,03958" Width="755,906" ColumnWidth="0" ColumnGap="0" DataSet="ReportQ" DataSetName="ReportQ" RowCount="0" Stretched="True">
+      <TfrxMemoView Name="Memo8" Left="22,67718" Top="0" Width="94,48825" Height="18,89765" StretchMode="smMaxHeight" DataField="F_ARTICLE" DataSet="ReportQ" DataSetName="ReportQ" Frame.Typ="15" Text="[ReportQ.&#34;F_ARTICLE&#34;]"/>
+      <TfrxMemoView Name="Memo9" Left="117,16543" Top="0" Width="347,71676" Height="18,89765" StretchMode="smMaxHeight" DataField="F_NAME" DataSet="ReportQ" DataSetName="ReportQ" Frame.Typ="15" Text="[ReportQ.&#34;F_NAME&#34;]"/>
+      <TfrxMemoView Name="Memo10" Left="464,88219" Top="0" Width="83,14966" Height="18,89765" StretchMode="smMaxHeight" DataField="F_CNT" DataSet="ReportQ" DataSetName="ReportQ" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Frame.Typ="15" HAlign="haRight" Text="[ReportQ.&#34;F_CNT&#34;]"/>
+      <TfrxMemoView Name="Memo11" Left="661,41775" Top="0" Width="94,48825" Height="18,89765" StretchMode="smMaxHeight" DataField="F_SUM" DataSet="ReportQ" DataSetName="ReportQ" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Frame.Typ="15" HAlign="haRight" Text="[ReportQ.&#34;F_SUM&#34;]"/>
+      <TfrxMemoView Name="Memo12" Left="548,03185" Top="0" Width="113,3859" Height="18,89765" StretchMode="smMaxHeight" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Frame.Typ="15" HAlign="haRight" Text="[&#60;ReportQ.&#34;F_CNT&#34;&#62;*&#60;ReportQ.&#34;F_VALUE&#34;&#62;]"/>
+    </TfrxMasterData>
+    <TfrxFooter Name="Footer1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="18,89765" Left="0" Top="366,61441" Width="755,906">
+      <TfrxMemoView Name="Memo13" Left="26,45671" Top="0" Width="438,42548" Height="18,89765" Font.Charset="1" Font.Color="0" Font.Height="-16" Font.Name="Arial" Font.Style="1" Frame.Typ="15" Frame.Width="2" ParentFont="False" Text="Итого за период"/>
+      <TfrxMemoView Name="Memo14" Left="464,88219" Top="0" Width="83,14966" Height="18,89765" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Frame.Typ="15" Frame.Width="2" HAlign="haRight" Text="[SUM(&#60;ReportQ.&#34;F_CNT&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo15" Left="548,03185" Top="0" Width="113,3859" Height="18,89765" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Frame.Typ="15" Frame.Width="2" HAlign="haRight" Text="[SUM(&#60;ReportQ.&#34;F_VALUE&#34;&#62;*&#60;ReportQ.&#34;F_CNT&#34;&#62;)]"/>
+      <TfrxMemoView Name="Memo16" Left="661,41775" Top="0" Width="94,48825" Height="18,89765" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Frame.Typ="15" Frame.Width="2" HAlign="haRight" Text="[SUM(&#60;ReportQ.&#34;F_SUM&#34;&#62;)]"/>
+    </TfrxFooter>
+  </TfrxReportPage>
+</TfrxReport>

@@ -57,6 +57,14 @@ type
     cxGrid1DBTableView1F_GOOD_INFO: TcxGridDBColumn;
     cxGrid1DBTableView1F_GOOD_INFO_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1F_GOOD_INFO_VAL: TcxGridDBColumn;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    cxGrid2Level1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    dsGoodOst: TpFIBDataSet;
+    srGoodOst: TDataSource;
+    cxGrid2DBTableView1Column1: TcxGridDBColumn;
+    cxGrid2DBTableView1Column2: TcxGridDBColumn;
   private
     { Private declarations }
   public

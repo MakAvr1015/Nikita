@@ -60,6 +60,8 @@ type
     spCopyToDoc: TpFIBStoredProc;
     BtnFromDoc: TRzToolButton;
     spCopyFromDoc: TpFIBStoredProc;
+    dsGoodBufferF_SCANCODE: TFIBBCDField;
+    cxGridDBTableViewBufferF_SCANCODE: TcxGridDBColumn;
     procedure cxGridDBTableViewBufferDragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
     procedure cxGridDBTableViewBufferDragDrop(Sender, Source: TObject; X,
@@ -142,7 +144,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsGoodBuffer.Insert;
-      dsGoodBufferF_GOOD.Value:=goods[i];
+      dsGoodBufferF_SCANCODE.Value:=goods[i];
       dsGoodBufferF_CNT.Value:=1;
       dsGoodBuffer.Post;
       dsGoodBuffer.Transaction.CommitRetaining;

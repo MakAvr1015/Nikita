@@ -519,20 +519,22 @@ inherited FrmInputDoc: TFrmInputDoc
   end
   object dsDocStrings: TpFIBDataSet [5]
     UpdateSQL.Strings = (
-      'execute procedure SP_T_DOC_IN_STR_U('
+      'execute procedure PAK_DOC.DOC_IN_STR_U('
       '    :F_ID,'
       '    :F_DOC_IN,'
       '    :F_GOOD,'
+      '    :F_SCANCODE,'
       '    :F_PRICE_val,'
       '    :F_CNT,'
       '    :F_SUM)')
     DeleteSQL.Strings = (
-      'execute procedure SP_T_DOC_IN_STR_d(:f_id)')
+      'execute procedure PAK_DOC.DOC_IN_STR_d(:f_id)')
     InsertSQL.Strings = (
-      'execute procedure SP_T_DOC_IN_STR_I'
+      'execute procedure PAK_DOC.DOC_IN_STR_I'
       '(   :f_id,'
       '    :F_DOC_IN,'
       '    :F_GOOD,'
+      '    :F_SCANCODE,'
       '    :F_PRICE_val,'
       '    :F_CNT,'
       '    :F_SUM)')
@@ -549,6 +551,7 @@ inherited FrmInputDoc: TFrmInputDoc
       '    F_article,'
       '    f_ed_izm_short_name,'
       '    f_scancode,'
+      '    f_scancode_val,'
       
         '    (select first 1 '#39'Ok'#39' from SP_T_NSI_GOODS_MMEDIA_S(f_good)) a' +
         's f_picture,'
@@ -558,7 +561,7 @@ inherited FrmInputDoc: TFrmInputDoc
       '    F_GOOD_DOP_INFO,'
       '    f_NSI_GOOD_INFO'
       'FROM'
-      '  SP_T_DOC_IN_STR_S(:f_doc_in)')
+      '   PAK_DOC.DOC_IN_STR_S(:f_doc_in) ')
     AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
       'F_DOC_IN=F_DOC_IN')
     AfterDelete = dsDocStringsAfterDelete
@@ -664,8 +667,14 @@ inherited FrmInputDoc: TFrmInputDoc
       Transliterate = False
       EmptyStrToNull = True
     end
-    object dsDocStringsF_SCANCODE: TStringField
+    object dsDocStringsF_SCANCODE: TFIBBCDField
       FieldName = 'F_SCANCODE'
+      Size = 0
+    end
+    object dsDocStringsF_SCANCODE_VAL: TFIBStringField
+      FieldName = 'F_SCANCODE_VAL'
+      Size = 60
+      EmptyStrToNull = True
     end
   end
   object srDocStrings: TDataSource [6]

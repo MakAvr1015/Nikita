@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="6.0.7" DotMatrixReport="False" EngineOptions.PrintIfEmpty="False" IniFile="\Software\Fast Reports" PreviewOptions.AllowEdit="False" PreviewOptions.Buttons="4095" PreviewOptions.ShowCaptions="True" PreviewOptions.Zoom="1" PreviewOptions.ZoomMode="zmWholePage" PrintOptions.Printer="По умолчанию" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="44623,3907826157" ReportOptions.Description.Text="" ReportOptions.Name="Сравнительная ведомость ценообразования" ReportOptions.LastChange="44623,4159756018" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Datasets>
+    <item DataSet="DocBody" DataSetName="FIBQuery1"/>
+  </Datasets>
+  <Variables>
+    <item Name="TFrmPriceDoc"/>
+    <item Name="F_NUM"/>
+    <item Name="F_DATE"/>
+    <item Name="F_PARENT"/>
+    <item Name="F_STATE"/>
+    <item Name="F_PRICE"/>
+    <item Name="F_PRICE_NAME"/>
+    <item Name="F_STATE_NAME"/>
+    <item Name="F_DOC_HEAD"/>
+    <item Name="F_ID"/>
+    <item Name="F_GOOD"/>
+    <item Name="F_DOC_PRICE"/>
+    <item Name="F_GOOD_NAME"/>
+    <item Name="F_OLD_PRICE"/>
+    <item Name="F_IN_PRICE"/>
+    <item Name="F_SKLAD_OST"/>
+    <item Name="F_ARTICLE"/>
+  </Variables>
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000">
+    <TfrxFIBQuery Name="DocBody" UserName="FIBQuery1" CloseDataSource="True" FieldAliases.Text="" BCDToCurrency="False" IgnoreDupParams="False" SQL.Text="SELECT&#13;&#10;    F_ID,&#13;&#10;    F_GOOD,&#13;&#10;    F_PRICE,&#13;&#10;    F_DOC_PRICE,&#13;&#10;    F_GOOD_NAME,&#13;&#10;    f_good_article,&#13;&#10;    f_old_price,&#13;&#10;    (&#13;&#10;      select f_value from sp_t_price_get((select param_value from sp_get_sys_param('DEFAULT_IN_PRICE')),f_good)&#13;&#10;    ) as f_in_price,&#13;&#10;    F_SKLAD_OST,    &#13;&#10; (select first 1 f_memo from T_NSI_GOODS_MMEDIA where f_good=o.f_good) as f_photo     &#13;&#10;from SP_T_DOC_PRICE_STR_S(:P_DOC_ID) o     " PropData="05704C65667403EC000470546F7003A4000A506172616D657465727301010647204E616D653D22505F444F435F4944222044617461547970653D226674496E7465676572222045787072657373696F6E3D22262336303B465F444F435F48454144262336323B220000"/>
+  </TfrxDataPage>
+  <TfrxReportPage Name="Page1" PaperWidth="210" PaperHeight="297" PaperSize="9" LeftMargin="5" RightMargin="5" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="22,67718" Left="0" Top="18,89765" Width="755,906"/>
+    <TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="41,57483" Left="0" Top="102,04731" Width="755,906" ReprintOnNewPage="True">
+      <TfrxMemoView Name="Memo1" Left="0,22047" Top="3,77953" Width="109,60637" Height="37,7953" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Артикул"/>
+      <TfrxMemoView Name="Memo2" Left="109,82684" Top="3,77953" Width="215,43321" Height="37,7953" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Название"/>
+      <TfrxMemoView Name="Memo3" Left="325,41732283" Top="3,77953" Width="60,47248" Height="37,7953" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Остаток"/>
+      <TfrxMemoView Name="Memo4" Left="385,88976378" Top="3,77953" Width="71,81107" Height="37,7953" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Входящая цена"/>
+      <TfrxMemoView Name="Memo5" Left="457,7007874" Top="3,77953" Width="71,81107" Height="37,7953" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Старая цена"/>
+      <TfrxMemoView Name="Memo6" Left="529,51181102" Top="3,77953" Width="71,81107" Height="37,7953" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="Новая цена"/>
+    </TfrxHeader>
+    <TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="124,72449" Left="0" Top="166,29932" Width="755,906" ColumnWidth="0" ColumnGap="0" DataSet="DocBody" DataSetName="FIBQuery1" KeepHeader="True" RowCount="0" Stretched="True">
+      <TfrxMemoView Name="FIBQuery1F_GOOD_ARTICLE" IndexTag="1" Left="0,22047" Top="0" Width="109,60637" Height="18,89765" StretchMode="smMaxHeight" DataField="F_GOOD_ARTICLE" DataSet="DocBody" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_GOOD_ARTICLE&#34;]"/>
+      <TfrxMemoView Name="FIBQuery1F_GOOD_NAME" IndexTag="1" Left="109,82684" Top="0" Width="215,43321" Height="18,89765" StretchMode="smMaxHeight" DataField="F_GOOD_NAME" DataSet="DocBody" DataSetName="FIBQuery1" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" ParentFont="False" Text="[FIBQuery1.&#34;F_GOOD_NAME&#34;]"/>
+      <TfrxMemoView Name="FIBQuery1F_SKLAD_OST" IndexTag="1" Left="325,41732283" Top="0" Width="60,47248" Height="18,89765" StretchMode="smMaxHeight" DataField="F_SKLAD_OST" DataSet="DocBody" DataSetName="FIBQuery1" DisplayFormat.FormatStr="%g" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[FIBQuery1.&#34;F_SKLAD_OST&#34;]"/>
+      <TfrxMemoView Name="FIBQuery1F_PRICE" IndexTag="1" Left="385,88976378" Top="0" Width="71,81107" Height="18,89765" StretchMode="smMaxHeight" DataField="F_IN_PRICE" DataSet="DocBody" DataSetName="FIBQuery1" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[FIBQuery1.&#34;F_IN_PRICE&#34;]"/>
+      <TfrxMemoView Name="FIBQuery1F_OLD_PRICE" IndexTag="1" Left="457,7007874" Top="0" Width="71,81107" Height="18,89765" StretchMode="smMaxHeight" DataField="F_OLD_PRICE" DataSet="DocBody" DataSetName="FIBQuery1" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[FIBQuery1.&#34;F_OLD_PRICE&#34;]"/>
+      <TfrxMemoView Name="FIBQuery1F_DOC_PRICE" IndexTag="1" Left="529,51181102" Top="0" Width="71,81107" Height="18,89765" StretchMode="smMaxHeight" DataField="F_PRICE" DataSet="DocBody" DataSetName="FIBQuery1" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[FIBQuery1.&#34;F_PRICE&#34;]"/>
+      <TfrxPictureView Name="Picture1" Left="603,06339" Top="0" Width="151,1812" Height="124,72449" Center="True" DataField="F_PHOTO" DataSet="DocBody" DataSetName="FIBQuery1" Frame.Typ="0" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>
