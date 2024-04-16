@@ -41,6 +41,7 @@ inherited FrmMoveDoc: TFrmMoveDoc
         BtnExit)
       inherited BtnNew: TRzToolButton
         Top = 2
+        ExplicitTop = 2
       end
       inherited BtnOpen: TRzToolButton
         Top = 2

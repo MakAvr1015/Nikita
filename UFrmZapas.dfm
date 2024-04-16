@@ -19,17 +19,17 @@ inherited FrmZapas: TFrmZapas
     ExplicitHeight = 641
     object Splitter1: TSplitter [0]
       Left = 251
-      Top = 28
-      Height = 612
+      Top = 30
+      Height = 610
       ExplicitLeft = 313
       ExplicitTop = 36
       ExplicitHeight = 401
     end
     inherited RzToolbar: TRzToolbar
       Width = 1057
-      Height = 27
+      Height = 29
       ExplicitWidth = 1057
-      ExplicitHeight = 27
+      ExplicitHeight = 29
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -44,29 +44,70 @@ inherited FrmZapas: TFrmZapas
         BtnDelete
         BtnSave
         BtnExit)
+      inherited BtnNew: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 2
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 2
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnPrint: TRzToolButton
+        Top = 2
         OnClick = nil
+        ExplicitTop = 2
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnDelete: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnSave: TRzToolButton
+        Top = 2
         Visible = True
+        ExplicitTop = 2
+      end
+      inherited BtnExit: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnView: TRzToolButton
+        Top = 2
         Visible = False
-      end
-      inherited cxComboBoxStyles: TcxComboBox
-        Top = 0
-        ExplicitTop = 0
+        ExplicitTop = 2
+
       end
     end
     object cxGridSklad: TcxGrid
       Left = 1
-      Top = 28
+      Top = 30
       Width = 250
-      Height = 612
+      Height = 610
       Align = alLeft
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
@@ -101,15 +142,18 @@ inherited FrmZapas: TFrmZapas
     end
     object Panel1: TPanel
       Left = 254
-      Top = 28
+      Top = 30
       Width = 804
-      Height = 612
+      Height = 610
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
+      ExplicitTop = 26
+      ExplicitWidth = 49
+      ExplicitHeight = 155
       object Splitter2: TSplitter
         Left = 1
-        Top = 422
+        Top = 420
         Width = 802
         Height = 3
         Cursor = crVSplit
@@ -121,7 +165,7 @@ inherited FrmZapas: TFrmZapas
         Left = 1
         Top = 1
         Width = 802
-        Height = 421
+        Height = 419
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
@@ -345,14 +389,14 @@ inherited FrmZapas: TFrmZapas
       end
       inline FramGoodCard1: TFramGoodCard
         Left = 1
-        Top = 425
+        Top = 423
         Width = 802
         Height = 186
         Align = alBottom
         TabOrder = 2
         ExplicitLeft = 1
-        ExplicitTop = 425
-        ExplicitWidth = 802
+        ExplicitTop = -32
+        ExplicitWidth = 47
         ExplicitHeight = 186
         inherited Panel4: TPanel
           Left = 290

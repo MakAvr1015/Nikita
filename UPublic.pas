@@ -165,7 +165,6 @@ begin
   end;
 end;
 
-
 procedure CalcFieldsDopInfo(p_data_set : TdataSet; p_dop_fld_name : String);
 var
   i,j   : integer;
@@ -174,9 +173,9 @@ var
   vl_info_field : Tfield;
 begin
   v_val := TStringList.Create;
-
   vl_info_field := p_data_set.FindField(p_dop_fld_name);
   {
+  vl_info_field := p_data_set.FindField('F_DOP_INFO_VAL');
   if vl_info_field = nil then
     vl_info_field := p_data_set.FindField('F_GOOD_DOP_INFO');
   if vl_info_field = nil then
