@@ -23,7 +23,6 @@ inherited FrmMakeBkp: TFrmMakeBkp
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -123,8 +122,8 @@ inherited FrmMakeBkp: TFrmMakeBkp
     end
   end
   object cxRadioButtonFull: TcxRadioButton [2]
-    Left = 9
-    Top = 80
+    Left = 8
+    Top = 128
     Width = 113
     Height = 17
     Caption = #1055#1086#1083#1085#1072#1103' '#1082#1086#1087#1080#1103
@@ -133,16 +132,16 @@ inherited FrmMakeBkp: TFrmMakeBkp
     TabStop = True
   end
   object cxRadioButtonStock: TcxRadioButton [3]
-    Left = 9
-    Top = 184
+    Left = 8
+    Top = 232
     Width = 113
     Height = 17
     Caption = #1050#1086#1087#1080#1103' '#1089#1082#1083#1072#1076#1072
     TabOrder = 3
   end
   object cxRadioButtonEmpty: TcxRadioButton [4]
-    Left = 9
-    Top = 295
+    Left = 8
+    Top = 343
     Width = 113
     Height = 17
     Caption = #1053#1086#1074#1099#1081' '#1089#1082#1083#1072#1076
@@ -159,7 +158,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

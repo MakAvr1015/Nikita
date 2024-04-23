@@ -60,22 +60,36 @@ uses
 procedure TFrmMakeBkp.BtnBckpClick(Sender: TObject);
 var
   ResultCode: Cardinal;
-  gbak_str : String;
-  vl_log  : Tstrings;
+  gbak_str: String;
+  vl_log: Tstrings;
+  vl_path: String;
+  vl_make: boolean;
 begin
-    with TPasswordDlg.Create(Application) do
-    begin
-      if ShowModal = mrOk then
-      begin
-        gbak_str := '-b -m -v '+ EdBase.Text + ' ' +cxShellComboBox.Path + '\nbase.bkp -user ' +
-          EdUser.Text + ' -password ' + Password.Text;
-        vl_log := GetDosOutput( Gbak_path + '\gbak' + ' ' +gbak_str, Gbak_path, ResultCode, @MemoLog.Lines);
-      end;
+  vl_path := cxShellComboBox.Path + '\Nikita';
 
-      free;
+  vl_make := false;
+  with TPasswordDlg.Create(Application) do
+  begin
+    if ShowModal = mrOk then
+    begin
+      gbak_str := '-b -m -v ' + EdBase.Text + ' ' + vl_path +
+        '\nbase.bkp -user ' + EdUser.Text + ' -password ' + Password.Text;
+      vl_make := true;
     end;
 
+    free;
+  end;
+  if vl_make then
+  begin
+    if not directoryexists(vl_path) then
+    begin
+      MkDir(vl_path);
+    end;
+    vl_log := GetDosOutput(Gbak_path + '\gbak' + ' ' + gbak_str, Gbak_path,
+      ResultCode, @MemoLog.Lines);
 
+
+  end;
 end;
 
 end.
