@@ -451,8 +451,6 @@ begin
       ListGoods[i].f_good:=TNsiGood.create();
       ListGoods[i].f_good.Setarticle(article);
       ListGoods[i].f_quant:=f_cnt;
-      if f_scan_index > 0 then
-        ListGoods[i].f_scancode := DataController.GetValue(ARowInfo.RecordIndex, f_scan_index);
     end;
     for I := 0 to length(ListGoods)-1 do
     begin
@@ -461,8 +459,6 @@ begin
       dest.FieldByName('f_good').Value := ListGoods[i].f_good.GetArticle;
       if dest.FindField('f_cnt') <> nil then
         dest.FieldByName('f_cnt').Value := ListGoods[i].f_quant;
-      if dest.FindField('f_scancode') <> nil then
-        dest.FieldByName('f_scancode').Value := ListGoods[i].f_scancode;
       dest.Post;
     end;
     if i > 0 then
