@@ -61,6 +61,7 @@ procedure TFrmMakeBkp.BtnBckpClick(Sender: TObject);
 var
   ResultCode: Cardinal;
   gbak_str: String;
+  auth_str : String;
   vl_log: Tstrings;
   vl_path: String;
   vl_make: boolean;
@@ -72,8 +73,9 @@ begin
   begin
     if ShowModal = mrOk then
     begin
+      auth_str := '-user ' + EdUser.Text + ' -password ' + Password.Text;
       gbak_str := '-b -m -v ' + EdBase.Text + ' ' + vl_path +
-        '\nbase.bkp -user ' + EdUser.Text + ' -password ' + Password.Text;
+        '\nbase.bkp ' + auth_str;
       vl_make := true;
     end;
 
@@ -87,8 +89,12 @@ begin
     end;
     vl_log := GetDosOutput(Gbak_path + '\gbak' + ' ' + gbak_str, Gbak_path,
       ResultCode, @MemoLog.Lines);
-
-
+    MemoLog.Lines.Add('=========================Сохранение завершено===================================');
+    vl_log.Clear;
+    vl_log := GetDosOutput(Gbak_path + '\gbak -rep -v ' + vl_path + '\nbase.bkp ' + vl_path + '\nbase.gdb ' + auth_str,
+      Gbak_path, ResultCode, @MemoLog.Lines);
+    MemoLog.Lines.Add('=========================Восстановление завершено===================================');
+    localDbase.LibraryName := Gbak_path + '\engine12.dll';
   end;
 end;
 

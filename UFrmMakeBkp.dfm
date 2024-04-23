@@ -158,7 +158,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2146,9 +2146,15 @@ inherited FrmMakeBkp: TFrmMakeBkp
       000000000000}
   end
   object localDbase: TpFIBDatabase
-    SQLDialect = 1
+    DBName = 'E:\MyProjects\Nikita\Nikita\NBASE.GDB'
+    DBParams.Strings = (
+      'lc_ctype=WIN1251'
+      'user_name=SYSDBA'
+      'password=951')
+    SQLDialect = 3
     Timeout = 0
     DesignDBOptions = []
+    LibraryName = 'E:\MyProjects\Nikita\fbclient.dll'
     WaitForRestoreConnect = 0
     Left = 632
     Top = 88
