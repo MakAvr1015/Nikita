@@ -18,7 +18,7 @@ object FrmMain: TFrmMain
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 539
+    Left = 578
     Top = 151
     Width = 5
     Height = 575
@@ -76,9 +76,9 @@ object FrmMain: TFrmMain
     Font.Style = []
   end
   object Panel: TPanel
-    Left = 544
+    Left = 583
     Top = 151
-    Width = 484
+    Width = 445
     Height = 575
     Align = alRight
     Color = clAppWorkSpace
@@ -89,18 +89,18 @@ object FrmMain: TFrmMain
     inline FramBufer1: TFramBufer
       Left = 1
       Top = 1
-      Width = 482
+      Width = 443
       Height = 573
       Align = alClient
       TabOrder = 0
       ExplicitLeft = 1
       ExplicitTop = 1
-      ExplicitWidth = 482
+      ExplicitWidth = 443
       ExplicitHeight = 573
       inherited RzToolbar1: TRzToolbar
-        Width = 482
+        Width = 443
         Height = 50
-        ExplicitWidth = 482
+        ExplicitWidth = 443
         ExplicitHeight = 50
         ToolbarControls = (
           BtnToDoc
@@ -120,62 +120,28 @@ object FrmMain: TFrmMain
           ExplicitLeft = 155
         end
         inherited BtnFromDoc: TRzToolButton
-          Left = 4
+          Left = 225
           Top = 25
           OnClick = FramBufer1BtnMoveAllLeftClick
-          ExplicitLeft = 4
+          ExplicitLeft = 225
           ExplicitTop = 25
-        end
-        inherited LkpSklad: TcxLookupComboBox
-          Left = 232
-          Top = 2
-          ExplicitLeft = 232
-          ExplicitTop = 2
         end
       end
       inherited FramGoodCard1: TFramGoodCard
         Top = 360
-        Width = 482
+        Width = 443
         ExplicitTop = 360
         ExplicitWidth = 443
         inherited Panel4: TPanel
-          Width = 329
-          ExplicitWidth = 290
-          inherited Panel1: TPanel
-            Left = 180
-            ExplicitLeft = 141
-            ExplicitTop = 73
-            ExplicitHeight = 139
-            inherited cxGrid2: TcxGrid
-              ExplicitHeight = 137
-              inherited cxGrid2DBTableView1: TcxGridDBTableView
-                DataController.Summary.FooterSummaryItems = <
-                  item
-                    Format = '### ### ###'
-                    Kind = skSum
-                    Column = FramBufer1.FramGoodCard1.cxGrid2DBTableView1Column2
-                  end>
-              end
-            end
-          end
-          inherited Panel2: TPanel
-            Width = 179
-            ExplicitTop = 73
-            ExplicitWidth = 140
-            ExplicitHeight = 139
-            inherited cxDBLabel1: TcxDBLabel
-              ExplicitWidth = 138
-              Width = 177
-            end
-            inherited cxGrid1: TcxGrid
-              Width = 177
-              ExplicitWidth = 138
-              ExplicitHeight = 100
-            end
+          Width = 242
+          ExplicitWidth = 242
+          inherited cxDBLabel1: TcxDBLabel
+            ExplicitWidth = 240
+            Width = 240
           end
           inherited cxDBLabel2: TcxDBLabel
-            ExplicitWidth = 288
-            Width = 327
+            ExplicitWidth = 240
+            Width = 240
           end
           inherited cxDBLabel3: TcxDBLabel
             Style.LookAndFeel.SkinName = ''
@@ -183,9 +149,13 @@ object FrmMain: TFrmMain
             StyleDisabled.LookAndFeel.SkinName = ''
             StyleFocused.LookAndFeel.SkinName = ''
             StyleHot.LookAndFeel.SkinName = ''
-            ExplicitWidth = 288
-            Width = 327
-            AnchorX = 165
+            ExplicitWidth = 240
+            Width = 240
+            AnchorX = 121
+          end
+          inherited cxGrid1: TcxGrid
+            Width = 240
+            ExplicitWidth = 240
           end
         end
         inherited dsGetGoodsInfo: TpFIBDataSet
@@ -194,7 +164,7 @@ object FrmMain: TFrmMain
       end
       inherited cxGrid: TcxGrid
         Top = 50
-        Width = 482
+        Width = 443
         Height = 310
         ExplicitTop = 50
         ExplicitWidth = 443
@@ -220,7 +190,7 @@ object FrmMain: TFrmMain
   object PageControl1: TcxPageControl
     Left = 0
     Top = 151
-    Width = 539
+    Width = 578
     Height = 575
     Align = alClient
     BiDiMode = bdLeftToRight
@@ -242,10 +212,9 @@ object FrmMain: TFrmMain
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
     LookAndFeel.Kind = lfFlat
     LookAndFeel.SkinName = 'MoneyTwins'
-    ExplicitWidth = 578
     ClientRectBottom = 573
     ClientRectLeft = 2
-    ClientRectRight = 537
+    ClientRectRight = 576
     ClientRectTop = 2
   end
   object ActionMainMenuBar1: TActionMainMenuBar

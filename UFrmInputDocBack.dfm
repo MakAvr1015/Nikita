@@ -22,20 +22,22 @@ inherited FrmInputDocBack: TFrmInputDocBack
     end
     inherited RzPanel1: TRzPanel
       Height = 103
+      ExplicitLeft = 1
+      ExplicitTop = 26
       ExplicitHeight = 103
     end
     inherited Panel1: TPanel
       Top = 129
       Height = 414
-      ExplicitTop = 129
-      ExplicitHeight = 414
+      ExplicitTop = 103
+      ExplicitHeight = 440
       inherited Splitter1: TSplitter
         Height = 412
         ExplicitHeight = 314
       end
       inherited cxGrid1: TcxGrid
         Height = 412
-        ExplicitHeight = 412
+        ExplicitHeight = 438
         inherited cxGrid1DBTableView1: TcxGridDBTableView
           Styles.Background = nil
           Styles.Content = nil
@@ -79,7 +81,7 @@ inherited FrmInputDocBack: TFrmInputDocBack
         end
       end
       inherited cxDBImage1: TcxDBImage
-        ExplicitHeight = 412
+        ExplicitHeight = 438
         Height = 412
       end
     end
@@ -106,17 +108,13 @@ inherited FrmInputDocBack: TFrmInputDocBack
       'FROM'
       '    SP_T_DOC_IN_GET(:f_doc_in,2) ')
   end
+  inherited pFIBTransaction: TpFIBTransaction
+    Active = True
+  end
   inherited dsDocStrings: TpFIBDataSet
     InsertSQL.Strings = (
-      'execute procedure PAK_DOC.DOC_IN_STR_I'
-      '(   :f_id,'
-      '    :F_DOC_IN,'
-      '    :F_GOOD,'
-      '    :F_SCANCODE,'
-      '    :F_PRICE_val,'
-      '    :F_CNT,'
-      '    :F_SUM)'
-      '')
+      'execute procedure SP_T_DOC_IN_STR_I'
+      '(   :f_id,:F_DOC_IN,:F_GOOD,:F_PRICE_val,:F_CNT,:F_SUM)')
   end
   inherited frxReport2: TfrxReport
     Datasets = <>
@@ -125,7 +123,7 @@ inherited FrmInputDocBack: TFrmInputDocBack
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

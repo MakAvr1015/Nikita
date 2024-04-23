@@ -24,7 +24,7 @@ procedure ShowDocOutJournalHz;
 procedure ShowDocOutJournal;
 function GetDocOut(v_partner: integer = 0; v_pay_type: integer = 0): integer;
 ///  <summary>
-///  Г“Г­ГЁГўГҐГ°Г±Г Г«ГјГ­Г Гї ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г  ГЁГ¬ГЇГ®Г°ГІГ 
+///  Универсальная процедура импорта
 /// </summary>
 procedure StartImport(DS: pointer; pCalcFields: TCalcFieldsForImport = nil);
 function CalcPrice(price_id: integer): boolean;
@@ -61,11 +61,11 @@ function GetPassword: string;
 procedure ShowConsole;
 procedure ShowNsiGoodsInfo;
 /// <summary>
-/// ГЏГ®ГЄГ Г§Г ГІГј ГЄГ Г«ГҐГ­Г¤Г Г°Гј
+/// Показать календарь
 /// </summary>
 procedure ShowCalendar;
 /// <summary>
-/// ГЏГ°Г®Г¶ГҐГ¤ГіГ°Г  Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї ГЎГіГґГҐГ°Г  ГЇГҐГ°ГҐГІГ Г±ГЄГЁГўГ Г­ГЁГҐГ¬
+/// Процедура заполнения буфера перетаскиванием
 /// </summary>
 procedure DragDropGood(source: TcxGridDBTableView; dest: TpFIBDataSet);
 function translate(capt: string; lang: string; Dict: TIniFile): string;
@@ -77,20 +77,20 @@ function GetGoodsLink(p_id: integer): boolean;
 procedure ShowGoodsLink(p_id: integer);
 procedure GetReservDocByArticle(p_good : integer; p_article : string);
 ///<summary>
-///  ГђГ Г±ГЇГ Г°Г±ГЁГІГј Г¤Г®ГЇ.ГЁГ­ГґГ® ГЇГ® Г±ГІГ®Г«ГЎГ¶Г Г¬
+///  Распарсить доп.инфо по столбцам
 ///</summary>
 procedure CalcFieldsDopInfo(p_data_set : TdataSet; p_dop_fld_name : String);
 ///<summary>
-///  Г„Г®ГЎГ ГўГЁГІГј Г±ГІГ®Г«ГЎГ¶Г» Г¤Г«Гї Г¤Г®ГЇ.ГЇГ Г°Г Г¬ГҐГІГ°Г®Гў ГІГ®ГўГ Г°Г  Гў ГѓГ°ГЁГ¤
+///  Добавить столбцы для доп.параметров товара в Грид
 ///</summary>
 procedure AddInfoColumns(p_Grid : TcxGridDBTableView);
 procedure SendOutDocToMain(p_doc : integer);
 /// <summary>
-/// Г†ГіГ°Г­Г Г« Г§Г ГЄГ Г§Г®Гў
+/// Журнал заказов
 ///  </summary>
 procedure ShowZakazList;
 /// <summary>
-///  ГЏГ°Г®Г¶ГҐГ¤ГіГ°Г  ГЁГ¬ГЇГ®Г°ГІГ  Г¤Г®ГЄГіГ¬ГҐГ­ГІГ®Гў ГЁГ§ XML
+///  Процедура импорта документов из XML
 ///  </summary>
 procedure ImportXmlDoc(DocsNode: IXmlNode; Ds: pointer);
 var
@@ -211,7 +211,7 @@ var
 begin
   // base_id:=GetImportBase;
   // sklad_id:=GetNsiSklad;
-  LogMsg('ГЌГ Г·ГЁГ­Г ГҐГ¬ Г§Г ГЈГ°ГіГ§ГЄГі');
+  LogMsg('Начинаем загрузку');
   for i := 0 to DocsNode.ChildNodes.Count - 1 do
   begin
     NodeDocs := DocsNode.ChildNodes[i];
@@ -246,7 +246,7 @@ begin
     dsReservedDoc.ParamByName('F_GOOD').Value:=p_good;
     dsReservedDoc.Active:=true;
     ToolBar1.Visible:=false;
-    Caption:='Г„Г®ГЄГіГ¬ГҐГ­ГІГ» Г°ГҐГ§ГҐГ°ГўГ  ГЇГ® Г Г°ГІГЁГЄГіГ«Гі "'+p_article+'"';
+    Caption:='Документы резерва по артикулу "'+p_article+'"';
     showAsChild;
   end;
 end;
@@ -362,7 +362,7 @@ var
   Dict: TIniFile;
 begin
   result := capt;
-  if (Language = 'ГђГ“Г‘') or (Language = '') then
+  if (Language = 'РУС') or (Language = '') then
     exit;
   Dict := TIniFile.Create(Prg_path + '\' + DictFileName);
   s := Dict.ReadString(lang, capt, '');
@@ -382,7 +382,7 @@ var
   prop: PPropInfo;
   tr_string: string;
 begin
-  if (Language = 'ГђГ“Г‘') or (Language = '') then
+  if (Language = 'РУС') or (Language = '') then
     exit;
   Dict := TIniFile.Create(Prg_path + '\' + DictFileName);
   For i := 0 to Form.ComponentCount - 1 do
@@ -654,7 +654,7 @@ begin
     'TFrmMoveDocListSpisan') do
   // TFrmMoveDocListSpisan.Create(Application.MainForm) do
   begin
-    caption := translateCapt('Г†ГіГ°Г­Г Г« Г±ГЇГЁГ±Г Г­ГЁГ©', Language, TranslateFile);
+    caption := translateCapt('Журнал списаний', Language, TranslateFile);
     tag := 2;
     showAsChild;
   end;
@@ -697,27 +697,27 @@ begin
       if ShowModal = mrOk then
       begin
         // dm.pFIBDatabase.DbName:=EdBase.Text;
-        LogMsg('ГЌГ Г·ГЁГ­Г ГҐГ¬ Г§Г ГЇГіГ±ГЄ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї');
+        LogMsg('Начинаем запуск приложения');
         DataBasePath := EdBase.Text;
         dm.pFIBDatabase.ConnectParams.UserName := EdUser.Text;
         Language := LangSelect.Text;
-        LogMsg('Г‚Г»ГЎГ°Г Г­ ГїГ§Г»ГЄ');
+        LogMsg('Выбран язык');
         PluginPath := cxShellComboBox.AbsolutePath;
         // dm.pFIBDatabase.ConnectParams.RoleName:=EdRole.Text;
         dm.pFIBDatabase.ConnectParams.Password := Password.Text;
-        LogMsg('Г“Г±ГІГ Г­Г®ГўГ«ГҐГ­ ГЇГ Г°Г®Г«Гј');
+        LogMsg('Установлен пароль');
         try
           dm.pFIBDatabase.Connected := true;
-          LogMsg('Г‘Г®ГҐГ¤ГЁГ­ГҐГ­ГЁГҐ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г®');
+          LogMsg('Соединение установлено');
           dm.pFIBDatabase.DefaultTransaction.Active := true;
           result := true;
           prg_title := BaseName.Text;
-          LogMsg('ГЏГ®Г¤ГЄГ«ГѕГ·Г ГҐГ¬ ГЉГЉГЊ');
+          LogMsg('Подключаем ККМ');
           if Atol.Checked then
             kkm := TKkm.Create(1);
           if Strih.Checked then
             kkm := TKkm.Create(2);
-          LogMsg('ГЉГЉГЊ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­Г ');
+          LogMsg('ККМ подключена');
         except
           on E: Exception do
           begin
@@ -764,7 +764,7 @@ var
 begin
   // dxDockPanel := TdxDockPanel.Create(FrmMain);
   // dxDockPanel.DockState:=FrmMain.dxDockSitePublic;
-  // dxDockPanel.Caption:='Г’Г®ГўГ Г°Г­Г»ГҐ Г§Г ГЇГ Г±Г»';
+  // dxDockPanel.Caption:='Товарные запасы';
   // dxDockPanel.ShowSingleTab:=true;
   // with TFrmZapas.Create(Application.MainForm) do
   // with TFrmZapas.Create(dxDockPanel) do
