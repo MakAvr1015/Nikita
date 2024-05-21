@@ -87,10 +87,11 @@ begin
     begin
       MkDir(vl_path);
     end;
-    vl_log := GetDosOutput(Gbak_path + '\gbak' + ' ' + gbak_str, Gbak_path,
+    vl_log := GetDosOutput(Gbak_path + '\gbak' + ' ' + gbak_str,
+      Gbak_path,
       ResultCode, @MemoLog.Lines);
     MemoLog.Lines.Add('=========================Сохранение завершено===================================');
-    vl_log.Clear;
+    //vl_log.Clear;
     vl_log := GetDosOutput(Gbak_path + '\gbak -rep -v ' + vl_path + '\nbase.bkp ' + vl_path + '\nbase.gdb ' + auth_str,
       Gbak_path, ResultCode, @MemoLog.Lines);
     MemoLog.Lines.Add('=========================Восстановление завершено===================================');

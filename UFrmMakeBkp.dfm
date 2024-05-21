@@ -4,8 +4,6 @@ inherited FrmMakeBkp: TFrmMakeBkp
   TextHeight = 13
   inherited Panel3: TPanel
     inherited RzToolbar: TRzToolbar
-      Height = 25
-      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -21,69 +19,16 @@ inherited FrmMakeBkp: TFrmMakeBkp
         BtnSave
         BtnExit
         cxComboBoxStyles)
-      inherited BtnNew: TRzToolButton
-        Top = 0
-      end
-      inherited BtnOpen: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnFind: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnPrint: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnRefresh: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnEdit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnDelete: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnSave: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnView: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited cxComboBoxStyles: TcxComboBox
-        Top = 2
-        ExplicitTop = 2
-      end
     end
     object Panel1: TPanel
       Left = 1
-      Top = 26
+      Top = 30
       Width = 293
-      Height = 579
+      Height = 575
       Align = alLeft
       TabOrder = 1
+      ExplicitTop = 26
+      ExplicitHeight = 579
       object cxShellComboBox: TcxShellComboBox
         Left = 8
         Top = 16
@@ -103,12 +48,14 @@ inherited FrmMakeBkp: TFrmMakeBkp
     end
     object Panel2: TPanel
       Left = 294
-      Top = 26
+      Top = 30
       Width = 535
-      Height = 579
+      Height = 575
       Align = alClient
       Caption = 'Panel2'
       TabOrder = 2
+      ExplicitTop = 26
+      ExplicitHeight = 579
       object MemoLog: TMemo
         Left = 1
         Top = 1
@@ -158,7 +105,7 @@ inherited FrmMakeBkp: TFrmMakeBkp
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
