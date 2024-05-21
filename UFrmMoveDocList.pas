@@ -155,7 +155,7 @@ begin
   base_id := GetImportBase;
   if OpenDialog.Execute(self.Handle) then
   begin
-    if MessageDlg('ГЏГ°Г®ГўГ®Г¤ГЁГІГј Г¤Г®ГЄГіГ¬ГҐГ­ГІГ» ГЇГ®Г±Г«ГҐ Г§Г ГЈГ°ГіГ§ГЄГЁ?', mtConfirmation,
+    if MessageDlg('Проводить документы после загрузки?', mtConfirmation,
       [mbYes, mbNo], 0) = 6 then
       commitDocs := true;
     xmlDocument := TxmlDocument.Create(self);
@@ -296,7 +296,7 @@ begin
         expFile.Add('</Export>');
         expFile.SaveToFile(RzSaveDialog.FileName);
         expFile.free;
-        ShowMessage('Г„Г®ГЄГіГ¬ГҐГ­ГІГ» Г±Г®ГµГ°Г Г­ГҐГ­Г»');
+        ShowMessage('Документы сохранены');
       end;
     end;
     free;

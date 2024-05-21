@@ -122,7 +122,6 @@ type
     dsDocStringsF_DOC_MOVE: TFIBBCDField;
     dsDocStringsF_GOOD_NAME: TFIBStringField;
     dsDocStringsF_GOOD_DOP_INFO: TFIBStringField;
-    dsDocStringsF_SCANCODE_VAL: TFIBStringField;
     dsDocStringsF_ED_IZM_SHORT_NAME: TFIBStringField;
     dsDocStringsF_ED_IZM_NAME: TFIBStringField;
     dsDocStringsF_ARTICLE: TFIBStringField;
@@ -135,8 +134,7 @@ type
     dsDocStringsF_SKLAD_TO_OST: TFIBFloatField;
     dsDocStringsF_GOOD_GRP_COLOR: TFIBStringField;
     dsDocStringsF_DESCR: TFIBStringField;
-    cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn;
-    dsDocStringsF_SCANCODE: TFIBBCDField;
+    dsDocStringsF_SCANCODE: TStringField;
     procedure BtnOKClick(Sender: TObject);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
@@ -333,9 +331,9 @@ end;
 procedure TFrmMoveDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  if not dsDocStringsF_SCANCODE.IsNull then
+{  if not dsDocStringsF_SCANCODE.IsNull then
     RefreshDs(DataSet,'f_scancode',dsDocStringsF_SCANCODE.AsInteger)
-  else
+  else}
     RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.AsInteger);
   cxGrid1.SetFocus;
 end;
@@ -372,7 +370,6 @@ procedure TFrmMoveDoc.FormCreate(Sender: TObject);
 begin
   AddInfoColumns(cxGrid1DBTableView1);
   inherited;
-
 end;
 
 function TFrmMoveDoc.GetDocId: integer;
@@ -407,7 +404,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_Scancode.Value:=goods[i];
+      dsDocStringsF_GOOD.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,

@@ -102,10 +102,8 @@ type
     cxSplitter1: TcxSplitter;
     dsDocStringsF_RESERVED: TFIBBCDField;
     cxGrid1DBTableView1F_RESERVED: TcxGridDBColumn;
-    dsDocStringsF_SCANCODE: TFIBBCDField;
-    dsDocStringsF_SCANCODE_VAL: TFIBStringField;
     cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn;
+    dsDocStringsF_SCANCODE: TStringField;
     procedure RzDBButtonEdit3ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
@@ -281,11 +279,7 @@ end;
 procedure TFrmTemplateDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-
-  if  not dsDocStringsF_SCANCODE.IsNull then
-    RefreshDs(DataSet,'F_SCANCODE',dsDocStringsF_SCANCODE.AsInteger)
-  else
-    RefreshDs(DataSet,'F_GOOD',dsDocStringsF_GOOD.AsInteger);
+  RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
   cxGrid1.SetFocus;
 
 end;
@@ -346,7 +340,7 @@ procedure TFrmTemplateDoc.FormCreate(Sender: TObject);
 var
   tf: tStringfield;
 begin
-  inherited;
+
   dm.dsSklad.First;
 
   while not dm.dsSklad.Eof do
@@ -366,7 +360,7 @@ begin
     dm.dsSklad.Next;
   end;
   AddInfoColumns(cxGrid1DBTableView1);
-  self.RestoreState;
+  inherited;
 end;
 
 function TFrmTemplateDoc.GetDocId: integer;
@@ -397,7 +391,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_SCANCODE.Value:=goods[i];
+      dsDocStringsF_GOOD.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,

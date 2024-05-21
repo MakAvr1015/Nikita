@@ -126,8 +126,7 @@ type
     dsDocHeadF_SKLAD_F_NAME: TFIBStringField;
     RzDBButtonEdit4: TRzDBButtonEdit;
     RzLabel7: TRzLabel;
-    dsDocStringsF_SCANCODE: TFIBBCDField;
-    dsDocStringsF_SCANCODE_VAL: TFIBStringField;
+    dsDocStringsF_SCANCODE: TStringField;
     procedure BtnOKClick(Sender: TObject);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
@@ -307,7 +306,8 @@ end;
 procedure TFrmInputDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  RefreshDs(DataSet,'f_scancode',dsDocStringsF_SCANCODE.Value);
+  if not dsDocStringsF_GOOD.IsNull then
+    RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
   cxGrid1.SetFocus;
 end;
 
@@ -343,7 +343,7 @@ begin
     end;
 
 
-    dsDocStringsF_SCANCODE.Value:=dm.InsExtGood(
+    dsDocStringsF_GOOD.Value:=dm.InsExtGood(
       dsDocStringsF_ARTICLE.Value,
       dsDocStringsF_GOOD_NAME.Value,
       dsDocStringsF_GOOD_DOP_INFO.Value,
@@ -361,7 +361,7 @@ begin
       dm.dsImportScancode.Active:=true;
       dm.dsImportScancode.Transaction.CommitRetaining;
     end;}
- {   for cnt := 0 to dsDocStrings.FieldCount - 1 do
+   for cnt := 0 to dsDocStrings.FieldCount - 1 do
     begin
       if Copy(dsDocStrings.Fields[cnt].FieldName,1,2)='DF' then
       begin
@@ -375,7 +375,7 @@ begin
           dm.dsImportNsiGoodsDopInfo.Transaction.CommitRetaining;
         end;
       end;
-    end;}
+    end;
   end;
 end;
 
@@ -389,7 +389,6 @@ procedure TFrmInputDoc.FormCreate(Sender: TObject);
 begin
   AddInfoColumns(cxGrid1DBTableView1);
   inherited;
-  self.RestoreState;
 end;
 
 procedure TFrmInputDoc.InsPosition;
@@ -406,8 +405,8 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      //dsDocStringsF_GOOD.Value:=goods[i];
-      dsDocStringsF_SCANCODE.Value:=goods[i];
+      dsDocStringsF_GOOD.Value:=goods[i];
+      //dsDocStringsF_SCANCODE.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,

@@ -13,26 +13,7 @@ uses
   cxGridDBTableView, FIBQuery, pFIBQuery, pFIBStoredProc, FIBDatabase,
   pFIBDatabase, FIBDataSet, pFIBDataSet, cxGridLevel, cxClasses, cxControls,
   cxGridCustomView, cxGrid, RzTabs, RzDBBnEd, RzDBEdit, DBCtrls, RzDBCmbo,
-  StdCtrls, Mask, RzEdit, RzLabel, cxLabel, cxContainer, cxImage, cxDBEdit,
-  cxLookAndFeels, cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
-  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
-  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
-  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
-  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxNavigator,
-  cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
-  Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  StdCtrls, Mask, RzEdit, RzLabel, cxLabel, cxContainer, cxImage, cxDBEdit;
 
 type
   TFrmOutDocBack = class(TFrmPrototype)
@@ -106,8 +87,6 @@ type
     dsDocStringsF_SUM: TFIBBCDField;
     dsDocStringsF_SUM_WO_SKIDKA: TFIBBCDField;
     dsDocStringsF_PRICE_WO_SKIDKA: TFIBFloatField;
-    dsDocStringsF_SCANCODE: TFIBBCDField;
-    dsDocStringsF_GOOD_DOP_INFO: TFIBStringField;
     procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
     procedure dsDocStringsAfterPost(DataSet: TDataSet);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
@@ -120,8 +99,6 @@ type
       Y: Integer);
     procedure cxGrid1DBTableView1DragOver(Sender, Source: TObject; X,
       Y: Integer; State: TDragState; var Accept: Boolean);
-    procedure dsDocStringsCalcFields(DataSet: TDataSet);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -203,23 +180,10 @@ end;
 
 procedure TFrmOutDocBack.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
-  RefreshDs(DataSet,'F_SCANCODE',dsDocStringsF_SCANCODE.Value);
+  RefreshDs(DataSet,'F_GOOD',dsDocStringsF_GOOD.Value);
   cxGrid1.SetFocus;
 end;
 
-
-procedure TFrmOutDocBack.dsDocStringsCalcFields(DataSet: TDataSet);
-begin
-  inherited;
-  CalcFieldsDopInfo(DataSet);
-end;
-
-procedure TFrmOutDocBack.FormCreate(Sender: TObject);
-begin
-  AddInfoColumns(cxGrid1DBTableView1);
-  inherited;
-
-end;
 
 procedure TFrmOutDocBack.InsPosition;
 var
@@ -234,7 +198,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_SCANCODE.Value:=goods[i];
+      dsDocStringsF_GOOD.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,
