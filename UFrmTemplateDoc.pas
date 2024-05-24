@@ -354,7 +354,9 @@ begin
     with cxGrid1DBTableView1.CreateColumn do
     begin
       DataBinding.FieldName:=tf.FieldName;
-//      Summary.FooterKind:=skSum;
+      Summary.FooterKind:=skSum;
+      Summary.GroupFooterKind:=skSum;
+      Summary.GroupKind:=skSum;
       Caption:=dm.dsSklad.FieldByName('f_name').AsString;
     end;
     dm.dsSklad.Next;

@@ -128,7 +128,7 @@ var
 implementation
 
 uses
-  upublic, uMainFrm, cxStyles;
+  upublic, uMainFrm, cxStyles, cxGridTableView;
 {$R *.dfm}
 
 procedure TFrmPrototype.BtnCancelClick(Sender: TObject);
@@ -434,7 +434,7 @@ end;
 
 procedure TFrmPrototype.RestoreState;
 var
-  i: integer;
+  i,j: integer;
   fl: TiniFile;
 begin
   fl := TiniFile.Create(app_data + '\' + self.ClassName + '.ini');
@@ -453,19 +453,29 @@ begin
       end; }
     if (self.Components[i] is TcxGridDBTableView) then
     begin
+
       TcxGridDBTableView(self.Components[i]).RestoreFromIniFile(fl.FileName,
         false, false, [ { gsoUseFilter, gsoUseSummary } ],
         self.Components[i].Name);
       if (TcxGridDBTableView(Components[i]).DataController.DataSet.FindField
         ('f_article') <> nil) or
         (TcxGridDBTableView(Components[i]).DataController.DataSet.FindField
-        ('f_article') <> nil) then
+        ('F_GOOD_ARTICLE') <> nil) then
       begin
-        TcxGridDBTableView(Components[i])
+      {  TcxGridDBTableView(Components[i])
           .StoreToRegistry(cxPropertiesStore.StorageName, true,
-          [gsoUseFilter, gsoUseSummary], Components[i].Name);
+          [gsoUseFilter, gsoUseSummary], Components[i].Name);}
         TcxGridDBTableView(Components[i]).DragMode := dmAutomatic;
       end;
+      for j := 0 to (TcxGridDBTableView(Components[i]).ColumnCount - 1) do
+      begin
+        if (TcxGridDBTableView(Components[i]).Columns[j].Summary.FooterKind <> null) then
+          TcxGridDBTableView(Components[i]).Columns[j].Summary.GroupKind :=
+            TcxGridDBTableView(Components[i]).Columns[j].Summary.FooterKind;
+      end;
+      TcxGridDBTableView(Components[i]).OptionsView.GroupByBox := true;
+      TcxGridDBTableView(Components[i]).OptionsView.GroupSummarylayout := gslAlignWithColumns;
+
     end;
   end;
   // RegisterHotKey(self.Handle, MyHotKey, 0, VK_RETURN);
@@ -482,6 +492,8 @@ begin
     cxPropertiesStore.RestoreFrom;
     // RzFormState.RestoreState;
   end;
+//  cxPropertiesStore.RestoreFrom;
+  fl.free;
   TranslateForm(self, Language, TranslateFile);
 end;
 
