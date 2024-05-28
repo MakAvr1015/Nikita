@@ -21,7 +21,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Width = 1149
       Height = 27
       ExplicitWidth = 1149
-      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -36,50 +35,17 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         BtnDelete
         BtnSave
         BtnExit)
-      inherited BtnNew: TRzToolButton
-        Top = 2
-      end
       inherited BtnOpen: TRzToolButton
-        Top = 2
         Enabled = True
         OnClick = BtnOpenClick
       end
-      inherited BtnFind: TRzToolButton
-        Top = 2
-      end
-      inherited BtnPrint: TRzToolButton
-        Top = 2
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 2
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 2
-      end
       inherited BtnRefresh: TRzToolButton
-        Top = 2
         Enabled = True
         OnClick = BtnRefreshClick
       end
-      inherited BtnEdit: TRzToolButton
-        Top = 2
-      end
       inherited BtnExecute: TRzToolButton
-        Top = 2
         Enabled = True
         OnClick = BtnExecuteClick
-      end
-      inherited BtnDelete: TRzToolButton
-        Top = 2
-      end
-      inherited BtnSave: TRzToolButton
-        Top = 2
-      end
-      inherited BtnExit: TRzToolButton
-        Top = 2
-      end
-      inherited BtnView: TRzToolButton
-        Top = 2
       end
       inherited cxComboBoxStyles: TcxComboBox
         Top = 0
@@ -467,7 +433,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

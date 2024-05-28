@@ -330,7 +330,15 @@ begin
   v_val.Text:= DataSet.FieldByName('f_ost').AsString;
   for I := 0 to v_val.Count - 1 do
   begin
-    DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+    try
+      DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+    except
+      on E: Exception do
+        begin
+//          InfoMsg(E.Message, E.HelpContext);
+          DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=0;
+        end;
+    end;
   end;
   v_val.Free;
   CalcFieldsDopInfo(DataSet,'F_GOOD_DOP_INFO');
@@ -338,14 +346,15 @@ end;
 
 procedure TFrmTemplateDoc.FormCreate(Sender: TObject);
 var
-  tf: tStringfield;
+  tf: TFloatField;//tStringfield;
 begin
 
   dm.dsSklad.First;
 
   while not dm.dsSklad.Eof do
   begin
-    tf:=TStringField.Create(dsDocStrings);
+    //tf:=TStringField.Create(dsDocStrings);
+    tf:=TFloatField.Create(dsDocStrings);
     tf.Calculated:=true;
     tf.Index:=dsDocStrings.FieldCount;
     tf.FieldName:='Sklad_'+dm.dsSklad.FieldByName('f_id').AsString;
