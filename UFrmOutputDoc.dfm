@@ -377,7 +377,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
               OptionsView.ColumnAutoWidth = True
               OptionsView.Footer = True
               OptionsView.FooterAutoHeight = True
-              OptionsView.GroupByBox = False
               OptionsView.HeaderAutoHeight = True
               object cxGrid1DBTableView1F_DOC_OUT: TcxGridDBColumn
                 DataBinding.FieldName = 'F_DOC_OUT'
@@ -1023,7 +1022,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

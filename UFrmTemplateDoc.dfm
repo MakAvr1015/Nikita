@@ -164,6 +164,24 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             item
               Kind = skSum
               Position = spFooter
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+              Column = cxGrid1DBTableView1F_CNT
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1F_CNT
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+              Column = cxGrid1DBTableView1F_SUM
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1F_SUM
             end>
           DataController.Summary.FooterSummaryItems = <
             item
@@ -195,7 +213,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.FooterAutoHeight = True
-          OptionsView.GroupByBox = False
+          OptionsView.GroupFooterMultiSummaries = True
+          OptionsView.GroupFooters = gfAlwaysVisible
+          OptionsView.GroupSummaryLayout = gslAlignWithColumns
           OptionsView.HeaderAutoHeight = True
           Styles.StyleSheet = dm.GridTableViewStyleSheetDevExpress
           object cxGrid1DBTableView1F_ID: TcxGridDBColumn
@@ -413,7 +433,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

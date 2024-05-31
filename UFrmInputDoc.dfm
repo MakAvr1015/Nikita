@@ -269,6 +269,14 @@ inherited FrmInputDoc: TFrmInputDoc
               Kind = skSum
               Position = spFooter
               Column = cxGrid1DBTableView1F_CNT
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1F_CNT
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1F_SUM
             end>
           DataController.Summary.FooterSummaryItems = <
             item
@@ -289,7 +297,6 @@ inherited FrmInputDoc: TFrmInputDoc
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.FooterAutoHeight = True
-          OptionsView.GroupByBox = False
           OptionsView.HeaderAutoHeight = True
           Styles.StyleSheet = dm.GridTableViewStyleSheetDevExpress
           object cxGrid1DBTableView1F_ID: TcxGridDBColumn
@@ -777,7 +784,7 @@ inherited FrmInputDoc: TFrmInputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000100110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000180110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
