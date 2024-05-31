@@ -30,7 +30,9 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxNavigator,
-  cxDataControllerConditionalFormattingRulesManagerDialog;
+  cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE;
 
 type
   TFrmZapas = class(TFrmPrototype)
@@ -406,7 +408,6 @@ procedure TFrmZapas.FormCreate(Sender: TObject);
 var
   tf: TStringField;
 begin
-  inherited;
   dm.dsNsiGoodsDopInfo.Active:=false;
   dm.dsNsiGoodsDopInfo.Active:=true;
   dm.dsNsiGoodsDopInfo.First;
@@ -426,7 +427,7 @@ begin
     end;
     dm.dsNsiGoodsDopInfo.Next;
   end;
-  self.RestoreState;  
+  inherited;
 end;
 
 procedure TFrmZapas.FormShow(Sender: TObject);
