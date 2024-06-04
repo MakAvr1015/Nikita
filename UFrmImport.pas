@@ -246,6 +246,7 @@ procedure TFrmImport.StartImport;
 var
   ValArray  : variant;
   i         : integer;
+  rec_isEmpty : boolean;
 begin
   AdoTable.Active:=true;
   AdoTable.First;
@@ -253,14 +254,18 @@ begin
   begin
     TDataSet(DataSet^).Insert;
     TDataSet(DataSet^).edit;
+    rec_isEmpty := true;
     for I := 0 to ValueListEditor.Strings.Count - 1 do
     begin
       if not TField(ValueListEditor.Strings.Objects[i]).Calculated then
       begin
         try
           if not AdoTable.FieldByName(ValueListEditor.Keys[i+1]).IsNull then
+          begin
             TField(ValueListEditor.Strings.Objects[i]).Value:=Variant(
               AdoTable.FieldByName(ValueListEditor.Keys[i+1]).AsString);
+            rec_isEmpty := false;
+          end;
         except
           on E: Exception do MessageDlg('Ошибка импорта поля '+
             TField(ValueListEditor.Strings.Objects[i]).Name + ': '+
@@ -274,7 +279,10 @@ begin
         end;
 //        AdoTable.FieldValues[ValueListEditor.Keys[i+1]]);
     end;
-    TDataSet(DataSet^).post;
+    if not rec_isEmpty then
+      TDataSet(DataSet^).post
+    else
+      TDataSet(DataSet^).Delete;
     AdoTable.Next;
   end;
 end;
