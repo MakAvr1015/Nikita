@@ -13,7 +13,26 @@ uses
   cxGridDBTableView, FIBQuery, pFIBQuery, pFIBStoredProc, FIBDatabase,
   pFIBDatabase, FIBDataSet, pFIBDataSet, cxGridLevel, cxClasses, cxControls,
   cxGridCustomView, cxGrid, RzTabs, RzDBBnEd, RzDBEdit, DBCtrls, RzDBCmbo,
-  StdCtrls, Mask, RzEdit, RzLabel, cxLabel, cxContainer, cxImage, cxDBEdit;
+  StdCtrls, Mask, RzEdit, RzLabel, cxLabel, cxContainer, cxImage, cxDBEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmOutDocBack = class(TFrmPrototype)
@@ -99,6 +118,7 @@ type
       Y: Integer);
     procedure cxGrid1DBTableView1DragOver(Sender, Source: TObject; X,
       Y: Integer; State: TDragState; var Accept: Boolean);
+    procedure RzDBButtonEdit2ButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -222,6 +242,20 @@ begin
   begin
     dsDocHead.Edit;
     dsDocHeadF_PARTNER.Value:=key;
+    dsDocHead.Post;
+    refreshDs(dsDocHead);
+  end;
+end;
+
+procedure TFrmOutDocBack.RzDBButtonEdit2ButtonClick(Sender: TObject);
+var
+  key : integer;
+begin
+  key:=GetNsiSklad;
+  if key>0 then
+  begin
+    dsDocHead.Edit;
+    dsDocHeadF_SKLAD.Value:=key;
     dsDocHead.Post;
     refreshDs(dsDocHead);
   end;
