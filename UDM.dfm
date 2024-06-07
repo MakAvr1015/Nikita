@@ -153,7 +153,7 @@ object dm: Tdm
     Left = 280
     Top = 120
     Bitmap = {
-      494C01013A00D000140110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000200110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2191,10 +2191,9 @@ object dm: Tdm
       '    F_ARTICLE,'
       '    F_ED_IZM_NAME,'
       '    F_ED_IZM_SHORT_NAME,'
-      '    F_SCANCODE,'
-      '    F_SCANCODE_VAL'
+      '    F_SCANCODE'
       'FROM'
-      '    SP_T_NSI_GOODS_GET_BY_SCANCODE(:SCAN) ')
+      '    SP_T_NSI_GOODS_GET_BY_SCANCODE(:SCAN)')
     Transaction = pFIBTransaction
     Database = pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -2242,14 +2241,9 @@ object dm: Tdm
       FieldName = 'F_GOOD'
       Size = 0
     end
-    object dsGetGoodByScanF_SCANCODE: TFIBBCDField
+    object dsGetGoodByScanF_SCANCODE: TStringField
       FieldName = 'F_SCANCODE'
-      Size = 0
-    end
-    object dsGetGoodByScanF_SCANCODE_VAL: TFIBStringField
-      FieldName = 'F_SCANCODE_VAL'
       Size = 60
-      EmptyStrToNull = True
     end
   end
   object OpenDialog: TOpenDialog
@@ -2342,19 +2336,18 @@ object dm: Tdm
   object dsImportNsiGood: TpFIBDataSet
     SelectSQL.Strings = (
       'SELECT'
-      '--    F_GOOD_ID'
-      '    PAK_NSI_GOOD.GOOD_IMPORT(:F_ID,'
+      '    F_GOOD_ID'
+      'from'
+      '    SP_IMPORT_NSI_GOOD(:F_ID,'
       '    :F_NAME,'
       '    :F_ARTICLE,'
       '    :F_PARTNER,'
       '    :F_EXT_BASE,'
-      '    :F_CNT,'
-      '    :F_SCANCODE,'
       '    :F_DOP_INFO,'
       '    :F_BARTER,'
       '    :F_PICTURE,'
       '    :F_GOOD_TYPE,'
-      '    :F_UPDATE) F_GOOD_ID from rdb$database')
+      '    :F_UPDATE)')
     Transaction = pFIBTransaction
     Database = pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -3370,7 +3363,7 @@ object dm: Tdm
     Left = 648
     Top = 352
     Bitmap = {
-      494C010103000500140120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500200120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       00000000000000000000000000000000000000000000DE9C0000DE9C0000DE9C
       0000DE9C0000D6940000D6940000DE9C0000DE9C0000DE9C0000DE9C0000D694

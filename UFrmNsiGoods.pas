@@ -311,8 +311,8 @@ begin
           end;
         end;
       end
-{      else
-        BtnOKClick(Sender)};
+      else
+        BtnOKClick(Sender);
   else
     begin
       if (time() - scan_time) < 0.00001 then
@@ -411,10 +411,8 @@ begin
       Caption:=dm.dsNsiGoodsDopInfo.FieldByName('f_name').AsString;
     end;
     dm.dsNsiGoodsDopInfo.Next;
-  inherited;
-
   end;
-
+  inherited;
 
 end;
 

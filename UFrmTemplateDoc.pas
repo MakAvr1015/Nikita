@@ -102,10 +102,8 @@ type
     cxSplitter1: TcxSplitter;
     dsDocStringsF_RESERVED: TFIBBCDField;
     cxGrid1DBTableView1F_RESERVED: TcxGridDBColumn;
-    dsDocStringsF_SCANCODE: TFIBBCDField;
-    dsDocStringsF_SCANCODE_VAL: TFIBStringField;
     cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn;
+    dsDocStringsF_SCANCODE: TStringField;
     procedure RzDBButtonEdit3ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
@@ -332,22 +330,31 @@ begin
   v_val.Text:= DataSet.FieldByName('f_ost').AsString;
   for I := 0 to v_val.Count - 1 do
   begin
-    DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+    try
+      DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+    except
+      on E: Exception do
+        begin
+//          InfoMsg(E.Message, E.HelpContext);
+          DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=0;
+        end;
+    end;
   end;
   v_val.Free;
-  CalcFieldsDopInfo(DataSet);
+  CalcFieldsDopInfo(DataSet,'F_GOOD_DOP_INFO');
 end;
 
 procedure TFrmTemplateDoc.FormCreate(Sender: TObject);
 var
-  tf: tStringfield;
+  tf: TFloatField;//tStringfield;
 begin
-  inherited;
+
   dm.dsSklad.First;
 
   while not dm.dsSklad.Eof do
   begin
-    tf:=TStringField.Create(dsDocStrings);
+    //tf:=TStringField.Create(dsDocStrings);
+    tf:=TFloatField.Create(dsDocStrings);
     tf.Calculated:=true;
     tf.Index:=dsDocStrings.FieldCount;
     tf.FieldName:='Sklad_'+dm.dsSklad.FieldByName('f_id').AsString;
@@ -356,13 +363,15 @@ begin
     with cxGrid1DBTableView1.CreateColumn do
     begin
       DataBinding.FieldName:=tf.FieldName;
-//      Summary.FooterKind:=skSum;
+      Summary.FooterKind:=skSum;
+      Summary.GroupFooterKind:=skSum;
+      Summary.GroupKind:=skSum;
       Caption:=dm.dsSklad.FieldByName('f_name').AsString;
     end;
     dm.dsSklad.Next;
   end;
   AddInfoColumns(cxGrid1DBTableView1);
-  self.RestoreState;
+  inherited;
 end;
 
 function TFrmTemplateDoc.GetDocId: integer;
@@ -393,7 +402,7 @@ begin
     for I := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_SCANCODE.Value:=goods[i];
+      dsDocStringsF_GOOD.Value:=goods[i];
       dsDocStrings.Post;
       cxGrid1DBTableView1.DataController.SelectRows(
         cxGrid1DBTableView1.DataController.FocusedRowIndex,

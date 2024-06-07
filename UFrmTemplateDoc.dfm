@@ -21,7 +21,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Width = 1149
       Height = 27
       ExplicitWidth = 1149
-      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -165,6 +164,24 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             item
               Kind = skSum
               Position = spFooter
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+              Column = cxGrid1DBTableView1F_CNT
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1F_CNT
+            end
+            item
+              Kind = skSum
+              Position = spFooter
+              Column = cxGrid1DBTableView1F_SUM
+            end
+            item
+              Kind = skSum
+              Column = cxGrid1DBTableView1F_SUM
             end>
           DataController.Summary.FooterSummaryItems = <
             item
@@ -196,7 +213,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
           OptionsView.ColumnAutoWidth = True
           OptionsView.Footer = True
           OptionsView.FooterAutoHeight = True
-          OptionsView.GroupByBox = False
+          OptionsView.GroupFooterMultiSummaries = True
+          OptionsView.GroupFooters = gfAlwaysVisible
+          OptionsView.GroupSummaryLayout = gslAlignWithColumns
           OptionsView.HeaderAutoHeight = True
           Styles.StyleSheet = dm.GridTableViewStyleSheetDevExpress
           object cxGrid1DBTableView1F_ID: TcxGridDBColumn
@@ -274,10 +293,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             DataBinding.FieldName = 'F_SCANCODE'
             Visible = False
             Width = 233
-          end
-          object cxGrid1DBTableView1F_SCANCODE_VAL: TcxGridDBColumn
-            DataBinding.FieldName = 'F_SCANCODE_VAL'
-            Width = 199
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -418,7 +433,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2412,22 +2427,20 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   object dsDocStrings: TpFIBDataSet
     UpdateSQL.Strings = (
-      'execute procedure PAK_DOC.DOC_TEMPLATE_STR_U('
+      'execute procedure SP_T_DOC_TEMPLATE_STR_U('
       '    :F_ID,'
       '    :doc_id,'
       '    :F_GOOD,'
-      '    :F_SCANCODE,'
       '    :F_PRICE_VAL,'
       '    :F_CNT,'
       '    :f_descr);')
     DeleteSQL.Strings = (
-      'execute procedure PAK_DOC.DOC_template_STR_D(:f_id)')
+      'execute procedure SP_T_DOC_TEMPLATE_STR_D(:f_id)')
     InsertSQL.Strings = (
-      'execute procedure PAK_DOC.DOC_TEMPLATE_STR_I('
+      'execute procedure SP_T_DOC_TEMPLATE_STR_I('
       '    :F_ID,'
       '    :doc_id,'
       '    :F_GOOD,'
-      '    :F_SCANCODE,'
       '    :F_PRICE_VAL,'
       '    :F_CNT,'
       '    :f_descr);')
@@ -2438,7 +2451,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       '    F_GOOD_NAME,'
       '    F_GOOD_DOP_INFO,'
       '    F_SCANCODE,'
-      '    F_SCANCODE_VAL,'
       '    F_ED_IZM_SHORT_NAME,'
       '    F_ED_IZM_NAME,'
       '    F_ARTICLE,'
@@ -2452,7 +2464,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       '    (select f_ost from SP_GET_GOOD_CURR_OST(f_good)) as f_ost,'
       '    coalesce(f_reserved,0) f_reserved'
       'FROM'
-      '    PAK_DOC.DOC_TEMPLATE_STR_S(:DOC_id) ')
+      '   SP_T_DOC_TEMPLATE_STR_S(:DOC_id) ')
     AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
       'F_DOC_MOVE=DOC_ID')
     AfterDelete = dsDocStringsAfterDelete
@@ -2564,15 +2576,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       FieldName = 'F_RESERVED'
       Size = 0
     end
-    object dsDocStringsF_SCANCODE: TFIBBCDField
+    object dsDocStringsF_SCANCODE: TStringField
       FieldName = 'F_SCANCODE'
-      Size = 0
-    end
-    object dsDocStringsF_SCANCODE_VAL: TFIBStringField
-      DisplayLabel = #1064#1090#1088#1080#1093#1082#1086#1076
-      FieldName = 'F_SCANCODE_VAL'
-      Size = 60
-      EmptyStrToNull = True
+      Size = 10000
     end
   end
   object dsDocHead: TpFIBDataSet

@@ -180,7 +180,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
       inherited BtnNew: TRzToolButton
         Top = 0
         OnClick = BtnNewClick
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -591,6 +590,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
       Height = 100
       Align = alBottom
       TabOrder = 4
+      Visible = False
       object cxGrid2DBTableView1: TcxGridDBTableView
         OnKeyPress = cxGrid2DBTableView1KeyPress
         Navigator.Buttons.CustomButtons = <>
@@ -632,7 +632,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2771,7 +2771,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
     Left = 809
     Top = 152
     WaitEndMasterScroll = True
-    dcForceOpen = True
     object dsGoodScancodesF_ID: TFIBBCDField
       FieldName = 'F_ID'
       Size = 0

@@ -215,10 +215,6 @@ object FramBufer: TFramBufer
         Options.Editing = False
         Width = 66
       end
-      object cxGridDBTableViewBufferF_SCANCODE: TcxGridDBColumn
-        DataBinding.FieldName = 'F_SCANCODE'
-        Visible = False
-      end
     end
     object cxGridLevel1: TcxGridLevel
       GridView = cxGridDBTableViewBuffer
@@ -236,18 +232,14 @@ object FramBufer: TFramBufer
   end
   object dsGoodBuffer: TpFIBDataSet
     UpdateSQL.Strings = (
-      
-        'execute procedure SP_T_USER_BUFFER_SET(:F_SCANCODE,:F_good,:F_CN' +
-        'T);')
+      'execute procedure SP_T_USER_BUFFER_SET(:F_good,:F_CNT);')
     DeleteSQL.Strings = (
       'DELETE FROM'
       '    T_USER_BUFER'
       'WHERE'
       '  f_id=:f_id        ')
     InsertSQL.Strings = (
-      
-        'execute procedure SP_T_USER_BUFFER_SET(:F_SCANCODE,:F_GOOD,:F_CN' +
-        'T);')
+      'execute procedure SP_T_USER_BUFFER_SET(:F_GOOD,:F_CNT);')
     RefreshSQL.Strings = (
       '')
     SelectSQL.Strings = (
@@ -257,7 +249,6 @@ object FramBufer: TFramBufer
       '    f_article,'
       '    F_GOOD_NAME,'
       '    F_CNT,'
-      '    F_SCANCODE,'
       '    f_ost'
       'FROM'
       '    SP_GET_USER_BUFFER(:f_sklad)')
@@ -296,10 +287,6 @@ object FramBufer: TFramBufer
     object dsGoodBufferF_OST: TFIBFloatField
       DisplayLabel = #1054#1089#1090#1072#1090#1086#1082
       FieldName = 'F_OST'
-    end
-    object dsGoodBufferF_SCANCODE: TFIBBCDField
-      FieldName = 'F_SCANCODE'
-      Size = 0
     end
   end
   object pFIBTransaction1: TpFIBTransaction

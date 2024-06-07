@@ -79,7 +79,7 @@ procedure GetReservDocByArticle(p_good : integer; p_article : string);
 ///<summary>
 ///  Распарсить доп.инфо по столбцам
 ///</summary>
-procedure CalcFieldsDopInfo(p_data_set : TdataSet);
+procedure CalcFieldsDopInfo(p_data_set : TdataSet; p_dop_fld_name : String);
 ///<summary>
 ///  Добавить столбцы для доп.параметров товара в Грид
 ///</summary>
@@ -165,7 +165,7 @@ begin
   end;
 end;
 
-procedure CalcFieldsDopInfo(p_data_set : TdataSet);
+procedure CalcFieldsDopInfo(p_data_set : TdataSet; p_dop_fld_name : String);
 var
   i,j   : integer;
   v_val : TStringList;
@@ -173,12 +173,14 @@ var
   vl_info_field : Tfield;
 begin
   v_val := TStringList.Create;
+  vl_info_field := p_data_set.FindField(p_dop_fld_name);
+  {
   vl_info_field := p_data_set.FindField('F_DOP_INFO_VAL');
   if vl_info_field = nil then
     vl_info_field := p_data_set.FindField('F_GOOD_DOP_INFO');
   if vl_info_field = nil then
     vl_info_field := p_data_set.FindField('f_NSI_GOOD_INFO');
-
+  }
   if vl_info_field <> nil then
   begin
     v_val.Text := vl_info_field.AsString;
@@ -449,8 +451,6 @@ begin
       ListGoods[i].f_good:=TNsiGood.create();
       ListGoods[i].f_good.Setarticle(article);
       ListGoods[i].f_quant:=f_cnt;
-      if f_scan_index > 0 then
-        ListGoods[i].f_scancode := DataController.GetValue(ARowInfo.RecordIndex, f_scan_index);
     end;
     for I := 0 to length(ListGoods)-1 do
     begin
@@ -459,8 +459,6 @@ begin
       dest.FieldByName('f_good').Value := ListGoods[i].f_good.GetArticle;
       if dest.FindField('f_cnt') <> nil then
         dest.FieldByName('f_cnt').Value := ListGoods[i].f_quant;
-      if dest.FindField('f_scancode') <> nil then
-        dest.FieldByName('f_scancode').Value := ListGoods[i].f_scancode;
       dest.Post;
     end;
     if i > 0 then
