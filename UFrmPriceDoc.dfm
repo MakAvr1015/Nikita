@@ -24,7 +24,6 @@ inherited FrmPriceDoc: TFrmPriceDoc
       Width = 944
       Height = 27
       ExplicitWidth = 944
-      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -197,7 +196,6 @@ inherited FrmPriceDoc: TFrmPriceDoc
             Visible = False
           end
           object cxGrid1DBTableView1F_ARTICLE: TcxGridDBColumn
-            Caption = #1040#1088#1090#1080#1082#1091#1083
             DataBinding.FieldName = 'F_ARTICLE'
           end
           object cxGrid1DBTableView1F_GOOD_NAME: TcxGridDBColumn
@@ -246,7 +244,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2381,6 +2379,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
       Size = 3
     end
     object dsPriceDocBodyF_ARTICLE: TFIBStringField
+      DisplayLabel = #1040#1088#1090#1080#1082#1091#1083
       FieldName = 'F_ARTICLE'
       EmptyStrToNull = True
     end

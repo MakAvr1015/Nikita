@@ -190,8 +190,7 @@ end;
 
 procedure TFrmPriceDoc.dsPriceDocBodyAfterPost(DataSet: TDataSet);
 begin
-  inherited;
-  RefreshDs(DataSet,'f_good',dsPriceDocBodyF_GOOD.Value);
+  RefreshDs(DataSet,'f_good',dsPriceDocBodyF_GOOD.AsInteger);
   cxGrid1.SetFocus;
 end;
 

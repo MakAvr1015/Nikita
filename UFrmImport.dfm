@@ -20,9 +20,9 @@ inherited FrmImport: TFrmImport
     ExplicitHeight = 528
     inherited RzToolbar: TRzToolbar
       Width = 458
-      Height = 54
+      Height = 48
       ExplicitWidth = 458
-      ExplicitHeight = 54
+      ExplicitHeight = 48
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -38,30 +38,71 @@ inherited FrmImport: TFrmImport
         BtnSave
         BtnDelete
         cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 0
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnExecute: TRzToolButton
+        Top = 0
         Enabled = True
         OnClick = BtnExecuteClick
+        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
         Left = 318
+        Top = 0
         ExplicitLeft = 318
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
         Left = 268
+        Top = 0
         ExplicitLeft = 268
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
+        Top = 0
         Visible = False
+        ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
         Left = 4
-        Top = 29
+        Top = 27
         ExplicitLeft = 4
-        ExplicitTop = 29
+        ExplicitTop = 27
       end
     end
     object XLSList: TRzListBox
@@ -220,7 +261,7 @@ inherited FrmImport: TFrmImport
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
