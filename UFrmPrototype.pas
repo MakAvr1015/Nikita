@@ -287,9 +287,9 @@ end;
 
 procedure TFrmPrototype.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  PostAllDS(self, true);
+{  PostAllDS(self, true);
   SaveState;
-  Action := Act;
+  Action := Act; }
 end;
 
 procedure TFrmPrototype.FormCreate(Sender: TObject);
