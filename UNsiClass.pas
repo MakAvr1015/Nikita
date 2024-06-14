@@ -58,6 +58,16 @@ type
     procedure SetName(p_name: String);
   end;
 
+type
+  TNsiPrice = class
+  private
+    f_code: string;
+    f_name: string;
+    f_id: integer;
+  public
+    constructor CreateByName(p_name: string);
+    function GetF_Name : string;
+  end;
 implementation
 
 uses
@@ -319,6 +329,25 @@ end;
 procedure TNsiSklad.SetPrefix(p_prefix: String);
 begin
   f_prefix := p_prefix;
+end;
+
+{ TNsiPrice }
+
+constructor TNsiPrice.CreateByName(p_name: string);
+begin
+  self.f_name := p_name;
+  if not dm.dsPrice.Active then
+    dm.dsPrice.Active := true;
+  if dm.dsPrice.Locate('F_NAME',p_name) then
+  begin
+    self.f_id := dm.dsPrice.FieldByName('F_ID').AsInteger;
+  end;
+
+end;
+
+function TNsiPrice.GetF_Name: string;
+begin
+  result := f_name;
 end;
 
 end.

@@ -62,6 +62,8 @@ type
     f_partner: TNsiPartner;
     /// <summary> Склад </summary>
     f_sklad: TNsiSklad;
+    /// <summary> Прайс </summary>
+    f_price: TNsiPrice;
     /// <summary> Тип документа </summary>
     f_type: integer;
     /// <summary> Состояние документа </summary>
@@ -452,6 +454,7 @@ begin
           self.SetF_sklad(sklad);
           self.SetF_guid(dsDocHeadF_Guid.AsString);
           self.SetF_user(dsDocHeadF_USER.AsString);
+          self.f_price := TNsiPrice.CreateByName(dsDocHeadF_PRICE_NAME);
 //          self.SetF_date(dsDocHeadF_DATE.AsDateTime);
           dsDocStrings.First;
           while not dsDocStrings.Eof do
@@ -656,6 +659,7 @@ begin
   vl_doc.f_sklad := OutDocumentServicesImpl1.sklad.Create;
   vl_doc.f_sklad.f_prefix := f_sklad.GetPrefix;
   vl_doc.f_price := OutDocumentServicesImpl1.price.Create;
+  vl_doc.f_price.f_name := f_price.GetF_Name;
   // vl_doc.f_date := TXSDateTime.Create();
   vl_doc.f_date := FormatDateTime('DD.MM.YYYY', f_date);
   // vl_doc.f_date.AsDateTime := f_date;
