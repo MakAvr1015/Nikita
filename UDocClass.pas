@@ -454,7 +454,7 @@ begin
           self.SetF_sklad(sklad);
           self.SetF_guid(dsDocHeadF_Guid.AsString);
           self.SetF_user(dsDocHeadF_USER.AsString);
-          self.f_price := TNsiPrice.CreateByName(dsDocHeadF_PRICE_NAME);
+          self.f_price := TNsiPrice.CreateByName(dsDocHeadF_PRICE_NAME.asString);
 //          self.SetF_date(dsDocHeadF_DATE.AsDateTime);
           dsDocStrings.First;
           while not dsDocStrings.Eof do

@@ -12,7 +12,26 @@ uses
   pFIBDataSet, FIBQuery, pFIBQuery, pFIBStoredProc, Menus, RzStatus,
   cxPropertiesStore, RzForms, frxExportRTF, frxExportXML, frxExportXLS,
   frxExportHTML, frxClass, frxExportPDF, frxCross, frxBarcode, frxDCtrl,
-  frxDesgn, frxFIBComponents, UFramGoodCard;
+  frxDesgn, frxFIBComponents, UFramGoodCard, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TfrmNsiPrice = class(TFrmPrototype)
@@ -60,6 +79,8 @@ type
     FramGoodCard1: TFramGoodCard;
     Panel1: TPanel;
     Splitter2: TSplitter;
+    dsListNsiPriceF_CODE: TFIBStringField;
+    cxGrid1DBTableView1F_CODE: TcxGridDBColumn;
     procedure BtnExecuteClick(Sender: TObject);
     procedure dsListNsiPriceAfterOpen(DataSet: TDataSet);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
