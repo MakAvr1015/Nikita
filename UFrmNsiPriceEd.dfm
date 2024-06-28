@@ -53,9 +53,9 @@ inherited FrmNsiPriceEd: TFrmNsiPriceEd
     end
     inherited RzToolbar: TRzToolbar
       Width = 465
-      Height = 25
+      Height = 27
       ExplicitWidth = 465
-      ExplicitHeight = 25
+      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -70,58 +70,8 @@ inherited FrmNsiPriceEd: TFrmNsiPriceEd
         BtnDelete
         BtnSave
         BtnExit)
-      inherited BtnNew: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnOpen: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnFind: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnPrint: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnRefresh: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnEdit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnDelete: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnSave: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
       inherited BtnView: TRzToolButton
-        Top = 0
         Visible = False
-        ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
         Top = 0
@@ -239,7 +189,7 @@ inherited FrmNsiPriceEd: TFrmNsiPriceEd
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2286,8 +2236,8 @@ inherited FrmNsiPriceEd: TFrmNsiPriceEd
   end
   object pFIBTransaction: TpFIBTransaction
     DefaultDatabase = dm.pFIBDatabase
-    Left = 168
-    Top = 80
+    Left = 176
+    Top = 88
   end
   object srNsiPrice: TDataSource
     DataSet = dsNsiPrice
