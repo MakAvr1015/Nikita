@@ -12,7 +12,25 @@ uses
   frxDesgn, frxFIBComponents, DBCtrls, cxGraphics, dxSkinsCore,
   dxSkinsDefaultPainters, cxControls, cxContainer, cxEdit, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, cxColorComboBox, cxDBColorComboBox, RzRadChk,
-  RzDBChk, FIBQuery, pFIBQuery, pFIBStoredProc;
+  RzDBChk, FIBQuery, pFIBQuery, pFIBStoredProc, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, RzDBSpin, System.ImageList, Vcl.ImgList, frxDBSet,
+  frxChBox, frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
+  cxClasses;
 
 type
   TfrmEdinNsiGrp = class(TFrmPrototype)
@@ -45,6 +63,12 @@ type
     dsNsiGoodsGrpF_SET_AUTO: TFIBSmallIntField;
     dsNsiGoodsGrpF_SET_MASK: TFIBStringField;
     procSetGrpAuto: TpFIBStoredProc;
+    dsNsiGoodsGrpF_GRP_NEW: TFIBBCDField;
+    dsNsiGoodsGrpF_SHOW_EMPTY_GOOD: TFIBSmallIntField;
+    GroupBox1: TGroupBox;
+    RzDBCheckBox2: TRzDBCheckBox;
+    Label1: TLabel;
+    RzDBEdit4: TRzDBEdit;
     procedure FormShow(Sender: TObject);
     procedure dsNsiGoodsGrpAfterOpen(DataSet: TDataSet);
     procedure BtnSetGrpAutoClick(Sender: TObject);

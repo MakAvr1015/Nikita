@@ -69,7 +69,6 @@ type
     frxRTFExport1: TfrxRTFExport;
     frxDBDataset1: TfrxDBDataset;
     ImageList: TImageList;
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BtnOKClick(Sender: TObject);
     procedure BtnCancelClick(Sender: TObject);
     procedure BtnPrintClick(Sender: TObject);
@@ -285,13 +284,6 @@ begin
   fl.Free;
 end;
 
-procedure TFrmPrototype.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  PostAllDS(self, true);
-  SaveState;
-  Action := Act;
-end;
-
 procedure TFrmPrototype.FormCreate(Sender: TObject);
 var
   vl_index : integer;
@@ -331,7 +323,7 @@ var
   i: integer;
 begin
   // UnRegisterHotKey(self.Handle, MyHotKey);
-
+  SaveState;
   if parentDs <> nil then
     refreshDs(parentDs);
   if parentPageName <> '' then
@@ -351,7 +343,6 @@ begin
   end;
   try
     PostAllDS(self, true, true);
-    SaveState;
     PrList.Free;
   except
 
@@ -479,7 +470,7 @@ begin
     end;
   end;
   // RegisterHotKey(self.Handle, MyHotKey, 0, VK_RETURN);
-  if ((BorderStyle = bsSizeable)) then
+{  if ((BorderStyle = bsSizeable)) then
   begin
     cxPropertiesStore.Components.Add;
     with cxPropertiesStore.Components[cxPropertiesStore.Components.Count - 1] do
@@ -491,7 +482,7 @@ begin
     end;
     cxPropertiesStore.RestoreFrom;
     // RzFormState.RestoreState;
-  end;
+  end;}
 //  cxPropertiesStore.RestoreFrom;
   fl.free;
   TranslateForm(self, Language, TranslateFile);
