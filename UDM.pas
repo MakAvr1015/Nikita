@@ -304,6 +304,7 @@ type
     procedure UploadPhoto(Article: string; Path: string; ChDate: TDateTime);
     function ImportGood(GoodNode: IXmlNode; ext_base: Integer): Integer;
     function ImportPartner(PartnerNode: IXmlNode; ext_base: Integer): Integer;
+    function ImportPrice(PriceNode:  IXmlNode) : integer;
     function InsExtGood(Article: string; name: string; dop_info: string = '';
       good_type: string = '';p_cnt : integer = 0): Integer;
     function GetSYSValue(sysParam: string): string;
@@ -904,6 +905,20 @@ begin
     ['f_id'].Text;
   spImportPartner.Active := true;
   result := spImportPartner.FieldByName('f_id').AsInteger;
+end;
+
+function Tdm.ImportPrice(PriceNode: IXmlNode): integer;
+var
+  v_price : integer;
+  v_price_code : string;
+  v_price_name : string;
+begin
+  v_price_code := PriceNode.ChildNodes['f_code'].Text;
+  v_price_name := PriceNode.ChildNodes['f_name'].Text;
+  if dsPrice.locate('f_code', v_price_code,[]) then
+  begin
+    result :=  dsPrice.FieldbyName('F_ID').asInteger;
+  end;
 end;
 
 function Tdm.InsExtGood(Article, name: string; dop_info: string = '';

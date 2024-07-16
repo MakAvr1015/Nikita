@@ -196,7 +196,7 @@ var
   NodeDocs,NewDoc,nodeBody,newPos,ValueDoc  : IXmlNode;
   docList                                   : IXmlNode;
   f_summ                                    : Currency;
-  f_partner,f_good                          : integer;
+  f_partner,f_good,f_price                  : integer;
   commitDocs                                : boolean;
 begin
   commitDocs := false;
@@ -219,9 +219,17 @@ begin
       NodeDocs:=docList.ChildNodes[i];
       NewDoc:=NodeDocs.ChildNodes['T_NSI_PARTNER'];
       f_partner:=dm.ImportPartner(NewDoc,base_id);
-
+      NewDoc:=NodeDocs.ChildNodes['Price'];
+      if NewDoc <> nil then
+      begin
+        NewDoc := NewDoc.ChildNodes['T_NSI_PRICE'];
+        f_price := dm.ImportPrice(NewDoc);
+      end;
       dsImportDoc.Active:=false;
+      dsImportDoc.Params.ClearValues;
       dsImportDoc.ParamByName('f_partner').Value:=f_partner;
+      if f_price > 0 then
+        dsImportDoc.ParamByName('f_price').Value:= f_price;
       dsImportDoc.ParamByName('f_doc_type').Value:=NodeDocs.Attributes['DocType'];
 //      dsImportDoc.ParamByName('f_doc_type').Value:=NodeDocs.Attributes['DocType'];
       dsImportDoc.ParamByName('f_ext_id').Value:=NodeDocs.Attributes['Id'];
