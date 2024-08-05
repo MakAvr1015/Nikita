@@ -108,14 +108,12 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
     Properties.ActivePage = cxTabSheetGrp
     Properties.CustomButtons.Buttons = <>
     LookAndFeel.SkinName = 'MoneyTwins'
-    ClientRectBottom = 415
-    ClientRectLeft = 2
-    ClientRectRight = 572
-    ClientRectTop = 26
+    ClientRectBottom = 417
+    ClientRectRight = 574
+    ClientRectTop = 24
     object cxTabSheetGrp: TcxTabSheet
       Caption = #1043#1088#1091#1087#1087#1099
       ImageIndex = 0
-      ExplicitLeft = 0
       ExplicitTop = 0
       ExplicitWidth = 0
       ExplicitHeight = 0
@@ -143,6 +141,7 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
         OptionsView.CellAutoHeight = True
         OptionsView.ColumnAutoWidth = True
         RootValue = -1
+        ScrollbarAnnotations.CustomAnnotations = <>
         Styles.Selection = dm.cxStyle11
         TabOrder = 0
         OnDblClick = cxDBTreeListDblClick
@@ -187,7 +186,6 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
     object cxTabSheetGrpExt: TcxTabSheet
       Caption = #1053#1072#1073#1086#1088#1099'/'#1082#1086#1084#1087#1083#1077#1082#1090#1099
       ImageIndex = 1
-      ExplicitLeft = 0
       ExplicitTop = 0
       ExplicitWidth = 0
       ExplicitHeight = 0
@@ -201,6 +199,7 @@ object FramNsiGoodsGrp: TFramNsiGoodsGrp
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid1DBTableView1DblClick
           Navigator.Buttons.CustomButtons = <>
+          ScrollbarAnnotations.CustomAnnotations = <>
           DataController.DataSource = srAlterneteList
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>

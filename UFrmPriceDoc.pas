@@ -31,7 +31,8 @@ uses
   dxSkinXmas2008Blue, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
-  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE;
+  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
+  dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmPriceDoc = class(TFrmPrototype)

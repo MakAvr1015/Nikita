@@ -22,7 +22,6 @@ inherited FrmPriceDoc: TFrmPriceDoc
     ExplicitHeight = 348
     inherited RzToolbar: TRzToolbar
       Width = 944
-      Height = 27
       ExplicitWidth = 944
       ToolbarControls = (
         BtnNew
@@ -56,7 +55,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
     end
     object RzPanel1: TRzPanel
       Left = 1
-      Top = 28
+      Top = 30
       Width = 944
       Height = 78
       Align = alTop
@@ -67,6 +66,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -141,12 +141,14 @@ inherited FrmPriceDoc: TFrmPriceDoc
     end
     object Panel1: TPanel
       Left = 1
-      Top = 106
+      Top = 108
       Width = 944
-      Height = 241
+      Height = 239
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
+      ExplicitTop = 106
+      ExplicitHeight = 241
       object Splitter1: TSplitter
         Left = 800
         Top = 1
@@ -170,6 +172,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
           OnKeyPress = cxGrid1DBTableView1KeyPress
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.Insert.Visible = False
+          ScrollbarAnnotations.CustomAnnotations = <>
           OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
           DataController.DataSource = srPriceDocBody
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -232,7 +235,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
         Properties.FitMode = ifmProportionalStretch
         Properties.GraphicClassName = 'TdxSmartImage'
         TabOrder = 1
-        Height = 239
+        Height = 237
         Width = 140
       end
     end
@@ -244,7 +247,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

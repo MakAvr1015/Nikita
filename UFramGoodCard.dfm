@@ -1,21 +1,20 @@
 object FramGoodCard: TFramGoodCard
   Left = 0
   Top = 0
-  Width = 448
+  Width = 451
   Height = 291
   Align = alBottom
   TabOrder = 0
+  ExplicitTop = 14
   object Panel4: TPanel
     Left = 201
     Top = 0
-    Width = 247
+    Width = 250
     Height = 291
     Align = alClient
     Color = clGradientActiveCaption
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 250
-    ExplicitHeight = 262
     object cxDBLabel1: TcxDBLabel
       Left = 1
       Top = 57
@@ -24,9 +23,8 @@ object FramGoodCard: TFramGoodCard
       DataBinding.DataSource = srGetGoodsInfo
       Properties.WordWrap = True
       Style.BorderStyle = ebsFlat
-      ExplicitWidth = 248
       Height = 41
-      Width = 245
+      Width = 248
     end
     object cxDBLabel2: TcxDBLabel
       Left = 1
@@ -36,9 +34,8 @@ object FramGoodCard: TFramGoodCard
       DataBinding.DataSource = srGetGoodsInfo
       Properties.WordWrap = True
       Style.BorderStyle = ebsFlat
-      ExplicitWidth = 248
       Height = 54
-      Width = 245
+      Width = 248
     end
     object cxDBLabel3: TcxDBLabel
       Left = 1
@@ -59,20 +56,18 @@ object FramGoodCard: TFramGoodCard
       StyleDisabled.LookAndFeel.SkinName = ''
       StyleFocused.LookAndFeel.SkinName = ''
       StyleHot.LookAndFeel.SkinName = ''
-      ExplicitWidth = 248
       Height = 56
-      Width = 245
-      AnchorX = 124
+      Width = 248
+      AnchorX = 125
     end
     object cxGrid1: TcxGrid
       Left = 1
       Top = 152
-      Width = 245
+      Width = 248
       Height = 138
       Align = alClient
       TabOrder = 3
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitWidth = 248
       ExplicitHeight = 109
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -81,6 +76,7 @@ object FramGoodCard: TFramGoodCard
         Navigator.Buttons.Delete.Visible = False
         Navigator.Buttons.Edit.Visible = False
         Navigator.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srGoodsDopInfo
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -122,7 +118,6 @@ object FramGoodCard: TFramGoodCard
     Properties.FitMode = ifmProportionalStretch
     Properties.GraphicClassName = 'TdxPNGImage'
     TabOrder = 1
-    ExplicitHeight = 262
     Height = 291
     Width = 201
   end
@@ -141,8 +136,8 @@ object FramGoodCard: TFramGoodCard
       '  '
       'from sp_t_nsi_goods_get(:f_good,null)'
       '')
-    Transaction = DM.pFIBTransaction
-    Database = DM.pFIBDatabase
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
     Left = 64
@@ -202,8 +197,8 @@ object FramGoodCard: TFramGoodCard
       'select * from SP_T_NSI_GOODS_DOP_INFO_S(:f_id)')
     AutoUpdateOptions.ParamsToFieldsLinks.Strings = (
       'F_GOOD=F_ID')
-    Transaction = DM.pFIBTransaction
-    Database = DM.pFIBDatabase
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
     AutoCommit = True
     DataSource = srGetGoodsInfo
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'

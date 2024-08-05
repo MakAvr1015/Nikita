@@ -90,10 +90,15 @@ procedure SendOutDocToMain(p_doc : integer);
 ///  </summary>
 procedure ShowZakazList;
 /// <summary>
+///  Установить каталог для поиска DLL
+/// </summary>
+function SetDllDirectory(lpPathName:PWideChar): Bool; stdcall; external 'kernel32.dll' name 'SetDllDirectoryW';
+/// <summary>
 ///  Процедура импорта документов из XML
 ///  </summary>
 procedure ImportXmlDoc(DocsNode: IXmlNode; Ds: pointer);
 var
+  dll_path: String;
   Prg_path: string;
   Prg_title : string;
   Curr_transaction: TFibTransaction;

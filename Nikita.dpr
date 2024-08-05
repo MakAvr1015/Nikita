@@ -135,6 +135,7 @@ var
   vl_actions : TArrayAct;
   vl_MenuItem: TMenuItem;
   vl_ActionClient,vl_ActionClient1 : TActionClientItem;
+  vl_WChar : PWideChar;
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
@@ -148,8 +149,18 @@ begin
   end;
   ClearLog;
 //  Application.CreateForm(TFrmMain, FrmMain);
+  {$IF Defined(CPU64)}
+    GetMem(vl_WChar, (Length(Prg_path + '\Win64')+1) * SizeOf(WideChar));
+    StringToWideChar(Prg_path + '\Win64',vl_WChar,length(Prg_path + '\Win64'));
+  {$ELSE}
+    GetMem(vl_WChar, (Length(Prg_path + '\Win32')+1) * SizeOf(WideChar));
+    StringToWideChar(Prg_path + '\Win64',vl_WChar,length(Prg_path + '\Win32'));
+  {$ENDIF}
+  SetDllDirectory(vl_WChar);
+
   if Login then
   begin
+
     Application.Title := Application.Title + ' ' + prg_title;
     LogMsg('Начинаем грузить форму');
     Application.CreateForm(TFrmMain, FrmMain);
@@ -161,7 +172,7 @@ begin
       on E : Exception do
           LogMsg('Ошибка локализации '+E.Message);
     end;
-    Plugins.LoadPlugins(PluginPath,'.dll');
+    //Plugins.LoadPlugins(PluginPath,'.dll');
     for vl_index := 0 to Plugins.FCount-1 do
     begin
      // LogMsg('Загрузка расширения '+Plugins.FItems[vl_index].);

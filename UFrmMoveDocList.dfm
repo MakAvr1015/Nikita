@@ -24,14 +24,14 @@ inherited FrmMoveDocList: TFrmMoveDocList
     ExplicitHeight = 341
     inherited RzToolbar: TRzToolbar
       Width = 1009
-      Height = 101
+      Height = 179
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoCustom
       ExplicitWidth = 1009
-      ExplicitHeight = 101
+      ExplicitHeight = 179
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -48,126 +48,152 @@ inherited FrmMoveDocList: TFrmMoveDocList
         BtnExit)
       inherited BtnNew: TRzToolButton
         Tag = 1
+        Top = 0
         Layout = blGlyphTop
         OnClick = BtnNewClick
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnOpen: TRzToolButton
         Left = 225
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnOpenClick
         ExplicitLeft = 225
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnFind: TRzToolButton
         Left = 345
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 345
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnPrint: TRzToolButton
         Left = 405
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 405
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOK: TRzToolButton
         Left = 479
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 479
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnCancel: TRzToolButton
         Left = 539
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 539
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnRefresh: TRzToolButton
         Left = 285
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 285
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnEdit: TRzToolButton
         Left = 64
+        Top = 0
         Width = 87
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnEditClick
         ExplicitLeft = 64
+        ExplicitTop = 0
         ExplicitWidth = 87
         ExplicitHeight = 40
       end
       inherited BtnExecute: TRzToolButton
         Left = 599
+        Top = 0
         Width = 64
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 599
+        ExplicitTop = 0
         ExplicitWidth = 64
         ExplicitHeight = 40
       end
       inherited BtnDelete: TRzToolButton
         Left = 663
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         Visible = True
         ExplicitLeft = 663
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnSave: TRzToolButton
         Left = 723
+        Top = 0
         Width = 63
         Height = 40
         Layout = blGlyphTop
         Visible = True
         ExplicitLeft = 723
+        ExplicitTop = 0
         ExplicitWidth = 63
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
         Left = 786
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 786
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnView: TRzToolButton
         Left = 151
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnViewClick
         ExplicitLeft = 151
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 80
-        ExplicitTop = 80
+        Top = 158
+        ExplicitTop = 158
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 131
+      Top = 209
       Width = 1009
-      Height = 209
+      Height = 131
       Align = alClient
       TabOrder = 1
       LookAndFeel.ScrollbarMode = sbmClassic
@@ -177,6 +203,7 @@ inherited FrmMoveDocList: TFrmMoveDocList
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srMoveDocsList
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
@@ -276,7 +303,7 @@ inherited FrmMoveDocList: TFrmMoveDocList
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 102
+      Top = 180
       Width = 1009
       Height = 29
       Caption = 'ToolBar1'
@@ -313,7 +340,7 @@ inherited FrmMoveDocList: TFrmMoveDocList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

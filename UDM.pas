@@ -976,6 +976,7 @@ end;
 procedure Tdm.pFIBDatabaseBeforeConnect(Database: TFIBDatabase;
   LoginParams: TStrings; var DoConnect: Boolean);
 begin
+
   LogMsg('Устанавливаем путь к базе '+DataBasePath);
   Database.DbName := DataBasePath;
   LogMsg('Установили путь');
