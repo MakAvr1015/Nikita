@@ -35,7 +35,8 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog,
   cxGridCustomLayoutView, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
   frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
-  cxTextEdit, cxDropDownEdit, Vcl.Grids, Vcl.DBGrids;
+  cxTextEdit, cxDropDownEdit, Vcl.Grids, Vcl.DBGrids, dxDateRanges,
+  dxScrollbarAnnotations;
 
 type
   TFrmNsiGoods = class(TFrmPrototype)
@@ -144,6 +145,14 @@ type
     procedure cxGrid1DBTableView1DataControllerFilterChanged(Sender: TObject);
     procedure dsGoodScancodesCalcFields(DataSet: TDataSet);
     procedure cxGrid2DBTableView1KeyPress(Sender: TObject; var Key: Char);
+    procedure cxGrid1DBTableView1F_GOOD_TYPEUserFilteringEx(
+      Sender: TcxCustomGridTableItem; AFilterList: TcxFilterCriteriaItemList;
+      const AValue: Variant; const ADisplayText: string);
+    procedure cxGrid1DBTableView1F_GOOD_TYPEUserFiltering(
+      Sender: TcxCustomGridTableItem; const AValue: Variant;
+      const ADisplayText: string);
+    procedure cxGrid1DBTableView1FilterCustomization(
+      Sender: TcxCustomGridTableView; var ADone: Boolean);
   private
     { Private declarations }
     scan: string;
@@ -243,6 +252,7 @@ var
 begin
   TpFIBDataSet(srNsiGoods.DataSet).DisableControls;
   TpFIBDataSet(srNsiGoods.DataSet).Active := false;
+  (Sender as TcxDBDataFilterCriteria).IgnoreOrigin := false;
   id := TpFIBDataSet(srNsiGoods.DataSet).FieldByName('F_GOOD').asInteger;
   sqlText := (Sender as TcxDBDataFilterCriteria).FilterText;
   if sqlText <> '' then
@@ -288,6 +298,36 @@ begin
     end;
     free;
   end;
+
+end;
+
+procedure TFrmNsiGoods.cxGrid1DBTableView1FilterCustomization(
+  Sender: TcxCustomGridTableView; var ADone: Boolean);
+var
+  vl_str : String;
+begin
+  vl_str := TcxCustomGridTableView.ClassName;
+
+end;
+
+procedure TFrmNsiGoods.cxGrid1DBTableView1F_GOOD_TYPEUserFiltering(
+  Sender: TcxCustomGridTableItem; const AValue: Variant;
+  const ADisplayText: string);
+var
+  vl_result : String;
+
+begin
+   vl_result := ADisplayText;
+
+end;
+
+procedure TFrmNsiGoods.cxGrid1DBTableView1F_GOOD_TYPEUserFilteringEx(
+  Sender: TcxCustomGridTableItem; AFilterList: TcxFilterCriteriaItemList;
+  const AValue: Variant; const ADisplayText: string);
+var
+  vl_result : String;
+begin
+  vl_result := ADisplayText;
 
 end;
 

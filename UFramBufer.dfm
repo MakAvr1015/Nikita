@@ -109,7 +109,6 @@ object FramBufer: TFramBufer
       inherited cxDBLabel3: TcxDBLabel
         Properties.WordWrap = True
         Style.LookAndFeel.SkinName = ''
-        Style.IsFontAssigned = True
         StyleDisabled.LookAndFeel.SkinName = ''
         StyleFocused.LookAndFeel.SkinName = ''
         StyleHot.LookAndFeel.SkinName = ''
@@ -163,6 +162,7 @@ object FramBufer: TFramBufer
       OnDragOver = cxGridDBTableViewBufferDragOver
       OnKeyPress = cxGridDBTableViewBufferKeyPress
       Navigator.Buttons.CustomButtons = <>
+      ScrollbarAnnotations.CustomAnnotations = <>
       DataController.DataSource = DSBuffer
       DataController.Summary.DefaultGroupSummaryItems = <
         item

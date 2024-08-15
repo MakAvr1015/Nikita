@@ -76,24 +76,23 @@ inherited FrmNsiGoods: TFrmNsiGoods
         ExplicitTop = 54
         ExplicitWidth = 231
         ExplicitHeight = 547
-        ClientRectBottom = 545
-        ClientRectRight = 229
+        ClientRectBottom = 547
+        ClientRectRight = 231
         inherited cxTabSheetGrp: TcxTabSheet
-          ExplicitLeft = 2
-          ExplicitTop = 26
-          ExplicitWidth = 227
-          ExplicitHeight = 519
+          ExplicitTop = 24
+          ExplicitWidth = 231
+          ExplicitHeight = 523
           inherited cxDBTreeList: TcxDBTreeList
-            Width = 227
-            Height = 519
+            Width = 231
+            Height = 523
             OptionsSelection.CellSelect = True
             OptionsSelection.InvertSelect = True
             OptionsView.Indicator = True
             OnDragDrop = FramNsiGoodsGrp1cxDBTreeListDragDrop
             OnDragOver = FramNsiGoodsGrp1cxDBTreeListDragOver
             OnSelectionChanged = FramNsiGoodsGrp1cxDBTreeListSelectionChanged
-            ExplicitWidth = 227
-            ExplicitHeight = 519
+            ExplicitWidth = 231
+            ExplicitHeight = 523
             inherited cxDBTreeList1F_ID: TcxDBTreeListColumn
               Position.ColIndex = 3
             end
@@ -109,13 +108,14 @@ inherited FrmNsiGoods: TFrmNsiGoods
           end
         end
         inherited cxTabSheetGrpExt: TcxTabSheet
-          ExplicitLeft = 2
-          ExplicitTop = 26
-          ExplicitWidth = 570
-          ExplicitHeight = 389
+          ExplicitTop = 24
+          ExplicitWidth = 574
+          ExplicitHeight = 393
           inherited cxGrid1: TcxGrid
-            Width = 570
-            ExplicitWidth = 570
+            Width = 574
+            Height = 393
+            ExplicitWidth = 574
+            ExplicitHeight = 393
           end
         end
       end
@@ -180,6 +180,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
       inherited BtnNew: TRzToolButton
         Top = 0
         OnClick = BtnNewClick
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -285,7 +286,9 @@ inherited FrmNsiGoods: TFrmNsiGoods
         Navigator.Buttons.GotoBookmark.Visible = False
         Navigator.Buttons.Filter.Visible = False
         Navigator.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
         OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
+        OnFilterCustomization = cxGrid1DBTableView1FilterCustomization
         DataController.DataModeController.GridMode = True
         DataController.DataModeController.GridModeBufferCount = 50
         DataController.DataSource = srNsiGoods
@@ -368,6 +371,8 @@ inherited FrmNsiGoods: TFrmNsiGoods
         object cxGrid1DBTableView1F_GOOD_TYPE: TcxGridDBColumn
           Caption = #1058#1080#1087' '#1090#1086#1074#1072#1088#1072
           DataBinding.FieldName = 'F_GOOD_TYPE'
+          OnUserFiltering = cxGrid1DBTableView1F_GOOD_TYPEUserFiltering
+          OnUserFilteringEx = cxGrid1DBTableView1F_GOOD_TYPEUserFilteringEx
           Width = 183
         end
       end
@@ -375,6 +380,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
         OnDblClick = cxGrid1DBTableView1DblClick
         OnKeyPress = cxGrid1DBTableView1KeyPress
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataModeController.GridMode = True
         DataController.DataSource = srNsiGoods
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -486,7 +492,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
         end
         inherited cxDBLabel3: TcxDBLabel
           Style.LookAndFeel.SkinName = ''
-          Style.IsFontAssigned = True
           StyleDisabled.LookAndFeel.SkinName = ''
           StyleFocused.LookAndFeel.SkinName = ''
           StyleHot.LookAndFeel.SkinName = ''
@@ -594,6 +599,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
       object cxGrid2DBTableView1: TcxGridDBTableView
         OnKeyPress = cxGrid2DBTableView1KeyPress
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srGoodScancodes
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -632,7 +638,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

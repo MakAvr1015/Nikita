@@ -28,7 +28,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, FIBQuery, pFIBQuery,
-  pFIBStoredProc;
+  pFIBStoredProc, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFramBufer = class(TFrame)
