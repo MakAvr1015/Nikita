@@ -94,6 +94,7 @@ procedure ShowZakazList;
 ///  </summary>
 procedure ImportXmlDoc(DocsNode: IXmlNode; Ds: pointer);
 var
+  dll_path: String;
   Prg_path: string;
   Prg_title : string;
   Curr_transaction: TFibTransaction;
@@ -648,7 +649,7 @@ procedure ShowMoveDocSpisanJournal;
 begin
   with TFrmMoveDocList.CreateForm(Application.MainForm,
     'TFrmMoveDocListSpisan') do
-  // TFrmMoveDocListSpisan.Create(Application.MainForm) do
+   //TFrmMoveDocListSpisan.Create(Application.MainForm) do
   begin
     caption := translateCapt('Журнал списаний', Language, TranslateFile);
     tag := 2;
