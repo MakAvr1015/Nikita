@@ -219,12 +219,8 @@ begin
       NodeDocs:=docList.ChildNodes[i];
       NewDoc:=NodeDocs.ChildNodes['T_NSI_PARTNER'];
       f_partner:=dm.ImportPartner(NewDoc,base_id);
-      NewDoc:=NodeDocs.ChildNodes['Price'];
-      if NewDoc <> nil then
-      begin
-        NewDoc := NewDoc.ChildNodes['T_NSI_PRICE'];
-        f_price := dm.ImportPrice(NewDoc);
-      end;
+      NewDoc := NodeDocs.ChildNodes['T_NSI_PRICE'];
+      f_price := dm.ImportPrice(NewDoc);
       dsImportDoc.Active:=false;
       dsImportDoc.Params.ClearValues;
       dsImportDoc.ParamByName('f_partner').Value:=f_partner;

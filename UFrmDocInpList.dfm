@@ -204,6 +204,7 @@ inherited FrmListInputDocs: TFrmListInputDocs
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srDocList
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
@@ -464,7 +465,6 @@ inherited FrmListInputDocs: TFrmListInputDocs
     Top = 176
   end
   object pFIBTransaction: TpFIBTransaction [6]
-    Active = True
     DefaultDatabase = dm.pFIBDatabase
     Left = 472
     Top = 144
@@ -480,6 +480,7 @@ inherited FrmListInputDocs: TFrmListInputDocs
       PaperHeight = 297.000000000000000000
       PaperSize = 9
       Frame.Typ = []
+      MirrorMode = []
     end
   end
   object OpenDialog: TOpenDialog [10]
@@ -497,7 +498,8 @@ inherited FrmListInputDocs: TFrmListInputDocs
       '    :F_EXT_BASE,'
       '    :F_EXT_ID,'
       '    :F_DOC_TYPE,'
-      '    :F_USER) ')
+      '    :F_USER,'
+      '    :F_PRICE) ')
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -611,7 +613,7 @@ inherited FrmListInputDocs: TFrmListInputDocs
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

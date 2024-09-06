@@ -34,7 +34,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
-  frxDBSet;
+  frxDBSet, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmListInputDocs = class(TFrmPrototype)
@@ -150,7 +150,7 @@ var
   docList: IXmlNode;
   f_summ: Currency;
   f_cource: Currency;
-  f_partner, f_good: integer;
+  f_partner, f_good, f_price: integer;
   commitDocs: boolean;
   fileName: string;
 begin
@@ -195,6 +195,7 @@ begin
         NewDoc := NodeDocs.ChildNodes['T_NSI_PARTNER'];
         f_partner := dm.ImportPartner(NewDoc, base_id);
         dsImportDoc.Active := false;
+        dsImportDoc.Params.ClearValues;
         MemoLog.Lines.Add('Начинаем загрузку документа');
         dsImportDoc.ParamByName('f_partner').Value := f_partner;
         // spImportPartner.FieldByName('f_id').Value;
@@ -213,6 +214,10 @@ begin
           dsImportDoc.ParamByName('f_number').AsString);
         NewDoc := NodeDocs.ChildNodes['wbDate'];
         dsImportDoc.ParamByName('f_date').Value := NewDoc.Text;
+        NewDoc := NodeDocs.ChildNodes['T_NSI_PRICE'];
+        f_price := dm.ImportPrice(NewDoc);
+        dsImportDoc.ParamByName('F_PRICE').Value := f_price;
+
         dsImportDoc.Active := true;
         MemoLog.Lines.Add('Заголовок документа загружен');
         nodeBody := NodeDocs.ChildNodes['DocBody'];

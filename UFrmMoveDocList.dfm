@@ -24,14 +24,14 @@ inherited FrmMoveDocList: TFrmMoveDocList
     ExplicitHeight = 341
     inherited RzToolbar: TRzToolbar
       Width = 1009
-      Height = 179
+      Height = 263
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoCustom
       ExplicitWidth = 1009
-      ExplicitHeight = 179
+      ExplicitHeight = 263
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -185,21 +185,19 @@ inherited FrmMoveDocList: TFrmMoveDocList
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 158
-        ExplicitTop = 158
+        Top = 242
+        ExplicitTop = 242
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 209
+      Top = 293
       Width = 1009
-      Height = 131
+      Height = 47
       Align = alClient
       TabOrder = 1
       LookAndFeel.ScrollbarMode = sbmClassic
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 70
-      ExplicitHeight = 270
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -303,12 +301,11 @@ inherited FrmMoveDocList: TFrmMoveDocList
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 180
+      Top = 264
       Width = 1009
       Height = 29
       Caption = 'ToolBar1'
       TabOrder = 2
-      ExplicitTop = 41
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -340,7 +337,7 @@ inherited FrmMoveDocList: TFrmMoveDocList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2523,7 +2520,8 @@ inherited FrmMoveDocList: TFrmMoveDocList
       '    :F_EXT_ID,'
       '    :F_DOC_TYPE,'
       '    :F_USER,'
-      '    :F_DOP_INFO) ')
+      '    :F_DOP_INFO,'
+      '    :F_PRICE) ')
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'

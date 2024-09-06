@@ -148,7 +148,7 @@ var
   NodeDocs, NewDoc, nodeBody, newPos, ValueDoc: IXmlNode;
   docList: IXmlNode;
   f_summ: Currency;
-  f_sklad, f_good: integer;
+  f_sklad, f_good, f_price: integer;
   commitDocs: boolean;
 begin
   commitDocs := false;
@@ -186,6 +186,9 @@ begin
       dsImportDoc.ParamByName('f_number').Value := NewDoc.Text;
       NewDoc := NodeDocs.ChildNodes['wbDate'];
       dsImportDoc.ParamByName('f_date').Value := NewDoc.Text;
+      NewDoc := NodeDocs.ChildNodes['T_NSI_PRICE'];
+      f_price := dm.ImportPrice(NewDoc);
+      dsImportDoc.ParamByName('F_PRICE').Value := f_price;
       NewDoc := NodeDocs.ChildNodes['wbDopInfo'];
       dsImportDoc.ParamByName('F_DOP_INFO').Value := NewDoc.Text;
       dsImportDoc.Active := true;
