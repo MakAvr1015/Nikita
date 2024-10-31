@@ -31,7 +31,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
   System.ImageList, Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit;
+  cxDropDownEdit, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmNsiPartner = class(TFrmPrototype)

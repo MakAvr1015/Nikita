@@ -68,6 +68,7 @@ type
     constructor CreateByName(p_name: string);
     constructor CreateByCode(p_code: string);
     function GetF_Name : string;
+    function GetF_Code : String;
   end;
 implementation
 
@@ -336,6 +337,14 @@ end;
 
 constructor TNsiPrice.CreateByCode(p_code: string);
 begin
+  if not dm.dsPrice.Active then
+    dm.dsPrice.Active := true;
+  if dm.dsPrice.Locate('F_CODE',p_code,[]) then
+  begin
+    self.f_code := p_code;
+    self.f_id := dm.dsPrice.FieldByName('F_ID').AsInteger;
+    self.f_name := dm.dsPrice.FieldByName('F_NAME').AsString;
+  end;
 
 end;
 
@@ -347,8 +356,14 @@ begin
   if dm.dsPrice.Locate('F_NAME',p_name,[]) then
   begin
     self.f_id := dm.dsPrice.FieldByName('F_ID').AsInteger;
+    self.f_code := dm.dsPrice.FieldByName('F_CODE').AsString;
   end;
 
+end;
+
+function TNsiPrice.GetF_Code: String;
+begin
+  result := f_code;
 end;
 
 function TNsiPrice.GetF_Name: string;

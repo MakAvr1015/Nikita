@@ -23,7 +23,9 @@ inherited FrmOutputDoc: TFrmOutputDoc
     ExplicitHeight = 562
     inherited RzToolbar: TRzToolbar
       Width = 1061
+      Height = 25
       ExplicitWidth = 1061
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -39,19 +41,67 @@ inherited FrmOutputDoc: TFrmOutputDoc
         BtnSave
         BtnExit
         cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 0
         OnClick = BtnOpenClick
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
+        Top = 0
         AllowAllUp = True
         OnClick = nil
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
+        Top = 0
         Enabled = True
         Visible = True
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
+        Top = 0
         Visible = False
+        ExplicitTop = 0
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 2
+        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
@@ -329,6 +379,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
               Navigator.Buttons.Insert.Enabled = False
               Navigator.Buttons.Insert.Visible = False
               Navigator.Visible = True
+              ScrollbarAnnotations.CustomAnnotations = <>
               OnCellDblClick = cxGrid1DBTableView1CellDblClick
               OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
               DataController.DataSource = srDocStrings
@@ -505,6 +556,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Visible = True
+            ScrollbarAnnotations.CustomAnnotations = <>
             DataController.DataSource = srPaymentsList
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <
@@ -580,6 +632,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
       '    F_SKLAD_F_NAME,'
       '    F_PRICE,'
       '    f_price_name,'
+      '    f_price_code,'
       '    f_skidka,'
       '    f_pay_sum,'
       '    f_doc_sum,'
@@ -708,6 +761,11 @@ inherited FrmOutputDoc: TFrmOutputDoc
     end
     object dsDocHeadF_SKLAD_F_NAME: TFIBStringField
       FieldName = 'F_SKLAD_F_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocHeadF_PRICE_CODE: TFIBStringField
+      FieldName = 'F_PRICE_CODE'
       Size = 60
       EmptyStrToNull = True
     end
@@ -1022,7 +1080,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

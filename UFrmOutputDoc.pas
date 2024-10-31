@@ -35,7 +35,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog,
   UDocumentsClasses, cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject,
   frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList,
-  Vcl.ImgList, frxDBSet;
+  Vcl.ImgList, frxDBSet, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmOutputDoc = class(TFrmPrototype, IFrmDoc)
@@ -153,6 +153,7 @@ type
     dsDocHeadF_SKLAD_F_NAME: TFIBStringField;
     RzDBButtonEdit4: TRzDBButtonEdit;
     RzLabel9: TRzLabel;
+    dsDocHeadF_PRICE_CODE: TFIBStringField;
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);

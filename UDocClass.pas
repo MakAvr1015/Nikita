@@ -454,7 +454,7 @@ begin
           self.SetF_sklad(sklad);
           self.SetF_guid(dsDocHeadF_Guid.AsString);
           self.SetF_user(dsDocHeadF_USER.AsString);
-          self.f_price := TNsiPrice.CreateByName(dsDocHeadF_PRICE_NAME.asString);
+          self.f_price := TNsiPrice.CreateByCode(dsDocHeadF_PRICE_Code.asString);
 //          self.SetF_date(dsDocHeadF_DATE.AsDateTime);
           dsDocStrings.First;
           while not dsDocStrings.Eof do
@@ -660,6 +660,7 @@ begin
   vl_doc.f_sklad.f_prefix := f_sklad.GetPrefix;
   vl_doc.f_price := OutDocumentServicesImpl1.price.Create;
   vl_doc.f_price.f_name := f_price.GetF_Name;
+  vl_doc.f_price.f_code := f_price.GetF_Code;
   // vl_doc.f_date := TXSDateTime.Create();
   vl_doc.f_date := FormatDateTime('DD.MM.YYYY', f_date);
   // vl_doc.f_date.AsDateTime := f_date;
