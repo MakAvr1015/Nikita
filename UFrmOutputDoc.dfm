@@ -3,6 +3,8 @@ inherited FrmOutputDoc: TFrmOutputDoc
   Caption = #1056#1072#1089#1093#1086#1076#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
   ClientHeight = 581
   ClientWidth = 1063
+  ExplicitLeft = -184
+  ExplicitTop = -114
   ExplicitWidth = 1079
   ExplicitHeight = 620
   PixelsPerInch = 96
@@ -23,7 +25,9 @@ inherited FrmOutputDoc: TFrmOutputDoc
     ExplicitHeight = 562
     inherited RzToolbar: TRzToolbar
       Width = 1061
+      Height = 25
       ExplicitWidth = 1061
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -39,19 +43,66 @@ inherited FrmOutputDoc: TFrmOutputDoc
         BtnSave
         BtnExit
         cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 0
         OnClick = BtnOpenClick
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
+        Top = 0
         AllowAllUp = True
         OnClick = nil
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
+        Top = 0
         Enabled = True
         Visible = True
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
+        Top = 0
         Visible = False
+        ExplicitTop = 0
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 2
+        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
@@ -285,10 +336,10 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Width = 1061
       Height = 424
       Hint = ''
-      ActivePage = TabSheet1
+      ActivePage = TabSheet2
       Align = alClient
       HotTrackStyle = htsText
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 2
       TabStyle = tsRoundCorners
       FixedDimension = 19
@@ -329,6 +380,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
               Navigator.Buttons.Insert.Enabled = False
               Navigator.Buttons.Insert.Visible = False
               Navigator.Visible = True
+              ScrollbarAnnotations.CustomAnnotations = <>
               OnCellDblClick = cxGrid1DBTableView1CellDblClick
               OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
               DataController.DataSource = srDocStrings
@@ -491,10 +543,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1054#1087#1083#1072#1090#1072
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
@@ -505,9 +553,13 @@ inherited FrmOutputDoc: TFrmOutputDoc
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Visible = True
+            ScrollbarAnnotations.CustomAnnotations = <>
             DataController.DataSource = srPaymentsList
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+              end
               item
                 Kind = skSum
                 Column = cxGrid2DBTableView1F_SUMMA
@@ -541,7 +593,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
             end
             object cxGrid2DBTableView1F_SUMMA: TcxGridDBColumn
               DataBinding.FieldName = 'F_SUMMA'
-              Width = 104
             end
           end
           object cxGrid2Level1: TcxGridLevel
@@ -972,16 +1023,17 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Visible = False
       Size = 0
     end
-    object dsPaymentsListF_SUMMA: TFIBFloatField
-      DisplayLabel = #1057#1091#1084#1084#1072' '#1088#1072#1079#1085#1086#1089#1082#1080
-      FieldName = 'F_SUMMA'
-    end
     object dsPaymentsListF_DOC_INFO: TFIBStringField
       DisplayLabel = #1055#1083#1072#1090#1077#1078
       FieldName = 'F_DOC_INFO'
       Size = 255
       Transliterate = False
       EmptyStrToNull = True
+    end
+    object dsPaymentsListF_SUMMA: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'F_SUMMA'
+      Size = 3
     end
   end
   object srPaymentsList: TDataSource [12]
@@ -1022,7 +1074,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

@@ -153,7 +153,7 @@ object dm: Tdm
     Left = 280
     Top = 120
     Bitmap = {
-      494C01013A00D000200110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D0002C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2141,7 +2141,7 @@ object dm: Tdm
       000000000000}
   end
   object pFIBDatabase: TpFIBDatabase
-    DBName = '10.8.1.1:nbase_dev'
+    DBName = '192.168.0.202:nbase'
     DBParams.Strings = (
       'user_name=SYSDBA'
       'password=951'
@@ -2152,6 +2152,8 @@ object dm: Tdm
     Timeout = 0
     BeforeDisconnect = pFIBDatabaseBeforeDisconnect
     UseRepositories = []
+    LibraryName = 'fbclient.dll'
+    LibraryName64 = 'fbclient.dll'
     CacheSchemaOptions.LocalCacheFile = '.\cashe.scheme'
     CacheSchemaOptions.ValidateAfterLoad = False
     WaitForRestoreConnect = 0
@@ -2540,6 +2542,7 @@ object dm: Tdm
       False)
     Transaction = pFIBTransaction
     Database = pFIBDatabase
+    FieldOriginRule = forNoRule
     RefreshTransactionKind = tkUpdateTransaction
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
@@ -2608,6 +2611,7 @@ object dm: Tdm
     end
     object dsNsiGoodsF_GOOD_TYPE: TFIBStringField
       FieldName = 'F_GOOD_TYPE'
+      Origin = 'I.F_GOOD_INFO_VAL'
       Size = 60
       Transliterate = False
       EmptyStrToNull = True
@@ -3363,7 +3367,7 @@ object dm: Tdm
     Left = 648
     Top = 352
     Bitmap = {
-      494C010103000500200120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005002C0120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       00000000000000000000000000000000000000000000DE9C0000DE9C0000DE9C
       0000DE9C0000D6940000D6940000DE9C0000DE9C0000DE9C0000DE9C0000D694

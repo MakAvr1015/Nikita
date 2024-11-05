@@ -32,7 +32,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
   System.ImageList, Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit;
+  cxDropDownEdit, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmMoveDocList = class(TFrmPrototype)
@@ -339,6 +339,7 @@ procedure TFrmMoveDocList.FormCreate(Sender: TObject);
 var
   tf: TStringField;
 begin
+  inherited;
   Editstr_date.Date := Date;
   Editend_date.Date := Date;
   dm.dsNsiDocProp.Active := false;
@@ -360,7 +361,7 @@ begin
     end;
     dm.dsNsiDocProp.Next;
   end;
-  inherited;
+
 end;
 
 end.

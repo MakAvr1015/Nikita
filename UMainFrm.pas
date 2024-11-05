@@ -32,7 +32,7 @@ uses
   dxSkinXmas2008Blue, dxRibbonCustomizationForm, dxBarBuiltInMenu,
   frxExportBaseDialog, frxExportXLSX, frxExportODF, frxExportPPTX,
   frxExportHelpers, frxExportHTMLDiv, frxExportBIFF,
-  Vcl.PlatformDefaultStyleActnCtrls, System.Actions;
+  Vcl.PlatformDefaultStyleActnCtrls, System.Actions, dxCore;
 
 type
   TFrmMain = class(TForm)

@@ -32,7 +32,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, System.ImageList, Vcl.ImgList,
   frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE;
+  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmInputPay = class(TFrmPrototype)
@@ -70,12 +70,10 @@ type
     dsMoneyInBodyF_ID: TFIBBCDField;
     dsMoneyInBodyF_DOC: TFIBBCDField;
     dsMoneyInBodyF_PAY: TFIBBCDField;
-    dsMoneyInBodyF_SUMMA: TFIBFloatField;
     dsMoneyInBodyF_DOC_INFO: TFIBStringField;
     cxGrid1DBTableView1F_ID: TcxGridDBColumn;
     cxGrid1DBTableView1F_DOC: TcxGridDBColumn;
     cxGrid1DBTableView1F_PAY: TcxGridDBColumn;
-    cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
     cxGrid1DBTableView1F_DOC_INFO: TcxGridDBColumn;
     BtnMakePay: TButton;
     spMakePay: TpFIBStoredProc;
@@ -90,6 +88,8 @@ type
     dsMoneyInHeadF_OWNER_NAME: TFIBStringField;
     RzLabel6: TRzLabel;
     RzDBButtonEdit2: TRzDBButtonEdit;
+    dsMoneyInBodyF_SUMMA: TFIBBCDField;
+    cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
     procedure dsMoneyInHeadAfterOpen(DataSet: TDataSet);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure dsMoneyInBodyNewRecord(DataSet: TDataSet);

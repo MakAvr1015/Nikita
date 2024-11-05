@@ -64,6 +64,7 @@ object FrmMain: TFrmMain
     Top = 726
     Width = 1028
     Height = 23
+    Color = clBtnFace
     Panels = <
       item
         PanelStyleClassName = 'TdxStatusBarToolbarPanelStyle'
@@ -145,7 +146,6 @@ object FrmMain: TFrmMain
           end
           inherited cxDBLabel3: TcxDBLabel
             Style.LookAndFeel.SkinName = ''
-            Style.IsFontAssigned = True
             StyleDisabled.LookAndFeel.SkinName = ''
             StyleFocused.LookAndFeel.SkinName = ''
             StyleHot.LookAndFeel.SkinName = ''
@@ -212,17 +212,16 @@ object FrmMain: TFrmMain
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
     LookAndFeel.Kind = lfFlat
     LookAndFeel.SkinName = 'MoneyTwins'
-    ClientRectBottom = 573
-    ClientRectLeft = 2
-    ClientRectRight = 576
-    ClientRectTop = 2
+    ClientRectBottom = 574
+    ClientRectLeft = 1
+    ClientRectRight = 577
+    ClientRectTop = 1
   end
   object ActionMainMenuBar1: TActionMainMenuBar
     Left = 0
     Top = 0
     Width = 1028
     Height = 25
-    UseSystemFont = False
     ActionManager = ActionManager1
     Caption = 'ActionMainMenuBar1'
     Color = clMenuBar
@@ -231,7 +230,7 @@ object FrmMain: TFrmMain
     ColorMap.BtnSelectedFont = clBlack
     ColorMap.UnusedColor = clWhite
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
+    Font.Color = clWindowText
     Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []

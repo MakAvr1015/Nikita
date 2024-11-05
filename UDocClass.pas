@@ -863,10 +863,10 @@ begin
       end;
     2:
       begin
-        with // TFrmDocSpisan.Create(Application.MainForm)do
+        with
           TFrmMoveDocSpisan.Create(Application.MainForm) do
         begin
-          // doc:=self;
+          doc:=self;
           dsDocHead.ParamByName('doc_id').Value := ID_Doc;
           dsDocHead.ParamByName('doc_type').Value := doc_type;
           dsDocHead.Active := true;
