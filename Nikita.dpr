@@ -141,6 +141,8 @@ begin
   //Application.Title := 'Никита';
   Application.CreateForm(Tdm, dm);
   Prg_path := ExtractFilePath(Application.ExeName);
+  //dll_path := Prg_path;
+
   if Sizeof(Pointer) = 8 then
     dll_path := Prg_path + 'win64'
   else

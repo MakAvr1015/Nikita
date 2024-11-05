@@ -964,6 +964,7 @@ begin
   LogMsg('Устанавливаем путь к базе '+DataBasePath);
   DataBase.LibraryName := dll_path + '\fbClient.dll';
   Database.DbName := DataBasePath;
+  LogMsg('Устанавливаем путь к драйверу ' + DataBase.LibraryName);
   LogMsg('Установили путь');
 end;
 

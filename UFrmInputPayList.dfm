@@ -1,13 +1,13 @@
 inherited FrmInputPayList: TFrmInputPayList
   Caption = #1046#1091#1088#1085#1072#1083' '#1074#1093#1086#1076#1103#1097#1080#1093' '#1087#1083#1072#1090#1077#1078#1077#1081
-  ClientHeight = 401
+  ClientHeight = 442
   ClientWidth = 891
   ExplicitWidth = 907
-  ExplicitHeight = 440
+  ExplicitHeight = 481
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
-    Top = 382
+    Top = 423
     Width = 891
     ExplicitTop = 382
     ExplicitWidth = 891
@@ -17,7 +17,7 @@ inherited FrmInputPayList: TFrmInputPayList
   end
   inherited Panel3: TPanel
     Width = 891
-    Height = 382
+    Height = 423
     ExplicitWidth = 891
     ExplicitHeight = 382
     inherited RzToolbar: TRzToolbar
@@ -164,29 +164,28 @@ inherited FrmInputPayList: TFrmInputPayList
       Left = 1
       Top = 72
       Width = 889
-      Height = 309
+      Height = 350
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitHeight = 309
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
         DataController.DataSource = srInputMoneyList
         DataController.Summary.DefaultGroupSummaryItems = <
           item
-            Column = cxGrid1DBTableView1F_SUMMA
             Sorted = True
           end
           item
             Kind = skSum
             Position = spFooter
-            Column = cxGrid1DBTableView1F_SUMMA
           end>
         DataController.Summary.FooterSummaryItems = <
           item
             Kind = skSum
-            Column = cxGrid1DBTableView1F_SUMMA
           end>
         DataController.Summary.SummaryGroups = <>
         OptionsCustomize.ColumnsQuickCustomization = True
@@ -235,10 +234,6 @@ inherited FrmInputPayList: TFrmInputPayList
           DataBinding.FieldName = 'F_STATE'
           Visible = False
         end
-        object cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn
-          DataBinding.FieldName = 'F_SUMMA'
-          Width = 45
-        end
         object cxGrid1DBTableView1F_TYPE_NAME: TcxGridDBColumn
           DataBinding.FieldName = 'F_TYPE_NAME'
           Width = 126
@@ -264,6 +259,9 @@ inherited FrmInputPayList: TFrmInputPayList
         end
         object cxGrid1DBTableView1F_OWNER_NAME: TcxGridDBColumn
           DataBinding.FieldName = 'F_OWNER_NAME'
+        end
+        object cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn
+          DataBinding.FieldName = 'F_SUMMA'
         end
       end
       object cxGrid1Level1: TcxGridLevel
@@ -317,7 +315,7 @@ inherited FrmInputPayList: TFrmInputPayList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2389,11 +2387,6 @@ inherited FrmInputPayList: TFrmInputPayList
       Visible = False
       Size = 0
     end
-    object dsInputMoneyListF_SUMMA: TFIBFloatField
-      DisplayLabel = #1057#1091#1084#1084#1072
-      FieldName = 'F_SUMMA'
-      DisplayFormat = '.00;(,00)'
-    end
     object dsInputMoneyListF_TYPE_NAME: TFIBStringField
       DisplayLabel = #1058#1080#1087
       FieldName = 'F_TYPE_NAME'
@@ -2432,6 +2425,11 @@ inherited FrmInputPayList: TFrmInputPayList
       FieldName = 'F_OWNER_NAME'
       Size = 100
       EmptyStrToNull = True
+    end
+    object dsInputMoneyListF_SUMMA: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'F_SUMMA'
+      Size = 3
     end
   end
   object srInputMoneyList: TDataSource

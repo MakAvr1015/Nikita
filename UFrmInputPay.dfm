@@ -3,6 +3,7 @@ inherited FrmInputPay: TFrmInputPay
   Caption = #1042#1093#1086#1076#1103#1097#1080#1081' '#1087#1083#1090#1077#1078
   ClientHeight = 565
   ClientWidth = 939
+  ExplicitLeft = -25
   ExplicitWidth = 955
   ExplicitHeight = 604
   PixelsPerInch = 96
@@ -64,8 +65,6 @@ inherited FrmInputPay: TFrmInputPay
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 22
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -223,12 +222,18 @@ inherited FrmInputPay: TFrmInputPay
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitLeft = 0
+      ExplicitTop = 103
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srMoneyInBody
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skSum
+          end
           item
             Kind = skSum
             Column = cxGrid1DBTableView1F_SUMMA
@@ -263,7 +268,6 @@ inherited FrmInputPay: TFrmInputPay
         end
         object cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn
           DataBinding.FieldName = 'F_SUMMA'
-          Width = 121
         end
       end
       object cxGrid1Level1: TcxGridLevel
@@ -279,7 +283,7 @@ inherited FrmInputPay: TFrmInputPay
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2435,17 +2439,18 @@ inherited FrmInputPay: TFrmInputPay
       Visible = False
       Size = 0
     end
-    object dsMoneyInBodyF_SUMMA: TFIBFloatField
-      DisplayLabel = #1057#1091#1084#1084#1072' '#1088#1072#1079#1085#1086#1089#1082#1080
-      FieldName = 'F_SUMMA'
-    end
     object dsMoneyInBodyF_DOC_INFO: TFIBStringField
       DisplayLabel = #1058#1086#1074#1072#1088#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
       FieldName = 'F_DOC_INFO'
       ReadOnly = True
-      Size = 100
+      Size = 255
       Transliterate = False
       EmptyStrToNull = True
+    end
+    object dsMoneyInBodyF_SUMMA: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'F_SUMMA'
+      Size = 3
     end
   end
   object srMoneyInBody: TDataSource

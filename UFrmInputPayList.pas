@@ -31,7 +31,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
   System.ImageList, Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit;
+  cxDropDownEdit, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmInputPayList = class(TFrmPrototype)
@@ -46,7 +46,6 @@ type
     dsInputMoneyListF_DATE: TFIBDateField;
     dsInputMoneyListF_STATE_NAME: TFIBStringField;
     dsInputMoneyListF_STATE: TFIBBCDField;
-    dsInputMoneyListF_SUMMA: TFIBFloatField;
     dsInputMoneyListF_TYPE_NAME: TFIBStringField;
     dsInputMoneyListF_TYPE: TFIBBCDField;
     cxGrid1DBTableView1: TcxGridDBTableView;
@@ -63,7 +62,6 @@ type
     cxGrid1DBTableView1F_DATE: TcxGridDBColumn;
     cxGrid1DBTableView1F_STATE_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1F_STATE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
     cxGrid1DBTableView1F_TYPE_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1F_TYPE: TcxGridDBColumn;
     MnNewMoneyIn: TPopupMenu;
@@ -81,6 +79,8 @@ type
     dsInputMoneyListF_OWNER_NAME: TFIBStringField;
     cxGrid1DBTableView1F_OWNER: TcxGridDBColumn;
     cxGrid1DBTableView1F_OWNER_NAME: TcxGridDBColumn;
+    dsInputMoneyListF_SUMMA: TFIBBCDField;
+    cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
     procedure BtnEditClick(Sender: TObject);
     procedure NewDoc(sender : Tobject);
     procedure BtnRefreshClick(Sender: TObject);

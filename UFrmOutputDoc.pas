@@ -35,7 +35,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog,
   UDocumentsClasses, cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject,
   frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList,
-  Vcl.ImgList, frxDBSet;
+  Vcl.ImgList, frxDBSet, dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFrmOutputDoc = class(TFrmPrototype, IFrmDoc)
@@ -93,7 +93,6 @@ type
     dsPaymentsListF_ID: TFIBBCDField;
     dsPaymentsListF_DOC: TFIBBCDField;
     dsPaymentsListF_MONEY: TFIBBCDField;
-    dsPaymentsListF_SUMMA: TFIBFloatField;
     dsPaymentsListF_DOC_INFO: TFIBStringField;
     cxGrid2DBTableView1: TcxGridDBTableView;
     cxGrid2Level1: TcxGridLevel;
@@ -101,7 +100,6 @@ type
     cxGrid2DBTableView1F_ID: TcxGridDBColumn;
     cxGrid2DBTableView1F_DOC: TcxGridDBColumn;
     cxGrid2DBTableView1F_MONEY: TcxGridDBColumn;
-    cxGrid2DBTableView1F_SUMMA: TcxGridDBColumn;
     cxGrid2DBTableView1F_DOC_INFO: TcxGridDBColumn;
     spMakePayDoc: TpFIBStoredProc;
     BtnMakePay: TButton;
@@ -153,6 +151,8 @@ type
     dsDocHeadF_SKLAD_F_NAME: TFIBStringField;
     RzDBButtonEdit4: TRzDBButtonEdit;
     RzLabel9: TRzLabel;
+    dsPaymentsListF_SUMMA: TFIBBCDField;
+    cxGrid2DBTableView1F_SUMMA: TcxGridDBColumn;
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);
