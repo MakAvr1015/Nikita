@@ -3,8 +3,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
   Caption = #1056#1072#1089#1093#1086#1076#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
   ClientHeight = 581
   ClientWidth = 1063
-  ExplicitLeft = -184
-  ExplicitTop = -114
   ExplicitWidth = 1079
   ExplicitHeight = 620
   PixelsPerInch = 96
@@ -336,10 +334,10 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Width = 1061
       Height = 424
       Hint = ''
-      ActivePage = TabSheet2
+      ActivePage = TabSheet1
       Align = alClient
       HotTrackStyle = htsText
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 2
       TabStyle = tsRoundCorners
       FixedDimension = 19
@@ -1074,7 +1072,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

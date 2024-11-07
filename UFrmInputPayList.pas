@@ -79,8 +79,8 @@ type
     dsInputMoneyListF_OWNER_NAME: TFIBStringField;
     cxGrid1DBTableView1F_OWNER: TcxGridDBColumn;
     cxGrid1DBTableView1F_OWNER_NAME: TcxGridDBColumn;
-    dsInputMoneyListF_SUMMA: TFIBBCDField;
     cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
+    dsInputMoneyListF_SUMMA: TFIBBCDField;
     procedure BtnEditClick(Sender: TObject);
     procedure NewDoc(sender : Tobject);
     procedure BtnRefreshClick(Sender: TObject);
