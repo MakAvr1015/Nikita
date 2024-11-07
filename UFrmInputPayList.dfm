@@ -168,6 +168,7 @@ inherited FrmInputPayList: TFrmInputPayList
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitHeight = 309
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>

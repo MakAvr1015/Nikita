@@ -3,6 +3,8 @@ inherited FrmOutputDoc: TFrmOutputDoc
   Caption = #1056#1072#1089#1093#1086#1076#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
   ClientHeight = 581
   ClientWidth = 1063
+  ExplicitLeft = -184
+  ExplicitTop = -114
   ExplicitWidth = 1079
   ExplicitHeight = 620
   PixelsPerInch = 96
@@ -334,10 +336,10 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Width = 1061
       Height = 424
       Hint = ''
-      ActivePage = TabSheet1
+      ActivePage = TabSheet2
       Align = alClient
       HotTrackStyle = htsText
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 2
       TabStyle = tsRoundCorners
       FixedDimension = 19
