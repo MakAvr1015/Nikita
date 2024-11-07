@@ -9,7 +9,7 @@ inherited FrmInputPayList: TFrmInputPayList
   inherited RzStatusBar1: TRzStatusBar
     Top = 423
     Width = 891
-    ExplicitTop = 382
+    ExplicitTop = 423
     ExplicitWidth = 891
     inherited DsFormName: TRzStatusPane
       Caption = 'dsInputMoneyList'
@@ -19,7 +19,7 @@ inherited FrmInputPayList: TFrmInputPayList
     Width = 891
     Height = 423
     ExplicitWidth = 891
-    ExplicitHeight = 382
+    ExplicitHeight = 423
     inherited RzToolbar: TRzToolbar
       Width = 889
       Height = 42
@@ -315,7 +315,7 @@ inherited FrmInputPayList: TFrmInputPayList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
