@@ -33,9 +33,11 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog,
-  UDocumentsClasses, cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject,
-  frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList,
-  Vcl.ImgList, frxDBSet, dxDateRanges, dxScrollbarAnnotations;
+  UDocumentsClasses, UDocClass,
+  cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject,
+  frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList,Vcl.Clipbrd,
+  Vcl.ImgList, frxDBSet, dxDateRanges, dxScrollbarAnnotations, IWVCLBaseControl,
+  IWBaseControl, IWBaseHTMLControl, IWControl, IWHTMLControls;
 
 type
   TFrmOutputDoc = class(TFrmPrototype, IFrmDoc)
@@ -153,6 +155,15 @@ type
     RzLabel9: TRzLabel;
     dsPaymentsListF_SUMMA: TFIBBCDField;
     cxGrid2DBTableView1F_SUMMA: TcxGridDBColumn;
+    Button1: TButton;
+    TabSheet3: TRzTabSheet;
+    Memo1: TMemo;
+    RzURLLabel1: TRzURLLabel;
+    dsDocHeadF_EMAIL: TFIBStringField;
+    Button2: TButton;
+    spSetDocProp: TpFIBStoredProc;
+    dsDocHeadF_UKASSA: TFIBStringField;
+    IWURL1: TIWURL;
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure BtnOKClick(Sender: TObject);
@@ -183,11 +194,14 @@ type
     procedure RzDBButtonEdit4ButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure dsDocStringsCalcFields(DataSet: TDataSet);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
     scan  : string;
     scan_time : TTime;
+    Doc : ^TOutDoc;
     procedure InsPosition;
     function SyncWebService: TResultSoap;
     procedure AddPosition(P_good: Integer; p_cnt: Integer; p_price: Currency);
@@ -196,6 +210,7 @@ type
     function GetDocId: Integer;
     property TableName: String read GetTableName;
     property DocId: Integer read GetDocId;
+
   end;
 
 var
@@ -204,7 +219,7 @@ var
 implementation
 
 uses
-  udm,upublic, UTypes, UNsiClass;
+  System.JSON,System.DateUtils, udm,upublic, UTypes, UNsiClass;
 {$R *.dfm}
 
 procedure TFrmOutputDoc.BtnMakePayClick(Sender: TObject);
@@ -237,6 +252,114 @@ end;
 procedure TFrmOutputDoc.BtnSendClick(Sender: TObject);
 begin
   SyncWebService;
+end;
+
+procedure TFrmOutputDoc.Button1Click(Sender: TObject);
+var
+  jsonInvoice,jsonPaymentData,jsonPos,jsonPrice,jsonReciept,jsonCustomer: TJSONObject;
+  jsonCart, jsonItem : TJSONArray;
+  respJson: TJsonValue;
+  request_key : TGUID;
+  i : integer;
+  vl_result : string;
+
+begin
+  if length(dsDocHeadF_EMAIL.AsString) = 0 then
+  begin
+    Dialogs.MessageDlg('Не заполнена электронная почта клиента',mtError,[mbOk],0,mbOk);
+    exit;
+  end;
+  jsonInvoice := TJSONObject.Create;
+  jsonReciept := TJSONObject.Create;
+  jsonCustomer := TJSONObject.Create;
+  jsonCustomer.AddPair('full_name',dsDocHeadF_PARTNER_NAME.AsString);
+  jsonCustomer.AddPair('email',dsDocHeadF_EMAIL.AsString);
+  jsonReciept.AddPair('customer',jsonCustomer);
+  jsonPaymentData := TJSONObject.Create;
+  jsonPaymentData.addPair('description',TJSONString.Create('Счет на оплату ' + dsDocHeadF_NUMBER.AsString));
+  jsonPaymentData.addPair('capture',TJSONBool.create(true));
+  jsonPaymentData.addPair('metadata',TJSONObject.create.addPair('order_id',TJSONNumber.create(dsDocHeadF_DOC_OUT.AsInteger)));
+  jsonPrice := TJSONObject.Create;
+  jsonPrice.AddPair('value',TJSONNumber.create(dsDocHeadF_DOC_SUM.AsCurrency));
+  jsonPrice.AddPair('currency','RUB');
+  jsonPaymentData.AddPair('amount',jsonPrice);
+
+
+
+  jsonCart := TJSONArray.Create;
+  jsonItem := TJSONArray.Create;
+  dsDocStrings.First;
+  while not dsDocStrings.Eof do
+  begin
+    jsonPos := TJSONObject.Create;
+    vl_result := '(' + dsDocStringsF_ARTICLE.AsString + ') ' + dsDocStringsF_GOOD_NAME.AsString;
+    jsonPos.AddPair('description',vl_result);
+    jsonPrice := TJSONObject.Create;
+    jsonPrice.AddPair('value',TJSONNumber.Create(dsDocStringsF_PRICE_WO_SKIDKA.AsCurrency));
+    jsonPrice.AddPair('currency','RUB');
+    jsonPos.AddPair('price',jsonPrice);
+    jsonPrice := TJSONObject.Create;
+    jsonPrice.AddPair('value',TJSONNumber.Create(dsDocStringsF_PRICE_VAL.AsCurrency));
+    jsonPrice.AddPair('currency','RUB');
+    jsonPos.AddPair('discount_price',jsonPrice);
+    jsonPos.AddPair('quantity',TJSONNumber.Create(dsDocStringsF_CNT.AsInteger));
+    jsonCart.AddElement(jsonPos);
+
+    jsonPos := TJSONObject.Create;
+    vl_result := '(' + dsDocStringsF_ARTICLE.AsString + ') ' + dsDocStringsF_GOOD_NAME.AsString;
+    jsonPos.AddPair('description',vl_result);
+    jsonPos.AddPair('quantity',TJSONNumber.Create(dsDocStringsF_CNT.AsInteger));
+    jsonPrice := TJSONObject.Create;
+    jsonPrice.AddPair('value',TJSONNumber.Create(dsDocStringsF_PRICE_VAL.AsCurrency));
+    jsonPrice.AddPair('currency','RUB');
+    jsonPos.AddPair('amount',jsonPrice);
+    jsonPos.AddPair('vat_code','1');
+    jsonItem.AddElement(jsonPos);
+    dsDocStrings.Next;
+  end;
+  jsonReciept.AddPair('items',jsonItem);
+  jsonPaymentData.AddPair('receipt',jsonReciept);
+  jsonInvoice.AddPair('payment_data',jsonPaymentData);
+
+  jsonInvoice.AddPair('cart',jsonCart);
+  jsonInvoice.AddPair('expires_at',DateToISO8601(dsDocHeadF_DATE.AsDateTime+2));
+//  jsonInvoice.AddPair('description','Это пробный счет, не обращать внимания. Отладка');
+  jsonPaymentData := TJSONObject.Create;
+  jsonPaymentData.addPair('плательщик',dsDocHeadF_PARTNER_NAME.AsString);
+  jsonPaymentData.addPair('автор',dm.pFIBDatabase.ConnectParams.UserName);
+  jsonInvoice.AddPair('metadata',jsonPaymentData);
+//  Memo1.Text := jsonInvoice.ToString;
+  dm.RESTRequest1.Params.ParameterByName('d').Value := jsonInvoice.ToString;
+  CreateGUID(request_key);
+  dm.RESTRequest1.Params.ParameterByName('Idempotence-Key').Value := GUIDToString(request_key);//dsDocHeadF_NUMBER.AsString;
+  dm.RESTRequest1.Execute;
+  jsonInvoice.Parse(TEncoding.UTF8.GetBytes(dm.RESTRequest1.Response.Content),0);
+  Memo1.Lines.Add(jsonInvoice.ToString);
+  try
+  respJson := jsonInvoice.Values['delivery_method'];
+  Memo1.Lines.Add(respJson.ToString);
+  RzURLLabel1.Caption := respJson.GetValue<TJSONString>('url').value;
+  spSetDocProp.ParamByName('P_DOC_ID').Value := dsDocHeadF_DOC_OUT.AsInteger;
+  spSetDocProp.ParamByName('P_DOC_MOVETYPE').Value := 2;
+  spSetDocProp.ParamByName('P_PROPERTY_ID').Value := 3;
+  spSetDocProp.ParamByName('P_VALUE').Value := RzURLLabel1.Caption;
+  spSetDocProp.ExecProc;
+  spSetDocProp.Transaction.CommitRetaining;
+  Memo1.Lines.Add(RzURLLabel1.Caption);
+  except
+  on E : Exception do
+        Dialogs.MessageDlg('Ошибка получения ссылки',mtError,[mbOk],0,mbOk);
+  end;
+  jsonInvoice.free;
+end;
+
+procedure TFrmOutputDoc.Button2Click(Sender: TObject);
+var
+  ClipBoard : TClipboard;
+begin
+  ClipBoard:=TClipboard.Create;
+  ClipBoard.SetTextBuf(PChar(RzURLLabel1.Caption));
+  ClipBoard.Free;
 end;
 
 procedure TFrmOutputDoc.cxGrid1DBTableView1CellDblClick(
@@ -348,6 +471,7 @@ begin
   dsDocStrings.ParamByName('f_doc_out').Value:=dsDocHeadf_doc_out.Value;
   dsDocStrings.Active:=true;
   dsPaymentsList.Active:=true;
+  RzURLLabel1.Caption := dsDocHeadF_UKASSA.AsString;
 end;
 
 procedure TFrmOutputDoc.dsDocHeadAfterPost(DataSet: TDataSet);
@@ -504,7 +628,7 @@ var
   doc : TOutDocument;
   partner : TNsiPartner;
   sklad   : TNsiSklad;
-  vl_docPosition : TDocPosition;
+  vl_docPosition : UDocumentsClasses.TDocPosition;
 begin
   doc:=TOutDocument.Create();
   doc.SetF_number(self.dsDocHeadF_NUMBER.AsString);

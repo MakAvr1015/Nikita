@@ -55,7 +55,6 @@ type
     dsMoneyInHeadF_DATE: TFIBDateField;
     dsMoneyInHeadF_STATE_NAME: TFIBStringField;
     dsMoneyInHeadF_STATE: TFIBBCDField;
-    dsMoneyInHeadF_SUMMA: TFIBFloatField;
     dsMoneyInHeadF_TYPE_NAME: TFIBStringField;
     dsMoneyInHeadF_TYPE: TFIBBCDField;
     srMoneyInHead: TDataSource;
@@ -90,6 +89,7 @@ type
     RzDBButtonEdit2: TRzDBButtonEdit;
     dsMoneyInBodyF_SUMMA: TFIBBCDField;
     cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
+    dsMoneyInHeadF_SUMMA: TFIBBCDField;
     procedure dsMoneyInHeadAfterOpen(DataSet: TDataSet);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure dsMoneyInBodyNewRecord(DataSet: TDataSet);

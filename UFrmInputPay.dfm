@@ -3,7 +3,6 @@ inherited FrmInputPay: TFrmInputPay
   Caption = #1042#1093#1086#1076#1103#1097#1080#1081' '#1087#1083#1090#1077#1078
   ClientHeight = 565
   ClientWidth = 939
-  ExplicitLeft = -25
   ExplicitWidth = 955
   ExplicitHeight = 604
   PixelsPerInch = 96
@@ -222,8 +221,6 @@ inherited FrmInputPay: TFrmInputPay
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitLeft = 0
-      ExplicitTop = 103
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
@@ -283,7 +280,7 @@ inherited FrmInputPay: TFrmInputPay
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2354,9 +2351,6 @@ inherited FrmInputPay: TFrmInputPay
       FieldName = 'F_STATE'
       Size = 0
     end
-    object dsMoneyInHeadF_SUMMA: TFIBFloatField
-      FieldName = 'F_SUMMA'
-    end
     object dsMoneyInHeadF_TYPE_NAME: TFIBStringField
       FieldName = 'F_TYPE_NAME'
       Size = 100
@@ -2379,6 +2373,10 @@ inherited FrmInputPay: TFrmInputPay
       FieldName = 'F_OWNER_NAME'
       Size = 255
       EmptyStrToNull = True
+    end
+    object dsMoneyInHeadF_SUMMA: TFIBBCDField
+      FieldName = 'F_SUMMA'
+      Size = 3
     end
   end
   object srMoneyInHead: TDataSource
@@ -2468,7 +2466,6 @@ inherited FrmInputPay: TFrmInputPay
     Top = 248
   end
   object pFIBTransaction1: TpFIBTransaction
-    Active = True
     DefaultDatabase = dm.pFIBDatabase
     Left = 440
     Top = 216

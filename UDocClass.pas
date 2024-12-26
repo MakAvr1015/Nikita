@@ -3,7 +3,7 @@ unit UDocClass;
 interface
 
 uses
-  UInterfaces, UNsiClass, UDocumentsClasses, DB, Xml.XMLIntf;
+  UInterfaces, UNsiClass, UDocumentsClasses, DB, Xml.XMLIntf, System.Classes;
 
 type
   TDocPosition = record
@@ -54,6 +54,8 @@ type
     f_number: String;
     /// <summary> Дата </summary>
     f_date: Tdate;
+    /// <summary> Сумма документа </summary>
+    f_sum: currency;
     /// <summary> ГУИД </summary>
     f_guid: String;
     /// <summary> Описание </summary>
@@ -85,6 +87,7 @@ type
     function ChangeState(p_newstate: integer): integer;
     function ExportDoc: PChar;
     procedure ImportXmlDoc (xmlDocument : IXMLNode);
+    function SendUKassa : string;
     destructor Free;
 
     /// <summary> Синхронизация документа с центральной базой </summary>
@@ -240,7 +243,7 @@ type
 implementation
 
 uses
-  Dialogs, Forms, SysUtils,
+  Dialogs, Forms, SysUtils, System.JSON,
   OutDocumentServicesImpl1,
   MoveDocumentServicesImpl1,
   //OutDocumentServicesImpl11,
@@ -489,6 +492,7 @@ begin
           ID_Doc := dsDocHeadF_doc_out.Value;
         { if mainDs <> nil then
           parentDs:=mainDs; }
+        Doc := @self;
         ShowAsChild;
       end;
     2:
@@ -503,6 +507,7 @@ begin
           dsDocHeadF_NUMBER.AsString + ' от ' + dsDocHeadF_DATE.AsString;
         WindowState := wsMaximized;
         ShowAsChild;
+        self.Free;
       end;
     3:
       with TFrmOutDocBack.Create(Application.MainForm) do
@@ -517,6 +522,7 @@ begin
           dsDocHeadF_DATE.AsString;
         // WindowState:=wsMaximized;
         ShowAsChild;
+        self.Free;
       end;
     4:
       with TFrmOutputDoc.Create(Application.MainForm) do
@@ -530,9 +536,10 @@ begin
           dsDocHeadF_NUMBER.AsString + ' от ' + dsDocHeadF_DATE.AsString;
         // WindowState:=wsMaximized;
         ShowAsChild;
+        self.Free;
       end;
   end;
-  self.Free;
+
 end;
 
 procedure TOutDoc.OpenViewFrm;
@@ -577,6 +584,46 @@ begin
     dsDocHead.Transaction.CommitRetaining;
     free;
   end;
+end;
+{
+
+}
+function TOutDoc.SendUKassa: string;
+var
+  jsonInvoice,jsonPaymentData,jsonPos,jsonPrice: TJSONObject;
+  jsonCart: TJSONArray;
+  i : integer;
+  vl_result : string;
+begin
+  jsonInvoice := TJSONObject.Create;
+
+  jsonPaymentData := TJSONObject.Create;
+  jsonPaymentData.addPair('description',TJSONString.Create('Счет на оплату ' + f_number));
+  jsonPaymentData.addPair('capture',TJSONBool.create(true));
+  jsonPaymentData.addPair('metadata',TJSONObject.create.addPair('order_id',TJSONNumber.create(ID_Doc)));
+  jsonPrice := TJSONObject.Create;
+  jsonPrice.AddPair('value',TJSONNumber.create(f_sum));
+  jsonPrice.AddPair('currency','RUB');
+  jsonPaymentData.AddPair('amount',jsonPrice);
+
+  jsonInvoice.AddPair('payment_data',jsonPaymentData);
+
+  jsonCart := TJSONArray.Create;
+  for i := 0 to length(self.f_positions)-1 do
+  begin
+    jsonPos := TJSONObject.Create;
+    jsonPos.AddPair('description',self.f_positions[i].f_good.GetName);
+    jsonPrice := TJSONObject.Create;
+    jsonPrice.AddPair('value',TJSONNumber.Create(self.f_positions[i].f_price));
+    jsonPrice.AddPair('currency','RUB');
+    jsonPos.AddPair('price',jsonPrice);
+    jsonPos.AddPair('quantity',TJSONNumber.Create(self.f_positions[i].f_quant));
+    jsonCart.AddElement(jsonPos);
+  end;
+  jsonInvoice.AddPair('cart',jsonCart);
+  vl_result := jsonInvoice.ToString;
+  jsonInvoice.free;
+  result := vl_result;
 end;
 
 procedure TOutDoc.SetF_date(p_date: Tdate);
