@@ -3,12 +3,49 @@ inherited FrmOutputDoc: TFrmOutputDoc
   Caption = #1056#1072#1089#1093#1086#1076#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
   ClientHeight = 581
   ClientWidth = 1063
-  ExplicitLeft = -184
-  ExplicitTop = -114
   ExplicitWidth = 1079
   ExplicitHeight = 620
   PixelsPerInch = 96
   TextHeight = 13
+  object IWURL1: TIWURL [0]
+    Left = 312
+    Top = 344
+    Width = 65
+    Height = 17
+    Cursor = crAuto
+    ParentShowHint = False
+    ShowHint = True
+    ZIndex = 0
+    RenderSize = True
+    StyleRenderOptions.RenderSize = True
+    StyleRenderOptions.RenderPosition = True
+    StyleRenderOptions.RenderFont = True
+    StyleRenderOptions.RenderZIndex = True
+    StyleRenderOptions.RenderVisibility = True
+    StyleRenderOptions.RenderStatus = True
+    StyleRenderOptions.RenderAbsolute = True
+    Alignment = taLeftJustify
+    Color = clNone
+    Font.Color = clNone
+    Font.Size = 10
+    Font.Style = [fsUnderline]
+    ScriptEvents = <>
+    TargetOptions.AddressBar = False
+    TargetOptions.Height = -1
+    TargetOptions.Left = -1
+    TargetOptions.Menu = False
+    TargetOptions.Resizable = True
+    TargetOptions.Scrollbars = True
+    TargetOptions.Toolbar = False
+    TargetOptions.Top = -1
+    TargetOptions.Width = -1
+    TerminateApp = False
+    UseTarget = False
+    FriendlyName = 'IWURL1'
+    TabOrder = -1
+    RawText = False
+    Caption = 'IWURL1'
+  end
   inherited RzStatusBar1: TRzStatusBar
     Top = 562
     Width = 1063
@@ -45,6 +82,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -111,6 +149,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Width = 1061
       Height = 111
       Align = alTop
+      BorderOuter = fsFlatBold
       Color = clGradientActiveCaption
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -184,6 +223,20 @@ inherited FrmOutputDoc: TFrmOutputDoc
         Width = 89
         Height = 19
         Caption = #1054#1090#1087#1088#1072#1074#1080#1090#1077#1083#1100
+      end
+      object RzURLLabel1: TRzURLLabel
+        Left = 422
+        Top = 72
+        Width = 183
+        Height = 26
+        AutoSize = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clHighlight
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsUnderline]
+        ParentFont = False
+        BorderInner = fsFlatBold
       end
       object RzDBEdit1: TRzDBEdit
         Left = 60
@@ -329,6 +382,15 @@ inherited FrmOutputDoc: TFrmOutputDoc
         OnButtonClick = RzDBButtonEdit4ButtonClick
         FlatButtons = True
       end
+      object Button2: TButton
+        Left = 611
+        Top = 72
+        Width = 27
+        Height = 25
+        Caption = '...'
+        TabOrder = 12
+        OnClick = Button2Click
+      end
     end
     object RzPageControl1: TRzPageControl
       Left = 1
@@ -336,10 +398,10 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Width = 1061
       Height = 424
       Hint = ''
-      ActivePage = TabSheet2
+      ActivePage = TabSheet1
       Align = alClient
       HotTrackStyle = htsText
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 2
       TabStyle = tsRoundCorners
       FixedDimension = 19
@@ -600,13 +662,36 @@ inherited FrmOutputDoc: TFrmOutputDoc
           end
         end
       end
+      object TabSheet3: TRzTabSheet
+        Color = clGradientActiveCaption
+        Caption = 'Json'
+        object Memo1: TMemo
+          Left = 0
+          Top = 0
+          Width = 1057
+          Height = 398
+          Align = alClient
+          Lines.Strings = (
+            'Memo1')
+          TabOrder = 0
+        end
+      end
     end
+  end
+  object Button1: TButton [3]
+    Left = 356
+    Top = 98
+    Width = 61
+    Height = 25
+    Caption = #1070' '#1082#1072#1089#1089#1072
+    TabOrder = 2
+    OnClick = Button1Click
   end
   inherited PrnMenu: TPopupMenu
     Left = 48
     Top = 256
   end
-  object dsDocHead: TpFIBDataSet [3]
+  object dsDocHead: TpFIBDataSet [5]
     UpdateSQL.Strings = (
       'execute procedure SP_T_DOC_out_U(:f_doc_out,:F_SKLAD,'
       
@@ -639,9 +724,15 @@ inherited FrmOutputDoc: TFrmOutputDoc
       '    f_sklad_pref,'
       '    f_user,'
       '    f_property_1,'
-      '    F_OWNER'
+      '    F_OWNER,'
+      
+        '    (select f_value from sp_t_nsi_partner_info_s(f_partner) wher' +
+        'e f_info_name = 1) f_email,'
+      
+        '    (select f_value from SP_T_DOC_PROPERTYES_S(f_id,2) where F_p' +
+        'ROpERTY_ID = 3) f_ukassa'
       'FROM'
-      '    SP_T_DOC_out_GET(:f_doc_out,:f_type) ')
+      '    SP_T_DOC_out_GET(:f_doc_out,:f_type)')
     AfterOpen = dsDocHeadAfterOpen
     AfterPost = dsDocHeadAfterPost
     Transaction = dm.pFIBTransaction
@@ -762,8 +853,18 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Size = 60
       EmptyStrToNull = True
     end
+    object dsDocHeadF_EMAIL: TFIBStringField
+      FieldName = 'F_EMAIL'
+      Size = 100
+      EmptyStrToNull = True
+    end
+    object dsDocHeadF_UKASSA: TFIBStringField
+      FieldName = 'F_UKASSA'
+      Size = 255
+      EmptyStrToNull = True
+    end
   end
-  object dsDocStrings: TpFIBDataSet [4]
+  object dsDocStrings: TpFIBDataSet [6]
     UpdateSQL.Strings = (
       'execute procedure SP_T_DOC_OUT_STR_U('
       '    :F_ID,'
@@ -901,7 +1002,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     object dsDocStringsF_DESCR: TFIBStringField
       DisplayLabel = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1072#1103' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103
       FieldName = 'F_DESCR'
-      Size = 60
+      Size = 255
       Transliterate = False
       EmptyStrToNull = True
     end
@@ -944,7 +1045,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     object dsDocStringsF_GOOD_DOP_INFO: TFIBStringField
       DisplayLabel = #1054#1087#1080#1089#1072#1085#1080#1077' '#1090#1086#1074#1072#1088#1072
       FieldName = 'F_GOOD_DOP_INFO'
-      Size = 10000
+      Size = 1000
       Transliterate = False
       EmptyStrToNull = True
     end
@@ -953,17 +1054,17 @@ inherited FrmOutputDoc: TFrmOutputDoc
       FieldName = 'F_RESERVED'
     end
   end
-  object srDocStrings: TDataSource [5]
+  object srDocStrings: TDataSource [7]
     DataSet = dsDocStrings
     Left = 368
     Top = 224
   end
-  object srDocHead: TDataSource [6]
+  object srDocHead: TDataSource [8]
     DataSet = dsDocHead
     Left = 152
     Top = 320
   end
-  object pFIBTransaction: TpFIBTransaction [7]
+  object pFIBTransaction: TpFIBTransaction [9]
     DefaultDatabase = dm.pFIBDatabase
     Left = 600
     Top = 224
@@ -975,7 +1076,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     Variables = <>
     Style = <>
   end
-  object dsPaymentsList: TpFIBDataSet [11]
+  object dsPaymentsList: TpFIBDataSet [13]
     UpdateSQL.Strings = (
       
         'execute procedure SP_T_MONEY_IN_STR_U(:f_id,:f_doc,:f_money,:f_s' +
@@ -1036,12 +1137,12 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Size = 3
     end
   end
-  object srPaymentsList: TDataSource [12]
+  object srPaymentsList: TDataSource [14]
     DataSet = dsPaymentsList
     Left = 496
     Top = 304
   end
-  object spMakePayDoc: TpFIBStoredProc [13]
+  object spMakePayDoc: TpFIBStoredProc [15]
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
     SQL.Strings = (
@@ -1050,7 +1151,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     Left = 600
     Top = 264
   end
-  object dsGoodPhoto: TpFIBDataSet [14]
+  object dsGoodPhoto: TpFIBDataSet [16]
     SelectSQL.Strings = (
       'select f_memo as f_photo from SP_T_NSI_GOODS_MMEDIA_S(:f_good)')
     Transaction = dm.pFIBTransaction
@@ -1063,7 +1164,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     WaitEndMasterScroll = True
     dcForceOpen = True
   end
-  object srGoodPhoto: TDataSource [15]
+  object srGoodPhoto: TDataSource [17]
     DataSet = dsGoodPhoto
     Left = 880
     Top = 152
@@ -1074,7 +1175,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000000110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -3060,5 +3161,16 @@ inherited FrmOutputDoc: TFrmOutputDoc
       C003DFFB000F000FC003D043801F801FC007DFD7C3F8C3F8C00FDFCFFFFCFFFC
       C01FC01FFFBAFFBAFFFFFFFFFFC7FFC700000000000000000000000000000000
       000000000000}
+  end
+  object spSetDocProp: TpFIBStoredProc
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    SQL.Strings = (
+      
+        'EXECUTE PROCEDURE SP_T_DOC_PROPERTYES_SET (?P_DOC_ID, ?P_DOC_MOV' +
+        'ETYPE, ?P_PROPERTY_ID, ?P_VALUE)')
+    StoredProcName = 'SP_T_DOC_PROPERTYES_SET'
+    Left = 296
+    Top = 328
   end
 end

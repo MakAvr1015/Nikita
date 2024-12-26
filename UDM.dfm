@@ -153,7 +153,7 @@ object dm: Tdm
     Left = 280
     Top = 120
     Bitmap = {
-      494C01013A00D000300110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000480110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -3367,7 +3367,7 @@ object dm: Tdm
     Left = 648
     Top = 352
     Bitmap = {
-      494C010103000500300120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500480120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       00000000000000000000000000000000000000000000DE9C0000DE9C0000DE9C
       0000DE9C0000D6940000D6940000DE9C0000DE9C0000DE9C0000DE9C0000D694
@@ -4595,5 +4595,59 @@ object dm: Tdm
     FileName = 'russian.ini'
     Left = 120
     Top = 480
+  end
+  object RESTClient1: TRESTClient
+    Authenticator = HTTPBasicAuthenticator1
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'UTF-8, *;q=0.8'
+    BaseURL = 'https://api.yookassa.ru/v3/invoices'
+    ContentType = 'application/json'
+    Params = <>
+    HandleRedirects = True
+    Left = 536
+    Top = 488
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Method = rmPOST
+    Params = <
+      item
+        name = 'd'
+        Value = 
+          '{"payment_data":{"description":"'#1057#1095#1077#1090' '#1085#1072' '#1086#1087#1083#1072#1090#1091' OC2014693","captu' +
+          're":true,"metadata":{"order_id":1969904},"amount":{"value":11779' +
+          ',"currency":"RUB"}},"cart":[{"description":"'#1055#1091#1089#1077#1090#1099' ('#1072#1075#1072#1090' 10'#1084#1084' '#1095#1077 +
+          #1088#1085#1099#1081'; '#1087#1086#1082#1088#1099#1090#1080#1077' '#1079#1086#1083#1086#1090#1086')","price":{"value":1022,"currency":"RUB"},' +
+          '"quantity":3},{"description":"'#1050#1086#1083#1100#1094#1086' '#1057#1077#1088#1076#1094#1077#1073#1080#1077#1085#1080#1077' ('#1087#1086#1082#1088#1099#1090#1080#1077' '#1088#1086#1076#1080 +
+          #1081', '#1079#1086#1083#1086#1090#1086')","price":{"value":1595,"currency":"RUB"},"quantity":1' +
+          '},{"description":"'#1050#1086#1083#1100#1094#1086' '#1040#1092#1088#1086#1076#1080#1090#1072' ('#1084#1086#1085#1077#1090#1072' 1,6'#1089#1084'; '#1087#1086#1082#1088#1099#1090#1080#1077' '#1072#1085#1090#1080#1095#1085 +
+          #1086#1077' '#1089#1077#1088#1077#1073#1088#1086')","price":{"value":1309,"currency":"RUB"},"quantity":' +
+          '2},{"description":"'#1041#1088#1086#1096#1100' ('#1087#1086#1082#1088#1099#1090#1080#1077' '#1072#1085#1090#1080#1095#1085#1086#1077' '#1079#1086#1083#1086#1090#1086')","price":{"v' +
+          'alue":450,"currency":"RUB"},"quantity":5},{"description":"'#1041#1088#1086#1096#1100' ' +
+          '('#1087#1086#1082#1088#1099#1090#1080#1077' '#1072#1085#1090#1080#1095#1085#1086#1077' '#1089#1077#1088#1077#1073#1088#1086')","price":{"value":450,"currency":"RU' +
+          'B"},"quantity":5}],"expires_at":"2024-12-03T12:00:00.000Z","desc' +
+          'ription":"'#1069#1090#1086' '#1087#1088#1086#1073#1085#1099#1081' '#1089#1095#1077#1090', '#1085#1077' '#1086#1073#1088#1072#1097#1072#1090#1100' '#1074#1085#1080#1084#1072#1085#1080#1103'. '#1054#1090#1083#1072#1076#1082#1072'"}'
+        ContentType = ctAPPLICATION_JSON
+      end
+      item
+        Kind = pkHTTPHEADER
+        name = 'Idempotence-Key'
+        Value = '3344551'
+      end>
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 672
+    Top = 520
+  end
+  object RESTResponse1: TRESTResponse
+    ContentType = 'application/json'
+    Left = 784
+    Top = 528
+  end
+  object HTTPBasicAuthenticator1: THTTPBasicAuthenticator
+    Username = '616379'
+    Password = 'live_aOgZAMHvxGnolkh-NBp91esr1uXv4aHBtH_VJStSlxg'
+    Left = 576
+    Top = 528
   end
 end

@@ -31,7 +31,8 @@ uses
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxLookAndFeels, Soap.InvokeRegistry,
   Soap.Rio, Soap.SOAPHTTPClient, Soap.SOAPHTTPTrans,
-  UQueueProc, IdHTTP, cxDBEditRepository;
+  UQueueProc, IdHTTP, cxDBEditRepository, IPPeerClient, REST.Client,
+  Data.Bind.Components, Data.Bind.ObjectScope, REST.Authenticator.Basic;
 
 type
   Tdm = class(TDataModule)
@@ -249,6 +250,10 @@ type
     cxEditRepositoryDateItem1: TcxEditRepositoryDateItem;
     cxLocalizer1: TcxLocalizer;
     dsGetGoodByScanF_SCANCODE: TStringField;
+    RESTClient1: TRESTClient;
+    RESTRequest1: TRESTRequest;
+    RESTResponse1: TRESTResponse;
+    HTTPBasicAuthenticator1: THTTPBasicAuthenticator;
     procedure DummyAct(Sender: TObject);
     procedure ActDocInpExecute(Sender: TObject);
     procedure ActNsiPartnerExecute(Sender: TObject);

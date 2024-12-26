@@ -138,15 +138,15 @@ var
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  //Application.Title := 'Никита';
-  Application.CreateForm(Tdm, dm);
   Prg_path := ExtractFilePath(Application.ExeName);
-  //dll_path := Prg_path;
-
+//  dll_path := Prg_path;
+  //Application.Title := 'Никита';
   if Sizeof(Pointer) = 8 then
     dll_path := Prg_path + 'win64'
   else
     dll_path := Prg_path + 'win32';
+  Application.CreateForm(Tdm, dm);
+
 
   app_data := GetSpecialFolderPath(CSIDL_APPDATA) + '\Nikita';
   if not directoryexists(app_data) then
