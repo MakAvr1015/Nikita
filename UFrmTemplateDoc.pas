@@ -33,7 +33,7 @@ uses
   cxSplitter,
   UInterfaces, cxTextEdit, cxMaskEdit, cxDropDownEdit, System.ImageList,
   Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE;
+  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations;
 
 ///  <summary>
 ///  Документ - заготовка
@@ -367,6 +367,7 @@ begin
       Summary.GroupFooterKind:=skSum;
       Summary.GroupKind:=skSum;
       Caption:=dm.dsSklad.FieldByName('f_name').AsString;
+      visible:=false;
     end;
     dm.dsSklad.Next;
   end;
