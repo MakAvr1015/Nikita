@@ -21,6 +21,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Width = 1149
       Height = 27
       ExplicitWidth = 1149
+      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -35,17 +36,63 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         BtnDelete
         BtnSave
         BtnExit)
+      inherited BtnNew: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 2
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 2
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnRefresh: TRzToolButton
+        Top = 2
         Enabled = True
         OnClick = BtnRefreshClick
+        ExplicitTop = 2
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnExecute: TRzToolButton
+        Top = 2
         Enabled = True
         OnClick = BtnExecuteClick
+        ExplicitTop = 2
+      end
+      inherited BtnDelete: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnExit: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnView: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited cxComboBoxStyles: TcxComboBox
         Top = 0
@@ -153,6 +200,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
           Navigator.Buttons.CustomButtons = <>
           Navigator.Buttons.Insert.Visible = False
           Navigator.Visible = True
+          ScrollbarAnnotations.CustomAnnotations = <>
           OnCellDblClick = cxGrid1DBTableView1CellDblClick
           OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
           DataController.DataSource = srDocStrings
@@ -329,19 +377,19 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
           ExplicitTop = 0
           ExplicitWidth = 1147
           ExplicitHeight = 277
-          ClientRectRight = 1145
+          ClientRectRight = 1147
           inherited cxTabSheet1: TcxTabSheet
-            ExplicitLeft = 2
-            ExplicitTop = 28
-            ExplicitWidth = 1143
-            ExplicitHeight = 247
+            ExplicitLeft = 0
+            ExplicitTop = 24
+            ExplicitWidth = 1147
+            ExplicitHeight = 253
             inherited cxGrid1: TcxGrid
-              Width = 1143
-              Height = 247
+              Width = 1147
+              Height = 253
               ExplicitLeft = 0
               ExplicitTop = 0
-              ExplicitWidth = 1143
-              ExplicitHeight = 247
+              ExplicitWidth = 1147
+              ExplicitHeight = 253
               inherited cxGrid1DBTableAnalog: TcxGridDBTableView
                 inherited cxGrid1DBTableAnalogF_GOOD_MMEDIA: TcxGridDBColumn
                   Properties.FitMode = ifmFit
@@ -433,7 +481,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000F00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

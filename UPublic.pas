@@ -161,6 +161,7 @@ begin
     begin
       DataBinding.FieldName:=tf.FieldName;
       Caption:=dm.dsNsiGoodsDopInfo.FieldByName('f_name').AsString;
+      Visible:=false;
     end;
     dm.dsNsiGoodsDopInfo.Next;
   end;
