@@ -3,6 +3,7 @@ inherited FrmDocOutList: TFrmDocOutList
   ClientHeight = 782
   ClientWidth = 1112
   OnKeyUp = FormKeyUp
+  ExplicitLeft = -340
   ExplicitWidth = 1128
   ExplicitHeight = 821
   PixelsPerInch = 96
@@ -23,7 +24,7 @@ inherited FrmDocOutList: TFrmDocOutList
     ExplicitHeight = 763
     inherited RzToolbar: TRzToolbar
       Width = 1110
-      Height = 607
+      Height = 40
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
       ButtonHeight = 40
@@ -31,7 +32,7 @@ inherited FrmDocOutList: TFrmDocOutList
       TextOptions = ttoCustom
       ParentShowHint = False
       ExplicitWidth = 1110
-      ExplicitHeight = 607
+      ExplicitHeight = 40
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -45,118 +46,99 @@ inherited FrmDocOutList: TFrmDocOutList
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
-        Top = 0
         Width = 74
         Height = 40
         DropDownMenu = NewDocMenu
         Layout = blGlyphTop
         ToolStyle = tsDropDown
-        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOpen: TRzToolButton
         Left = 239
-        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnOpenClick
         ExplicitLeft = 239
-        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnFind: TRzToolButton
         Left = 359
-        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 359
-        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnPrint: TRzToolButton
         Left = 419
-        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 419
-        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOK: TRzToolButton
         Left = 493
-        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 493
-        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnCancel: TRzToolButton
         Left = 553
-        Top = 0
         Layout = blGlyphTop
         ShowCaption = True
         UseToolbarShowCaption = False
         ExplicitLeft = 553
-        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnRefresh: TRzToolButton
         Left = 299
-        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 299
-        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnEdit: TRzToolButton
         Left = 78
-        Top = 0
         Width = 87
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnEditClick
         ExplicitLeft = 78
-        ExplicitTop = 0
         ExplicitWidth = 87
         ExplicitHeight = 40
       end
       inherited BtnExecute: TRzToolButton
         Left = 613
-        Top = 0
         Width = 64
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 613
-        ExplicitTop = 0
         ExplicitWidth = 64
         ExplicitHeight = 40
       end
       inherited BtnDelete: TRzToolButton
         Left = 677
-        Top = 0
         Layout = blGlyphTop
         Enabled = True
         Visible = True
         ExplicitLeft = 677
-        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnSave: TRzToolButton
         Left = 737
-        Top = 0
         Width = 77
         Height = 40
         DropDownMenu = SaveMenu
@@ -165,47 +147,53 @@ inherited FrmDocOutList: TFrmDocOutList
         Visible = True
         OnClick = nil
         ExplicitLeft = 737
-        ExplicitTop = 0
         ExplicitWidth = 77
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 814
-        Top = 0
+        Left = 876
         Layout = blGlyphTop
-        ExplicitLeft = 814
-        ExplicitTop = 0
+        ExplicitLeft = 876
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnView: TRzToolButton
         Left = 165
-        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnViewClick
         ExplicitLeft = 165
-        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
+      inherited BtnExport: TRzToolButton
+        Left = 814
+        Width = 62
+        Height = 40
+        Layout = blGlyphTop
+        ExplicitLeft = 814
+        ExplicitWidth = 62
+        ExplicitHeight = 40
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 586
-        ExplicitTop = 586
+        Left = 936
+        Top = 10
+        ExplicitLeft = 936
+        ExplicitTop = 10
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 637
+      Top = 70
       Width = 1110
-      Height = 125
+      Height = 692
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 559
-      ExplicitHeight = 203
+      ExplicitTop = 721
+      ExplicitHeight = 41
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         OnKeyUp = FormKeyUp
@@ -378,7 +366,7 @@ inherited FrmDocOutList: TFrmDocOutList
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 608
+      Top = 41
       Width = 1110
       Height = 29
       Caption = 'ToolBar1'
@@ -386,7 +374,7 @@ inherited FrmDocOutList: TFrmDocOutList
       GradientEndColor = clWhite
       GradientStartColor = clGradientActiveCaption
       TabOrder = 2
-      ExplicitTop = 530
+      ExplicitTop = 692
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -881,7 +869,7 @@ inherited FrmDocOutList: TFrmDocOutList
     Left = 736
     Top = 168
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

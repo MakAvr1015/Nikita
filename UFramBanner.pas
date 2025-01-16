@@ -24,7 +24,8 @@ uses
   cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, Data.DB, cxDBData,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGrid, FIBDataSet, pFIBDataSet, cxImage;
+  cxClasses, cxGridCustomView, cxGrid, FIBDataSet, pFIBDataSet, cxImage,
+  dxDateRanges, dxScrollbarAnnotations;
 
 type
   TFramBanner = class(TFrame)

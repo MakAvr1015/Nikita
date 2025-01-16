@@ -17,15 +17,16 @@ object FramBanner: TFramBanner
     ExplicitTop = 24
     ExplicitWidth = 289
     ExplicitHeight = 193
-    ClientRectBottom = 273
-    ClientRectLeft = 4
-    ClientRectRight = 471
+    ClientRectBottom = 277
+    ClientRectRight = 475
     ClientRectTop = 24
     object cxTabSheet1: TcxTabSheet
       Caption = #1040#1085#1072#1083#1086#1075#1080
       ImageIndex = 0
       ExplicitLeft = 5
       ExplicitTop = 25
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object cxGrid1: TcxGrid
         Left = 0
         Top = 0
@@ -40,6 +41,7 @@ object FramBanner: TFramBanner
         object cxGrid1DBTableAnalog: TcxGridDBTableView
           DragMode = dmAutomatic
           Navigator.Buttons.CustomButtons = <>
+          ScrollbarAnnotations.CustomAnnotations = <>
           DataController.DataSource = dsrAnalogList
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
@@ -89,6 +91,9 @@ object FramBanner: TFramBanner
     object cxTabSheet2: TcxTabSheet
       Caption = #1050#1086#1084#1087#1083#1077#1082#1090#1099
       ImageIndex = 1
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object dsAnalogList: TpFIBDataSet
@@ -102,8 +107,8 @@ object FramBanner: TFramBanner
       'from SP_T_NSI_GOODS_LINK_BY_GOOD(:P_GOOD,1)')
     BeforeOpen = dsAnalogListBeforeOpen
     OnCalcFields = dsAnalogListCalcFields
-    Transaction = DM.pFIBTransaction
-    Database = DM.pFIBDatabase
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
     Left = 180
     Top = 160
     object dsAnalogListF_GOOD: TFIBIntegerField

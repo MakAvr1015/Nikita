@@ -1,14 +1,14 @@
 inherited FrmListInputDocs: TFrmListInputDocs
   Caption = #1046#1091#1088#1085#1072#1083' '#1087#1088#1080#1093#1086#1076#1085#1099#1093' '#1076#1086#1082#1091#1084#1077#1085#1090#1086#1074
-  ClientHeight = 608
-  ClientWidth = 1031
-  ExplicitWidth = 1047
-  ExplicitHeight = 647
+  ClientHeight = 582
+  ClientWidth = 1224
+  ExplicitWidth = 1240
+  ExplicitHeight = 621
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
-    Top = 500
-    Width = 1031
+    Top = 474
+    Width = 1224
     ExplicitTop = 500
     ExplicitWidth = 1031
     inherited DsFormName: TRzStatusPane
@@ -16,13 +16,13 @@ inherited FrmListInputDocs: TFrmListInputDocs
     end
   end
   inherited Panel3: TPanel
-    Width = 1031
-    Height = 500
-    ExplicitWidth = 1031
-    ExplicitHeight = 500
+    Width = 1224
+    Height = 474
+    ExplicitWidth = 1224
+    ExplicitHeight = 474
     inherited RzToolbar: TRzToolbar
-      Width = 1029
-      Height = 44
+      Width = 1222
+      Height = 40
       RowHeight = 40
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
@@ -31,8 +31,8 @@ inherited FrmListInputDocs: TFrmListInputDocs
       TextOptions = ttoCustom
       ParentShowHint = False
       Transparent = True
-      ExplicitWidth = 1029
-      ExplicitHeight = 44
+      ExplicitWidth = 1222
+      ExplicitHeight = 40
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -46,6 +46,7 @@ inherited FrmListInputDocs: TFrmListInputDocs
         BtnExecute
         BtnDelete
         BtnSave
+        BtnExport
         BtnExit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
@@ -143,9 +144,9 @@ inherited FrmListInputDocs: TFrmListInputDocs
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 786
+        Left = 848
         Layout = blGlyphTop
-        ExplicitLeft = 786
+        ExplicitLeft = 848
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
@@ -160,23 +161,33 @@ inherited FrmListInputDocs: TFrmListInputDocs
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
+      inherited BtnExport: TRzToolButton
+        Left = 786
+        Width = 62
+        Height = 40
+        Layout = blGlyphTop
+        ExplicitLeft = 786
+        ExplicitWidth = 62
+        ExplicitHeight = 40
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 846
-        Top = 12
-        ExplicitLeft = 846
-        ExplicitTop = 12
+        Left = 908
+        Top = 10
+        ExplicitLeft = 908
+        ExplicitTop = 10
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 74
-      Width = 1029
-      Height = 425
+      Top = 70
+      Width = 1222
+      Height = 403
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 70
-      ExplicitHeight = 429
+      ExplicitTop = 72
+      ExplicitWidth = 1029
+      ExplicitHeight = 427
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -274,15 +285,16 @@ inherited FrmListInputDocs: TFrmListInputDocs
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 45
-      Width = 1029
+      Top = 41
+      Width = 1222
       Height = 29
       Caption = 'ToolBar1'
       DrawingStyle = dsGradient
       GradientEndColor = clWhite
       GradientStartColor = clGradientActiveCaption
       TabOrder = 2
-      ExplicitTop = 41
+      ExplicitTop = 43
+      ExplicitWidth = 1029
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -305,13 +317,15 @@ inherited FrmListInputDocs: TFrmListInputDocs
   end
   object MemoLog: TMemo [2]
     Left = 0
-    Top = 519
-    Width = 1031
+    Top = 493
+    Width = 1224
     Height = 89
     Align = alBottom
     ScrollBars = ssVertical
     TabOrder = 2
     Visible = False
+    ExplicitTop = 519
+    ExplicitWidth = 1031
   end
   object dsDocList: TpFIBDataSet [4]
     DeleteSQL.Strings = (
@@ -589,7 +603,7 @@ inherited FrmListInputDocs: TFrmListInputDocs
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

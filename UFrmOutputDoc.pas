@@ -37,7 +37,7 @@ uses
   cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject,
   frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList,Vcl.Clipbrd,
   Vcl.ImgList, frxDBSet, dxDateRanges, dxScrollbarAnnotations, IWVCLBaseControl,
-  IWBaseControl, IWBaseHTMLControl, IWControl, IWHTMLControls;
+  IWBaseControl, IWBaseHTMLControl, IWControl, IWHTMLControls, dxShellDialogs;
 
 type
   TFrmOutputDoc = class(TFrmPrototype, IFrmDoc)

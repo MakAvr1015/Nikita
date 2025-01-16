@@ -62,7 +62,9 @@ inherited FrmOutputDoc: TFrmOutputDoc
     ExplicitHeight = 562
     inherited RzToolbar: TRzToolbar
       Width = 1061
+      Height = 27
       ExplicitWidth = 1061
+      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -78,24 +80,76 @@ inherited FrmOutputDoc: TFrmOutputDoc
         BtnSave
         BtnExit
         cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 2
         OnClick = BtnOpenClick
+        ExplicitTop = 2
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnPrint: TRzToolButton
+        Top = 2
         AllowAllUp = True
         OnClick = nil
+        ExplicitTop = 2
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
       end
       inherited BtnDelete: TRzToolButton
+        Top = 2
         Enabled = True
         Visible = True
+        ExplicitTop = 2
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 2
+        ExplicitTop = 2
+      end
+      inherited BtnExit: TRzToolButton
+        Left = 318
+        Top = 2
+        ExplicitLeft = 318
+        ExplicitTop = 2
       end
       inherited BtnView: TRzToolButton
+        Top = 2
         Visible = False
+        ExplicitTop = 2
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Left = 343
+        Top = 4
+        ExplicitLeft = 343
+        ExplicitTop = 4
       end
     end
     object RzPanel1: TRzPanel
       Left = 1
-      Top = 26
+      Top = 28
       Width = 1061
       Height = 111
       Align = alTop
@@ -344,9 +398,9 @@ inherited FrmOutputDoc: TFrmOutputDoc
     end
     object RzPageControl1: TRzPageControl
       Left = 1
-      Top = 137
+      Top = 139
       Width = 1061
-      Height = 424
+      Height = 422
       Hint = ''
       ActivePage = TabSheet1
       Align = alClient
@@ -362,14 +416,14 @@ inherited FrmOutputDoc: TFrmOutputDoc
           Left = 0
           Top = 0
           Width = 1057
-          Height = 398
+          Height = 396
           Align = alClient
           Caption = 'Panel1'
           TabOrder = 0
           object Splitter1: TSplitter
             Left = 913
             Top = 1
-            Height = 396
+            Height = 394
             Align = alRight
             ExplicitLeft = 720
             ExplicitTop = 96
@@ -379,7 +433,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
             Left = 1
             Top = 1
             Width = 912
-            Height = 396
+            Height = 394
             Align = alClient
             TabOrder = 0
             LookAndFeel.SkinName = 'MoneyTwins'
@@ -547,7 +601,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
             Properties.GraphicClassName = 'TdxSmartImage'
             Properties.ReadOnly = True
             TabOrder = 1
-            Height = 396
+            Height = 394
             Width = 140
           end
         end
@@ -555,15 +609,11 @@ inherited FrmOutputDoc: TFrmOutputDoc
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1054#1087#1083#1072#1090#1072
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
           Width = 1057
-          Height = 398
+          Height = 396
           Align = alClient
           TabOrder = 0
           object cxGrid2DBTableView1: TcxGridDBTableView
@@ -623,7 +673,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
           Left = 0
           Top = 0
           Width = 1057
-          Height = 398
+          Height = 396
           Align = alClient
           Lines.Strings = (
             'Memo1')
@@ -1129,7 +1179,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000040110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000080110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

@@ -146,8 +146,9 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
     end
     inherited RzToolbar: TRzToolbar
       Width = 515
-      Height = 27
+      Height = 48
       ExplicitWidth = 515
+      ExplicitHeight = 48
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -157,29 +158,37 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
         BtnFind
         BtnPrint
         BtnOK
-        BtnCancel)
+        BtnCancel
+        BtnExport
+        BtnExit
+        BtnSave
+        BtnDelete
+        BtnExecute
+        cxComboBoxStyles)
       inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Left = 343
+        ExplicitLeft = 343
       end
       inherited BtnDelete: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnSave: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Left = 318
+        ExplicitLeft = 318
       end
       inherited BtnExit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
+        Left = 268
+        ExplicitLeft = 268
       end
       inherited BtnView: TRzToolButton
         Visible = False
       end
+      inherited BtnExport: TRzToolButton
+        Left = 243
+        ExplicitLeft = 243
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 2
-        ExplicitTop = 2
+        Left = 4
+        Top = 27
+        ExplicitLeft = 4
+        ExplicitTop = 27
       end
     end
     object Ed_U_NAME: TRzDBEdit
@@ -262,6 +271,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
             Navigator.Buttons.SaveBookmark.Visible = False
             Navigator.Buttons.GotoBookmark.Visible = False
             Navigator.Visible = True
+            ScrollbarAnnotations.CustomAnnotations = <>
             DataController.DataSource = srPartnerBanls
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -333,6 +343,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
           TabOrder = 0
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
             DataController.DataSource = srDopInfo
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -396,6 +407,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
             Navigator.Buttons.SaveBookmark.Visible = False
             Navigator.Buttons.GotoBookmark.Visible = False
             Navigator.Visible = True
+            ScrollbarAnnotations.CustomAnnotations = <>
             DataController.DataSource = srDiscountCards
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
@@ -467,7 +479,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

@@ -32,7 +32,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
-  frxDBSet;
+  frxDBSet, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmNsiParnerEdit = class(TFrmPrototype)
@@ -141,7 +141,6 @@ type
     procedure cxGrid1DBTableView1NavigatorButtonsButtonClick(Sender: TObject;
       AButtonIndex: Integer; var ADone: Boolean);
     procedure dsEditNsiPartnerAfterOpen(DataSet: TDataSet);
-    procedure BtnOKClick(Sender: TObject);
     procedure dsDopInfoAfterPost(DataSet: TDataSet);
     procedure cxGridDBTableView1NavigatorButtonsButtonClick(Sender: TObject;
       AButtonIndex: Integer; var ADone: Boolean);
@@ -165,12 +164,6 @@ implementation
 uses
   uDm, upublic;
 {$R *.dfm}
-
-procedure TFrmNsiParnerEdit.BtnOKClick(Sender: TObject);
-begin
-  PostAllDS(self, true);
-  inherited;
-end;
 
 procedure TFrmNsiParnerEdit.cxGrid1DBTableView1NavigatorButtonsButtonClick
   (Sender: TObject; AButtonIndex: Integer; var ADone: Boolean);
