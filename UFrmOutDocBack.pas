@@ -32,7 +32,8 @@ uses
   dxSkinXmas2008Blue, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
   Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit, dxDateRanges,
+  dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmOutDocBack = class(TFrmPrototype)

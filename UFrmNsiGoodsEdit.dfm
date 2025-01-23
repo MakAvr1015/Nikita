@@ -47,10 +47,10 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
     end
     inherited RzToolbar: TRzToolbar
       Width = 458
-      Height = 27
+      Height = 48
       TextOptions = ttoCustom
       ExplicitWidth = 458
-      ExplicitHeight = 27
+      ExplicitHeight = 48
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -64,26 +64,78 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
         BtnExit
         BtnExecute
         BtnSave
-        BtnDelete)
+        BtnExport
+        BtnDelete
+        cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOpen: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
       inherited BtnExecute: TRzToolButton
         Left = 268
+        Top = 0
         Visible = False
         ExplicitLeft = 268
+        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Left = 318
-        ExplicitLeft = 318
+        Left = 343
+        Top = 0
+        ExplicitLeft = 343
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
         Left = 243
+        Top = 0
         ExplicitLeft = 243
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
+        Top = 0
         Visible = False
+        ExplicitTop = 0
       end
-      inherited cxComboBoxStyles: TcxComboBox
+      inherited BtnExport: TRzToolButton
         Top = 0
         ExplicitTop = 0
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Left = 4
+        Top = 27
+        ExplicitLeft = 4
+        ExplicitTop = 27
       end
     end
     object edName: TRzDBEdit
@@ -210,6 +262,7 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
       StyleDisabled.LookAndFeel.Kind = lfStandard
       StyleFocused.LookAndFeel.Kind = lfStandard
       StyleHot.LookAndFeel.Kind = lfStandard
+      StyleReadOnly.LookAndFeel.Kind = lfStandard
       TabOrder = 8
       Width = 217
     end
@@ -235,6 +288,7 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
         Navigator.Buttons.GotoBookmark.Visible = False
         Navigator.Buttons.Filter.Visible = False
         Navigator.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srGoodAtributes
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -268,6 +322,7 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
       end
       object cxGrid1TableView1: TcxGridTableView
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
@@ -289,7 +344,7 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

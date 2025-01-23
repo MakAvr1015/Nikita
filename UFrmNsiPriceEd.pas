@@ -12,7 +12,11 @@ uses
   cxControls, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, cxPropertiesStore, RzForms, frxExportRTF,
   frxExportXML, frxExportXLS, frxExportHTML, frxClass, frxExportPDF, frxCross,
-  frxBarcode, frxDCtrl, frxDesgn, frxFIBComponents;
+  frxBarcode, frxDCtrl, frxDesgn, frxFIBComponents, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, dxShellDialogs, System.ImageList, Vcl.ImgList,
+  frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNsiPriceEd = class(TFrmPrototype)

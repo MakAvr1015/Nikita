@@ -25,10 +25,10 @@ inherited FrmInputPay: TFrmInputPay
     ExplicitHeight = 546
     inherited RzToolbar: TRzToolbar
       Width = 937
-      Height = 27
+      Height = 25
       TabOrder = 1
       ExplicitWidth = 937
-      ExplicitHeight = 27
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -42,18 +42,74 @@ inherited FrmInputPay: TFrmInputPay
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
-      inherited BtnView: TRzToolButton
-        Visible = False
-      end
-      inherited cxComboBoxStyles: TcxComboBox
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
         Top = 0
         ExplicitTop = 0
+      end
+      inherited BtnOpen: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnDelete: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnView: TRzToolButton
+        Top = 0
+        Visible = False
+        ExplicitTop = 0
+      end
+      inherited BtnExport: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 2
+        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
       Left = 1
-      Top = 28
+      Top = 26
       Width = 937
       Height = 78
       Align = alTop
@@ -64,6 +120,7 @@ inherited FrmInputPay: TFrmInputPay
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -215,12 +272,14 @@ inherited FrmInputPay: TFrmInputPay
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 106
+      Top = 104
       Width = 937
-      Height = 439
+      Height = 441
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitTop = 106
+      ExplicitHeight = 439
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
@@ -280,7 +339,7 @@ inherited FrmInputPay: TFrmInputPay
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

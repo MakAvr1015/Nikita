@@ -35,10 +35,12 @@ inherited FrmZakazDoc: TFrmZakazDoc
         BtnExecute
         BtnDelete
         BtnSave
+        BtnExport
         BtnExit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -92,6 +94,10 @@ inherited FrmZakazDoc: TFrmZakazDoc
         Top = 0
         ExplicitTop = 0
       end
+      inherited BtnExport: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
       inherited cxComboBoxStyles: TcxComboBox
         Top = 2
         ExplicitTop = 2
@@ -113,6 +119,7 @@ inherited FrmZakazDoc: TFrmZakazDoc
       GradientColorStop = clGradientActiveCaption
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 9
@@ -266,10 +273,13 @@ inherited FrmZakazDoc: TFrmZakazDoc
       TabIndex = 0
       TabOrder = 2
       TabStyle = tsRoundCorners
+      ExplicitTop = 171
+      ExplicitHeight = 285
       FixedDimension = 19
       object TabSheet1: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1058#1086#1074#1072#1088
+        ExplicitHeight = 261
         object Splitter1: TSplitter
           Left = 836
           Top = 0
@@ -288,9 +298,11 @@ inherited FrmZakazDoc: TFrmZakazDoc
           LookAndFeel.Kind = lfUltraFlat
           LookAndFeel.NativeStyle = False
           LookAndFeel.SkinName = 'Blue'
+          ExplicitHeight = 261
           object cxGrid1DBTableViewGoods: TcxGridDBTableView
             OnKeyPress = cxGrid1DBTableViewGoodsKeyPress
             Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
             OnCellDblClick = cxGrid1DBTableViewGoodsCellDblClick
             OnCustomDrawCell = cxGrid1DBTableViewGoodsCustomDrawCell
             DataController.DataSource = srDocBody
@@ -381,6 +393,7 @@ inherited FrmZakazDoc: TFrmZakazDoc
           Properties.FitMode = ifmProportionalStretch
           Properties.GraphicClassName = 'TdxSmartImage'
           TabOrder = 1
+          ExplicitHeight = 261
           Height = 263
           Width = 140
         end
@@ -388,6 +401,7 @@ inherited FrmZakazDoc: TFrmZakazDoc
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1054#1090#1075#1088#1091#1079#1082#1072
+        ExplicitHeight = 261
         object RzToolbar1: TRzToolbar
           Left = 0
           Top = 0
@@ -445,9 +459,11 @@ inherited FrmZakazDoc: TFrmZakazDoc
           Align = alClient
           TabOrder = 1
           LookAndFeel.SkinName = 'Blue'
+          ExplicitHeight = 236
           object cxGrid2DBTableView1: TcxGridDBTableView
             OnDblClick = cxGrid2DBTableView1DblClick
             Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
             DataController.DataSource = srOutDocs
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <
@@ -892,7 +908,7 @@ inherited FrmZakazDoc: TFrmZakazDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

@@ -12,7 +12,11 @@ uses
   pFIBDatabase, cxPropertiesStore, RzForms, frxExportRTF, frxExportXML,
   frxExportXLS, frxExportHTML, frxClass, frxExportPDF, frxCross, frxBarcode,
   frxDCtrl, frxDesgn, frxFIBComponents,xmldom, XMLIntf,msxmldom,XMLDoc,
-  ComCtrls, ToolWin;
+  ComCtrls, ToolWin, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
+  cxNavigator, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs,
+  System.ImageList, Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit,
+  cxDropDownEdit;
 
 type
   TFrmDocPriceList = class(TFrmPrototype)

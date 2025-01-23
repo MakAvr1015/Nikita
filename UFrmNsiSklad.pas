@@ -11,7 +11,11 @@ uses
   cxControls, cxGridCustomView, cxGrid, FIBDatabase, pFIBDatabase, pFIBDataSet,
   Menus, RzStatus, cxPropertiesStore, RzForms, frxExportRTF, frxExportXML,
   frxExportXLS, frxExportHTML, frxClass, frxExportPDF, frxCross, frxBarcode,
-  frxDCtrl, frxDesgn, frxFIBComponents;
+  frxDCtrl, frxDesgn, frxFIBComponents, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
+  dxShellDialogs, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
+  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNsiSklad = class(TFrmPrototype)

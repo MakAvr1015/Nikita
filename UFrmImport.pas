@@ -27,7 +27,8 @@ uses
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxClasses, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
-  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE;
+  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
+  dxShellDialogs;
 
 type
   TFrmImport = class(TFrmPrototype)

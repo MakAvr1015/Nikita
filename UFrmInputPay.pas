@@ -32,7 +32,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, System.ImageList, Vcl.ImgList,
   frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations;
+  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmInputPay = class(TFrmPrototype)

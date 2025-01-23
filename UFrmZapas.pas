@@ -32,7 +32,7 @@ uses
   dxSkinXmas2008Blue, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, System.ImageList,
   Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE;
+  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmZapas = class(TFrmPrototype)

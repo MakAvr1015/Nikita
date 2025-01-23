@@ -8,7 +8,10 @@ uses
   frxExportXML, frxExportXLS, frxExportHTML, frxClass, frxExportPDF, frxCross,
   frxBarcode, frxDCtrl, frxDesgn, frxFIBComponents, Menus, RzButton, RzPanel,
   ExtCtrls, RzStatus, RzDBSpin, StdCtrls, Mask, RzEdit, RzDBEdit, RzLabel, DB,
-  FIBDataSet, pFIBDataSet;
+  FIBDataSet, pFIBDataSet, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxEdit, dxShellDialogs, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxClasses, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNsiDiscount = class(TFrmPrototype)

@@ -4,8 +4,6 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
   TextHeight = 13
   inherited Panel3: TPanel
     inherited RzToolbar: TRzToolbar
-      Height = 727
-      ExplicitHeight = 727
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -19,7 +17,9 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Tag = 4
         UseToolbarButtonLayout = False
@@ -78,25 +78,17 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
         ExplicitLeft = 723
       end
       inherited BtnExit: TRzToolButton
-        Left = 800
         UseToolbarButtonLayout = False
-        ExplicitLeft = 800
       end
       inherited BtnView: TRzToolButton
         Left = 151
         UseToolbarButtonLayout = False
         ExplicitLeft = 151
       end
-      inherited cxComboBoxStyles: TcxComboBox
-        Top = 706
-        ExplicitTop = 706
-      end
     end
     inherited cxGrid1: TcxGrid
-      Top = 757
-      Height = 5
-      ExplicitTop = 721
-      ExplicitHeight = 41
+      ExplicitTop = 841
+      ExplicitHeight = 5
       inherited cxGrid1DBTableView1: TcxGridDBTableView
         Styles.ContentEven = nil
         Styles.ContentOdd = nil
@@ -116,8 +108,7 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
       end
     end
     inherited ToolBar1: TToolBar
-      Top = 728
-      ExplicitTop = 692
+      ExplicitTop = 812
     end
   end
   inherited frxReport2: TfrxReport
@@ -156,7 +147,7 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

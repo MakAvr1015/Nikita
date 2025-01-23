@@ -30,7 +30,8 @@ uses
   cxGridCustomView, cxGrid, Vcl.ToolWin, frxExportRTF, frxExportPDF,
   frxExportXML, frxExportXLS, frxFIBComponents, frxChBox, frxTableObject,
   frxCross, frxRich, frxExportBaseDialog, frxExportDOCX, frxDCtrl, frxOLE,
-  frxDesgn, frxBarcode, frxDBSet, System.ImageList, Vcl.ImgList;
+  frxDesgn, frxBarcode, frxDBSet, System.ImageList, Vcl.ImgList, dxDateRanges,
+  dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmZakazList = class(TFrmPrototype)

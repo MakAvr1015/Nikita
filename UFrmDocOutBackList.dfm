@@ -1,11 +1,26 @@
 inherited FrmDocOutBackList: TFrmDocOutBackList
   Caption = #1046#1091#1088#1085#1072#1083' '#1074#1086#1079#1074#1088#1072#1090#1086#1074' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1091
+  ClientHeight = 628
+  ClientWidth = 1224
+  ExplicitLeft = -7
+  ExplicitWidth = 1240
+  ExplicitHeight = 667
   PixelsPerInch = 96
   TextHeight = 13
+  inherited RzStatusBar1: TRzStatusBar
+    Top = 609
+    Width = 1224
+  end
   inherited Panel3: TPanel
+    Width = 1224
+    Height = 609
+    ExplicitWidth = 1224
+    ExplicitHeight = 609
     inherited RzToolbar: TRzToolbar
-      Height = 691
-      ExplicitHeight = 691
+      Width = 1222
+      Height = 40
+      ExplicitWidth = 1222
+      ExplicitHeight = 40
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -19,7 +34,9 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Tag = 3
         UseToolbarButtonLayout = False
@@ -78,24 +95,35 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
         ExplicitLeft = 723
       end
       inherited BtnExit: TRzToolButton
-        Left = 800
+        Left = 862
+        Top = 0
         UseToolbarButtonLayout = False
-        ExplicitLeft = 800
+        ExplicitLeft = 862
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
         Left = 151
         UseToolbarButtonLayout = False
         ExplicitLeft = 151
       end
+      inherited BtnExport: TRzToolButton
+        Left = 800
+        Top = 0
+        ExplicitLeft = 800
+        ExplicitTop = 0
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 670
-        ExplicitTop = 670
+        Left = 922
+        Top = 10
+        ExplicitLeft = 922
+        ExplicitTop = 10
       end
     end
     inherited cxGrid1: TcxGrid
-      Top = 721
-      Height = 41
-      ExplicitTop = 721
+      Top = 70
+      Width = 1222
+      Height = 538
+      ExplicitTop = 805
       ExplicitHeight = 41
       inherited cxGrid1DBTableView1: TcxGridDBTableView
         DataController.Summary.FooterSummaryItems = <
@@ -125,8 +153,9 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
       end
     end
     inherited ToolBar1: TToolBar
-      Top = 692
-      ExplicitTop = 692
+      Top = 41
+      Width = 1222
+      ExplicitTop = 776
     end
   end
   inherited frxReport2: TfrxReport
@@ -158,17 +187,20 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
       '    f_user,'
       '    f_property_1,'
       '    f_OWNER,'
-      '    F_OWNER_NAME'
-      ''
+      '    F_OWNER_NAME,'
+      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
       'FROM'
       '    SP_T_DOC_OUT_S(3,:str_date,:end_date) ')
     inherited dsDocListTYPE: TFIBStringField
       Size = 0
     end
   end
+  inherited pFIBTransaction: TpFIBTransaction
+    Active = True
+  end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

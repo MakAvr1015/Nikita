@@ -28,7 +28,10 @@ uses
   cxNavigator, cxDataControllerConditionalFormattingRulesManagerDialog,
   cxDBData, cxLabel, cxImage, cxGridCustomTableView, cxGridCardView,
   cxGridDBCardView, cxGridCustomView, cxGridCustomLayoutView, cxGridLevel,
-  cxGrid, cxContainer, cxGroupBox, cxRadioGroup, cxDBEdit;
+  cxGrid, cxContainer, cxGroupBox, cxRadioGroup, cxDBEdit, dxDateRanges,
+  dxScrollbarAnnotations, dxShellDialogs, System.ImageList, Vcl.ImgList,
+  frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNSIGoodsLinks = class(TFrmPrototype)

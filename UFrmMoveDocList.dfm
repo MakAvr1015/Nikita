@@ -50,128 +50,157 @@ inherited FrmMoveDocList: TFrmMoveDocList
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Tag = 1
+        Top = 0
         Layout = blGlyphTop
         OnClick = BtnNewClick
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnOpen: TRzToolButton
         Left = 225
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnOpenClick
         ExplicitLeft = 225
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnFind: TRzToolButton
         Left = 345
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 345
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnPrint: TRzToolButton
         Left = 405
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 405
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOK: TRzToolButton
         Left = 479
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 479
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnCancel: TRzToolButton
         Left = 539
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 539
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnRefresh: TRzToolButton
         Left = 285
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 285
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnEdit: TRzToolButton
         Left = 64
+        Top = 0
         Width = 87
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnEditClick
         ExplicitLeft = 64
+        ExplicitTop = 0
         ExplicitWidth = 87
         ExplicitHeight = 40
       end
       inherited BtnExecute: TRzToolButton
         Left = 599
+        Top = 0
         Width = 64
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 599
+        ExplicitTop = 0
         ExplicitWidth = 64
         ExplicitHeight = 40
       end
       inherited BtnDelete: TRzToolButton
         Left = 663
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         Visible = True
         ExplicitLeft = 663
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnSave: TRzToolButton
         Left = 723
+        Top = 0
         Width = 63
         Height = 40
         Layout = blGlyphTop
         Visible = True
         ExplicitLeft = 723
+        ExplicitTop = 0
         ExplicitWidth = 63
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
         Left = 786
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 786
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnView: TRzToolButton
         Left = 151
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnViewClick
         ExplicitLeft = 151
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnExport: TRzToolButton
         Left = 846
+        Top = 0
         Width = 62
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 846
+        ExplicitTop = 0
         ExplicitWidth = 62
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
         Left = 4
         Top = 35
+        ExplicitLeft = 4
         ExplicitTop = 35
       end
     end
@@ -184,8 +213,6 @@ inherited FrmMoveDocList: TFrmMoveDocList
       TabOrder = 1
       LookAndFeel.ScrollbarMode = sbmClassic
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 70
-      ExplicitHeight = 270
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -294,7 +321,6 @@ inherited FrmMoveDocList: TFrmMoveDocList
       Height = 29
       Caption = 'ToolBar1'
       TabOrder = 2
-      ExplicitTop = 41
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -326,7 +352,7 @@ inherited FrmMoveDocList: TFrmMoveDocList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013C00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

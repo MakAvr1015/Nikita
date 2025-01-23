@@ -32,7 +32,8 @@ uses
   Vcl.ImgList, frxDBSet, frxExportRTF, frxExportPDF, frxExportXML, frxExportXLS,
   frxFIBComponents, frxChBox, frxTableObject, frxCross, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxDCtrl, frxOLE, frxDesgn, frxBarcode,
-  cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, dxDateRanges, dxScrollbarAnnotations,
+  dxShellDialogs;
 
 type
   TFrmInputDocBackRozn = class(TFrmInputDoc)

@@ -1,38 +1,37 @@
 inherited FrmDocOutList: TFrmDocOutList
   Caption = #1046#1091#1088#1085#1072#1083' '#1088#1072#1089#1093#1086#1076#1085#1099#1093' '#1076#1086#1082#1091#1084#1077#1085#1090#1086#1074
-  ClientHeight = 782
-  ClientWidth = 1112
+  ClientHeight = 620
+  ClientWidth = 827
   OnKeyUp = FormKeyUp
-  ExplicitLeft = -340
-  ExplicitWidth = 1128
-  ExplicitHeight = 821
+  ExplicitWidth = 843
+  ExplicitHeight = 659
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
-    Top = 763
-    Width = 1112
-    ExplicitTop = 763
-    ExplicitWidth = 1112
+    Top = 601
+    Width = 827
+    ExplicitTop = 601
+    ExplicitWidth = 827
     inherited DsFormName: TRzStatusPane
       Caption = 'dsDocList'
     end
   end
   inherited Panel3: TPanel
-    Width = 1112
-    Height = 763
-    ExplicitWidth = 1112
-    ExplicitHeight = 763
+    Width = 827
+    Height = 601
+    ExplicitWidth = 827
+    ExplicitHeight = 601
     inherited RzToolbar: TRzToolbar
-      Width = 1110
-      Height = 40
+      Width = 825
+      Height = 65
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoCustom
       ParentShowHint = False
-      ExplicitWidth = 1110
-      ExplicitHeight = 40
+      ExplicitWidth = 825
+      ExplicitHeight = 65
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -50,95 +49,116 @@ inherited FrmDocOutList: TFrmDocOutList
         BtnExit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
+        Top = 0
         Width = 74
         Height = 40
         DropDownMenu = NewDocMenu
         Layout = blGlyphTop
         ToolStyle = tsDropDown
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOpen: TRzToolButton
         Left = 239
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnOpenClick
         ExplicitLeft = 239
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnFind: TRzToolButton
         Left = 359
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 359
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnPrint: TRzToolButton
         Left = 419
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 419
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOK: TRzToolButton
         Left = 493
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 493
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnCancel: TRzToolButton
         Left = 553
+        Top = 0
         Layout = blGlyphTop
         ShowCaption = True
         UseToolbarShowCaption = False
         ExplicitLeft = 553
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnRefresh: TRzToolButton
         Left = 299
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 299
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnEdit: TRzToolButton
         Left = 78
+        Top = 0
         Width = 87
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnEditClick
         ExplicitLeft = 78
+        ExplicitTop = 0
         ExplicitWidth = 87
         ExplicitHeight = 40
       end
       inherited BtnExecute: TRzToolButton
         Left = 613
+        Top = 0
         Width = 64
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 613
+        ExplicitTop = 0
         ExplicitWidth = 64
         ExplicitHeight = 40
       end
       inherited BtnDelete: TRzToolButton
         Left = 677
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         Visible = True
         ExplicitLeft = 677
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnSave: TRzToolButton
         Left = 737
+        Top = 0
         Width = 77
         Height = 40
         DropDownMenu = SaveMenu
@@ -147,53 +167,58 @@ inherited FrmDocOutList: TFrmDocOutList
         Visible = True
         OnClick = nil
         ExplicitLeft = 737
+        ExplicitTop = 0
         ExplicitWidth = 77
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 876
+        Left = 66
+        Top = 25
         Layout = blGlyphTop
-        ExplicitLeft = 876
+        ExplicitLeft = 66
+        ExplicitTop = 25
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnView: TRzToolButton
         Left = 165
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnViewClick
         ExplicitLeft = 165
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnExport: TRzToolButton
-        Left = 814
+        Left = 4
+        Top = 25
         Width = 62
         Height = 40
         Layout = blGlyphTop
-        ExplicitLeft = 814
+        ExplicitLeft = 4
+        ExplicitTop = 25
         ExplicitWidth = 62
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 936
-        Top = 10
-        ExplicitLeft = 936
-        ExplicitTop = 10
+        Left = 126
+        Top = 35
+        ExplicitLeft = 126
+        ExplicitTop = 35
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 70
-      Width = 1110
-      Height = 692
+      Top = 95
+      Width = 825
+      Height = 505
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 721
-      ExplicitHeight = 41
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         OnKeyUp = FormKeyUp
@@ -366,15 +391,14 @@ inherited FrmDocOutList: TFrmDocOutList
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 41
-      Width = 1110
+      Top = 66
+      Width = 825
       Height = 29
       Caption = 'ToolBar1'
       DrawingStyle = dsGradient
       GradientEndColor = clWhite
       GradientStartColor = clGradientActiveCaption
       TabOrder = 2
-      ExplicitTop = 692
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -433,7 +457,8 @@ inherited FrmDocOutList: TFrmDocOutList
       '    f_user,'
       '    f_property_1,'
       '    f_OWNER,'
-      '    F_OWNER_NAME'
+      '    F_OWNER_NAME,'
+      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
       'FROM'
       '    SP_T_DOC_OUT_S(1,:str_date,:end_date) '
       'union'
@@ -459,7 +484,9 @@ inherited FrmDocOutList: TFrmDocOutList
       '    f_user,'
       '    f_property_1,'
       '    f_OWNER,'
-      '    F_OWNER_NAME'
+      '    F_OWNER_NAME,'
+      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
+      ''
       'FROM'
       '    SP_T_DOC_OUT_S(2,:str_date,:end_date) '
       ')')
@@ -477,6 +504,7 @@ inherited FrmDocOutList: TFrmDocOutList
       'f_pay_sum<>f_doc_sum'
       False)
     BeforeOpen = dsDocListBeforeOpen
+    OnCalcFields = dsDocListCalcFields
     Transaction = pFIBTransaction
     Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -603,6 +631,13 @@ inherited FrmDocOutList: TFrmDocOutList
       DisplayLabel = #1054#1090#1087#1088#1072#1074#1080#1090#1077#1083#1100
       FieldName = 'F_OWNER_NAME'
       Size = 255
+      EmptyStrToNull = True
+    end
+    object dsDocListF_PROPS: TFIBStringField
+      DisplayLabel = #1057#1074#1086#1081#1089#1090#1074#1072' '#1076#1086#1082#1091#1084#1077#1085#1090#1072
+      FieldName = 'F_PROPS'
+      Visible = False
+      Size = 10000
       EmptyStrToNull = True
     end
   end
@@ -869,7 +904,7 @@ inherited FrmDocOutList: TFrmDocOutList
     Left = 736
     Top = 168
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

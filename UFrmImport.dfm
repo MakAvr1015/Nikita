@@ -2,27 +2,27 @@ inherited FrmImport: TFrmImport
   BorderStyle = bsDialog
   Caption = #1047#1072#1075#1088#1091#1079#1082#1072
   ClientHeight = 547
-  ClientWidth = 460
-  ExplicitWidth = 466
+  ClientWidth = 544
+  ExplicitWidth = 550
   ExplicitHeight = 576
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
     Top = 528
-    Width = 460
+    Width = 544
     ExplicitTop = 528
     ExplicitWidth = 460
   end
   inherited Panel3: TPanel
-    Width = 460
+    Width = 544
     Height = 528
-    ExplicitWidth = 460
+    ExplicitWidth = 544
     ExplicitHeight = 528
     inherited RzToolbar: TRzToolbar
-      Width = 458
-      Height = 48
-      ExplicitWidth = 458
-      ExplicitHeight = 48
+      Width = 542
+      Height = 25
+      ExplicitWidth = 542
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -36,10 +36,12 @@ inherited FrmImport: TFrmImport
         BtnExecute
         BtnExit
         BtnSave
+        BtnExport
         BtnDelete
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -78,9 +80,9 @@ inherited FrmImport: TFrmImport
         ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Left = 318
+        Left = 343
         Top = 0
-        ExplicitLeft = 318
+        ExplicitLeft = 343
         ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
@@ -98,11 +100,13 @@ inherited FrmImport: TFrmImport
         Visible = False
         ExplicitTop = 0
       end
+      inherited BtnExport: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 4
-        Top = 27
-        ExplicitLeft = 4
-        ExplicitTop = 27
+        Top = 2
+        ExplicitTop = 2
       end
     end
     object XLSList: TRzListBox
@@ -261,7 +265,7 @@ inherited FrmImport: TFrmImport
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

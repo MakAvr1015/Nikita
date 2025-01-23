@@ -36,7 +36,7 @@ uses
   cxGridCustomLayoutView, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
   frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
   cxTextEdit, cxDropDownEdit, Vcl.Grids, Vcl.DBGrids, dxDateRanges,
-  dxScrollbarAnnotations;
+  dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmNsiGoods = class(TFrmPrototype)

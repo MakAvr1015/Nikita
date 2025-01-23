@@ -12,7 +12,11 @@ uses
   cxEdit, DB, cxDBData, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, FIBDataSet, cxGridLevel, cxClasses, cxControls,
   cxGridCustomView, cxGrid, pFIBDataSet, xmldom, XMLIntf, msxmldom,XMLDoc,
-  FIBQuery, pFIBQuery, pFIBStoredProc;
+  FIBQuery, pFIBQuery, pFIBStoredProc, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
+  dxShellDialogs, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
+  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNSIDiscountCardList = class(TFrmPrototype)

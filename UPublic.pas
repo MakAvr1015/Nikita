@@ -86,6 +86,10 @@ procedure CalcFieldsDopInfo(p_data_set : TdataSet; p_dop_fld_name : String);
 procedure AddInfoColumns(p_Grid : TcxGridDBTableView);
 procedure SendOutDocToMain(p_doc : integer);
 /// <summary>
+///  Добавить столбцы для доп.параметров документов
+/// </summary>
+procedure AddInfoColumnDocs(p_grid : TcxGridDBTableView);
+/// <summary>
 /// Журнал заказов
 ///  </summary>
 procedure ShowZakazList;
@@ -139,6 +143,34 @@ uses
   uFrmConsole, UNsiClass, uFrmNSIGoodsInfo, uFrmZapasNew, UFrmNSIGoodsLinks,
   UDocumentsClasses, UPlanner, UFrmZakazList, System.Classes;
 
+
+procedure AddInfoColumnDocs(p_grid : TcxGridDBTableView);
+var
+  tf  : TStringField;
+begin
+  dm.dsNsiDocProp.Active:=false;
+  dm.dsNsiDocProp.Active:=true;
+  dm.dsNsiDocProp.First;
+  while not dm.dsNsiDocProp.eof do
+  begin
+    tf:=TStringField.Create(p_Grid.DataController.DataSource.DataSet);
+    tf.Calculated:=true;
+    tf.Index:=p_Grid.DataController.DataSource.DataSet.FieldCount;
+    tf.FieldName:='DC_'+dm.dsNsiDocProp.FieldByName('f_id').AsString;
+    tf.DisplayLabel:=dm.dsNsiDocProp.FieldByName('f_name').AsString;
+    tf.tag:=dm.dsNsiDocProp.FieldByName('f_id').AsInteger;
+    tf.Size:= 100;
+    tf.DataSet:=p_Grid.DataController.DataSource.DataSet;
+    with p_Grid.CreateColumn do
+    begin
+      DataBinding.FieldName:=tf.FieldName;
+      Caption:=dm.dsNsiDocProp.FieldByName('f_name').AsString;
+      Visible:=false;
+    end;
+    dm.dsNsiDocProp.Next;
+  end;
+
+end;
 procedure AddInfoColumns(p_Grid : TcxGridDBTableView);
 var
     tf  : TStringField;
@@ -176,13 +208,6 @@ var
 begin
   v_val := TStringList.Create;
   vl_info_field := p_data_set.FindField(p_dop_fld_name);
-  {
-  vl_info_field := p_data_set.FindField('F_DOP_INFO_VAL');
-  if vl_info_field = nil then
-    vl_info_field := p_data_set.FindField('F_GOOD_DOP_INFO');
-  if vl_info_field = nil then
-    vl_info_field := p_data_set.FindField('f_NSI_GOOD_INFO');
-  }
   if vl_info_field <> nil then
   begin
     v_val.Text := vl_info_field.AsString;

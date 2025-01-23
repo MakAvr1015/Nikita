@@ -16,7 +16,7 @@ uses
   cxContainer, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
   System.ImageList, Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit;
+  cxDropDownEdit, dxShellDialogs;
 
 type
   TFrmMoveDocListSpisan = class(TFrmMoveDocList)

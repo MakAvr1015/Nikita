@@ -35,7 +35,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
-  frxDBSet;
+  frxDBSet, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmInputDoc = class(TFrmPrototype, IFrmDoc)

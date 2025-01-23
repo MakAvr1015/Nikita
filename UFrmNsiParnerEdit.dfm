@@ -2,21 +2,21 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
   BorderStyle = bsDialog
   Caption = #1050#1072#1088#1090#1086#1095#1082#1072' '#1087#1072#1088#1090#1085#1077#1088#1072
   ClientHeight = 551
-  ClientWidth = 517
-  ExplicitWidth = 523
+  ClientWidth = 542
+  ExplicitWidth = 548
   ExplicitHeight = 580
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
     Top = 532
-    Width = 517
+    Width = 542
     ExplicitTop = 532
     ExplicitWidth = 517
   end
   inherited Panel3: TPanel
-    Width = 517
+    Width = 542
     Height = 532
-    ExplicitWidth = 517
+    ExplicitWidth = 542
     ExplicitHeight = 532
     object RzLabel1: TRzLabel [0]
       Left = 8
@@ -145,10 +145,10 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
       DataSource = srPartnerCard
     end
     inherited RzToolbar: TRzToolbar
-      Width = 515
-      Height = 48
-      ExplicitWidth = 515
-      ExplicitHeight = 48
+      Width = 540
+      Height = 25
+      ExplicitWidth = 540
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -159,36 +159,82 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
         BtnPrint
         BtnOK
         BtnCancel
-        BtnExport
         BtnExit
         BtnSave
+        BtnExport
         BtnDelete
         BtnExecute
         cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOpen: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
       inherited BtnExecute: TRzToolButton
         Left = 343
+        Top = 0
         ExplicitLeft = 343
+        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
         Left = 318
+        Top = 0
         ExplicitLeft = 318
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Left = 268
+        Top = 0
+        ExplicitLeft = 268
+        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
-        Left = 268
-        ExplicitLeft = 268
+        Left = 243
+        Top = 0
+        ExplicitLeft = 243
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
+        Top = 0
         Visible = False
+        ExplicitTop = 0
       end
       inherited BtnExport: TRzToolButton
-        Left = 243
-        ExplicitLeft = 243
+        Left = 293
+        Top = 0
+        ExplicitLeft = 293
+        ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 4
-        Top = 27
-        ExplicitLeft = 4
-        ExplicitTop = 27
+        Top = 2
+        ExplicitTop = 2
       end
     end
     object Ed_U_NAME: TRzDBEdit
@@ -239,7 +285,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
     object RzPageControl1: TRzPageControl
       Left = 1
       Top = 210
-      Width = 515
+      Width = 540
       Height = 321
       Hint = ''
       ActivePage = TabSheet2
@@ -247,17 +293,20 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
       TabIndex = 1
       TabOrder = 6
       TabStyle = tsRoundCorners
+      ExplicitWidth = 515
       FixedDimension = 19
       object TabSheet1: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1041#1072#1085#1082#1086#1074#1089#1082#1080#1077' '#1088#1077#1082#1074#1080#1079#1080#1090#1099
+        ExplicitWidth = 511
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
-          Width = 511
+          Width = 536
           Height = 295
           Align = alClient
           TabOrder = 0
+          ExplicitWidth = 511
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.OnButtonClick = cxGrid1DBTableView1NavigatorButtonsButtonClick
             Navigator.Buttons.CustomButtons = <>
@@ -334,13 +383,15 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1072#1103' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103
+        ExplicitWidth = 511
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
-          Width = 511
+          Width = 536
           Height = 295
           Align = alClient
           TabOrder = 0
+          ExplicitWidth = 511
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             ScrollbarAnnotations.CustomAnnotations = <>
@@ -389,13 +440,15 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
       object TabSheet3: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1044#1080#1089#1082#1086#1085#1090#1085#1099#1077' '#1082#1072#1088#1090#1099
+        ExplicitWidth = 511
         object cxGrid3: TcxGrid
           Left = 0
           Top = 0
-          Width = 511
+          Width = 536
           Height = 295
           Align = alClient
           TabOrder = 0
+          ExplicitWidth = 511
           object cxGridDBTableView1: TcxGridDBTableView
             Navigator.Buttons.OnButtonClick = cxGridDBTableView1NavigatorButtonsButtonClick
             Navigator.Buttons.CustomButtons = <>
@@ -479,7 +532,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
