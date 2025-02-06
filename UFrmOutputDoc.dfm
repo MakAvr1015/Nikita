@@ -83,7 +83,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -165,7 +164,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
       GradientColorStop = clGradientActiveCaption
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 9
@@ -410,13 +408,10 @@ inherited FrmOutputDoc: TFrmOutputDoc
       TabIndex = 0
       TabOrder = 2
       TabStyle = tsRoundCorners
-      ExplicitTop = 139
-      ExplicitHeight = 422
       FixedDimension = 19
       object TabSheet1: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1058#1086#1074#1072#1088
-        ExplicitHeight = 396
         object Panel1: TPanel
           Left = 0
           Top = 0
@@ -425,7 +420,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
           Align = alClient
           Caption = 'Panel1'
           TabOrder = 0
-          ExplicitHeight = 396
           object Splitter1: TSplitter
             Left = 913
             Top = 1
@@ -443,7 +437,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
             Align = alClient
             TabOrder = 0
             LookAndFeel.SkinName = 'MoneyTwins'
-            ExplicitHeight = 394
             object cxGrid1DBTableView1: TcxGridDBTableView
               OnDragDrop = cxGrid1DBTableView1DragDrop
               OnDragOver = cxGrid1DBTableView1DragOver
@@ -608,7 +601,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
             Properties.GraphicClassName = 'TdxSmartImage'
             Properties.ReadOnly = True
             TabOrder = 1
-            ExplicitHeight = 394
             Height = 396
             Width = 140
           end
@@ -617,7 +609,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1054#1087#1083#1072#1090#1072
-        ExplicitHeight = 396
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
@@ -625,7 +616,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
           Height = 398
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 396
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Visible = True
@@ -679,7 +669,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
       object TabSheet3: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = 'Json'
-        ExplicitHeight = 396
         object Memo1: TMemo
           Left = 0
           Top = 0
@@ -689,7 +678,6 @@ inherited FrmOutputDoc: TFrmOutputDoc
           Lines.Strings = (
             'Memo1')
           TabOrder = 0
-          ExplicitHeight = 396
         end
       end
     end
@@ -1191,7 +1179,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D0000C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000100110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

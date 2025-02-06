@@ -87,8 +87,6 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
       end
     end
     inherited cxGrid1: TcxGrid
-      ExplicitTop = 841
-      ExplicitHeight = 5
       inherited cxGrid1DBTableView1: TcxGridDBTableView
         Styles.ContentEven = nil
         Styles.ContentOdd = nil
@@ -106,9 +104,6 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
           IsCaptionAssigned = True
         end
       end
-    end
-    inherited ToolBar1: TToolBar
-      ExplicitTop = 812
     end
   end
   inherited frxReport2: TfrxReport
@@ -140,14 +135,14 @@ inherited FrmDocOutListHz: TFrmDocOutListHz
       '    f_user,'
       '    f_property_1,'
       '    f_OWNER,'
-      '    F_OWNER_NAME'
-      ''
+      '    F_OWNER_NAME,'
+      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
       'FROM'
       '    SP_T_DOC_OUT_S(4,:str_date,:end_date) ')
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
