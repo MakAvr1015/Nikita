@@ -138,6 +138,15 @@ inherited FrmNsiPartner: TFrmNsiPartner
           DataBinding.FieldName = 'F_KPP'
           Width = 57
         end
+        object cxGrid1DBTableView1F_DISCOUNT: TcxGridDBColumn
+          DataBinding.FieldName = 'F_DISCOUNT'
+        end
+        object cxGrid1DBTableView1F_PAY_DAY: TcxGridDBColumn
+          DataBinding.FieldName = 'F_PAY_DAY'
+        end
+        object cxGrid1DBTableView1F_MAX_DEB: TcxGridDBColumn
+          DataBinding.FieldName = 'F_MAX_DEB'
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -151,7 +160,7 @@ inherited FrmNsiPartner: TFrmNsiPartner
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013C00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2285,6 +2294,9 @@ inherited FrmNsiPartner: TFrmNsiPartner
       '    F_U_ADDRES,'
       '    F_INN,'
       '    F_KPP,'
+      '    F_DISCOUNT,'
+      '    F_PAY_DAY,'
+      '    F_MAX_DEB,'
       '    pak_nsi_partner.get_property(f_id) F_PROP'
       'FROM'
       '    SP_T_NSI_PARTNER_S ')
@@ -2330,6 +2342,21 @@ inherited FrmNsiPartner: TFrmNsiPartner
     object dsNsiPartnerF_PROP: TStringField
       FieldName = 'F_PROP'
       Size = 10000
+    end
+    object dsNsiPartnerF_DISCOUNT: TFIBBCDField
+      DisplayLabel = #1057#1082#1080#1076#1082#1072
+      FieldName = 'F_DISCOUNT'
+      Size = 3
+    end
+    object dsNsiPartnerF_PAY_DAY: TFIBBCDField
+      DisplayLabel = #1054#1090#1089#1088#1086#1095#1082#1072
+      FieldName = 'F_PAY_DAY'
+      Size = 0
+    end
+    object dsNsiPartnerF_MAX_DEB: TFIBBCDField
+      DisplayLabel = 'MAX '#1076#1077#1073#1077#1090#1086#1088#1082#1072
+      FieldName = 'F_MAX_DEB'
+      Size = 3
     end
   end
   object srNsiPartner: TDataSource

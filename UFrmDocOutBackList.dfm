@@ -2,7 +2,7 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
   Caption = #1046#1091#1088#1085#1072#1083' '#1074#1086#1079#1074#1088#1072#1090#1086#1074' '#1087#1086#1089#1090#1072#1074#1097#1080#1082#1091
   ClientHeight = 628
   ClientWidth = 1224
-  ExplicitLeft = -7
+  ExplicitTop = 8
   ExplicitWidth = 1240
   ExplicitHeight = 667
   PixelsPerInch = 96
@@ -10,6 +10,8 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
   inherited RzStatusBar1: TRzStatusBar
     Top = 609
     Width = 1224
+    ExplicitTop = 609
+    ExplicitWidth = 1224
   end
   inherited Panel3: TPanel
     Width = 1224
@@ -123,8 +125,9 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
       Top = 70
       Width = 1222
       Height = 538
-      ExplicitTop = 805
-      ExplicitHeight = 41
+      ExplicitTop = 70
+      ExplicitWidth = 1222
+      ExplicitHeight = 538
       inherited cxGrid1DBTableView1: TcxGridDBTableView
         DataController.Summary.FooterSummaryItems = <
           item
@@ -155,7 +158,8 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
     inherited ToolBar1: TToolBar
       Top = 41
       Width = 1222
-      ExplicitTop = 776
+      ExplicitTop = 41
+      ExplicitWidth = 1222
     end
   end
   inherited frxReport2: TfrxReport
@@ -188,19 +192,17 @@ inherited FrmDocOutBackList: TFrmDocOutBackList
       '    f_property_1,'
       '    f_OWNER,'
       '    F_OWNER_NAME,'
-      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
+      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS,'
+      '    F_PARTNER_INN'
       'FROM'
       '    SP_T_DOC_OUT_S(3,:str_date,:end_date) ')
     inherited dsDocListTYPE: TFIBStringField
       Size = 0
     end
   end
-  inherited pFIBTransaction: TpFIBTransaction
-    Active = True
-  end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

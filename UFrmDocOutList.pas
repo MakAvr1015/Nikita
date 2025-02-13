@@ -126,6 +126,8 @@ type
     cxGrid1DBTableView1F_OWNER: TcxGridDBColumn;
     cxGrid1DBTableView1F_OWNER_NAME: TcxGridDBColumn;
     dsDocListF_PROPS: TFIBStringField;
+    dsDocListF_PARTNER_INN: TFIBStringField;
+    cxGrid1DBTableView1F_PARTNER_INN: TcxGridDBColumn;
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
     procedure BtnEditClick(Sender: TObject);

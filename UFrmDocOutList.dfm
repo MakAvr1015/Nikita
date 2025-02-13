@@ -3,6 +3,7 @@ inherited FrmDocOutList: TFrmDocOutList
   ClientHeight = 620
   ClientWidth = 827
   OnKeyUp = FormKeyUp
+  ExplicitTop = -153
   ExplicitWidth = 843
   ExplicitHeight = 659
   PixelsPerInch = 96
@@ -384,6 +385,9 @@ inherited FrmDocOutList: TFrmDocOutList
           DataBinding.FieldName = 'F_OWNER_NAME'
           Width = 141
         end
+        object cxGrid1DBTableView1F_PARTNER_INN: TcxGridDBColumn
+          DataBinding.FieldName = 'F_PARTNER_INN'
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -447,6 +451,7 @@ inherited FrmDocOutList: TFrmDocOutList
       '    F_STATE_NAME,'
       '    F_SKLAD_NAME,'
       '    F_PARTNER_NAME,'
+      '    F_PARTNER_INN,'
       '    f_doc_count,'
       '    f_doc_sum,'
       '    f_doc_skidka,'
@@ -460,7 +465,7 @@ inherited FrmDocOutList: TFrmDocOutList
       '    F_OWNER_NAME,'
       '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
       'FROM'
-      '    SP_T_DOC_OUT_S(1,:str_date,:end_date) '
+      '    SP_T_DOC_OUT_S(1,:str_date,:end_date)'
       'union'
       'SELECT'
       '    F_ID,'
@@ -474,6 +479,7 @@ inherited FrmDocOutList: TFrmDocOutList
       '    F_STATE_NAME,'
       '    F_SKLAD_NAME,'
       '    F_PARTNER_NAME,'
+      '    F_PARTNER_INN,'
       '    f_doc_count,'
       '    f_doc_sum,'
       '    f_doc_skidka,'
@@ -638,6 +644,11 @@ inherited FrmDocOutList: TFrmDocOutList
       FieldName = 'F_PROPS'
       Visible = False
       Size = 10000
+      EmptyStrToNull = True
+    end
+    object dsDocListF_PARTNER_INN: TFIBStringField
+      DisplayLabel = #1048#1053#1053' '#1087#1072#1088#1090#1085#1077#1088#1072
+      FieldName = 'F_PARTNER_INN'
       EmptyStrToNull = True
     end
   end
@@ -900,11 +911,14 @@ inherited FrmDocOutList: TFrmDocOutList
       EmptyStrToNull = True
     end
   end
+  inherited frxDBDataset1: TfrxDBDataset
+    Left = 544
+  end
   inherited ImageList: TImageList
     Left = 736
     Top = 168
     Bitmap = {
-      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

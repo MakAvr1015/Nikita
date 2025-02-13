@@ -54,6 +54,12 @@ type
     cxGrid1DBTableView1F_KPP: TcxGridDBColumn;
     dsNsiPartnerF_PROP: TStringField;
     dsPartnerProp: TpFIBDataSet;
+    dsNsiPartnerF_DISCOUNT: TFIBBCDField;
+    dsNsiPartnerF_PAY_DAY: TFIBBCDField;
+    dsNsiPartnerF_MAX_DEB: TFIBBCDField;
+    cxGrid1DBTableView1F_DISCOUNT: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PAY_DAY: TcxGridDBColumn;
+    cxGrid1DBTableView1F_MAX_DEB: TcxGridDBColumn;
     procedure BtnNewClick(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnEditClick(Sender: TObject);
