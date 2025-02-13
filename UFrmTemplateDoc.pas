@@ -33,7 +33,7 @@ uses
   cxSplitter,
   UInterfaces, cxTextEdit, cxMaskEdit, cxDropDownEdit, System.ImageList,
   Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations;
+  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 ///  <summary>
 ///  Документ - заготовка

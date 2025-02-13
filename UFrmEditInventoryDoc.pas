@@ -12,7 +12,11 @@ uses
   cxEdit, DB, cxDBData, FIBDatabase, pFIBDatabase, cxGridLevel, cxClasses,
   cxControls, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGrid, DBCtrls, RzDBCmbo, RzDBEdit, RzDBBnEd, StdCtrls,
-  Mask, RzEdit, RzLabel, FIBDataSet, pFIBDataSet, cxContainer, cxImage, cxDBEdit;
+  Mask, RzEdit, RzLabel, FIBDataSet, pFIBDataSet, cxContainer, cxImage, cxDBEdit,
+  cxLookAndFeels, cxLookAndFeelPainters, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, dxShellDialogs, System.ImageList, Vcl.ImgList,
+  frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmEditInventoryDoc = class(TFrmPrototype)

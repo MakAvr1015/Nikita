@@ -37,7 +37,7 @@ uses
   cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject,
   frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList,Vcl.Clipbrd,
   Vcl.ImgList, frxDBSet, dxDateRanges, dxScrollbarAnnotations, IWVCLBaseControl,
-  IWBaseControl, IWBaseHTMLControl, IWControl, IWHTMLControls;
+  IWBaseControl, IWBaseHTMLControl, IWControl, IWHTMLControls, dxShellDialogs;
 
 type
   TFrmOutputDoc = class(TFrmPrototype, IFrmDoc)
@@ -262,13 +262,21 @@ var
   request_key : TGUID;
   i : integer;
   vl_result : string;
-
+  vl_owner : TNsiPartner;
+  vl_vat : string;
 begin
   if length(dsDocHeadF_EMAIL.AsString) = 0 then
   begin
     Dialogs.MessageDlg('Не заполнена электронная почта клиента',mtError,[mbOk],0,mbOk);
     exit;
   end;
+  vl_owner := TNsiPartner.Create;
+  vl_owner.Partner_id := dsDocHeadF_OWNER.AsInteger;
+  if vl_owner.GetNsiProp(21) = '5' then
+    vl_vat := '7'
+  else
+    vl_vat := '1';
+  vl_owner.Free;
   jsonInvoice := TJSONObject.Create;
   jsonReciept := TJSONObject.Create;
   jsonCustomer := TJSONObject.Create;
@@ -313,7 +321,7 @@ begin
     jsonPrice.AddPair('value',TJSONNumber.Create(dsDocStringsF_PRICE_VAL.AsCurrency));
     jsonPrice.AddPair('currency','RUB');
     jsonPos.AddPair('amount',jsonPrice);
-    jsonPos.AddPair('vat_code','1');
+    jsonPos.AddPair('vat_code',vl_vat);
     jsonItem.AddElement(jsonPos);
     dsDocStrings.Next;
   end;

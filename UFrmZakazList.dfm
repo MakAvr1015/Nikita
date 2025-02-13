@@ -19,7 +19,7 @@ inherited FrmZakazList: TFrmZakazList
     ExplicitHeight = 445
     inherited RzToolbar: TRzToolbar
       Width = 1066
-      Height = 44
+      Height = 71
       RowHeight = 40
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
@@ -27,7 +27,7 @@ inherited FrmZakazList: TFrmZakazList
       ShowButtonCaptions = True
       TextOptions = ttoShowTextLabels
       ExplicitWidth = 1066
-      ExplicitHeight = 44
+      ExplicitHeight = 71
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -41,141 +41,166 @@ inherited FrmZakazList: TFrmZakazList
         BtnExecute
         BtnDelete
         BtnSave
+        BtnExport
         BtnExit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
-        Top = 2
+        Top = 0
         Layout = blGlyphTop
         OnClick = BtnNewClick
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnOpen: TRzToolButton
         Left = 225
-        Top = 2
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnOpenClick
         ExplicitLeft = 225
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnFind: TRzToolButton
         Left = 345
-        Top = 2
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 345
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnPrint: TRzToolButton
         Left = 405
-        Top = 2
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 405
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOK: TRzToolButton
         Left = 479
-        Top = 2
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 479
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnCancel: TRzToolButton
         Left = 539
-        Top = 2
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 539
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnRefresh: TRzToolButton
         Left = 285
-        Top = 2
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 285
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnEdit: TRzToolButton
         Left = 64
-        Top = 2
+        Top = 0
         Width = 87
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 64
+        ExplicitTop = 0
         ExplicitWidth = 87
         ExplicitHeight = 40
       end
       inherited BtnExecute: TRzToolButton
         Left = 599
-        Top = 2
+        Top = 0
         Width = 64
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 599
+        ExplicitTop = 0
         ExplicitWidth = 64
         ExplicitHeight = 40
       end
       inherited BtnDelete: TRzToolButton
         Left = 663
-        Top = 2
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 663
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnSave: TRzToolButton
         Left = 723
-        Top = 2
+        Top = 0
         Width = 63
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 723
+        ExplicitTop = 0
         ExplicitWidth = 63
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 786
-        Top = 2
+        Left = 848
+        Top = 0
         Layout = blGlyphTop
-        ExplicitLeft = 786
+        ExplicitLeft = 848
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnView: TRzToolButton
         Left = 151
-        Top = 2
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 151
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
+      inherited BtnExport: TRzToolButton
+        Left = 786
+        Top = 0
+        Width = 62
+        Height = 40
+        Layout = blGlyphTop
+        ExplicitLeft = 786
+        ExplicitTop = 0
+        ExplicitWidth = 62
+        ExplicitHeight = 40
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 846
-        Top = 12
-        ExplicitLeft = 846
-        ExplicitTop = 12
+        Left = 4
+        Top = 50
+        ExplicitLeft = 4
+        ExplicitTop = 50
       end
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 45
+      Top = 72
       Width = 1066
       Height = 22
       AutoSize = True
       Caption = 'ToolBar1'
       TabOrder = 1
-      ExplicitTop = 41
+      ExplicitTop = 43
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -197,17 +222,18 @@ inherited FrmZakazList: TFrmZakazList
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 67
+      Top = 94
       Width = 1066
-      Height = 377
+      Height = 350
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 63
-      ExplicitHeight = 381
+      ExplicitTop = 65
+      ExplicitHeight = 379
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = cxGrid1DBTableView1DblClick
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srListZakaz
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
@@ -399,7 +425,7 @@ inherited FrmZakazList: TFrmZakazList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

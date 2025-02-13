@@ -32,7 +32,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
   frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
-  dxDateRanges, dxScrollbarAnnotations;
+  dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmPriceDoc = class(TFrmPrototype)

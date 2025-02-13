@@ -26,7 +26,7 @@ uses
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   frxChBox, frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
-  frxDBSet, System.ImageList, Vcl.ImgList;
+  frxDBSet, System.ImageList, Vcl.ImgList, dxShellDialogs;
 
 type
   TFrmPrototype = class(TForm)
@@ -69,6 +69,8 @@ type
     frxRTFExport1: TfrxRTFExport;
     frxDBDataset1: TfrxDBDataset;
     ImageList: TImageList;
+    BtnExport: TRzToolButton;
+    dxSaveFileDialog: TdxSaveFileDialog;
     procedure BtnOKClick(Sender: TObject);
     procedure BtnCancelClick(Sender: TObject);
     procedure BtnPrintClick(Sender: TObject);
@@ -93,6 +95,7 @@ type
     State: TDragState; var Accept: Boolean);
 
   procedure prGridDragDropEvent(Sender, Source: TObject; X,Y: Integer);
+    procedure BtnExportClick(Sender: TObject);
 
   private
     Act: TCloseAction;
@@ -127,7 +130,7 @@ var
 implementation
 
 uses
-  upublic, uMainFrm, cxStyles, cxGridTableView;
+  upublic, uMainFrm, cxStyles, cxGridTableView, cxGridExportLink;
 {$R *.dfm}
 
 procedure TFrmPrototype.BtnCancelClick(Sender: TObject);
@@ -152,6 +155,23 @@ begin
         refreshDs((cmp as TDataSet));
         (cmp as TpFibDataSet).Transaction.CommitRetaining;
       end;
+    end;
+  end;
+end;
+
+procedure TFrmPrototype.BtnExportClick(Sender: TObject);
+//dxSaveFileDialog
+var
+  vl_index : integer;
+begin
+  for vl_index := 0 to self.ComponentCount-1 do
+  begin
+    if self.Components[vl_index] is TcxGrid then
+    begin
+       if dxSaveFileDialog.Execute then
+       begin
+         ExportGridToExcel(dxSaveFileDialog.fileName, (self.Components[vl_index] as TcxGrid), True);
+       end;
     end;
   end;
 end;

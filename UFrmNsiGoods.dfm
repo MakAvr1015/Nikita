@@ -175,6 +175,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
         BtnExecute
         BtnDelete
         BtnSave
+        BtnExport
         BtnExit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
@@ -251,9 +252,9 @@ inherited FrmNsiGoods: TFrmNsiGoods
         ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
-        Left = 332
+        Left = 357
         Top = 0
-        ExplicitLeft = 332
+        ExplicitLeft = 357
         ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
@@ -261,10 +262,16 @@ inherited FrmNsiGoods: TFrmNsiGoods
         Visible = False
         ExplicitTop = 0
       end
+      inherited BtnExport: TRzToolButton
+        Left = 332
+        Top = 0
+        ExplicitLeft = 332
+        ExplicitTop = 0
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 357
+        Left = 382
         Top = 2
-        ExplicitLeft = 357
+        ExplicitLeft = 382
         ExplicitTop = 2
       end
     end
@@ -277,6 +284,8 @@ inherited FrmNsiGoods: TFrmNsiGoods
       DragMode = dmAutomatic
       TabOrder = 0
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitTop = 57
+      ExplicitHeight = 188
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = cxGrid1DBTableView1DblClick
         OnKeyPress = cxGrid1DBTableView1KeyPress
@@ -549,6 +558,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
       GradientColorStop = clGradientActiveCaption
       TabOrder = 3
       VisualStyle = vsGradient
+      ExplicitTop = 28
       ToolbarControls = (
         RzEditFind
         BtnFilter
@@ -638,7 +648,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

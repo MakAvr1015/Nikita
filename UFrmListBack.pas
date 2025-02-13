@@ -31,7 +31,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxTextEdit,
   cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
-  frxDBSet;
+  frxDBSet, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmListBack = class(TFrmListInputDocs)

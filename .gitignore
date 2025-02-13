@@ -76,7 +76,7 @@ ModelSupport_Nikita/default.txaPackage
 *.txaPackage
 Nikita.dproj.local
 Nikita.identcache
-Nikita.exe
+*.exe
 nikita.ini
 *.map
 *.ini

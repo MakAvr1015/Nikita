@@ -12,6 +12,7 @@ type
     f_name: String;
     f_address: String;
     f_id: integer;
+    const SQL_GET_PROP : String = 'select * from SP_T_NSI_PARTNER_INFO_S(%1)';
   public
     function GetInn: string;
     procedure SetInn(p_inn: string);
@@ -21,6 +22,7 @@ type
     procedure SetAddress(P_address: string);
     function GetPartner_ID: integer;
     procedure SetPartner_id(p_id: integer);
+    function GetNsiProp(prop_id: integer) : string;
     property Partner_id: integer read GetPartner_ID write SetPartner_id;
   end;
 
@@ -61,7 +63,7 @@ type
 implementation
 
 uses
-  udm, Data.DB;
+  udm, Data.DB, System.StrUtils;
 { TNsiPartner }
 
 { TNsiPartner }
@@ -79,6 +81,33 @@ end;
 function TNsiPartner.GetName: string;
 begin
   result := f_name;
+end;
+
+function TNsiPartner.GetNsiProp(prop_id: integer): string;
+var
+  v_result : string;
+begin
+  if self.f_id > 0 then
+  begin
+    if prop_id > 0 then
+    begin
+      dm.DsPublicDs.Active := false;
+      dm.DsPublicDs.SQLs.SelectSQL.Clear;
+      dm.DsPublicDs.SQLs.SelectSQL.Add(ReplaceStr(self.SQL_GET_PROP,'%1',IntToStr(self.f_id)));
+      dm.DsPublicDs.Active:=true;
+      dm.DsPublicDs.First;
+      while not dm.DsPublicDs.Eof do
+      begin
+        if dm.DsPublicDs.FieldByName('F_INFO_NAME').Value = prop_id then
+        begin
+          v_result := dm.DsPublicDs.FieldByName('F_VALUE').AsString;
+          break;
+        end;
+        dm.DsPublicDs.Next;
+      end;
+    end;
+  end;
+  result := v_result;
 end;
 
 function TNsiPartner.GetPartner_ID: integer;

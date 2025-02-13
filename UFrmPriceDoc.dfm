@@ -22,7 +22,9 @@ inherited FrmPriceDoc: TFrmPriceDoc
     ExplicitHeight = 348
     inherited RzToolbar: TRzToolbar
       Width = 944
+      Height = 25
       ExplicitWidth = 944
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -35,17 +37,68 @@ inherited FrmPriceDoc: TFrmPriceDoc
         BtnCancel
         BtnExecute
         BtnDelete
-        BtnSave)
+        BtnSave
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
       inherited BtnOpen: TRzToolButton
+        Top = 0
         Enabled = True
         OnClick = BtnOpenClick
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnDelete: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
         Top = 0
         ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
+        Top = 0
         Visible = False
+        ExplicitTop = 0
+      end
+      inherited BtnExport: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
         Top = 2
@@ -55,7 +108,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
     end
     object RzPanel1: TRzPanel
       Left = 1
-      Top = 30
+      Top = 26
       Width = 944
       Height = 78
       Align = alTop
@@ -141,9 +194,9 @@ inherited FrmPriceDoc: TFrmPriceDoc
     end
     object Panel1: TPanel
       Left = 1
-      Top = 108
+      Top = 104
       Width = 944
-      Height = 239
+      Height = 243
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
@@ -152,7 +205,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
       object Splitter1: TSplitter
         Left = 800
         Top = 1
-        Height = 239
+        Height = 241
         Align = alRight
         ExplicitLeft = 760
         ExplicitTop = 256
@@ -162,10 +215,11 @@ inherited FrmPriceDoc: TFrmPriceDoc
         Left = 1
         Top = 1
         Width = 799
-        Height = 239
+        Height = 241
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
+        ExplicitHeight = 239
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDragDrop = cxGrid1DBTableView1DragDrop
           OnDragOver = cxGrid1DBTableView1DragOver
@@ -235,7 +289,8 @@ inherited FrmPriceDoc: TFrmPriceDoc
         Properties.FitMode = ifmProportionalStretch
         Properties.GraphicClassName = 'TdxSmartImage'
         TabOrder = 1
-        Height = 237
+        ExplicitHeight = 239
+        Height = 241
         Width = 140
       end
     end
@@ -247,7 +302,7 @@ inherited FrmPriceDoc: TFrmPriceDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

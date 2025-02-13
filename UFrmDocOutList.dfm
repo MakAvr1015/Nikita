@@ -1,37 +1,38 @@
 inherited FrmDocOutList: TFrmDocOutList
   Caption = #1046#1091#1088#1085#1072#1083' '#1088#1072#1089#1093#1086#1076#1085#1099#1093' '#1076#1086#1082#1091#1084#1077#1085#1090#1086#1074
-  ClientHeight = 782
-  ClientWidth = 1112
+  ClientHeight = 620
+  ClientWidth = 827
   OnKeyUp = FormKeyUp
-  ExplicitWidth = 1128
-  ExplicitHeight = 821
+  ExplicitTop = -153
+  ExplicitWidth = 843
+  ExplicitHeight = 659
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
-    Top = 763
-    Width = 1112
-    ExplicitTop = 763
-    ExplicitWidth = 1112
+    Top = 601
+    Width = 827
+    ExplicitTop = 601
+    ExplicitWidth = 827
     inherited DsFormName: TRzStatusPane
       Caption = 'dsDocList'
     end
   end
   inherited Panel3: TPanel
-    Width = 1112
-    Height = 763
-    ExplicitWidth = 1112
-    ExplicitHeight = 763
+    Width = 827
+    Height = 601
+    ExplicitWidth = 827
+    ExplicitHeight = 601
     inherited RzToolbar: TRzToolbar
-      Width = 1110
-      Height = 607
+      Width = 825
+      Height = 65
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoCustom
       ParentShowHint = False
-      ExplicitWidth = 1110
-      ExplicitHeight = 607
+      ExplicitWidth = 825
+      ExplicitHeight = 65
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -45,7 +46,9 @@ inherited FrmDocOutList: TFrmDocOutList
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
         Width = 74
@@ -170,11 +173,11 @@ inherited FrmDocOutList: TFrmDocOutList
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 814
-        Top = 0
+        Left = 66
+        Top = 25
         Layout = blGlyphTop
-        ExplicitLeft = 814
-        ExplicitTop = 0
+        ExplicitLeft = 66
+        ExplicitTop = 25
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
@@ -191,21 +194,32 @@ inherited FrmDocOutList: TFrmDocOutList
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
+      inherited BtnExport: TRzToolButton
+        Left = 4
+        Top = 25
+        Width = 62
+        Height = 40
+        Layout = blGlyphTop
+        ExplicitLeft = 4
+        ExplicitTop = 25
+        ExplicitWidth = 62
+        ExplicitHeight = 40
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 586
-        ExplicitTop = 586
+        Left = 126
+        Top = 35
+        ExplicitLeft = 126
+        ExplicitTop = 35
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 637
-      Width = 1110
-      Height = 125
+      Top = 95
+      Width = 825
+      Height = 505
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 559
-      ExplicitHeight = 203
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         OnKeyUp = FormKeyUp
@@ -371,6 +385,9 @@ inherited FrmDocOutList: TFrmDocOutList
           DataBinding.FieldName = 'F_OWNER_NAME'
           Width = 141
         end
+        object cxGrid1DBTableView1F_PARTNER_INN: TcxGridDBColumn
+          DataBinding.FieldName = 'F_PARTNER_INN'
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -378,15 +395,14 @@ inherited FrmDocOutList: TFrmDocOutList
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 608
-      Width = 1110
+      Top = 66
+      Width = 825
       Height = 29
       Caption = 'ToolBar1'
       DrawingStyle = dsGradient
       GradientEndColor = clWhite
       GradientStartColor = clGradientActiveCaption
       TabOrder = 2
-      ExplicitTop = 530
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -435,6 +451,7 @@ inherited FrmDocOutList: TFrmDocOutList
       '    F_STATE_NAME,'
       '    F_SKLAD_NAME,'
       '    F_PARTNER_NAME,'
+      '    F_PARTNER_INN,'
       '    f_doc_count,'
       '    f_doc_sum,'
       '    f_doc_skidka,'
@@ -445,9 +462,10 @@ inherited FrmDocOutList: TFrmDocOutList
       '    f_user,'
       '    f_property_1,'
       '    f_OWNER,'
-      '    F_OWNER_NAME'
+      '    F_OWNER_NAME,'
+      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
       'FROM'
-      '    SP_T_DOC_OUT_S(1,:str_date,:end_date) '
+      '    SP_T_DOC_OUT_S(1,:str_date,:end_date)'
       'union'
       'SELECT'
       '    F_ID,'
@@ -461,6 +479,7 @@ inherited FrmDocOutList: TFrmDocOutList
       '    F_STATE_NAME,'
       '    F_SKLAD_NAME,'
       '    F_PARTNER_NAME,'
+      '    F_PARTNER_INN,'
       '    f_doc_count,'
       '    f_doc_sum,'
       '    f_doc_skidka,'
@@ -471,7 +490,9 @@ inherited FrmDocOutList: TFrmDocOutList
       '    f_user,'
       '    f_property_1,'
       '    f_OWNER,'
-      '    F_OWNER_NAME'
+      '    F_OWNER_NAME,'
+      '    pak_t_doc.get_doc_out_property(f_id) F_PROPS'
+      ''
       'FROM'
       '    SP_T_DOC_OUT_S(2,:str_date,:end_date) '
       ')')
@@ -489,6 +510,7 @@ inherited FrmDocOutList: TFrmDocOutList
       'f_pay_sum<>f_doc_sum'
       False)
     BeforeOpen = dsDocListBeforeOpen
+    OnCalcFields = dsDocListCalcFields
     Transaction = pFIBTransaction
     Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -615,6 +637,18 @@ inherited FrmDocOutList: TFrmDocOutList
       DisplayLabel = #1054#1090#1087#1088#1072#1074#1080#1090#1077#1083#1100
       FieldName = 'F_OWNER_NAME'
       Size = 255
+      EmptyStrToNull = True
+    end
+    object dsDocListF_PROPS: TFIBStringField
+      DisplayLabel = #1057#1074#1086#1081#1089#1090#1074#1072' '#1076#1086#1082#1091#1084#1077#1085#1090#1072
+      FieldName = 'F_PROPS'
+      Visible = False
+      Size = 10000
+      EmptyStrToNull = True
+    end
+    object dsDocListF_PARTNER_INN: TFIBStringField
+      DisplayLabel = #1048#1053#1053' '#1087#1072#1088#1090#1085#1077#1088#1072
+      FieldName = 'F_PARTNER_INN'
       EmptyStrToNull = True
     end
   end
@@ -877,11 +911,14 @@ inherited FrmDocOutList: TFrmDocOutList
       EmptyStrToNull = True
     end
   end
+  inherited frxDBDataset1: TfrxDBDataset
+    Left = 544
+  end
   inherited ImageList: TImageList
     Left = 736
     Top = 168
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

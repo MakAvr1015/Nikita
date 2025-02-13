@@ -12,7 +12,11 @@ uses
   frxExportPDF, frxCross, frxBarcode, frxDCtrl, frxDesgn, frxFIBComponents,
   Menus, cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxClasses, cxControls, cxGridCustomView, cxGrid, RzButton, RzPanel, ExtCtrls,
-  RzStatus, ComCtrls, ToolWin;
+  RzStatus, ComCtrls, ToolWin, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
+  dxShellDialogs, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
+  frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmMoveDocListPrihod = class(TFrmMoveDocList)

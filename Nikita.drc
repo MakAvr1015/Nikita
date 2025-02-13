@@ -8,116 +8,139 @@
   resources were bound to the produced executable.
 */
 
-#define IdResourceStringsSSPI_RSHTTPSSPINoContext 60064
-#define IdResourceStringsSSPI_RSHTTPSSPIPKU2UCertFailure 60065
-#define IdResourceStringsSSPI_RSHTTPSSPIMutualAuthFailed 60066
-#define IdResourceStringsSSPI_RSHTTPSSPIUnknwonError 60067
-#define IdResourceStringsSSPI_RSHTTPSSPIErrorMsg 60068
-#define IdResourceStringsSSPI_RSHTTPSSPIInterfaceInitFailed 60069
-#define IdResourceStringsSSPI_RSHTTPSSPINoPkgInfoSpecified 60070
-#define IdResourceStringsSSPI_RSHTTPSSPINoCredentialHandle 60071
-#define IdResourceStringsSSPI_RSHTTPSSPICanNotChangeCredentials 60072
-#define IdResourceStringsSSPI_RSHTTPSSPIUnknwonCredentialUse 60073
-#define IdResourceStringsSSPI_RSHTTPSSPIDoAuquireCredentialHandle 60074
-#define IdResourceStringsSSPI_RSHTTPSSPICompleteTokenNotSupported 60075
-#define dxRibbonStatusBar_cxSToolbarPanelStyle 60076
-#define UPluginManager_rsPluginsLoadError 60077
-#define IdResourceStringsSSPI_RSHTTPSSPISmartcardCertRevoked 60080
-#define IdResourceStringsSSPI_RSHTTPSSPIIssuingCAUntrusted 60081
-#define IdResourceStringsSSPI_RSHTTPSSPIRevocationOffline 60082
-#define IdResourceStringsSSPI_RSHTTPSSPIPKInitClientFailure 60083
-#define IdResourceStringsSSPI_RSHTTPSSPISmartcardExpired 60084
-#define IdResourceStringsSSPI_RSHTTPSSPINoS4UProtSupport 60085
-#define IdResourceStringsSSPI_RSHTTPSSPICrossRealmDeligationFailure 60086
-#define IdResourceStringsSSPI_RSHTTPSSPIRevocationOfflineKDC 60087
-#define IdResourceStringsSSPI_RSHTTPSSPICAUntrustedKDC 60088
-#define IdResourceStringsSSPI_RSHTTPSSPIKDCCertExpired 60089
-#define IdResourceStringsSSPI_RSHTTPSSPIKDCCertRevoked 60090
-#define IdResourceStringsSSPI_RSHTTPSSPISignatureNeeded 60091
-#define IdResourceStringsSSPI_RSHTTPSSPIInvalidParameter 60092
-#define IdResourceStringsSSPI_RSHTTPSSPIDeligationPolicy 60093
-#define IdResourceStringsSSPI_RSHTTPSSPIPolicyNTLMOnly 60094
-#define IdResourceStringsSSPI_RSHTTPSSPINoRenegotiation 60095
-#define IdResourceStringsSSPI_RSHTTPSSPIStrongCryptoNotSupported 60096
-#define IdResourceStringsSSPI_RSHTTPSSPIKDCReplyTooManyPrincipals 60097
-#define IdResourceStringsSSPI_RSHTTPSSPINoPAData 60098
-#define IdResourceStringsSSPI_RSHTTPSSPIPKInitNameMismatch 60099
-#define IdResourceStringsSSPI_RSHTTPSSPISmartcardLogonReq 60100
-#define IdResourceStringsSSPI_RSHTTPSSPISysShutdownInProg 60101
-#define IdResourceStringsSSPI_RSHTTPSSPIKDCInvalidRequest 60102
-#define IdResourceStringsSSPI_RSHTTPSSPIKDCUnableToRefer 60103
-#define IdResourceStringsSSPI_RSHTTPSSPIKDCETypeUnknown 60104
-#define IdResourceStringsSSPI_RSHTTPSSPIUnsupPreauth 60105
-#define IdResourceStringsSSPI_RSHTTPSSPIDeligationReq 60106
-#define IdResourceStringsSSPI_RSHTTPSSPIBadBindings 60107
-#define IdResourceStringsSSPI_RSHTTPSSPIMultipleAccounts 60108
-#define IdResourceStringsSSPI_RSHTTPSSPINoKerbKey 60109
-#define IdResourceStringsSSPI_RSHTTPSSPICertWrongUsage 60110
-#define IdResourceStringsSSPI_RSHTTPSSPIDowngradeDetected 60111
-#define IdResourceStringsSSPI_RSHTTPSSPITimeScew 60112
-#define IdResourceStringsSSPI_RSHTTPSSPIUntrustedRoot 60113
-#define IdResourceStringsSSPI_RSHTTPSSPIIllegalMessage 60114
-#define IdResourceStringsSSPI_RSHTTPSSPICertUnknown 60115
-#define IdResourceStringsSSPI_RSHTTPSSPICertExpired 60116
-#define IdResourceStringsSSPI_RSHTTPSSPIEncryptionFailure 60117
-#define IdResourceStringsSSPI_RSHTTPSSPIDecryptionFailure 60118
-#define IdResourceStringsSSPI_RSHTTPSSPIAlgorithmMismatch 60119
-#define IdResourceStringsSSPI_RSHTTPSSPISecurityQOSFailure 60120
-#define IdResourceStringsSSPI_RSHTTPSSPISecCtxWasDelBeforeUpdated 60121
-#define IdResourceStringsSSPI_RSHTTPSSPIClientNoTGTReply 60122
-#define IdResourceStringsSSPI_RSHTTPSSPILocalNoIPAddr 60123
-#define IdResourceStringsSSPI_RSHTTPSSPIWrongCredHandle 60124
-#define IdResourceStringsSSPI_RSHTTPSSPICryptoSysInvalid 60125
-#define IdResourceStringsSSPI_RSHTTPSSPIMaxTicketRef 60126
-#define IdResourceStringsSSPI_RSHTTPSSPIMustBeKDC 60127
-#define IdResourceStringsSSPI_RSHTTPSSPIMessageAltered 60128
-#define IdResourceStringsSSPI_RSHTTPSSPIOutOfSequence 60129
-#define IdResourceStringsSSPI_RSHTTPSSPINoAuthAuthority 60130
-#define IdResourceStringsSSPI_RSHTTPSSPIContinueNeeded 60131
-#define IdResourceStringsSSPI_RSHTTPSSPICompleteNeeded 60132
-#define IdResourceStringsSSPI_RSHTTPSSPICompleteContinueNeeded 60133
-#define IdResourceStringsSSPI_RSHTTPSSPILocalLogin 60134
-#define IdResourceStringsSSPI_RSHTTPSSPIBadPackageID 60135
-#define IdResourceStringsSSPI_RSHTTPSSPIContextExpired 60136
-#define IdResourceStringsSSPI_RSHTTPSSPIIncompleteMessage 60137
-#define IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialNotInit 60138
-#define IdResourceStringsSSPI_RSHTTPSSPIBufferTooSmall 60139
-#define IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialsInit 60140
-#define IdResourceStringsSSPI_RSHTTPSSPIRengotiate 60141
-#define IdResourceStringsSSPI_RSHTTPSSPIWrongPrincipal 60142
-#define IdResourceStringsSSPI_RSHTTPSSPINoLSACode 60143
-#define IdResourceStringsSSPI_RSHTTPSSPISuccess 60144
-#define IdResourceStringsSSPI_RSHTTPSSPINotEnoughMem 60145
-#define IdResourceStringsSSPI_RSHTTPSSPIInvalidHandle 60146
-#define IdResourceStringsSSPI_RSHTTPSSPIFuncNotSupported 60147
-#define IdResourceStringsSSPI_RSHTTPSSPIUnknownTarget 60148
-#define IdResourceStringsSSPI_RSHTTPSSPIInternalError 60149
-#define IdResourceStringsSSPI_RSHTTPSSPISecPackageNotFound 60150
-#define IdResourceStringsSSPI_RSHTTPSSPINotOwner 60151
-#define IdResourceStringsSSPI_RSHTTPSSPIPackageCannotBeInstalled 60152
-#define IdResourceStringsSSPI_RSHTTPSSPIInvalidToken 60153
-#define IdResourceStringsSSPI_RSHTTPSSPICannotPack 60154
-#define IdResourceStringsSSPI_RSHTTPSSPIQOPNotSupported 60155
-#define IdResourceStringsSSPI_RSHTTPSSPINoImpersonation 60156
-#define IdResourceStringsSSPI_RSHTTPSSPILoginDenied 60157
-#define IdResourceStringsSSPI_RSHTTPSSPIUnknownCredentials 60158
-#define IdResourceStringsSSPI_RSHTTPSSPINoCredentials 60159
-#define IdResourceStringsOpenSSL_RSOSSLModeNotSet 60160
-#define IdResourceStringsOpenSSL_RSOSSLCouldNotLoadSSLLibrary 60161
-#define IdResourceStringsOpenSSL_RSOSSLStatusString 60162
-#define IdResourceStringsOpenSSL_RSOSSLAlert 60163
-#define IdResourceStringsOpenSSL_RSOSSLReadAlert 60164
-#define IdResourceStringsOpenSSL_RSOSSLWriteAlert 60165
-#define IdResourceStringsOpenSSL_RSOSSLAcceptLoop 60166
-#define IdResourceStringsOpenSSL_RSOSSLAcceptError 60167
-#define IdResourceStringsOpenSSL_RSOSSLAcceptFailed 60168
-#define IdResourceStringsOpenSSL_RSOSSLAcceptExit 60169
-#define IdResourceStringsOpenSSL_RSOSSLConnectLoop 60170
-#define IdResourceStringsOpenSSL_RSOSSLConnectError 60171
-#define IdResourceStringsOpenSSL_RSOSSLConnectFailed 60172
-#define IdResourceStringsOpenSSL_RSOSSLConnectExit 60173
-#define IdResourceStringsOpenSSL_RSOSSLHandshakeStart 60174
-#define IdResourceStringsOpenSSL_RSOSSLHandshakeDone 60175
+#define IdResourceStringsSSPI_RSHTTPSSPIUnknwonCredentialUse 60032
+#define IdResourceStringsSSPI_RSHTTPSSPIDoAuquireCredentialHandle 60033
+#define IdResourceStringsSSPI_RSHTTPSSPICompleteTokenNotSupported 60034
+#define dxRibbonStatusBar_cxSToolbarPanelStyle 60035
+#define UPluginManager_rsPluginsLoadError 60036
+#define IdResourceStringsSSPI_RSHTTPSSPIKDCCertExpired 60048
+#define IdResourceStringsSSPI_RSHTTPSSPIKDCCertRevoked 60049
+#define IdResourceStringsSSPI_RSHTTPSSPISignatureNeeded 60050
+#define IdResourceStringsSSPI_RSHTTPSSPIInvalidParameter 60051
+#define IdResourceStringsSSPI_RSHTTPSSPIDeligationPolicy 60052
+#define IdResourceStringsSSPI_RSHTTPSSPIPolicyNTLMOnly 60053
+#define IdResourceStringsSSPI_RSHTTPSSPINoRenegotiation 60054
+#define IdResourceStringsSSPI_RSHTTPSSPINoContext 60055
+#define IdResourceStringsSSPI_RSHTTPSSPIPKU2UCertFailure 60056
+#define IdResourceStringsSSPI_RSHTTPSSPIMutualAuthFailed 60057
+#define IdResourceStringsSSPI_RSHTTPSSPIUnknwonError 60058
+#define IdResourceStringsSSPI_RSHTTPSSPIErrorMsg 60059
+#define IdResourceStringsSSPI_RSHTTPSSPIInterfaceInitFailed 60060
+#define IdResourceStringsSSPI_RSHTTPSSPINoPkgInfoSpecified 60061
+#define IdResourceStringsSSPI_RSHTTPSSPINoCredentialHandle 60062
+#define IdResourceStringsSSPI_RSHTTPSSPICanNotChangeCredentials 60063
+#define IdResourceStringsSSPI_RSHTTPSSPIUnsupPreauth 60064
+#define IdResourceStringsSSPI_RSHTTPSSPIDeligationReq 60065
+#define IdResourceStringsSSPI_RSHTTPSSPIBadBindings 60066
+#define IdResourceStringsSSPI_RSHTTPSSPIMultipleAccounts 60067
+#define IdResourceStringsSSPI_RSHTTPSSPINoKerbKey 60068
+#define IdResourceStringsSSPI_RSHTTPSSPICertWrongUsage 60069
+#define IdResourceStringsSSPI_RSHTTPSSPIDowngradeDetected 60070
+#define IdResourceStringsSSPI_RSHTTPSSPISmartcardCertRevoked 60071
+#define IdResourceStringsSSPI_RSHTTPSSPIIssuingCAUntrusted 60072
+#define IdResourceStringsSSPI_RSHTTPSSPIRevocationOffline 60073
+#define IdResourceStringsSSPI_RSHTTPSSPIPKInitClientFailure 60074
+#define IdResourceStringsSSPI_RSHTTPSSPISmartcardExpired 60075
+#define IdResourceStringsSSPI_RSHTTPSSPINoS4UProtSupport 60076
+#define IdResourceStringsSSPI_RSHTTPSSPICrossRealmDeligationFailure 60077
+#define IdResourceStringsSSPI_RSHTTPSSPIRevocationOfflineKDC 60078
+#define IdResourceStringsSSPI_RSHTTPSSPICAUntrustedKDC 60079
+#define IdResourceStringsSSPI_RSHTTPSSPISecCtxWasDelBeforeUpdated 60080
+#define IdResourceStringsSSPI_RSHTTPSSPIClientNoTGTReply 60081
+#define IdResourceStringsSSPI_RSHTTPSSPILocalNoIPAddr 60082
+#define IdResourceStringsSSPI_RSHTTPSSPIWrongCredHandle 60083
+#define IdResourceStringsSSPI_RSHTTPSSPICryptoSysInvalid 60084
+#define IdResourceStringsSSPI_RSHTTPSSPIMaxTicketRef 60085
+#define IdResourceStringsSSPI_RSHTTPSSPIMustBeKDC 60086
+#define IdResourceStringsSSPI_RSHTTPSSPIStrongCryptoNotSupported 60087
+#define IdResourceStringsSSPI_RSHTTPSSPIKDCReplyTooManyPrincipals 60088
+#define IdResourceStringsSSPI_RSHTTPSSPINoPAData 60089
+#define IdResourceStringsSSPI_RSHTTPSSPIPKInitNameMismatch 60090
+#define IdResourceStringsSSPI_RSHTTPSSPISmartcardLogonReq 60091
+#define IdResourceStringsSSPI_RSHTTPSSPISysShutdownInProg 60092
+#define IdResourceStringsSSPI_RSHTTPSSPIKDCInvalidRequest 60093
+#define IdResourceStringsSSPI_RSHTTPSSPIKDCUnableToRefer 60094
+#define IdResourceStringsSSPI_RSHTTPSSPIKDCETypeUnknown 60095
+#define IdResourceStringsSSPI_RSHTTPSSPIIncompleteMessage 60096
+#define IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialNotInit 60097
+#define IdResourceStringsSSPI_RSHTTPSSPIBufferTooSmall 60098
+#define IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialsInit 60099
+#define IdResourceStringsSSPI_RSHTTPSSPIRengotiate 60100
+#define IdResourceStringsSSPI_RSHTTPSSPIWrongPrincipal 60101
+#define IdResourceStringsSSPI_RSHTTPSSPINoLSACode 60102
+#define IdResourceStringsSSPI_RSHTTPSSPITimeScew 60103
+#define IdResourceStringsSSPI_RSHTTPSSPIUntrustedRoot 60104
+#define IdResourceStringsSSPI_RSHTTPSSPIIllegalMessage 60105
+#define IdResourceStringsSSPI_RSHTTPSSPICertUnknown 60106
+#define IdResourceStringsSSPI_RSHTTPSSPICertExpired 60107
+#define IdResourceStringsSSPI_RSHTTPSSPIEncryptionFailure 60108
+#define IdResourceStringsSSPI_RSHTTPSSPIDecryptionFailure 60109
+#define IdResourceStringsSSPI_RSHTTPSSPIAlgorithmMismatch 60110
+#define IdResourceStringsSSPI_RSHTTPSSPISecurityQOSFailure 60111
+#define IdResourceStringsSSPI_RSHTTPSSPIInvalidToken 60112
+#define IdResourceStringsSSPI_RSHTTPSSPICannotPack 60113
+#define IdResourceStringsSSPI_RSHTTPSSPIQOPNotSupported 60114
+#define IdResourceStringsSSPI_RSHTTPSSPINoImpersonation 60115
+#define IdResourceStringsSSPI_RSHTTPSSPILoginDenied 60116
+#define IdResourceStringsSSPI_RSHTTPSSPIUnknownCredentials 60117
+#define IdResourceStringsSSPI_RSHTTPSSPINoCredentials 60118
+#define IdResourceStringsSSPI_RSHTTPSSPIMessageAltered 60119
+#define IdResourceStringsSSPI_RSHTTPSSPIOutOfSequence 60120
+#define IdResourceStringsSSPI_RSHTTPSSPINoAuthAuthority 60121
+#define IdResourceStringsSSPI_RSHTTPSSPIContinueNeeded 60122
+#define IdResourceStringsSSPI_RSHTTPSSPICompleteNeeded 60123
+#define IdResourceStringsSSPI_RSHTTPSSPICompleteContinueNeeded 60124
+#define IdResourceStringsSSPI_RSHTTPSSPILocalLogin 60125
+#define IdResourceStringsSSPI_RSHTTPSSPIBadPackageID 60126
+#define IdResourceStringsSSPI_RSHTTPSSPIContextExpired 60127
+#define IdResourceStringsOpenSSL_RSOSSLAcceptExit 60128
+#define IdResourceStringsOpenSSL_RSOSSLConnectLoop 60129
+#define IdResourceStringsOpenSSL_RSOSSLConnectError 60130
+#define IdResourceStringsOpenSSL_RSOSSLConnectFailed 60131
+#define IdResourceStringsOpenSSL_RSOSSLConnectExit 60132
+#define IdResourceStringsOpenSSL_RSOSSLHandshakeStart 60133
+#define IdResourceStringsOpenSSL_RSOSSLHandshakeDone 60134
+#define IdResourceStringsSSPI_RSHTTPSSPISuccess 60135
+#define IdResourceStringsSSPI_RSHTTPSSPINotEnoughMem 60136
+#define IdResourceStringsSSPI_RSHTTPSSPIInvalidHandle 60137
+#define IdResourceStringsSSPI_RSHTTPSSPIFuncNotSupported 60138
+#define IdResourceStringsSSPI_RSHTTPSSPIUnknownTarget 60139
+#define IdResourceStringsSSPI_RSHTTPSSPIInternalError 60140
+#define IdResourceStringsSSPI_RSHTTPSSPISecPackageNotFound 60141
+#define IdResourceStringsSSPI_RSHTTPSSPINotOwner 60142
+#define IdResourceStringsSSPI_RSHTTPSSPIPackageCannotBeInstalled 60143
+#define cxExportStrs_scxWorkbookWrite 60144
+#define cxExportStrs_scxInvalidCellDimension 60145
+#define cxExportStrs_scxBoolTrue 60146
+#define cxExportStrs_scxBoolFalse 60147
+#define cxExportStrs_scxDefaultSheetCaption 60148
+#define cxExport_cxExportListIndexError 60149
+#define IdResourceStringsOpenSSL_RSOSSFailedToLoad 60150
+#define IdResourceStringsOpenSSL_RSOSSLModeNotSet 60151
+#define IdResourceStringsOpenSSL_RSOSSLCouldNotLoadSSLLibrary 60152
+#define IdResourceStringsOpenSSL_RSOSSLStatusString 60153
+#define IdResourceStringsOpenSSL_RSOSSLAlert 60154
+#define IdResourceStringsOpenSSL_RSOSSLReadAlert 60155
+#define IdResourceStringsOpenSSL_RSOSSLWriteAlert 60156
+#define IdResourceStringsOpenSSL_RSOSSLAcceptLoop 60157
+#define IdResourceStringsOpenSSL_RSOSSLAcceptError 60158
+#define IdResourceStringsOpenSSL_RSOSSLAcceptFailed 60159
+#define cxExportStrs_scxStyleManagerKill 60160
+#define cxExportStrs_scxStyleManagerCreate 60161
+#define cxExportStrs_scxExportToCSV 60162
+#define cxExportStrs_scxExportToHtml 60163
+#define cxExportStrs_scxExportToXml 60164
+#define cxExportStrs_scxExportToText 60165
+#define cxExportStrs_scxEmptyExportCache 60166
+#define cxExportStrs_scxIncorrectUnion 60167
+#define cxExportStrs_scxIllegalWidth 60168
+#define cxExportStrs_scxInvalidColumnRowCount 60169
+#define cxExportStrs_scxIllegalHeight 60170
+#define cxExportStrs_scxInvalidColumnIndex 60171
+#define cxExportStrs_scxInvalidRowIndex 60172
+#define cxExportStrs_scxInvalidStyleIndex 60173
+#define cxExportStrs_scxExportToExcel 60174
+#define cxExportStrs_scxExportToXlsx 60175
 #define cxSchedulerActionsStrs_sdxSchedulerActionCompressWeekendsHint 60176
 #define cxSchedulerActionsStrs_sdxSchedulerActionWorkTimeOnlyCaption 60177
 #define cxSchedulerActionsStrs_sdxSchedulerActionWorkTimeOnlyHint 60178
@@ -133,7 +156,7 @@
 #define cxSchedulerActionsStrs_sdxSchedulerActionPrintHint 60188
 #define cxSchedulerActionsStrs_sdxSchedulerActionPrintPreviewCaption 60189
 #define cxSchedulerActionsStrs_sdxSchedulerActionPrintPreviewHint 60190
-#define IdResourceStringsOpenSSL_RSOSSFailedToLoad 60191
+#define cxExportStrs_scxUnsupportedExport 60191
 #define cxSchedulerActionsStrs_sdxSchedulerActionGroupByDateHint 60192
 #define cxSchedulerActionsStrs_sdxSchedulerActionGroupByResourceCaption 60193
 #define cxSchedulerActionsStrs_sdxSchedulerActionGroupByResourceHint 60194
@@ -5480,6 +5503,18 @@
 #define System_SysConst_SOutOfMemory 65535
 STRINGTABLE
 BEGIN
+	IdResourceStringsSSPI_RSHTTPSSPIUnknwonCredentialUse,	L"Unknown credentials use"
+	IdResourceStringsSSPI_RSHTTPSSPIDoAuquireCredentialHandle,	L"Do AcquireCredentialsHandle first"
+	IdResourceStringsSSPI_RSHTTPSSPICompleteTokenNotSupported,	L"CompleteAuthToken is not supported"
+	dxRibbonStatusBar_cxSToolbarPanelStyle,	L"Toolbar Panel"
+	UPluginManager_rsPluginsLoadError,	L"One or more plugins has failed to load:\r\n%s"
+	IdResourceStringsSSPI_RSHTTPSSPIKDCCertExpired,	L"The domain controller certificate used for smartcard logon has expired. Please contact your system administrator with the contents of your system event log."
+	IdResourceStringsSSPI_RSHTTPSSPIKDCCertRevoked,	L"The domain controller certificate used for smartcard logon has been revoked. Please contact your system administrator with the contents of your system event log."
+	IdResourceStringsSSPI_RSHTTPSSPISignatureNeeded,	L"A signature operation must be performed before the user can authenticate."
+	IdResourceStringsSSPI_RSHTTPSSPIInvalidParameter,	L"One or more of the parameters passed to the function was invalid."
+	IdResourceStringsSSPI_RSHTTPSSPIDeligationPolicy,	L"Client policy does not allow credential delegation to target server."
+	IdResourceStringsSSPI_RSHTTPSSPIPolicyNTLMOnly,	L"Client policy does not allow credential delegation to target server with NLTM only authentication."
+	IdResourceStringsSSPI_RSHTTPSSPINoRenegotiation,	L"The recipient rejected the renegotiation request."
 	IdResourceStringsSSPI_RSHTTPSSPINoContext,	L"The required security context does not exist."
 	IdResourceStringsSSPI_RSHTTPSSPIPKU2UCertFailure,	L"The PKU2U protocol encountered an error while attempting to utilize the associated certificates."
 	IdResourceStringsSSPI_RSHTTPSSPIMutualAuthFailed,	L"The identity of the server computer could not be verified."
@@ -5489,11 +5524,13 @@ BEGIN
 	IdResourceStringsSSPI_RSHTTPSSPINoPkgInfoSpecified,	L"No PSecPkgInfo specified"
 	IdResourceStringsSSPI_RSHTTPSSPINoCredentialHandle,	L"No credential handle acquired"
 	IdResourceStringsSSPI_RSHTTPSSPICanNotChangeCredentials,	L"Can not change credentials after handle aquired. Use Release first"
-	IdResourceStringsSSPI_RSHTTPSSPIUnknwonCredentialUse,	L"Unknown credentials use"
-	IdResourceStringsSSPI_RSHTTPSSPIDoAuquireCredentialHandle,	L"Do AcquireCredentialsHandle first"
-	IdResourceStringsSSPI_RSHTTPSSPICompleteTokenNotSupported,	L"CompleteAuthToken is not supported"
-	dxRibbonStatusBar_cxSToolbarPanelStyle,	L"Toolbar Panel"
-	UPluginManager_rsPluginsLoadError,	L"One or more plugins has failed to load:\r\n%s"
+	IdResourceStringsSSPI_RSHTTPSSPIUnsupPreauth,	L"An unsupported preauthentication mechanism was presented to the Kerberos package."
+	IdResourceStringsSSPI_RSHTTPSSPIDeligationReq,	L"The requested operation cannot be completed. The computer must be trusted for delegation and the current user account must be configured to allow delegation."
+	IdResourceStringsSSPI_RSHTTPSSPIBadBindings,	L"Client's supplied SSPI channel bindings were incorrect."
+	IdResourceStringsSSPI_RSHTTPSSPIMultipleAccounts,	L"The received certificate was mapped to multiple accounts."
+	IdResourceStringsSSPI_RSHTTPSSPINoKerbKey,	L"SEC_E_NO_KERB_KEY"
+	IdResourceStringsSSPI_RSHTTPSSPICertWrongUsage,	L"The certificate is not valid for the requested usage."
+	IdResourceStringsSSPI_RSHTTPSSPIDowngradeDetected,	L"The system detected a possible attempt to compromise security. Please ensure that you can contact the server that authenticated you."
 	IdResourceStringsSSPI_RSHTTPSSPISmartcardCertRevoked,	L"The smartcard certificate used for authentication has been revoked. Please contact your system administrator. There may be additional information in the event log."
 	IdResourceStringsSSPI_RSHTTPSSPIIssuingCAUntrusted,	L"An untrusted certificate authority was detected While processing the smartcard certificate used for authentication. Please contact your system administrator."
 	IdResourceStringsSSPI_RSHTTPSSPIRevocationOffline,	L"The revocation status of the smartcard certificate used for authentication could not be determined. Please contact your system administrator."
@@ -5503,13 +5540,13 @@ BEGIN
 	IdResourceStringsSSPI_RSHTTPSSPICrossRealmDeligationFailure,	L"An attempt was made by this server to make a Kerberos constrained delegation request for a target outside of the server's realm. This is not supported, and indicates a misconfiguration on this server's allowed to delegate to list. Please contact your administrator."
 	IdResourceStringsSSPI_RSHTTPSSPIRevocationOfflineKDC,	L"The revocation status of the domain controller certificate used for smartcard authentication could not be determined. There is additional information in the system event log. Please contact your system administrator."
 	IdResourceStringsSSPI_RSHTTPSSPICAUntrustedKDC,	L"An untrusted certificate authority was detected while processing the domain controller certificate used for authentication. There is additional information in the system event log. Please contact your system administrator."
-	IdResourceStringsSSPI_RSHTTPSSPIKDCCertExpired,	L"The domain controller certificate used for smartcard logon has expired. Please contact your system administrator with the contents of your system event log."
-	IdResourceStringsSSPI_RSHTTPSSPIKDCCertRevoked,	L"The domain controller certificate used for smartcard logon has been revoked. Please contact your system administrator with the contents of your system event log."
-	IdResourceStringsSSPI_RSHTTPSSPISignatureNeeded,	L"A signature operation must be performed before the user can authenticate."
-	IdResourceStringsSSPI_RSHTTPSSPIInvalidParameter,	L"One or more of the parameters passed to the function was invalid."
-	IdResourceStringsSSPI_RSHTTPSSPIDeligationPolicy,	L"Client policy does not allow credential delegation to target server."
-	IdResourceStringsSSPI_RSHTTPSSPIPolicyNTLMOnly,	L"Client policy does not allow credential delegation to target server with NLTM only authentication."
-	IdResourceStringsSSPI_RSHTTPSSPINoRenegotiation,	L"The recipient rejected the renegotiation request."
+	IdResourceStringsSSPI_RSHTTPSSPISecCtxWasDelBeforeUpdated,	L"A security context was deleted before the context was completed. This is considered a logon failure."
+	IdResourceStringsSSPI_RSHTTPSSPIClientNoTGTReply,	L"The client is trying to negotiate a context and the server requires user-to-user but didn't send a TGT reply."
+	IdResourceStringsSSPI_RSHTTPSSPILocalNoIPAddr,	L"Unable to accomplish the requested task because the local machine does not have any IP addresses."
+	IdResourceStringsSSPI_RSHTTPSSPIWrongCredHandle,	L"The supplied credential handle does not match the credential associated with the security context."
+	IdResourceStringsSSPI_RSHTTPSSPICryptoSysInvalid,	L"The crypto system or checksum function is invalid because a required function is unavailable."
+	IdResourceStringsSSPI_RSHTTPSSPIMaxTicketRef,	L"The number of maximum ticket referrals has been exceeded."
+	IdResourceStringsSSPI_RSHTTPSSPIMustBeKDC,	L"The local machine must be a Kerberos KDC (domain controller) and it is not."
 	IdResourceStringsSSPI_RSHTTPSSPIStrongCryptoNotSupported,	L"The other end of the security negotiation is requires strong crypto but it is not supported on the local machine."
 	IdResourceStringsSSPI_RSHTTPSSPIKDCReplyTooManyPrincipals,	L"The KDC reply contained more than one principal name."
 	IdResourceStringsSSPI_RSHTTPSSPINoPAData,	L"Expected to find PA data for a hint of what etype to use, but it was not found."
@@ -5519,13 +5556,13 @@ BEGIN
 	IdResourceStringsSSPI_RSHTTPSSPIKDCInvalidRequest,	L"An invalid request was sent to the KDC."
 	IdResourceStringsSSPI_RSHTTPSSPIKDCUnableToRefer,	L"The KDC was unable to generate a referral for the service requested."
 	IdResourceStringsSSPI_RSHTTPSSPIKDCETypeUnknown,	L"The encryption type requested is not supported by the KDC."
-	IdResourceStringsSSPI_RSHTTPSSPIUnsupPreauth,	L"An unsupported preauthentication mechanism was presented to the Kerberos package."
-	IdResourceStringsSSPI_RSHTTPSSPIDeligationReq,	L"The requested operation cannot be completed. The computer must be trusted for delegation and the current user account must be configured to allow delegation."
-	IdResourceStringsSSPI_RSHTTPSSPIBadBindings,	L"Client's supplied SSPI channel bindings were incorrect."
-	IdResourceStringsSSPI_RSHTTPSSPIMultipleAccounts,	L"The received certificate was mapped to multiple accounts."
-	IdResourceStringsSSPI_RSHTTPSSPINoKerbKey,	L"SEC_E_NO_KERB_KEY"
-	IdResourceStringsSSPI_RSHTTPSSPICertWrongUsage,	L"The certificate is not valid for the requested usage."
-	IdResourceStringsSSPI_RSHTTPSSPIDowngradeDetected,	L"The system detected a possible attempt to compromise security. Please ensure that you can contact the server that authenticated you."
+	IdResourceStringsSSPI_RSHTTPSSPIIncompleteMessage,	L"The supplied message is incomplete.  The signature was not verified."
+	IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialNotInit,	L"The credentials supplied were not complete, and could not be verified. The context could not be initialized."
+	IdResourceStringsSSPI_RSHTTPSSPIBufferTooSmall,	L"The buffers supplied to a function was too small."
+	IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialsInit,	L"The credentials supplied were not complete, and could not be verified. Additional information can be returned from the context."
+	IdResourceStringsSSPI_RSHTTPSSPIRengotiate,	L"The context data must be renegotiated with the peer."
+	IdResourceStringsSSPI_RSHTTPSSPIWrongPrincipal,	L"The target principal name is incorrect."
+	IdResourceStringsSSPI_RSHTTPSSPINoLSACode,	L"There is no LSA mode context associated with this context."
 	IdResourceStringsSSPI_RSHTTPSSPITimeScew,	L"The clocks on the client and server machines are skewed."
 	IdResourceStringsSSPI_RSHTTPSSPIUntrustedRoot,	L"The certificate chain was issued by an untrusted authority."
 	IdResourceStringsSSPI_RSHTTPSSPIIllegalMessage,	L"The message received was unexpected or badly formatted."
@@ -5535,13 +5572,13 @@ BEGIN
 	IdResourceStringsSSPI_RSHTTPSSPIDecryptionFailure,	L"The specified data could not be decrypted."
 	IdResourceStringsSSPI_RSHTTPSSPIAlgorithmMismatch,	L"The client and server cannot communicate, because they do not possess a common algorithm."
 	IdResourceStringsSSPI_RSHTTPSSPISecurityQOSFailure,	L"The security context could not be established due to a failure in the requested quality of service (e.g. mutual authentication or delegation)."
-	IdResourceStringsSSPI_RSHTTPSSPISecCtxWasDelBeforeUpdated,	L"A security context was deleted before the context was completed. This is considered a logon failure."
-	IdResourceStringsSSPI_RSHTTPSSPIClientNoTGTReply,	L"The client is trying to negotiate a context and the server requires user-to-user but didn't send a TGT reply."
-	IdResourceStringsSSPI_RSHTTPSSPILocalNoIPAddr,	L"Unable to accomplish the requested task because the local machine does not have any IP addresses."
-	IdResourceStringsSSPI_RSHTTPSSPIWrongCredHandle,	L"The supplied credential handle does not match the credential associated with the security context."
-	IdResourceStringsSSPI_RSHTTPSSPICryptoSysInvalid,	L"The crypto system or checksum function is invalid because a required function is unavailable."
-	IdResourceStringsSSPI_RSHTTPSSPIMaxTicketRef,	L"The number of maximum ticket referrals has been exceeded."
-	IdResourceStringsSSPI_RSHTTPSSPIMustBeKDC,	L"The local machine must be a Kerberos KDC (domain controller) and it is not."
+	IdResourceStringsSSPI_RSHTTPSSPIInvalidToken,	L"The token supplied to the function is invalid"
+	IdResourceStringsSSPI_RSHTTPSSPICannotPack,	L"The security package is not able to marshall the logon buffer, so the logon attempt has failed"
+	IdResourceStringsSSPI_RSHTTPSSPIQOPNotSupported,	L"The per-message Quality of Protection is not supported by the security package"
+	IdResourceStringsSSPI_RSHTTPSSPINoImpersonation,	L"The security context does not allow impersonation of the client"
+	IdResourceStringsSSPI_RSHTTPSSPILoginDenied,	L"The logon attempt failed"
+	IdResourceStringsSSPI_RSHTTPSSPIUnknownCredentials,	L"The credentials supplied to the package were not recognized"
+	IdResourceStringsSSPI_RSHTTPSSPINoCredentials,	L"No credentials are available in the security package"
 	IdResourceStringsSSPI_RSHTTPSSPIMessageAltered,	L"The message or signature supplied for verification has been altered"
 	IdResourceStringsSSPI_RSHTTPSSPIOutOfSequence,	L"The message supplied for verification is out of sequence"
 	IdResourceStringsSSPI_RSHTTPSSPINoAuthAuthority,	L"No authority could be contacted for authentication."
@@ -5551,13 +5588,13 @@ BEGIN
 	IdResourceStringsSSPI_RSHTTPSSPILocalLogin,	L"The logon was completed, but no network authority was available. The logon was made using locally known information"
 	IdResourceStringsSSPI_RSHTTPSSPIBadPackageID,	L"The requested security package does not exist"
 	IdResourceStringsSSPI_RSHTTPSSPIContextExpired,	L"The context has expired and can no longer be used."
-	IdResourceStringsSSPI_RSHTTPSSPIIncompleteMessage,	L"The supplied message is incomplete.  The signature was not verified."
-	IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialNotInit,	L"The credentials supplied were not complete, and could not be verified. The context could not be initialized."
-	IdResourceStringsSSPI_RSHTTPSSPIBufferTooSmall,	L"The buffers supplied to a function was too small."
-	IdResourceStringsSSPI_RSHTTPSSPIIncompleteCredentialsInit,	L"The credentials supplied were not complete, and could not be verified. Additional information can be returned from the context."
-	IdResourceStringsSSPI_RSHTTPSSPIRengotiate,	L"The context data must be renegotiated with the peer."
-	IdResourceStringsSSPI_RSHTTPSSPIWrongPrincipal,	L"The target principal name is incorrect."
-	IdResourceStringsSSPI_RSHTTPSSPINoLSACode,	L"There is no LSA mode context associated with this context."
+	IdResourceStringsOpenSSL_RSOSSLAcceptExit,	L"Accept Exit"
+	IdResourceStringsOpenSSL_RSOSSLConnectLoop,	L"Connect Loop"
+	IdResourceStringsOpenSSL_RSOSSLConnectError,	L"Connect Error"
+	IdResourceStringsOpenSSL_RSOSSLConnectFailed,	L"Connect Failed"
+	IdResourceStringsOpenSSL_RSOSSLConnectExit,	L"Connect Exit"
+	IdResourceStringsOpenSSL_RSOSSLHandshakeStart,	L"Handshake Start"
+	IdResourceStringsOpenSSL_RSOSSLHandshakeDone,	L"Handshake Done"
 	IdResourceStringsSSPI_RSHTTPSSPISuccess,	L"Successfull API call"
 	IdResourceStringsSSPI_RSHTTPSSPINotEnoughMem,	L"Not enough memory is available to complete this request"
 	IdResourceStringsSSPI_RSHTTPSSPIInvalidHandle,	L"The handle specified is invalid"
@@ -5567,13 +5604,13 @@ BEGIN
 	IdResourceStringsSSPI_RSHTTPSSPISecPackageNotFound,	L"The requested security package does not exist"
 	IdResourceStringsSSPI_RSHTTPSSPINotOwner,	L"The caller is not the owner of the desired credentials"
 	IdResourceStringsSSPI_RSHTTPSSPIPackageCannotBeInstalled,	L"The security package failed to initialize, and cannot be installed"
-	IdResourceStringsSSPI_RSHTTPSSPIInvalidToken,	L"The token supplied to the function is invalid"
-	IdResourceStringsSSPI_RSHTTPSSPICannotPack,	L"The security package is not able to marshall the logon buffer, so the logon attempt has failed"
-	IdResourceStringsSSPI_RSHTTPSSPIQOPNotSupported,	L"The per-message Quality of Protection is not supported by the security package"
-	IdResourceStringsSSPI_RSHTTPSSPINoImpersonation,	L"The security context does not allow impersonation of the client"
-	IdResourceStringsSSPI_RSHTTPSSPILoginDenied,	L"The logon attempt failed"
-	IdResourceStringsSSPI_RSHTTPSSPIUnknownCredentials,	L"The credentials supplied to the package were not recognized"
-	IdResourceStringsSSPI_RSHTTPSSPINoCredentials,	L"No credentials are available in the security package"
+	cxExportStrs_scxWorkbookWrite,	L"Error write XLS file"
+	cxExportStrs_scxInvalidCellDimension,	L"Invalid cell dimension"
+	cxExportStrs_scxBoolTrue,	L"True"
+	cxExportStrs_scxBoolFalse,	L"False"
+	cxExportStrs_scxDefaultSheetCaption,	L"Sheet"
+	cxExport_cxExportListIndexError,	L"List index out of bounds (%d)"
+	IdResourceStringsOpenSSL_RSOSSFailedToLoad,	L"Failed to load %s."
 	IdResourceStringsOpenSSL_RSOSSLModeNotSet,	L"Mode has not been set."
 	IdResourceStringsOpenSSL_RSOSSLCouldNotLoadSSLLibrary,	L"Could not load SSL library."
 	IdResourceStringsOpenSSL_RSOSSLStatusString,	L"SSL status: \"%s\""
@@ -5583,13 +5620,22 @@ BEGIN
 	IdResourceStringsOpenSSL_RSOSSLAcceptLoop,	L"Accept Loop"
 	IdResourceStringsOpenSSL_RSOSSLAcceptError,	L"Accept Error"
 	IdResourceStringsOpenSSL_RSOSSLAcceptFailed,	L"Accept Failed"
-	IdResourceStringsOpenSSL_RSOSSLAcceptExit,	L"Accept Exit"
-	IdResourceStringsOpenSSL_RSOSSLConnectLoop,	L"Connect Loop"
-	IdResourceStringsOpenSSL_RSOSSLConnectError,	L"Connect Error"
-	IdResourceStringsOpenSSL_RSOSSLConnectFailed,	L"Connect Failed"
-	IdResourceStringsOpenSSL_RSOSSLConnectExit,	L"Connect Exit"
-	IdResourceStringsOpenSSL_RSOSSLHandshakeStart,	L"Handshake Start"
-	IdResourceStringsOpenSSL_RSOSSLHandshakeDone,	L"Handshake Done"
+	cxExportStrs_scxStyleManagerKill,	L"The Style Manager is currently being used elsewhere and can not be released at this stage"
+	cxExportStrs_scxStyleManagerCreate,	L"Can't create style manager"
+	cxExportStrs_scxExportToCSV,	L"Export to comma delimited text format (*.csv)"
+	cxExportStrs_scxExportToHtml,	L"Export to Web page (*.html)"
+	cxExportStrs_scxExportToXml,	L"Export to XML document (*.xml)"
+	cxExportStrs_scxExportToText,	L"Export to text format (*.txt)"
+	cxExportStrs_scxEmptyExportCache,	L"Export cache is empty"
+	cxExportStrs_scxIncorrectUnion,	L"Incorrect union of cells"
+	cxExportStrs_scxIllegalWidth,	L"Illegal width of the column"
+	cxExportStrs_scxInvalidColumnRowCount,	L"Invalid column or row count"
+	cxExportStrs_scxIllegalHeight,	L"Illegal height of the row"
+	cxExportStrs_scxInvalidColumnIndex,	L"The column index %d out of bounds"
+	cxExportStrs_scxInvalidRowIndex,	L"The row index %d out of bounds"
+	cxExportStrs_scxInvalidStyleIndex,	L"Invalid style index %d"
+	cxExportStrs_scxExportToExcel,	L"Export to MS Excel (*.xls)"
+	cxExportStrs_scxExportToXlsx,	L"Export to MS Excel 2007 (*.xlsx)"
 	cxSchedulerActionsStrs_sdxSchedulerActionCompressWeekendsHint,	L"Compress Weekends"
 	cxSchedulerActionsStrs_sdxSchedulerActionWorkTimeOnlyCaption,	L"Working Hours"
 	cxSchedulerActionsStrs_sdxSchedulerActionWorkTimeOnlyHint,	L"Working Hours"
@@ -5605,7 +5651,7 @@ BEGIN
 	cxSchedulerActionsStrs_sdxSchedulerActionPrintHint,	L"Print"
 	cxSchedulerActionsStrs_sdxSchedulerActionPrintPreviewCaption,	L"Print Pre&view"
 	cxSchedulerActionsStrs_sdxSchedulerActionPrintPreviewHint,	L"Print Preview"
-	IdResourceStringsOpenSSL_RSOSSFailedToLoad,	L"Failed to load %s."
+	cxExportStrs_scxUnsupportedExport,	L"Unsupported export type: %d"
 	cxSchedulerActionsStrs_sdxSchedulerActionGroupByDateHint,	L"Group By Date"
 	cxSchedulerActionsStrs_sdxSchedulerActionGroupByResourceCaption,	L"Group By Resource"
 	cxSchedulerActionsStrs_sdxSchedulerActionGroupByResourceHint,	L"Group By Resource"
@@ -11277,6 +11323,8 @@ END
 /* C:\Users\mak\Downloads\DevExpress_VCL_23.2.6_Full_Source_Downloadly.ir\DevExpress VCL 23.2.6 Full Source\VCL\Library\RS25\dxRibbonCustomizationForm.dfm */
 /* C:\GitRepository\Nikita\UPlanner.dfm */
 /* C:\GitRepository\Nikita\UFrmZakazList.dfm */
+/* C:\Users\mak\Downloads\DevExpress_VCL_23.2.6_Full_Source_Downloadly.ir\DevExpress VCL 23.2.6 Full Source\VCL\Library\RS25\cxGridChartView.res */
+/* C:\Users\mak\Downloads\DevExpress_VCL_23.2.6_Full_Source_Downloadly.ir\DevExpress VCL 23.2.6 Full Source\VCL\Library\RS25\cxGridChartView_svg.res */
 /* C:\GitRepository\Nikita\UFrmPrototype.dfm */
 /* C:\GitRepository\Nikita\UFrmNsiParnerEdit.dfm */
 /* C:\GitRepository\Nikita\UFrmNsiPartner.dfm */

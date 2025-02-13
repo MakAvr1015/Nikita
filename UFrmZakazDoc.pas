@@ -34,7 +34,8 @@ uses
   Vcl.DBGrids, frxExportRTF, frxExportPDF, frxExportXML, frxExportXLS,
   frxFIBComponents, frxChBox, frxTableObject, frxCross, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxDCtrl, frxOLE, frxDesgn, frxBarcode,
-  frxDBSet, System.ImageList, Vcl.ImgList;
+  frxDBSet, System.ImageList, Vcl.ImgList, dxDateRanges, dxScrollbarAnnotations,
+  dxShellDialogs;
 
 type
   TFrmZakazDoc = class(TFrmPrototype, IFrmDoc)

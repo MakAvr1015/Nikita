@@ -11,7 +11,10 @@ uses
   dxSkinscxPCPainter, cxCustomData, cxGraphics, cxFilter, cxData, cxDataStorage,
   cxEdit, DB, cxDBData, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, FIBDataSet,
-  pFIBDataSet;
+  pFIBDataSet, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxNavigator,
+  dxDateRanges, dxScrollbarAnnotations, dxShellDialogs, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNSIGoodAttributes = class(TFrmPrototype)

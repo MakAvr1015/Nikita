@@ -35,7 +35,9 @@ inherited FrmOutputPay: TFrmOutputPay
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
         ExplicitTop = 0
@@ -89,9 +91,13 @@ inherited FrmOutputPay: TFrmOutputPay
         Visible = False
         ExplicitTop = 0
       end
-      inherited cxComboBoxStyles: TcxComboBox
+      inherited BtnExport: TRzToolButton
         Top = 0
         ExplicitTop = 0
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 2
+        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
@@ -108,6 +114,7 @@ inherited FrmOutputPay: TFrmOutputPay
       GradientColorStop = clGradientActiveCaption
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -251,9 +258,12 @@ inherited FrmOutputPay: TFrmOutputPay
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitTop = 145
+      ExplicitHeight = 236
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srMoneyInBody
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <
@@ -305,7 +315,7 @@ inherited FrmOutputPay: TFrmOutputPay
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

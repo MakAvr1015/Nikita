@@ -19,17 +19,17 @@ inherited FrmZapas: TFrmZapas
     ExplicitHeight = 641
     object Splitter1: TSplitter [0]
       Left = 251
-      Top = 30
-      Height = 610
+      Top = 26
+      Height = 614
       ExplicitLeft = 313
       ExplicitTop = 36
       ExplicitHeight = 401
     end
     inherited RzToolbar: TRzToolbar
       Width = 1057
-      Height = 29
+      Height = 25
       ExplicitWidth = 1057
-      ExplicitHeight = 29
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -43,77 +43,88 @@ inherited FrmZapas: TFrmZapas
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
-        Top = 2
+        Top = 0
         Enabled = True
         OnClick = BtnOpenClick
-        ExplicitTop = 2
+        ExplicitTop = 0
       end
       inherited BtnFind: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
-        Top = 2
+        Top = 0
         OnClick = nil
-        ExplicitTop = 2
+        ExplicitTop = 0
       end
       inherited BtnOK: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnCancel: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnRefresh: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnEdit: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnExecute: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
-        Top = 2
+        Top = 0
         Visible = True
-        ExplicitTop = 2
+        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
-        Top = 2
+        Top = 0
         Visible = False
+        ExplicitTop = 0
+      end
+      inherited BtnExport: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 2
         ExplicitTop = 2
       end
     end
     object cxGridSklad: TcxGrid
       Left = 1
-      Top = 30
+      Top = 26
       Width = 250
-      Height = 610
+      Height = 614
       Align = alLeft
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 26
-      ExplicitHeight = 614
+      ExplicitTop = 28
+      ExplicitHeight = 612
       object cxGridSkladDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srLIstSklad
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
@@ -141,18 +152,17 @@ inherited FrmZapas: TFrmZapas
     end
     object Panel1: TPanel
       Left = 254
-      Top = 30
+      Top = 26
       Width = 804
-      Height = 610
+      Height = 614
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
-      ExplicitTop = 26
-      ExplicitWidth = 49
-      ExplicitHeight = 155
+      ExplicitTop = 30
+      ExplicitHeight = 610
       object Splitter2: TSplitter
         Left = 1
-        Top = 420
+        Top = 424
         Width = 802
         Height = 3
         Cursor = crVSplit
@@ -164,15 +174,16 @@ inherited FrmZapas: TFrmZapas
         Left = 1
         Top = 1
         Width = 802
-        Height = 419
+        Height = 423
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
-        ExplicitHeight = 423
+        ExplicitHeight = 421
         object cxGrid2DBTableView1: TcxGridDBTableView
           OnDblClick = cxGrid2DBTableView1DblClick
           OnKeyPress = cxGrid2DBTableView1KeyPress
           Navigator.Buttons.CustomButtons = <>
+          ScrollbarAnnotations.CustomAnnotations = <>
           OnCustomDrawCell = cxGrid2DBTableView1CustomDrawCell
           DataController.DataSource = srListZapas
           DataController.Summary.DefaultGroupSummaryItems = <>
@@ -244,6 +255,7 @@ inherited FrmZapas: TFrmZapas
           end
           object cxGrid2DBTableView1F_GOOD_SCANCODE: TcxGridDBColumn
             DataBinding.FieldName = 'F_GOOD_SCANCODE'
+            DataBinding.IsNullValueType = True
             Visible = False
           end
           object cxGrid2DBTableView1F_PRICE_VAL: TcxGridDBColumn
@@ -256,14 +268,17 @@ inherited FrmZapas: TFrmZapas
           end
           object cxGrid2DBTableView1F_PHOTO: TcxGridDBColumn
             DataBinding.FieldName = 'F_PHOTO'
+            DataBinding.IsNullValueType = True
             Visible = False
           end
           object cxGrid2DBTableView1F_DOP_INFO: TcxGridDBColumn
             DataBinding.FieldName = 'F_DOP_INFO'
+            DataBinding.IsNullValueType = True
             Visible = False
           end
           object cxGrid2DBTableView1F_GOODS_GRP_EXT_ID: TcxGridDBColumn
             DataBinding.FieldName = 'F_GOODS_GRP_EXT_ID'
+            DataBinding.IsNullValueType = True
             Visible = False
           end
           object cxGrid2DBTableView1F_picture: TcxGridDBColumn
@@ -295,14 +310,14 @@ inherited FrmZapas: TFrmZapas
       end
       inline FramGoodCard1: TFramGoodCard
         Left = 1
-        Top = 423
+        Top = 427
         Width = 802
         Height = 186
         Align = alBottom
         TabOrder = 2
         ExplicitLeft = 1
-        ExplicitTop = -32
-        ExplicitWidth = 47
+        ExplicitTop = 423
+        ExplicitWidth = 802
         ExplicitHeight = 186
         inherited Panel4: TPanel
           Left = 290
@@ -323,7 +338,6 @@ inherited FrmZapas: TFrmZapas
           end
           inherited cxDBLabel3: TcxDBLabel
             Style.LookAndFeel.SkinName = ''
-            Style.IsFontAssigned = True
             StyleDisabled.LookAndFeel.SkinName = ''
             StyleFocused.LookAndFeel.SkinName = ''
             StyleHot.LookAndFeel.SkinName = ''
@@ -565,7 +579,7 @@ inherited FrmZapas: TFrmZapas
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

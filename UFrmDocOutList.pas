@@ -32,7 +32,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog, cxContainer,
   cxTextEdit, cxMaskEdit, cxDropDownEdit, frxChBox, frxTableObject, frxRich,
   frxExportBaseDialog, frxExportDOCX, frxOLE, System.ImageList, Vcl.ImgList,
-  frxDBSet, dxDateRanges, dxScrollbarAnnotations;
+  frxDBSet, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
 type
   TFrmDocOutList = class(TFrmPrototype)
@@ -125,6 +125,9 @@ type
     dsDocListF_OWNER_NAME: TFIBStringField;
     cxGrid1DBTableView1F_OWNER: TcxGridDBColumn;
     cxGrid1DBTableView1F_OWNER_NAME: TcxGridDBColumn;
+    dsDocListF_PROPS: TFIBStringField;
+    dsDocListF_PARTNER_INN: TFIBStringField;
+    cxGrid1DBTableView1F_PARTNER_INN: TcxGridDBColumn;
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
     procedure BtnEditClick(Sender: TObject);
@@ -139,6 +142,7 @@ type
     procedure dsDocListBeforeOpen(DataSet: TDataSet);
     procedure BtnViewClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure dsDocListCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -393,8 +397,15 @@ begin
   dsDocList.ParamByName('end_date').value:=EditEnd_date.Date;
 end;
 
+procedure TFrmDocOutList.dsDocListCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  CalcFieldsDopInfo(DataSet,'F_PROPS');
+end;
+
 procedure TFrmDocOutList.FormCreate(Sender: TObject);
 begin
+  AddInfoColumnDocs(cxGrid1DBTableView1);
   inherited;
   Editstr_date.Date:=date;
   Editend_date.Date:=date;

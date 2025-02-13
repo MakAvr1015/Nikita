@@ -4,6 +4,8 @@ inherited FrmInputDocBack: TFrmInputDocBack
   TextHeight = 13
   inherited Panel3: TPanel
     inherited RzToolbar: TRzToolbar
+      Height = 25
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -17,27 +19,87 @@ inherited FrmInputDocBack: TFrmInputDocBack
         BtnExecute
         BtnDelete
         BtnSave
+        BtnExport
         BtnExit
         cxComboBoxStyles)
+      inherited BtnNew: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOpen: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnFind: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnPrint: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnOK: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnCancel: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnRefresh: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnEdit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExecute: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnDelete: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnSave: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExit: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnView: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExport: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited cxComboBoxStyles: TcxComboBox
+        Top = 2
+        ExplicitTop = 2
+      end
     end
     inherited RzPanel1: TRzPanel
+      Top = 26
       Height = 103
-      ExplicitLeft = 1
-      ExplicitTop = 26
       ExplicitHeight = 103
     end
     inherited Panel1: TPanel
       Top = 129
       Height = 414
-      ExplicitTop = 103
-      ExplicitHeight = 440
+      ExplicitTop = 131
+      ExplicitHeight = 412
       inherited Splitter1: TSplitter
         Height = 412
         ExplicitHeight = 314
       end
       inherited cxGrid1: TcxGrid
         Height = 412
-        ExplicitHeight = 438
+        ExplicitHeight = 410
         inherited cxGrid1DBTableView1: TcxGridDBTableView
           Styles.Background = nil
           Styles.Content = nil
@@ -81,7 +143,7 @@ inherited FrmInputDocBack: TFrmInputDocBack
         end
       end
       inherited cxDBImage1: TcxDBImage
-        ExplicitHeight = 438
+        ExplicitHeight = 410
         Height = 412
       end
     end
@@ -123,7 +185,7 @@ inherited FrmInputDocBack: TFrmInputDocBack
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

@@ -11,7 +11,11 @@ uses
   dxSkinsDefaultPainters, dxSkinscxPCPainter, cxFilter, cxData, cxDataStorage,
   cxEdit, DB, cxDBData, cxGridLevel, cxClasses, cxControls, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  cxInplaceContainer, cxTLData, cxDBTL, FIBDataSet, pFIBDataSet;
+  cxInplaceContainer, cxTLData, cxDBTL, FIBDataSet, pFIBDataSet, cxLookAndFeels,
+  cxLookAndFeelPainters, cxContainer, cxNavigator, dxDateRanges,
+  dxScrollbarAnnotations, dxShellDialogs, System.ImageList, Vcl.ImgList,
+  frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
+  frxExportDOCX, frxOLE, cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmNSIDocProperty = class(TFrmPrototype)

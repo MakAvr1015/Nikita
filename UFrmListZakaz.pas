@@ -26,7 +26,12 @@ uses
   dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
   cxNavigator, cxDataControllerConditionalFormattingRulesManagerDialog,
   cxDBData, cxGridLevel, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid;
+  cxGridTableView, cxGridDBTableView, cxGrid, cxContainer, dxDateRanges,
+  dxScrollbarAnnotations, dxShellDialogs, System.ImageList, Vcl.ImgList,
+  frxDBSet, frxExportRTF, frxExportPDF, frxExportXML, frxExportXLS,
+  frxFIBComponents, frxChBox, frxTableObject, frxCross, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxDCtrl, frxOLE, frxDesgn, frxBarcode,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit;
 
 type
   TFrmListZakaz = class(TFrmPrototype)

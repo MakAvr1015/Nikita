@@ -7,12 +7,12 @@ inherited FrmMoveDocListSpisan: TFrmMoveDocListSpisan
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
     Top = 507
+    ExplicitTop = 507
   end
   inherited Panel3: TPanel
     Height = 507
+    ExplicitHeight = 507
     inherited RzToolbar: TRzToolbar
-      Height = 341
-      ExplicitHeight = 341
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -26,7 +26,9 @@ inherited FrmMoveDocListSpisan: TFrmMoveDocListSpisan
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Tag = 2
         UseToolbarButtonLayout = False
@@ -62,21 +64,22 @@ inherited FrmMoveDocListSpisan: TFrmMoveDocListSpisan
         UseToolbarButtonLayout = False
       end
       inherited BtnExit: TRzToolButton
+        Left = 848
         UseToolbarButtonLayout = False
+        ExplicitLeft = 848
       end
       inherited BtnView: TRzToolButton
         UseToolbarButtonLayout = False
       end
-      inherited cxComboBoxStyles: TcxComboBox
-        Top = 320
-        ExplicitTop = 320
+      inherited BtnExport: TRzToolButton
+        Left = 786
+        ExplicitLeft = 786
       end
     end
     inherited cxGrid1: TcxGrid
-      Top = 371
-      Height = 135
-      ExplicitTop = 371
-      ExplicitHeight = 5
+      Height = 420
+      ExplicitTop = 455
+      ExplicitHeight = 51
       inherited cxGrid1DBTableView1: TcxGridDBTableView
         Styles.Background = nil
         Styles.Content = nil
@@ -123,8 +126,7 @@ inherited FrmMoveDocListSpisan: TFrmMoveDocListSpisan
       end
     end
     inherited ToolBar1: TToolBar
-      Top = 342
-      ExplicitTop = 342
+      ExplicitTop = 426
     end
   end
   inherited frxReport2: TfrxReport
@@ -134,7 +136,7 @@ inherited FrmMoveDocListSpisan: TFrmMoveDocListSpisan
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

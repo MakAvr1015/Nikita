@@ -19,9 +19,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
     ExplicitHeight = 688
     inherited RzToolbar: TRzToolbar
       Width = 1149
-      Height = 27
+      Height = 25
       ExplicitWidth = 1149
-      ExplicitHeight = 27
+      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -35,74 +35,80 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
-        Top = 2
+        Top = 0
         Enabled = True
         OnClick = BtnOpenClick
-        ExplicitTop = 2
+        ExplicitTop = 0
       end
       inherited BtnFind: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOK: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnCancel: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnRefresh: TRzToolButton
-        Top = 2
+        Top = 0
         Enabled = True
         OnClick = BtnRefreshClick
-        ExplicitTop = 2
+        ExplicitTop = 0
       end
       inherited BtnEdit: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnExecute: TRzToolButton
-        Top = 2
+        Top = 0
         Enabled = True
         OnClick = BtnExecuteClick
-        ExplicitTop = 2
+        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
-        Top = 2
-        ExplicitTop = 2
+        Top = 0
+        ExplicitTop = 0
+      end
+      inherited BtnExport: TRzToolButton
+        Top = 0
+        ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 0
+        Top = 2
         Properties.OnChange = nil
-        ExplicitTop = 0
+        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
       Left = 1
-      Top = 28
+      Top = 26
       Width = 1149
       Height = 43
       Align = alTop
@@ -113,6 +119,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 7
@@ -168,9 +175,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
     end
     object Panel1: TPanel
       Left = 1
-      Top = 71
+      Top = 69
       Width = 1149
-      Height = 616
+      Height = 618
       Align = alClient
       Caption = 'Panel1'
       TabOrder = 2
@@ -179,7 +186,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       object Splitter1: TSplitter
         Left = 1005
         Top = 1
-        Height = 325
+        Height = 327
         Align = alRight
         ExplicitLeft = 631
         ExplicitTop = 79
@@ -189,10 +196,11 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         Left = 1
         Top = 1
         Width = 1004
-        Height = 325
+        Height = 327
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
+        ExplicitHeight = 325
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDragDrop = prGridDragDropEvent
           OnDragOver = prGridOverEvent
@@ -357,12 +365,13 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         Properties.GraphicClassName = 'TdxSmartImage'
         Properties.ReadOnly = True
         TabOrder = 1
-        Height = 325
+        ExplicitHeight = 325
+        Height = 327
         Width = 140
       end
       inline FramBanner1: TFramBanner
         Left = 1
-        Top = 338
+        Top = 340
         Width = 1147
         Height = 277
         Align = alBottom
@@ -398,19 +407,19 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             end
           end
           inherited cxTabSheet2: TcxTabSheet
-            ExplicitLeft = 2
-            ExplicitTop = 28
-            ExplicitWidth = 471
-            ExplicitHeight = 247
+            ExplicitTop = 24
+            ExplicitWidth = 475
+            ExplicitHeight = 253
           end
         end
       end
       object cxSplitter1: TcxSplitter
         Left = 1
-        Top = 326
+        Top = 328
         Width = 1147
         Height = 12
         AlignSplitter = salBottom
+        ExplicitTop = 326
       end
     end
   end
@@ -481,7 +490,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000F00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

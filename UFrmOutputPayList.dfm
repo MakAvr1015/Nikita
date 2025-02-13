@@ -22,7 +22,7 @@ inherited FrmOutputPayList: TFrmOutputPayList
     ExplicitHeight = 590
     inherited RzToolbar: TRzToolbar
       Width = 818
-      Height = 82
+      Height = 80
       RowHeight = 40
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
@@ -30,7 +30,7 @@ inherited FrmOutputPayList: TFrmOutputPayList
       ShowButtonCaptions = True
       TextOptions = ttoShowTextLabels
       ExplicitWidth = 818
-      ExplicitHeight = 82
+      ExplicitHeight = 80
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -44,133 +44,175 @@ inherited FrmOutputPayList: TFrmOutputPayList
         BtnExecute
         BtnDelete
         BtnSave
-        BtnExit)
+        BtnExport
+        BtnExit
+        cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
+        Top = 0
         Width = 74
         Height = 40
         DropDownMenu = MnNewMoneyIn
         Layout = blGlyphTop
         ToolStyle = tsDropDown
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOpen: TRzToolButton
         Left = 239
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 239
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnFind: TRzToolButton
         Left = 359
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 359
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnPrint: TRzToolButton
         Left = 419
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 419
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
       inherited BtnOK: TRzToolButton
         Left = 493
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 493
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnCancel: TRzToolButton
         Left = 553
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 553
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnRefresh: TRzToolButton
         Left = 299
+        Top = 0
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 299
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnEdit: TRzToolButton
         Left = 78
+        Top = 0
         Width = 87
         Height = 40
         Layout = blGlyphTop
         Enabled = True
         OnClick = BtnEditClick
         ExplicitLeft = 78
+        ExplicitTop = 0
         ExplicitWidth = 87
         ExplicitHeight = 40
       end
       inherited BtnExecute: TRzToolButton
         Left = 613
+        Top = 0
         Width = 64
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 613
+        ExplicitTop = 0
         ExplicitWidth = 64
         ExplicitHeight = 40
       end
       inherited BtnDelete: TRzToolButton
         Left = 677
+        Top = 0
         Layout = blGlyphTop
         ExplicitLeft = 677
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnSave: TRzToolButton
         Left = 737
+        Top = 0
         Width = 63
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 737
+        ExplicitTop = 0
         ExplicitWidth = 63
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 4
-        Top = 42
+        Left = 66
+        Top = 40
         Layout = blGlyphTop
-        ExplicitLeft = 4
-        ExplicitTop = 42
+        ExplicitLeft = 66
+        ExplicitTop = 40
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
       inherited BtnView: TRzToolButton
         Left = 165
+        Top = 0
         Width = 74
         Height = 40
         Layout = blGlyphTop
         Visible = False
         ExplicitLeft = 165
+        ExplicitTop = 0
         ExplicitWidth = 74
         ExplicitHeight = 40
       end
+      inherited BtnExport: TRzToolButton
+        Left = 4
+        Top = 40
+        Width = 62
+        Height = 40
+        Layout = blGlyphTop
+        ExplicitLeft = 4
+        ExplicitTop = 40
+        ExplicitWidth = 62
+        ExplicitHeight = 40
+      end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 0
-        ExplicitTop = 0
+        Left = 126
+        Top = 50
+        ExplicitLeft = 126
+        ExplicitTop = 50
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 112
+      Top = 110
       Width = 818
-      Height = 477
+      Height = 479
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
+      ExplicitTop = 112
+      ExplicitHeight = 477
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
         DataController.DataSource = srInputMoneyList
         DataController.Summary.DefaultGroupSummaryItems = <
           item
@@ -265,11 +307,12 @@ inherited FrmOutputPayList: TFrmOutputPayList
     end
     object ToolBar1: TToolBar
       Left = 1
-      Top = 83
+      Top = 81
       Width = 818
       Height = 29
       Caption = 'ToolBar1'
       TabOrder = 2
+      ExplicitTop = 83
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -297,7 +340,7 @@ inherited FrmOutputPayList: TFrmOutputPayList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
