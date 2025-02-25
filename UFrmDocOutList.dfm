@@ -3,7 +3,6 @@ inherited FrmDocOutList: TFrmDocOutList
   ClientHeight = 620
   ClientWidth = 827
   OnKeyUp = FormKeyUp
-  ExplicitTop = -153
   ExplicitWidth = 843
   ExplicitHeight = 659
   PixelsPerInch = 96
@@ -173,10 +172,10 @@ inherited FrmDocOutList: TFrmDocOutList
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 66
+        Left = 80
         Top = 25
         Layout = blGlyphTop
-        ExplicitLeft = 66
+        ExplicitLeft = 80
         ExplicitTop = 25
         ExplicitWidth = 60
         ExplicitHeight = 40
@@ -197,18 +196,18 @@ inherited FrmDocOutList: TFrmDocOutList
       inherited BtnExport: TRzToolButton
         Left = 4
         Top = 25
-        Width = 62
+        Width = 76
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 4
         ExplicitTop = 25
-        ExplicitWidth = 62
+        ExplicitWidth = 76
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 126
+        Left = 140
         Top = 35
-        ExplicitLeft = 126
+        ExplicitLeft = 140
         ExplicitTop = 35
       end
     end
@@ -918,7 +917,7 @@ inherited FrmDocOutList: TFrmDocOutList
     Left = 736
     Top = 168
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

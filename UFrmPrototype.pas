@@ -71,6 +71,9 @@ type
     ImageList: TImageList;
     BtnExport: TRzToolButton;
     dxSaveFileDialog: TdxSaveFileDialog;
+    ExportMenu: TPopupMenu;
+    XLS1: TMenuItem;
+    XML1: TMenuItem;
     procedure BtnOKClick(Sender: TObject);
     procedure BtnCancelClick(Sender: TObject);
     procedure BtnPrintClick(Sender: TObject);
@@ -88,18 +91,19 @@ type
     procedure cxComboBoxStylesPropertiesChange(Sender: TObject);
     procedure cxComboBoxStylesDblClick(Sender: TObject);
 
-/// <summary>
-///  Обработчик перетаскивания на Grid
-///  </summary>
-  procedure prGridOverEvent(Sender, Source: TObject; X, Y: Integer;
-    State: TDragState; var Accept: Boolean);
+    /// <summary>
+    /// Обработчик перетаскивания на Grid
+    /// </summary>
+    procedure prGridOverEvent(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
 
-  procedure prGridDragDropEvent(Sender, Source: TObject; X,Y: Integer);
-    procedure BtnExportClick(Sender: TObject);
+    procedure prGridDragDropEvent(Sender, Source: TObject; X, Y: Integer);
+    procedure XLS1Click(Sender: TObject);
+    procedure XML1Click(Sender: TObject);
 
   private
     Act: TCloseAction;
-    NeedToSave: boolean;
+    NeedToSave: Boolean;
     PrList: Tstrings;
     parentPageName: string;
 
@@ -112,14 +116,14 @@ type
     { Private declarations }
     procedure SaveState;
   protected
-    GoodGridDragOverEvent : TDragOverEvent;
-    GoodGridDragDropEvent : TDragDropEvent;
+    GoodGridDragOverEvent: TDragOverEvent;
+    GoodGridDragDropEvent: TDragDropEvent;
   public
     FormName: string;
     parentDs: TDataSet;
 
     procedure ShowAsChild;
-    function ShowAsDialog: boolean;
+    function ShowAsDialog: Boolean;
     { Public declarations }
     procedure RestoreState;
   end;
@@ -159,31 +163,14 @@ begin
   end;
 end;
 
-procedure TFrmPrototype.BtnExportClick(Sender: TObject);
-//dxSaveFileDialog
-var
-  vl_index : integer;
-begin
-  for vl_index := 0 to self.ComponentCount-1 do
-  begin
-    if self.Components[vl_index] is TcxGrid then
-    begin
-       if dxSaveFileDialog.Execute then
-       begin
-         ExportGridToExcel(dxSaveFileDialog.fileName, (self.Components[vl_index] as TcxGrid), True);
-       end;
-    end;
-  end;
-end;
-
 procedure TFrmPrototype.InitPrnForms;
 var
   FindedFile: TSearchRec;
   varName: string;
   MnItem: TMenuItem;
-  GrItem : TMenuItem;
-  strArray : TArray<String>;
-  i,j: integer;
+  GrItem: TMenuItem;
+  strArray: TArray<String>;
+  i, j: Integer;
 begin
   PrList := TstringList.Create;
   if FindFirst(Prg_path + '\*.fr3', faAnyFile, FindedFile) = 0 then
@@ -195,20 +182,20 @@ begin
         i := PrList.Add(Prg_path + '\' + FindedFile.Name);
         MnItem := TMenuItem.Create(PrnMenu);
         varName := frxReport2.ReportOptions.Name;
-        strArray := varName.split(['|'],2);
-        if length(strArray)>1 then
+        strArray := varName.split(['|'], 2);
+        if length(strArray) > 1 then
           varName := strArray[1];
-        MnItem.Caption := varName;//frxReport2.ReportOptions.Name;
+        MnItem.Caption := varName; // frxReport2.ReportOptions.Name;
         MnItem.Tag := i + 1;
         MnItem.OnClick := ActPrnForm;
 
-        if length(strArray)>1 then
+        if length(strArray) > 1 then
         begin
           varName := strArray[0];
           GrItem := nil;
-          for j:=0 to PrnMenu.Items.count - 1 do
+          for j := 0 to PrnMenu.Items.count - 1 do
           begin
-            if PrnMenu.Items[j].caption = varName then
+            if PrnMenu.Items[j].Caption = varName then
             begin
               GrItem := PrnMenu.Items[j];
               break;
@@ -217,7 +204,7 @@ begin
           if not Assigned(GrItem) then
           begin
             GrItem := TMenuItem.Create(PrnMenu);
-            GrItem.caption := varName;
+            GrItem.Caption := varName;
             PrnMenu.Items.Add(GrItem);
           end;
           GrItem.Add(MnItem);
@@ -276,19 +263,21 @@ end;
 
 procedure TFrmPrototype.cxComboBoxStylesPropertiesChange(Sender: TObject);
 var
-  vl_index : integer;
+  vl_index: Integer;
 begin
-  for vl_index := 0 to self.ComponentCount-1 do
+  for vl_index := 0 to self.ComponentCount - 1 do
   begin
     if self.Components[vl_index] is TcxGridDBTableView then
-      TcxGridDBTableView(Components[vl_index]).Styles.StyleSheet := TcxCustomStyleSheet(cxComboBoxStyles.Properties.Items.Objects[cxComboBoxStyles.ItemIndex]);
+      TcxGridDBTableView(Components[vl_index]).Styles.StyleSheet :=
+        TcxCustomStyleSheet(cxComboBoxStyles.Properties.Items.Objects
+        [cxComboBoxStyles.ItemIndex]);
   end;
 
 end;
 
 procedure TFrmPrototype.SaveState;
 var
-  i: integer;
+  i: Integer;
   fl: TiniFile;
 begin
   fl := TiniFile.Create(app_data + '\' + self.ClassName + '.ini');
@@ -298,7 +287,7 @@ begin
     if self.Components[i] is TcxGridDBTableView then
     begin
       TcxGridDBTableView(self.Components[i]).StoreToIniFile(fl.FileName, false,
-        [{gsoUseFilter, gsoUseSummary}], self.Components[i].Name);
+        [ { gsoUseFilter, gsoUseSummary } ], self.Components[i].Name);
     end;
   end;
   fl.Free;
@@ -306,7 +295,7 @@ end;
 
 procedure TFrmPrototype.FormCreate(Sender: TObject);
 var
-  vl_index : integer;
+  vl_index: Integer;
 begin
   GoodGridDragOverEvent := prGridOverEvent;
   GoodGridDragDropEvent := prGridDragDropEvent;
@@ -314,33 +303,37 @@ begin
   begin
     if self.Components[vl_index] is TcxGridDBTableView then
     begin
-      if (TcxGridDBTableView(self.Components[vl_index]).DataController.DataSet.FindField('F_ARTICLE') <> nil)
-        or (TcxGridDBTableView(self.Components[vl_index]).DataController.DataSet.FindField('F_GOOD_ARTICLE') <> nil)
-      then
+      if (TcxGridDBTableView(self.Components[vl_index])
+        .DataController.DataSet.FindField('F_ARTICLE') <> nil) or
+        (TcxGridDBTableView(self.Components[vl_index])
+        .DataController.DataSet.FindField('F_GOOD_ARTICLE') <> nil) then
       begin
-        TcxGridDBTableView(self.Components[vl_index]).OnDragOver := GoodGridDragOverEvent;
-        TcxGridDBTableView(self.Components[vl_index]).OnDragDrop := GoodGridDragDropEvent;
+        TcxGridDBTableView(self.Components[vl_index]).OnDragOver :=
+          GoodGridDragOverEvent;
+        TcxGridDBTableView(self.Components[vl_index]).OnDragDrop :=
+          GoodGridDragDropEvent;
       end;
     end;
   end;
   cxComboBoxStyles.Properties.Items.Clear;
-  for vl_index := 0 to (dm.cxStyleRepository1.StyleSheetCount -1) do
+  for vl_index := 0 to (dm.cxStyleRepository1.StyleSheetCount - 1) do
   begin
     if dm.cxStyleRepository1.StyleSheets[vl_index].Tag = 1 then
     begin
-      cxComboBoxStyles.Properties.Items.AddObject(dm.cxStyleRepository1.StyleSheets[vl_index].Caption,dm.cxStyleRepository1.StyleSheets[vl_index]);
+      cxComboBoxStyles.Properties.Items.AddObject
+        (dm.cxStyleRepository1.StyleSheets[vl_index].Caption,
+        dm.cxStyleRepository1.StyleSheets[vl_index]);
     end;
   end;
   cxComboBoxStyles.Height := RzToolbar.RowHeight - 2;
   RestoreState;
   InitPrnForms;
 
-
 end;
 
 procedure TFrmPrototype.FormDestroy(Sender: TObject);
 var
-  i: integer;
+  i: Integer;
 begin
   // UnRegisterHotKey(self.Handle, MyHotKey);
   SaveState;
@@ -384,7 +377,7 @@ end;
 
 procedure TFrmPrototype.N5Click(Sender: TObject);
 var
-  i: integer;
+  i: Integer;
   FVar: TfrxVariable;
   Page: TfrxReportPage;
 begin
@@ -406,16 +399,13 @@ begin
   frxReport2.DesignReport;
 end;
 
-
-
-procedure TFrmPrototype.prGridDragDropEvent(Sender, Source: TObject; X,
-  Y: Integer);
+procedure TFrmPrototype.prGridDragDropEvent(Sender, Source: TObject;
+  X, Y: Integer);
 var
-  vl_str : String;
+  vl_str: String;
 begin
-  if (TcxDragControlObject(Source).Control is TcxGridSite)
-    and (Sender is TcxGridSite)
-    then
+  if (TcxDragControlObject(Source).Control is TcxGridSite) and
+    (Sender is TcxGridSite) then
   begin
     with TcxDragControlObject(Source) do
     begin
@@ -423,8 +413,8 @@ begin
         with TcxGridSite(Control) do
         begin
           DragDropGood(TcxGridDBTableView(GridView),
-            TpFIBDataSet(TcxGridDBTableView(TcxGridSite(sender).GridView).DataController.DataSet)
-            );
+            TpFibDataSet(TcxGridDBTableView(TcxGridSite(Sender).GridView)
+            .DataController.DataSet));
         end;
     end;
   end;
@@ -435,17 +425,18 @@ procedure TFrmPrototype.prGridOverEvent(Sender, Source: TObject; X, Y: Integer;
 begin
   if Source is TcxGridDBTableView then
   begin
-    if sender <> Source then
-      if TcxGridDBTableView(Source).DataController.DataSet.FindField('f_article')<>nil then
+    if Sender <> Source then
+      if TcxGridDBTableView(Source).DataController.DataSet.FindField
+        ('f_article') <> nil then
       begin
-        Accept:=true;
+        Accept := true;
       end;
   end;
 end;
 
 procedure TFrmPrototype.RestoreState;
 var
-  i,j: integer;
+  i, j: Integer;
   fl: TiniFile;
 begin
   fl := TiniFile.Create(app_data + '\' + self.ClassName + '.ini');
@@ -473,38 +464,40 @@ begin
         (TcxGridDBTableView(Components[i]).DataController.DataSet.FindField
         ('F_GOOD_ARTICLE') <> nil) then
       begin
-      {  TcxGridDBTableView(Components[i])
+        { TcxGridDBTableView(Components[i])
           .StoreToRegistry(cxPropertiesStore.StorageName, true,
-          [gsoUseFilter, gsoUseSummary], Components[i].Name);}
+          [gsoUseFilter, gsoUseSummary], Components[i].Name); }
         TcxGridDBTableView(Components[i]).DragMode := dmAutomatic;
       end;
       for j := 0 to (TcxGridDBTableView(Components[i]).ColumnCount - 1) do
       begin
-        if (TcxGridDBTableView(Components[i]).Columns[j].Summary.FooterKind <> null) then
+        if (TcxGridDBTableView(Components[i]).Columns[j].Summary.FooterKind <>
+          null) then
           TcxGridDBTableView(Components[i]).Columns[j].Summary.GroupKind :=
             TcxGridDBTableView(Components[i]).Columns[j].Summary.FooterKind;
       end;
       TcxGridDBTableView(Components[i]).OptionsView.GroupByBox := true;
-      TcxGridDBTableView(Components[i]).OptionsView.GroupSummarylayout := gslAlignWithColumns;
+      TcxGridDBTableView(Components[i]).OptionsView.GroupSummarylayout :=
+        gslAlignWithColumns;
 
     end;
   end;
   // RegisterHotKey(self.Handle, MyHotKey, 0, VK_RETURN);
-{  if ((BorderStyle = bsSizeable)) then
-  begin
+  { if ((BorderStyle = bsSizeable)) then
+    begin
     cxPropertiesStore.Components.Add;
     with cxPropertiesStore.Components[cxPropertiesStore.Components.Count - 1] do
     begin
-      Component := self;
-      // Properties.Add('Width');
-      // Properties.Add('Height');
-      Properties.Add('WindowState');
+    Component := self;
+    // Properties.Add('Width');
+    // Properties.Add('Height');
+    Properties.Add('WindowState');
     end;
     cxPropertiesStore.RestoreFrom;
     // RzFormState.RestoreState;
-  end;}
-//  cxPropertiesStore.RestoreFrom;
-  fl.free;
+    end; }
+  // cxPropertiesStore.RestoreFrom;
+  fl.Free;
   TranslateForm(self, Language, TranslateFile);
 end;
 
@@ -516,10 +509,10 @@ end;
 procedure TFrmPrototype.ActPrnForm(Sender: TObject);
 var
   PrnForm, varName, dsName: string;
-  i, j, k, n: integer;
-  ARowIndex: integer;
+  i, j, k, n: Integer;
+  ARowIndex: Integer;
   ARowInfo: TcxRowInfo;
-  findval: boolean;
+  findval: Boolean;
 begin
   frxReport2.Clear;
   findval := false;
@@ -529,7 +522,7 @@ begin
     begin
       PrnForm := PrList[(Sender as Tcomponent).Tag - 1];
       frxReport2.LoadFromFile(PrnForm);
-      for i := 0 to frxReport2.Variables.Count - 1 do
+      for i := 0 to frxReport2.Variables.count - 1 do
       begin
         varName := frxReport2.Variables.Items[i].Name;
         for j := 0 to self.ComponentCount - 1 do
@@ -563,7 +556,7 @@ begin
             ARowInfo := (self.Components[j] as TcxGridDBTableView)
               .DataController.GetRowInfo(ARowIndex);
 
-            for i := 0 to frxReport2.Variables.Count - 1 do
+            for i := 0 to frxReport2.Variables.count - 1 do
             begin
               varName := frxReport2.Variables.Items[i].Name;
               if ((self.Components[j] as TcxGridDBTableView)
@@ -627,7 +620,7 @@ begin
 
 end;
 
-function TFrmPrototype.ShowAsDialog: boolean;
+function TFrmPrototype.ShowAsDialog: Boolean;
 begin
   Act := caHide;
   dragKind := dkDrag;
@@ -637,6 +630,61 @@ begin
     result := true
   else
     result := false;
+end;
+
+procedure TFrmPrototype.XLS1Click(Sender: TObject);
+var
+  vl_index: Integer;
+begin
+  for vl_index := 0 to self.ComponentCount - 1 do
+  begin
+    if self.Components[vl_index] is TcxGrid then
+    begin
+      dxSaveFileDialog.Filter := 'Excell|*.xls';
+      dxSaveFileDialog.DefaultExt := 'xls';
+      if dxSaveFileDialog.Execute then
+      begin
+        ExportGridToExcel(dxSaveFileDialog.FileName,
+          (self.Components[vl_index] as TcxGrid), true);
+        // ExportDxCridView(@(self.Components[vl_index]),dxSaveFileDialog.FileName);
+      end;
+    end;
+  end;
+end;
+
+procedure TFrmPrototype.XML1Click(Sender: TObject);
+var
+  cmp,grd: Tcomponent;
+  vl_index: Integer;
+begin
+  cmp := self.FindComponent(DsFormName.Caption);
+  if (cmp <> nil) then
+  begin
+    if (cmp is TDataSet) then
+    begin
+      for vl_index := 0 to self.ComponentCount - 1 do
+      begin
+        if self.Components[vl_index] is TcxGridDBTableView then
+        begin
+          if TcxGridDBTableView(self.Components[vl_index])
+            .DataController.DataSource.DataSet = TDataSet(cmp) then
+          begin
+            grd := self.Components[vl_index];
+            dxSaveFileDialog.Filter := 'XML|*.xml';
+            dxSaveFileDialog.DefaultExt := 'xml';
+            if dxSaveFileDialog.Execute then
+            begin
+              // ExportDsXml(@cmp, dxSaveFileDialog.FileName);
+              ExportDxCridView(@grd,dxSaveFileDialog.FileName);
+            end;
+            exit;
+          end;
+        end;
+
+      end;
+
+    end;
+  end;
 end;
 
 end.

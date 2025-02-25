@@ -1,27 +1,27 @@
 inherited FrmDocList_template: TFrmDocList_template
   Caption = #1046#1091#1088#1085#1072#1083' '#1079#1072#1075#1086#1090#1086#1074#1086#1082
-  ClientHeight = 370
-  ClientWidth = 815
-  ExplicitWidth = 831
-  ExplicitHeight = 409
+  ClientHeight = 479
+  ClientWidth = 836
+  ExplicitWidth = 852
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
-    Top = 351
-    Width = 815
-    ExplicitTop = 351
-    ExplicitWidth = 815
+    Top = 460
+    Width = 836
+    ExplicitTop = 460
+    ExplicitWidth = 836
     inherited DsFormName: TRzStatusPane
       Caption = 'dsDocTemplateList'
     end
   end
   inherited Panel3: TPanel
-    Width = 815
-    Height = 351
-    ExplicitWidth = 815
-    ExplicitHeight = 351
+    Width = 836
+    Height = 460
+    ExplicitWidth = 836
+    ExplicitHeight = 460
     inherited RzToolbar: TRzToolbar
-      Width = 813
+      Width = 834
       Height = 80
       RowHeight = 40
       ButtonLayout = blGlyphTop
@@ -29,7 +29,7 @@ inherited FrmDocList_template: TFrmDocList_template
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoCustom
-      ExplicitWidth = 813
+      ExplicitWidth = 834
       ExplicitHeight = 80
       ToolbarControls = (
         BtnNew
@@ -156,16 +156,17 @@ inherited FrmDocList_template: TFrmDocList_template
         Width = 63
         Height = 40
         Layout = blGlyphTop
+        Visible = True
         ExplicitLeft = 723
         ExplicitTop = 0
         ExplicitWidth = 63
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 66
+        Left = 80
         Top = 40
         Layout = blGlyphTop
-        ExplicitLeft = 66
+        ExplicitLeft = 80
         ExplicitTop = 40
         ExplicitWidth = 60
         ExplicitHeight = 40
@@ -185,29 +186,28 @@ inherited FrmDocList_template: TFrmDocList_template
       inherited BtnExport: TRzToolButton
         Left = 4
         Top = 40
-        Width = 62
+        Width = 76
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 4
         ExplicitTop = 40
-        ExplicitWidth = 62
+        ExplicitWidth = 76
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 126
+        Left = 140
         Top = 50
-        ExplicitLeft = 126
+        ExplicitLeft = 140
         ExplicitTop = 50
       end
     end
     object ToolBar1: TToolBar
       Left = 1
       Top = 81
-      Width = 813
+      Width = 834
       Height = 29
       Caption = 'ToolBar1'
       TabOrder = 1
-      ExplicitTop = 83
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -230,13 +230,11 @@ inherited FrmDocList_template: TFrmDocList_template
     object cxGrid1: TcxGrid
       Left = 1
       Top = 110
-      Width = 813
-      Height = 240
+      Width = 834
+      Height = 349
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 112
-      ExplicitHeight = 238
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -386,7 +384,7 @@ inherited FrmDocList_template: TFrmDocList_template
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
