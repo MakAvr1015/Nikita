@@ -45,7 +45,6 @@ type
     dsOutputMoneyListF_DATE: TFIBDateField;
     dsOutputMoneyListF_STATE_NAME: TFIBStringField;
     dsOutputMoneyListF_STATE: TFIBBCDField;
-    dsOutputMoneyListF_SUMMA: TFIBFloatField;
     dsOutputMoneyListF_TYPE_NAME: TFIBStringField;
     dsOutputMoneyListF_TYPE: TFIBBCDField;
     srInputMoneyList: TDataSource;
@@ -61,7 +60,6 @@ type
     cxGrid1DBTableView1F_BANK_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1F_STATE_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1F_STATE: TcxGridDBColumn;
-    cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
     cxGrid1DBTableView1F_TYPE_NAME: TcxGridDBColumn;
     cxGrid1DBTableView1F_TYPE: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
@@ -78,6 +76,8 @@ type
     dsOutputMoneyListF_OWNER_NAME: TFIBStringField;
     cxGrid1DBTableView1F_OWNER: TcxGridDBColumn;
     cxGrid1DBTableView1F_OWNER_NAME: TcxGridDBColumn;
+    dsOutputMoneyListF_SUMMA: TFIBBCDField;
+    cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn;
     procedure BtnEditClick(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);

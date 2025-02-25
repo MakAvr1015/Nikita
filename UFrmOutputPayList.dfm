@@ -161,10 +161,10 @@ inherited FrmOutputPayList: TFrmOutputPayList
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 66
+        Left = 80
         Top = 40
         Layout = blGlyphTop
-        ExplicitLeft = 66
+        ExplicitLeft = 80
         ExplicitTop = 40
         ExplicitWidth = 60
         ExplicitHeight = 40
@@ -184,18 +184,18 @@ inherited FrmOutputPayList: TFrmOutputPayList
       inherited BtnExport: TRzToolButton
         Left = 4
         Top = 40
-        Width = 62
+        Width = 76
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 4
         ExplicitTop = 40
-        ExplicitWidth = 62
+        ExplicitWidth = 76
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 126
+        Left = 140
         Top = 50
-        ExplicitLeft = 126
+        ExplicitLeft = 140
         ExplicitTop = 50
       end
     end
@@ -207,8 +207,6 @@ inherited FrmOutputPayList: TFrmOutputPayList
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 112
-      ExplicitHeight = 477
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -216,18 +214,15 @@ inherited FrmOutputPayList: TFrmOutputPayList
         DataController.DataSource = srInputMoneyList
         DataController.Summary.DefaultGroupSummaryItems = <
           item
-            Column = cxGrid1DBTableView1F_SUMMA
             Sorted = True
           end
           item
             Kind = skSum
             Position = spFooter
-            Column = cxGrid1DBTableView1F_SUMMA
           end>
         DataController.Summary.FooterSummaryItems = <
           item
             Kind = skSum
-            Column = cxGrid1DBTableView1F_SUMMA
           end>
         DataController.Summary.SummaryGroups = <>
         OptionsCustomize.ColumnsQuickCustomization = True
@@ -276,10 +271,6 @@ inherited FrmOutputPayList: TFrmOutputPayList
           DataBinding.FieldName = 'F_STATE'
           Visible = False
         end
-        object cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn
-          DataBinding.FieldName = 'F_SUMMA'
-          Width = 130
-        end
         object cxGrid1DBTableView1F_TYPE_NAME: TcxGridDBColumn
           DataBinding.FieldName = 'F_TYPE_NAME'
           Width = 245
@@ -300,6 +291,9 @@ inherited FrmOutputPayList: TFrmOutputPayList
           DataBinding.FieldName = 'F_OWNER_NAME'
           Width = 123
         end
+        object cxGrid1DBTableView1F_SUMMA: TcxGridDBColumn
+          DataBinding.FieldName = 'F_SUMMA'
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -312,7 +306,6 @@ inherited FrmOutputPayList: TFrmOutputPayList
       Height = 29
       Caption = 'ToolBar1'
       TabOrder = 2
-      ExplicitTop = 83
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -340,7 +333,7 @@ inherited FrmOutputPayList: TFrmOutputPayList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2327,7 +2320,7 @@ inherited FrmOutputPayList: TFrmOutputPayList
       C01FC01FFFBAFFBAFFFFFFFFFFC7FFC700000000000000000000000000000000
       000000000000}
   end
-  object dsOutputMoneyList: TpFIBDataSet
+  object dsOutputMoneyList: TpFIBDataSet [23]
     DeleteSQL.Strings = (
       'execute procedure SP_T_MONEY_OUT_D(:f_id)')
     SelectSQL.Strings = (
@@ -2410,11 +2403,6 @@ inherited FrmOutputPayList: TFrmOutputPayList
       Visible = False
       Size = 0
     end
-    object dsOutputMoneyListF_SUMMA: TFIBFloatField
-      DisplayLabel = #1057#1091#1084#1084#1072
-      FieldName = 'F_SUMMA'
-      DisplayFormat = '.00;(,00)'
-    end
     object dsOutputMoneyListF_TYPE_NAME: TFIBStringField
       DisplayLabel = #1058#1080#1087
       FieldName = 'F_TYPE_NAME'
@@ -2443,13 +2431,18 @@ inherited FrmOutputPayList: TFrmOutputPayList
       Size = 255
       EmptyStrToNull = True
     end
+    object dsOutputMoneyListF_SUMMA: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'F_SUMMA'
+      Size = 2
+    end
   end
-  object srInputMoneyList: TDataSource
+  object srInputMoneyList: TDataSource [24]
     DataSet = dsOutputMoneyList
     Left = 56
     Top = 128
   end
-  object MnNewMoneyIn: TPopupMenu
+  object MnNewMoneyIn: TPopupMenu [25]
     Left = 48
     Top = 208
     object N1: TMenuItem

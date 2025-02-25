@@ -97,6 +97,14 @@ procedure ShowZakazList;
 ///  Процедура импорта документов из XML
 ///  </summary>
 procedure ImportXmlDoc(DocsNode: IXmlNode; Ds: pointer);
+/// <summary>
+///  Выгрузка в XML DataSet
+///  </summary>
+procedure ExportDsXml(p_DataSet : Pointer; p_FileName : String);
+/// <summary>
+///  Выгрузка в XML dxGridView
+///  </summary>
+procedure ExportDxCridView(p_GridView : Pointer; p_FileName : String);
 var
   dll_path: String;
   Prg_path: string;
@@ -141,7 +149,70 @@ uses
   uFrmNSIGoodType, UFrmListInputDocsHz, UFrmDocOutListHz, uFrmNSIDocProperty,
   uContextPasswordDlg, OutDocumentServicesImpl11,
   uFrmConsole, UNsiClass, uFrmNSIGoodsInfo, uFrmZapasNew, UFrmNSIGoodsLinks,
-  UDocumentsClasses, UPlanner, UFrmZakazList, System.Classes;
+  UDocumentsClasses, UPlanner, UFrmZakazList, System.Classes, Xml.XMLDoc,
+  cxGridTableView;
+
+
+procedure ExportDxCridView(p_GridView : Pointer; p_FileName : String);
+var
+  vl_Doc  : TXMLDocument;
+  vl_node,vl_rec : IXMLNode;
+  vl_int,vl_columns  : integer;
+begin
+  vl_doc := TXMLDocument.Create(Application.MainForm);
+  vl_doc.Active := true;
+
+  if TComponent(p_GridView^) is TcxGridDBTableView then
+  begin
+     with(TcxGridDBTableView(p_GridView^)) do
+     begin
+        vl_node := vl_doc.AddChild(DataController.DataSet.Name);
+        for vl_int := 0 to ViewData.RecordCount-1 do
+        begin
+
+
+        vl_rec := vl_node.AddChild('XMLDoc');
+
+           for vl_columns := 0 to VisibleColumnCount-1 do
+           begin
+             with vl_rec.AddChild(Stringreplace(VisibleColumns[vl_columns].Caption,' ','_',[rfReplaceAll, rfIgnoreCase])) do begin
+               NodeValue := ViewData.Records[vl_int].DisplayTexts[VisibleColumns[vl_columns].Index];
+             end;
+           end;
+        end;
+        vl_doc.SaveToFile(p_FileName);
+     end;
+  end;
+  vl_doc.Free;
+end;
+procedure ExportDsXml(p_DataSet : Pointer; p_FileName : String);
+var
+  vl_Doc  : TXMLDocument;
+  vl_node,vl_rec : IXMLNode;
+  vl_int  : integer;
+begin
+  vl_doc := TXMLDocument.Create(Application.MainForm);
+  vl_doc.Active := true;
+  if (TComponent(p_DataSet^) is TDataset) then
+  begin
+     TDataSet(p_DataSet^).First;
+     vl_node := vl_doc.AddChild(TDataSet(p_DataSet^).Name);
+     while not TDataSet(p_DataSet^).Eof do
+     begin
+        vl_rec := vl_node.AddChild('XMLDoc');
+       for vl_int := 0 to TDataSet(p_DataSet^).FieldCount-1 do
+       begin
+         with vl_rec.AddChild(TDataSet(p_DataSet^).Fields[vl_int].FieldName) do
+         begin
+             NodeValue := TDataSet(p_DataSet^).Fields[vl_int].AsString;
+         end;
+       end;
+       TDataSet(p_DataSet^).Next;
+     end;
+     vl_doc.SaveToFile(p_FileName);
+  end;
+  vl_doc.Free;
+end;
 
 
 procedure AddInfoColumnDocs(p_grid : TcxGridDBTableView);

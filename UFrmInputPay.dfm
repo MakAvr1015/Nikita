@@ -1,6 +1,6 @@
 inherited FrmInputPay: TFrmInputPay
   ActiveControl = RzPanel1
-  Caption = #1042#1093#1086#1076#1103#1097#1080#1081' '#1087#1083#1090#1077#1078
+  Caption = #1042#1093#1086#1076#1103#1097#1080#1081' '#1087#1083#1072#1090#1077#1078
   ClientHeight = 565
   ClientWidth = 939
   ExplicitWidth = 955
@@ -120,7 +120,6 @@ inherited FrmInputPay: TFrmInputPay
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -278,8 +277,6 @@ inherited FrmInputPay: TFrmInputPay
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 106
-      ExplicitHeight = 439
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
@@ -339,7 +336,7 @@ inherited FrmInputPay: TFrmInputPay
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

@@ -186,12 +186,12 @@ inherited FrmInputPayList: TFrmInputPayList
       inherited BtnExport: TRzToolButton
         Left = 800
         Top = 0
-        Width = 62
+        Width = 76
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 800
         ExplicitTop = 0
-        ExplicitWidth = 62
+        ExplicitWidth = 76
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
@@ -209,8 +209,6 @@ inherited FrmInputPayList: TFrmInputPayList
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 72
-      ExplicitHeight = 350
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -326,7 +324,6 @@ inherited FrmInputPayList: TFrmInputPayList
       Height = 29
       Caption = 'ToolBar1'
       TabOrder = 2
-      ExplicitTop = 43
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -367,7 +364,7 @@ inherited FrmInputPayList: TFrmInputPayList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013C00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
