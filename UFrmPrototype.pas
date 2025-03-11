@@ -277,20 +277,30 @@ end;
 
 procedure TFrmPrototype.SaveState;
 var
-  i: Integer;
+  i, j: Integer;
   fl: TiniFile;
+  fl_visible: TiniFile;
 begin
   fl := TiniFile.Create(app_data + '\' + self.ClassName + '.ini');
-
+  fl_visible := TiniFile.Create(app_data + '\' + self.ClassName +
+    '_GridVisible.ini');
   for i := 0 to self.ComponentCount - 1 do
   begin
     if self.Components[i] is TcxGridDBTableView then
     begin
       TcxGridDBTableView(self.Components[i]).StoreToIniFile(fl.FileName, false,
         [ { gsoUseFilter, gsoUseSummary } ], self.Components[i].Name);
+      for j := 0 to TcxGridDBTableView(self.Components[i]).ColumnCount - 1 do
+      begin
+        fl_visible.WriteBool(TcxGridDBTableView(self.Components[i]).Name + '_' +
+          TcxGridDBTableView(self.Components[i]).Columns[j]
+          .DataBinding.FieldName, 'visible',
+          TcxGridDBTableView(self.Components[i]).Columns[j].visible);
+      end;
     end;
   end;
   fl.Free;
+  fl_visible.Free;
 end;
 
 procedure TFrmPrototype.FormCreate(Sender: TObject);
@@ -437,9 +447,11 @@ end;
 procedure TFrmPrototype.RestoreState;
 var
   i, j: Integer;
-  fl: TiniFile;
+  fl, fl_visible: TiniFile;
 begin
   fl := TiniFile.Create(app_data + '\' + self.ClassName + '.ini');
+  fl_visible := TiniFile.Create(app_data + '\' + self.ClassName +
+    '_GridVisible.ini');
   Caption := translateCapt(Caption, Language, TranslateFile);
   if FormName = '' then
     FormName := self.ClassName;
@@ -475,6 +487,13 @@ begin
           null) then
           TcxGridDBTableView(Components[i]).Columns[j].Summary.GroupKind :=
             TcxGridDBTableView(Components[i]).Columns[j].Summary.FooterKind;
+        if (TcxGridDBTableView(Components[i])
+          .OptionsCustomize.ColumnsQuickCustomization) then
+          TcxGridDBTableView(Components[i]).Columns[j].visible :=
+            fl_visible.ReadBool(TcxGridDBTableView(self.Components[i]).Name +
+            '_' + TcxGridDBTableView(self.Components[i]).Columns[j]
+            .DataBinding.FieldName, 'Visible', TcxGridDBTableView(Components[i])
+            .Columns[j].visible);
       end;
       TcxGridDBTableView(Components[i]).OptionsView.GroupByBox := true;
       TcxGridDBTableView(Components[i]).OptionsView.GroupSummarylayout :=
@@ -498,6 +517,7 @@ begin
     end; }
   // cxPropertiesStore.RestoreFrom;
   fl.Free;
+  fl_visible.Free;
   TranslateForm(self, Language, TranslateFile);
 end;
 
@@ -654,7 +674,7 @@ end;
 
 procedure TFrmPrototype.XML1Click(Sender: TObject);
 var
-  cmp,grd: Tcomponent;
+  cmp, grd: Tcomponent;
   vl_index: Integer;
 begin
   cmp := self.FindComponent(DsFormName.Caption);
@@ -675,7 +695,7 @@ begin
             if dxSaveFileDialog.Execute then
             begin
               // ExportDsXml(@cmp, dxSaveFileDialog.FileName);
-              ExportDxCridView(@grd,dxSaveFileDialog.FileName);
+              ExportDxCridView(@grd, dxSaveFileDialog.FileName);
             end;
             exit;
           end;

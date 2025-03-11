@@ -339,7 +339,7 @@ procedure TFrmMoveDocList.FormCreate(Sender: TObject);
 var
   tf: TStringField;
 begin
-  inherited;
+
   Editstr_date.Date := Date;
   Editend_date.Date := Date;
   dm.dsNsiDocProp.Active := false;
@@ -361,7 +361,7 @@ begin
     end;
     dm.dsNsiDocProp.Next;
   end;
-
+  inherited;
 end;
 
 end.

@@ -189,12 +189,12 @@ inherited FrmMoveDocList: TFrmMoveDocList
       inherited BtnExport: TRzToolButton
         Left = 846
         Top = 0
-        Width = 62
+        Width = 76
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 846
         ExplicitTop = 0
-        ExplicitWidth = 62
+        ExplicitWidth = 76
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
@@ -352,7 +352,7 @@ inherited FrmMoveDocList: TFrmMoveDocList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013C00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
