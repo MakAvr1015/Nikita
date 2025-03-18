@@ -339,10 +339,8 @@ procedure TFrmMoveDocList.FormCreate(Sender: TObject);
 var
   tf: TStringField;
 begin
-
-  Editstr_date.Date := Date;
-  Editend_date.Date := Date;
-  dm.dsNsiDocProp.Active := false;
+  AddInfoColumnDocs(cxGrid1DBTableView1);
+{  dm.dsNsiDocProp.Active := false;
   dm.dsNsiDocProp.Active := true;
   dm.dsNsiDocProp.First;
   while not dm.dsNsiDocProp.Eof do
@@ -360,8 +358,11 @@ begin
       Caption := dm.dsNsiDocProp.FieldByName('f_name').AsString;
     end;
     dm.dsNsiDocProp.Next;
-  end;
+  end;      }
   inherited;
+  Editstr_date.Date := Date;
+  Editend_date.Date := Date;
+
 end;
 
 end.
