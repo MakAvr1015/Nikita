@@ -318,21 +318,8 @@ begin
 end;
 
 procedure TFrmMoveDocList.dsMoveDocsListCalcFields(DataSet: TDataSet);
-var
-  v_ost: string;
-  i: integer;
-  v_val: TstringList;
-  tf: tfield;
 begin
-  v_val := TstringList.Create;
-  v_val.Text := DataSet.FieldByName('F_DOC_PROPERTY').AsString;
-  for i := 0 to v_val.Count - 1 do
-  begin
-    if v_val.Names[i] <> '' then
-      DataSet.FieldByName('DF_' + v_val.Names[i]).Value :=
-        v_val.Values[v_val.Names[i]];
-  end;
-  v_val.free;
+  CalcFieldsDopInfo(DataSet,'F_DOC_PROPERTY');
 end;
 
 procedure TFrmMoveDocList.FormCreate(Sender: TObject);
@@ -340,25 +327,6 @@ var
   tf: TStringField;
 begin
   AddInfoColumnDocs(cxGrid1DBTableView1);
-{  dm.dsNsiDocProp.Active := false;
-  dm.dsNsiDocProp.Active := true;
-  dm.dsNsiDocProp.First;
-  while not dm.dsNsiDocProp.Eof do
-  begin
-    tf := TStringField.Create(dsMoveDocsList);
-    tf.Calculated := true;
-    tf.Index := dsMoveDocsList.FieldCount;
-    tf.FieldName := 'DF_' + dm.dsNsiDocProp.FieldByName('f_id').AsString;
-    tf.DisplayLabel := dm.dsNsiDocProp.FieldByName('f_name').AsString;
-    tf.tag := dm.dsNsiDocProp.FieldByName('f_id').AsInteger;
-    tf.DataSet := dsMoveDocsList;
-    with cxGrid1DBTableView1.CreateColumn do
-    begin
-      DataBinding.FieldName := tf.FieldName;
-      Caption := dm.dsNsiDocProp.FieldByName('f_name').AsString;
-    end;
-    dm.dsNsiDocProp.Next;
-  end;      }
   inherited;
   Editstr_date.Date := Date;
   Editend_date.Date := Date;
