@@ -3,6 +3,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   ClientHeight = 622
   ClientWidth = 1039
   OnActivate = FormActivate
+  ExplicitLeft = -256
   ExplicitWidth = 1055
   ExplicitHeight = 661
   PixelsPerInch = 96
@@ -158,10 +159,8 @@ inherited FrmNsiGoods: TFrmNsiGoods
     end
     inherited RzToolbar: TRzToolbar
       Width = 804
-      Height = 25
       TabOrder = 1
       ExplicitWidth = 804
-      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -179,100 +178,70 @@ inherited FrmNsiGoods: TFrmNsiGoods
         BtnExit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
-        Top = 0
         OnClick = BtnNewClick
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
-        Top = 0
         Width = 39
         DropDownMenu = popUpOpen
         ToolStyle = tsDropDown
         Enabled = True
         OnClick = BtnOpenClick
-        ExplicitTop = 0
         ExplicitWidth = 39
       end
       inherited BtnFind: TRzToolButton
         Left = 143
-        Top = 0
         ExplicitLeft = 143
-        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
         Left = 168
-        Top = 0
         ExplicitLeft = 168
-        ExplicitTop = 0
       end
       inherited BtnOK: TRzToolButton
         Left = 207
-        Top = 0
         ExplicitLeft = 207
-        ExplicitTop = 0
       end
       inherited BtnCancel: TRzToolButton
         Left = 232
-        Top = 0
         ExplicitLeft = 232
-        ExplicitTop = 0
       end
       inherited BtnRefresh: TRzToolButton
         Left = 118
-        Top = 0
         Enabled = True
         OnClick = BtnRefreshClick
         ExplicitLeft = 118
-        ExplicitTop = 0
       end
       inherited BtnEdit: TRzToolButton
-        Top = 0
         Enabled = True
         OnClick = cxGrid1DBTableView1DblClick
-        ExplicitTop = 0
       end
       inherited BtnExecute: TRzToolButton
         Left = 257
-        Top = 0
         ExplicitLeft = 257
-        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
         Left = 282
-        Top = 0
         Enabled = True
         Visible = True
         ExplicitLeft = 282
-        ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
         Left = 307
-        Top = 0
         ExplicitLeft = 307
-        ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
-        Left = 357
-        Top = 0
-        ExplicitLeft = 357
-        ExplicitTop = 0
+        Left = 371
+        ExplicitLeft = 371
       end
       inherited BtnView: TRzToolButton
-        Top = 0
         Visible = False
-        ExplicitTop = 0
       end
       inherited BtnExport: TRzToolButton
         Left = 332
-        Top = 0
         ExplicitLeft = 332
-        ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 382
-        Top = 2
-        ExplicitLeft = 382
-        ExplicitTop = 2
+        Left = 396
+        ExplicitLeft = 396
       end
     end
     object cxGrid1: TcxGrid
@@ -284,8 +253,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
       DragMode = dmAutomatic
       TabOrder = 0
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 57
-      ExplicitHeight = 188
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = cxGrid1DBTableView1DblClick
         OnKeyPress = cxGrid1DBTableView1KeyPress
@@ -516,6 +483,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
         end
       end
       inherited cxDBImage1: TcxDBImage
+        ExplicitLeft = 0
         ExplicitWidth = 361
         ExplicitHeight = 254
         Height = 254
@@ -558,7 +526,6 @@ inherited FrmNsiGoods: TFrmNsiGoods
       GradientColorStop = clGradientActiveCaption
       TabOrder = 3
       VisualStyle = vsGradient
-      ExplicitTop = 28
       ToolbarControls = (
         RzEditFind
         BtnFilter
@@ -622,18 +589,23 @@ inherited FrmNsiGoods: TFrmNsiGoods
         OptionsView.GroupByBox = False
         object cxGrid2DBTableView1F_ID: TcxGridDBColumn
           DataBinding.FieldName = 'F_ID'
+          Width = 20
         end
         object cxGrid2DBTableView1F_VALUE: TcxGridDBColumn
           DataBinding.FieldName = 'F_VALUE'
+          Width = 20
         end
         object cxGrid2DBTableView1F_CNT: TcxGridDBColumn
           DataBinding.FieldName = 'F_CNT'
+          Width = 95
         end
         object cxGrid2DBTableView1F_DOP_INFO_VAL: TcxGridDBColumn
           DataBinding.FieldName = 'F_DOP_INFO_VAL'
+          Width = 635
         end
         object cxGrid2DBTableView1F_GOOD: TcxGridDBColumn
           DataBinding.FieldName = 'F_GOOD'
+          Width = 20
         end
       end
       object cxGrid2Level1: TcxGridLevel
@@ -648,7 +620,7 @@ inherited FrmNsiGoods: TFrmNsiGoods
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

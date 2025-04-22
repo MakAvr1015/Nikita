@@ -2,6 +2,7 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
   Caption = #1058#1086#1074#1072#1088#1085#1072#1103' '#1087#1086#1079#1080#1094#1080#1103
   ClientHeight = 538
   ClientWidth = 460
+  ExplicitTop = -71
   ExplicitWidth = 476
   ExplicitHeight = 577
   PixelsPerInch = 96
@@ -107,9 +108,9 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
         ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Left = 343
+        Left = 357
         Top = 0
-        ExplicitLeft = 343
+        ExplicitLeft = 357
         ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
@@ -294,6 +295,7 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
         OptionsView.CellAutoHeight = True
+        OptionsView.CellTextMaxLineCount = 2
         OptionsView.ColumnAutoWidth = True
         OptionsView.GroupByBox = False
         OptionsView.Header = False
@@ -314,10 +316,12 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
           DataBinding.FieldName = 'F_GOOD_INFO_NAME'
           PropertiesClassName = 'TcxLabelProperties'
           Options.Editing = False
+          Width = 195
         end
         object cxGrid1DBTableView1F_GOOD_INFO_VAL: TcxGridDBColumn
           DataBinding.FieldName = 'F_GOOD_INFO_VAL'
           OnGetPropertiesForEdit = cxGrid1DBTableView1F_GOOD_INFO_VALGetPropertiesForEdit
+          Width = 248
         end
       end
       object cxGrid1TableView1: TcxGridTableView
@@ -328,8 +332,10 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
         DataController.Summary.SummaryGroups = <>
         object cxGrid1TableView1Column1: TcxGridColumn
           RepositoryItem = dm.cxEditRepositoryComboBoxItem1
+          Width = 166
         end
         object cxGrid1TableView1Column2: TcxGridColumn
+          Width = 235
         end
       end
       object cxGrid1Level1: TcxGridLevel
@@ -344,7 +350,7 @@ inherited FrmNsiGoodsEdit: TFrmNsiGoodsEdit
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

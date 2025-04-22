@@ -330,7 +330,7 @@ begin
   jsonInvoice.AddPair('payment_data',jsonPaymentData);
 
   jsonInvoice.AddPair('cart',jsonCart);
-  jsonInvoice.AddPair('expires_at',DateToISO8601(dsDocHeadF_DATE.AsDateTime+2));
+  jsonInvoice.AddPair('expires_at',DateToISO8601(date()+2));
 //  jsonInvoice.AddPair('description','Это пробный счет, не обращать внимания. Отладка');
   jsonPaymentData := TJSONObject.Create;
   jsonPaymentData.addPair('плательщик',dsDocHeadF_PARTNER_NAME.AsString);
@@ -356,7 +356,7 @@ begin
   Memo1.Lines.Add(RzURLLabel1.Caption);
   except
   on E : Exception do
-        Dialogs.MessageDlg('Ошибка получения ссылки',mtError,[mbOk],0,mbOk);
+        Dialogs.MessageDlg('Ошибка получения ссылки - ' + E.Message,mtError,[mbOk],0,mbOk);
   end;
   jsonInvoice.free;
 end;

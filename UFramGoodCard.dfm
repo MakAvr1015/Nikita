@@ -67,7 +67,6 @@ object FramGoodCard: TFramGoodCard
       Align = alClient
       TabOrder = 3
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitHeight = 109
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.Insert.Visible = False
@@ -117,6 +116,7 @@ object FramGoodCard: TFramGoodCard
     Properties.FitMode = ifmProportionalStretch
     Properties.GraphicClassName = 'TdxPNGImage'
     TabOrder = 1
+    ExplicitLeft = -5
     Height = 291
     Width = 201
   end
