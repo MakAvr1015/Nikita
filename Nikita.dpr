@@ -124,7 +124,8 @@ uses
   UFrmZakazDoc in 'UFrmZakazDoc.pas' {FrmZakazDoc},
   UDlgMakeDocFromZakaz in 'UDlgMakeDocFromZakaz.pas',
   Vcl.ActnMan {DlgMakeDocFromZakaz},
-  UNsiGoodScancodeFrame in 'UNsiGoodScancodeFrame.pas' {NsiGoodScancodeFrame: TFrame};
+  UNsiGoodScancodeFrame in 'UNsiGoodScancodeFrame.pas' {NsiGoodScancodeFrame: TFrame},
+  UFrmNsiPartnerFl in 'UFrmNsiPartnerFl.pas' {FrmNsiPartnerFl};
 
 // StringUtils in 'ShtrihDrv\StringUtils.pas';
 
@@ -146,8 +147,6 @@ begin
   else
     dll_path := Prg_path + 'win32';
   Application.CreateForm(Tdm, dm);
-
-
   app_data := GetSpecialFolderPath(CSIDL_APPDATA) + '\Nikita';
   if not directoryexists(app_data) then
   begin

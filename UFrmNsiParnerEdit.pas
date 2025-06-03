@@ -221,6 +221,25 @@ begin
               AProperties := editItem.Properties;
             end;
           end;
+        21:
+          begin
+            editItem := dm.cxEditRepository.ItemByName
+              ('cxEditRepositoryCurrencyItem1');
+            if editItem <> nil then
+            begin
+              AProperties := editItem.Properties;
+            end;
+          end;
+        22, 14, 15:
+          begin
+            editItem := dm.cxEditRepository.ItemByName
+              ('cxEditRepositoryCheckBoxItem1');
+            if editItem <> nil then
+            begin
+              AProperties := editItem.Properties;
+            end;
+          end;
+
       end;
     end;
   end;
@@ -246,6 +265,24 @@ begin
     12 .. 13:
       begin
         editItem := dm.cxEditRepository.ItemByName('cxEditRepositoryDateItem1');
+        if editItem <> nil then
+        begin
+          AProperties := editItem.Properties;
+        end;
+      end;
+    21:
+      begin
+        editItem := dm.cxEditRepository.ItemByName
+          ('cxEditRepositoryCurrencyItem1');
+        if editItem <> nil then
+        begin
+          AProperties := editItem.Properties;
+        end;
+      end;
+    22, 14, 15:
+      begin
+        editItem := dm.cxEditRepository.ItemByName
+          ('cxEditRepositoryCheckBoxItem1');
         if editItem <> nil then
         begin
           AProperties := editItem.Properties;

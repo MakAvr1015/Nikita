@@ -24,7 +24,6 @@ inherited FrmNsiPartner: TFrmNsiPartner
       Width = 843
       Height = 27
       ExplicitWidth = 843
-      ExplicitHeight = 27
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -76,8 +75,8 @@ inherited FrmNsiPartner: TFrmNsiPartner
         ExplicitLeft = 268
       end
       inherited BtnExit: TRzToolButton
-        Left = 318
-        ExplicitLeft = 318
+        Left = 332
+        ExplicitLeft = 332
       end
       inherited BtnView: TRzToolButton
         Visible = False
@@ -87,8 +86,8 @@ inherited FrmNsiPartner: TFrmNsiPartner
         ExplicitLeft = 293
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 343
-        ExplicitLeft = 343
+        Left = 357
+        ExplicitLeft = 357
       end
     end
     object cxGrid1: TcxGrid
@@ -160,7 +159,7 @@ inherited FrmNsiPartner: TFrmNsiPartner
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013C00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

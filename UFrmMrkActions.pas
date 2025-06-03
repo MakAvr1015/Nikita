@@ -25,7 +25,10 @@ uses
   dxSkinXmas2008Blue, cxContainer, cxEdit, dxLayoutcxEditAdapters,
   dxLayoutContainer, cxCustomListBox, cxListBox, cxDBEdit, cxNavigator,
   cxDBNavigator, cxMaskEdit, cxDropDownEdit, cxCalendar, cxTextEdit,
-  cxCurrencyEdit, dxLayoutControl;
+  cxCurrencyEdit, dxLayoutControl, dxShellDialogs, System.ImageList,
+  Vcl.ImgList, frxDBSet, frxExportRTF, frxExportPDF, frxExportXML, frxExportXLS,
+  frxFIBComponents, frxChBox, frxTableObject, frxCross, frxRich,
+  frxExportBaseDialog, frxExportDOCX, frxDCtrl, frxOLE, frxDesgn, frxBarcode;
 
 type
   TFrmMrkActions = class(TFrmPrototype)

@@ -11,7 +11,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
     Top = 532
     Width = 542
     ExplicitTop = 532
-    ExplicitWidth = 517
+    ExplicitWidth = 542
   end
   inherited Panel3: TPanel
     Width = 542
@@ -146,9 +146,9 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
     end
     inherited RzToolbar: TRzToolbar
       Width = 540
-      Height = 25
+      Height = 48
       ExplicitWidth = 540
-      ExplicitHeight = 25
+      ExplicitHeight = 48
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -167,7 +167,6 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -198,15 +197,15 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
         ExplicitTop = 0
       end
       inherited BtnExecute: TRzToolButton
-        Left = 343
+        Left = 357
         Top = 0
-        ExplicitLeft = 343
+        ExplicitLeft = 357
         ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Left = 318
+        Left = 332
         Top = 0
-        ExplicitLeft = 318
+        ExplicitLeft = 332
         ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
@@ -233,8 +232,10 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
         ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Top = 2
-        ExplicitTop = 2
+        Left = 4
+        Top = 27
+        ExplicitLeft = 4
+        ExplicitTop = 27
       end
     end
     object Ed_U_NAME: TRzDBEdit
@@ -293,12 +294,10 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
       TabIndex = 1
       TabOrder = 6
       TabStyle = tsRoundCorners
-      ExplicitWidth = 515
       FixedDimension = 19
       object TabSheet1: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1041#1072#1085#1082#1086#1074#1089#1082#1080#1077' '#1088#1077#1082#1074#1080#1079#1080#1090#1099
-        ExplicitWidth = 511
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
@@ -306,7 +305,6 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
           Height = 295
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 511
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.OnButtonClick = cxGrid1DBTableView1NavigatorButtonsButtonClick
             Navigator.Buttons.CustomButtons = <>
@@ -383,7 +381,6 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1072#1103' '#1080#1085#1092#1086#1088#1084#1072#1094#1080#1103
-        ExplicitWidth = 511
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
@@ -391,7 +388,6 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
           Height = 295
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 511
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             ScrollbarAnnotations.CustomAnnotations = <>
@@ -440,7 +436,6 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
       object TabSheet3: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1044#1080#1089#1082#1086#1085#1090#1085#1099#1077' '#1082#1072#1088#1090#1099
-        ExplicitWidth = 511
         object cxGrid3: TcxGrid
           Left = 0
           Top = 0
@@ -448,7 +443,6 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
           Height = 295
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 511
           object cxGridDBTableView1: TcxGridDBTableView
             Navigator.Buttons.OnButtonClick = cxGridDBTableView1NavigatorButtonsButtonClick
             Navigator.Buttons.CustomButtons = <>
@@ -532,7 +526,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
