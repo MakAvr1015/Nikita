@@ -254,6 +254,8 @@ type
     RESTRequest1: TRESTRequest;
     RESTResponse1: TRESTResponse;
     HTTPBasicAuthenticator1: THTTPBasicAuthenticator;
+    cxEditRepositoryCheckBoxItem1: TcxEditRepositoryCheckBoxItem;
+    cxEditRepositoryCurrencyItem1: TcxEditRepositoryCurrencyItem;
     procedure DummyAct(Sender: TObject);
     procedure ActDocInpExecute(Sender: TObject);
     procedure ActNsiPartnerExecute(Sender: TObject);

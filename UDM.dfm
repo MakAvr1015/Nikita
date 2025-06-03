@@ -153,7 +153,7 @@ object dm: Tdm
     Left = 280
     Top = 120
     Bitmap = {
-      494C01013A00D000600110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000640110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2453,6 +2453,12 @@ object dm: Tdm
     end
     object cxEditRepositoryDateItem1: TcxEditRepositoryDateItem
     end
+    object cxEditRepositoryCheckBoxItem1: TcxEditRepositoryCheckBoxItem
+      Properties.ValueChecked = 1
+      Properties.ValueUnchecked = 0
+    end
+    object cxEditRepositoryCurrencyItem1: TcxEditRepositoryCurrencyItem
+    end
   end
   object spSetContext: TpFIBStoredProc
     Transaction = pFIBTransaction
@@ -3367,7 +3373,7 @@ object dm: Tdm
     Left = 648
     Top = 352
     Bitmap = {
-      494C010103000500600120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500640120002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       00000000000000000000000000000000000000000000DE9C0000DE9C0000DE9C
       0000DE9C0000D6940000D6940000DE9C0000DE9C0000DE9C0000DE9C0000D694
@@ -4604,8 +4610,8 @@ object dm: Tdm
     ContentType = 'application/json'
     Params = <>
     HandleRedirects = True
-    Left = 536
-    Top = 488
+    Left = 528
+    Top = 40
   end
   object RESTRequest1: TRESTRequest
     Client = RESTClient1
@@ -4636,18 +4642,18 @@ object dm: Tdm
       end>
     Response = RESTResponse1
     SynchronizedEvents = False
-    Left = 672
-    Top = 520
+    Left = 544
+    Top = 56
   end
   object RESTResponse1: TRESTResponse
     ContentType = 'application/json'
-    Left = 784
-    Top = 528
+    Left = 560
+    Top = 32
   end
   object HTTPBasicAuthenticator1: THTTPBasicAuthenticator
     Username = '616379'
     Password = 'live_aOgZAMHvxGnolkh-NBp91esr1uXv4aHBtH_VJStSlxg'
     Left = 576
-    Top = 528
+    Top = 72
   end
 end

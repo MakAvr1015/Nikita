@@ -82,3 +82,4 @@ nikita.ini
 *.ini
 *.identcache
 *.res
+win32/firebird.log

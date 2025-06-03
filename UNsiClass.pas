@@ -12,6 +12,7 @@ type
     f_name: String;
     f_address: String;
     f_id: integer;
+    f_discount : currency;
     const SQL_GET_PROP : String = 'select * from SP_T_NSI_PARTNER_INFO_S(%1)';
   public
     function GetInn: string;

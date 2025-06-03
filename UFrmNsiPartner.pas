@@ -157,6 +157,7 @@ end;
 procedure TFrmNsiPartner.FormCreate(Sender: TObject);
 var
   tf: tStringfield;
+  editItem: TcxEditRepositoryItem;
 begin
 
   dsPartnerProp.active := true;
@@ -175,6 +176,43 @@ begin
     begin
       DataBinding.FieldName:=tf.FieldName;
       Caption:=dsPartnerProp.FieldByName('prop_name').AsString;
+case tf.tag of
+    11:
+      begin
+        editItem := dm.cxEditRepository.ItemByName('cxEditRepositorydsPrice');
+        if editItem <> nil then
+        begin
+          Properties := editItem.Properties;
+        end;
+      end;
+    12 .. 13:
+      begin
+        editItem := dm.cxEditRepository.ItemByName('cxEditRepositoryDateItem1');
+        if editItem <> nil then
+        begin
+          Properties := editItem.Properties;
+        end;
+      end;
+    21:
+      begin
+        editItem := dm.cxEditRepository.ItemByName
+          ('cxEditRepositoryCurrencyItem1');
+        if editItem <> nil then
+        begin
+          Properties := editItem.Properties;
+        end;
+      end;
+    22, 14, 15:
+      begin
+        editItem := dm.cxEditRepository.ItemByName
+          ('cxEditRepositoryCheckBoxItem1');
+        if editItem <> nil then
+        begin
+          Properties := editItem.Properties;
+        end;
+      end;
+  end;
+
     end;
     dsPartnerProp.Next;
   end;
