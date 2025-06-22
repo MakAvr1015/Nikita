@@ -170,13 +170,13 @@ begin
     1:
       begin
         vl_msg := 'Отметить весь товар как новинки?';
-        vl_date := EncodeDate(1900, 1, 1);
+        vl_date := Date;
       end;
 
     -1:
       begin
         vl_msg := 'Снять со всего товара метку новинок?';
-        vl_date := Date;
+        vl_date := EncodeDate(1900, 1, 1);
       end;
   end;
   if MessageDlg(vl_msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
