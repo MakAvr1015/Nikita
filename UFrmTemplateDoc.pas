@@ -35,11 +35,11 @@ uses
   Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
   frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
 
-///  <summary>
-///  Документ - заготовка
-///  </summary>
+/// <summary>
+/// Документ - заготовка
+/// </summary>
 type
-  TFrmTemplateDoc = class(TFrmPrototype,IFrmDoc)
+  TFrmTemplateDoc = class(TFrmPrototype, IFrmDoc)
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
@@ -104,6 +104,9 @@ type
     cxGrid1DBTableView1F_RESERVED: TcxGridDBColumn;
     cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn;
     dsDocStringsF_SCANCODE: TStringField;
+    PopupMenuExec: TPopupMenu;
+    N1: TMenuItem;
+    N2: TMenuItem;
     procedure RzDBButtonEdit3ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
@@ -115,29 +118,30 @@ type
       ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo;
       var ADone: Boolean);
     procedure dsDocStringsAfterDelete(DataSet: TDataSet);
-    procedure cxGrid1DBTableView1DragDrop(Sender, Source: TObject; X,
-      Y: Integer);
-    procedure cxGrid1DBTableView1DragOver(Sender, Source: TObject; X,
-      Y: Integer; State: TDragState; var Accept: Boolean);
+    procedure cxGrid1DBTableView1DragDrop(Sender, Source: TObject;
+      X, Y: Integer);
+    procedure cxGrid1DBTableView1DragOver(Sender, Source: TObject;
+      X, Y: Integer; State: TDragState; var Accept: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure dsDocStringsCalcFields(DataSet: TDataSet);
-    procedure BtnExecuteClick(Sender: TObject);
+    procedure SetAsNew(Sender: TObject);
     procedure dsDocStringsAfterScroll(DataSet: TDataSet);
     procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
   private
     { Private declarations }
-    scan  : string;
-    scan_time : TTime;
+    scan: string;
+    scan_time: TTime;
     procedure InsPosition;
   public
     { Public declarations }
-    function GetDocId : integer;
-    function GetTableName : string;
-    property DocId : integer read GetDocId;
-    property TableName : string read GetTableName;
-    procedure AddPosition(P_good : integer; p_cnt : integer; p_price : Currency = 0);
+    function GetDocId: Integer;
+    function GetTableName: string;
+    property DocId: Integer read GetDocId;
+    property TableName: string read GetTableName;
+    procedure AddPosition(P_good: Integer; p_cnt: Integer;
+      p_price: Currency = 0);
     procedure RefreshDoc;
   end;
 
@@ -147,30 +151,50 @@ var
 implementation
 
 {$R *.dfm}
+
 uses
-  uDm,uPublic, UTypes;
-procedure TFrmTemplateDoc.AddPosition(P_good, p_cnt: integer;
+  uDm, uPublic, UTypes;
+
+procedure TFrmTemplateDoc.AddPosition(P_good, p_cnt: Integer;
   p_price: Currency);
 begin
   ShowMessage('It Works');
 end;
 
-procedure TFrmTemplateDoc.BtnExecuteClick(Sender: TObject);
+procedure TFrmTemplateDoc.SetAsNew(Sender: TObject);
+var
+  vl_msg: String;
+  vl_date: TDateTime;
 begin
+  case TControl(Sender).tag of
+    1:
+      begin
+        vl_msg := 'Отметить весь товар как новинки?';
+        vl_date := Date;
+      end;
 
-  if MessageDlg('Отметить весь товар как новинки?',mtConfirmation,[mbYes,mbNo],0) = mrYes then
+    -1:
+      begin
+        vl_msg := 'Снять со всего товара метку новинок?';
+        vl_date := EncodeDate(1900, 1, 1);
+      end;
+  end;
+  if MessageDlg(vl_msg, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
     dsDocStrings.DisableControls;
     dsDocStrings.First;
+    dm.spSetGoodCh_Date.ParamByName('P_DATE').Clear;
+    dm.spSetGoodCh_Date.ParamByName('P_DATE').AsDate := vl_date;
     while not dsDocStrings.Eof do
     begin
-      dm.spSetGoodCh_Date.ParamByName('P_GOOD').Value:=dsDocStrings.FieldByName('F_GOOD').Value;
+      dm.spSetGoodCh_Date.ParamByName('P_GOOD').Value :=
+        dsDocStrings.FieldByName('F_GOOD').Value;
       dm.spSetGoodCh_Date.ExecProc;
       dsDocStrings.Next;
     end;
     dsDocStrings.EnableControls;
     dm.spSetGoodCh_Date.Transaction.CommitRetaining;
-    MessageDlg('Товар отмечен как новинки',mtInformation,[],0)
+    MessageDlg('Отметка новинок изменена', mtInformation, [], 0)
   end;
 end;
 
@@ -182,38 +206,40 @@ end;
 
 procedure TFrmTemplateDoc.BtnRefreshClick(Sender: TObject);
 begin
-  RefreshDs(dsDocStrings,'F_ID',dsDocStringsF_ID.AsInteger);
+  RefreshDs(dsDocStrings, 'F_ID', dsDocStringsF_ID.AsInteger);
 end;
 
-procedure TFrmTemplateDoc.cxGrid1DBTableView1CellDblClick(
-  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+procedure TFrmTemplateDoc.cxGrid1DBTableView1CellDblClick
+  (Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
   AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
-  if (ACellViewInfo.Item.Name='cxGrid1DBTableView1F_RESERVED') and (dsDocStringsF_RESERVED.AsInteger>0) then
+  if (ACellViewInfo.Item.Name = 'cxGrid1DBTableView1F_RESERVED') and
+    (dsDocStringsF_RESERVED.AsInteger > 0) then
   begin
-    GetReservDocByArticle(dsDocStringsF_good.AsInteger,dsDocStringsF_article.AsString);
+    GetReservDocByArticle(dsDocStringsF_GOOD.AsInteger,
+      dsDocStringsF_ARTICLE.AsString);
   end
-  else
-  if not dsDocStringsF_GOOD.IsNull then
+  else if not dsDocStringsF_GOOD.IsNull then
     ShowNsiGoodEdit(dsDocStringsF_GOOD.AsInteger);
 
 end;
 
-procedure TFrmTemplateDoc.cxGrid1DBTableView1CustomDrawCell(
-  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+procedure TFrmTemplateDoc.cxGrid1DBTableView1CustomDrawCell
+  (Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
   AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
-  if (not VarIsNull(AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_GOOD_GRP_COLOR.Index])) then
+  if (not VarIsNull(AViewInfo.GridRecord.Values
+    [cxGrid1DBTableView1F_GOOD_GRP_COLOR.Index])) then
   begin
-    ACanvas.Font.Color:=AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_GOOD_GRP_COLOR.Index];
+    ACanvas.Font.Color := AViewInfo.GridRecord.Values
+      [cxGrid1DBTableView1F_GOOD_GRP_COLOR.Index];
   end;
 
-  if ((AviewInfo.GridRecord.Values[cxGrid1DBTableView1F_OST_SKLAD_DEF.Index]<0)
-    and (AviewInfo.Item.Name='cxGrid1DBTableView1F_CNT')
-  )then
+  if ((AViewInfo.GridRecord.Values[cxGrid1DBTableView1F_OST_SKLAD_DEF.Index] <
+    0) and (AViewInfo.Item.Name = 'cxGrid1DBTableView1F_CNT')) then
   begin
-    ACanvas.Font.Color:=clRed;
-    ACanvas.Font.Style:=[fsBold];
+    ACanvas.Font.Color := clRed;
+    ACanvas.Font.Style := [fsBold];
   end;
 end;
 
@@ -225,7 +251,7 @@ begin
     if Control is TcxGridSite then
       with TcxGridSite(Control) do
       begin
-        DragDropGood(TcxGridDBTableView(GridView),dsDocStrings);
+        DragDropGood(TcxGridDBTableView(GridView), dsDocStrings);
       end;
   end;
 end;
@@ -235,9 +261,10 @@ procedure TFrmTemplateDoc.cxGrid1DBTableView1DragOver(Sender, Source: TObject;
 begin
   if Source is TcxGridDBTableView then
   begin
-    if TcxGridDBTableView(Source).DataController.DataSet.FindField('f_article')<>nil then
+    if TcxGridDBTableView(Source).DataController.DataSet.FindField('f_article')
+      <> nil then
     begin
-      Accept:=true;
+      Accept := true;
     end;
   end;
 end;
@@ -245,18 +272,18 @@ end;
 procedure TFrmTemplateDoc.cxGrid1DBTableView1KeyPress(Sender: TObject;
   var Key: Char);
 begin
-  case key of
+  case Key of
     Char(vk_insert):
       InsPosition;
     Char(VK_RETURN):
       InsPosition;
-    else
+  else
     begin
-      if (time()- scan_time)<0.000001 then
-        scan:=scan+key
+      if (time() - scan_time) < 0.000001 then
+        scan := scan + Key
       ELSE
-        scan:=key;
-      scan_time:=time();
+        scan := Key;
+      scan_time := time();
     end;
   end;
 
@@ -265,9 +292,9 @@ end;
 procedure TFrmTemplateDoc.dsDocHeadAfterOpen(DataSet: TDataSet);
 begin
   inherited;
-  dsDocHead.ParamByName('doc_id').Value:=dsDocHeadDOC_ID.Value;
-  dsDocStrings.ParamByName('doc_id').Value:=dsDocHeadDOC_ID.Value;
-  dsDocStrings.Active:=true;
+  dsDocHead.ParamByName('doc_id').Value := dsDocHeadDOC_ID.Value;
+  dsDocStrings.ParamByName('doc_id').Value := dsDocHeadDOC_ID.Value;
+  dsDocStrings.Active := true;
 end;
 
 procedure TFrmTemplateDoc.dsDocStringsAfterDelete(DataSet: TDataSet);
@@ -279,7 +306,7 @@ end;
 procedure TFrmTemplateDoc.dsDocStringsAfterPost(DataSet: TDataSet);
 begin
   dsDocStrings.Transaction.CommitRetaining;
-  RefreshDs(DataSet,'f_good',dsDocStringsF_GOOD.Value);
+  RefreshDs(DataSet, 'f_good', dsDocStringsF_GOOD.Value);
   cxGrid1.SetFocus;
 
 end;
@@ -289,9 +316,10 @@ begin
   inherited;
   if DataSet.Active then
   begin
-    FramBanner1.dsAnalogList.Active:=false;
-    FramBanner1.dsAnalogList.ParamByName('P_GOOD').Value:=DataSet.FieldByName('F_GOOD').AsInteger;
-    FramBanner1.dsAnalogList.Active:=true;
+    FramBanner1.dsAnalogList.Active := false;
+    FramBanner1.dsAnalogList.ParamByName('P_GOOD').Value :=
+      DataSet.FieldByName('F_GOOD').AsInteger;
+    FramBanner1.dsAnalogList.Active := true;
   end;
 end;
 
@@ -300,20 +328,22 @@ begin
   inherited;
   if (dsDocStringsF_GOOD.IsNull and not dsDocStringsF_ARTICLE.IsNull) then
   begin
-{    dm.dsGood_ins.Active:=false;
-    dm.dsGood_ins.ParamByName('f_name').Value:=dsDocStringsF_GOOD_NAME.Value;
-    dm.dsGood_ins.ParamByName('f_article').Value:=dsDocStringsF_ARTICLE.Value;
-    dm.dsGood_ins.Active:=true;
-    dm.dsGood_ins.Transaction.CommitRetaining;
-    dsDocStringsF_GOOD.Value:=dm.dsGood_ins.FieldByName('f_id').Value; }
-    dsDocStringsF_GOOD.Value:=dm.InsExtGood(dsDocStringsF_ARTICLE.AsString,dsDocStringsF_GOOD_NAME.AsString,
-      '');
-    if not dsDocStringsF_scancode.IsNull then
+    { dm.dsGood_ins.Active:=false;
+      dm.dsGood_ins.ParamByName('f_name').Value:=dsDocStringsF_GOOD_NAME.Value;
+      dm.dsGood_ins.ParamByName('f_article').Value:=dsDocStringsF_ARTICLE.Value;
+      dm.dsGood_ins.Active:=true;
+      dm.dsGood_ins.Transaction.CommitRetaining;
+      dsDocStringsF_GOOD.Value:=dm.dsGood_ins.FieldByName('f_id').Value; }
+    dsDocStringsF_GOOD.Value := dm.InsExtGood(dsDocStringsF_ARTICLE.AsString,
+      dsDocStringsF_GOOD_NAME.AsString, '');
+    if not dsDocStringsF_SCANCODE.IsNull then
     begin
-      dm.dsImportScancode.Active:=false;
-      dm.dsImportScancode.ParamByName('f_good').Value:=dsDocStringsF_GOOD.Value;
-      dm.dsImportScancode.ParamByName('f_scancode').Value:=dsDocStringsF_scancode.value;
-      dm.dsImportScancode.Active:=true;
+      dm.dsImportScancode.Active := false;
+      dm.dsImportScancode.ParamByName('f_good').Value :=
+        dsDocStringsF_GOOD.Value;
+      dm.dsImportScancode.ParamByName('f_scancode').Value :=
+        dsDocStringsF_SCANCODE.Value;
+      dm.dsImportScancode.Active := true;
       dm.dsImportScancode.Transaction.CommitRetaining;
     end;
   end;
@@ -321,53 +351,54 @@ end;
 
 procedure TFrmTemplateDoc.dsDocStringsCalcFields(DataSet: TDataSet);
 var
-  v_ost : string;
-  i:integer;
-  v_val : TStringList;
+  v_ost: string;
+  i: Integer;
+  v_val: TStringList;
   tf: tfield;
 begin
   v_val := TStringList.Create;
-  v_val.Text:= DataSet.FieldByName('f_ost').AsString;
-  for I := 0 to v_val.Count - 1 do
+  v_val.Text := DataSet.FieldByName('f_ost').AsString;
+  for i := 0 to v_val.Count - 1 do
   begin
     try
-      DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=v_val.Values[v_val.Names[i]];
+      DataSet.FieldByName('Sklad_' + v_val.Names[i]).Value :=
+        v_val.Values[v_val.Names[i]];
     except
       on E: Exception do
-        begin
-//          InfoMsg(E.Message, E.HelpContext);
-          DataSet.FieldByName('Sklad_'+v_val.Names[i]).value:=0;
-        end;
+      begin
+        // InfoMsg(E.Message, E.HelpContext);
+        DataSet.FieldByName('Sklad_' + v_val.Names[i]).Value := 0;
+      end;
     end;
   end;
   v_val.Free;
-  CalcFieldsDopInfo(DataSet,'F_GOOD_DOP_INFO');
+  CalcFieldsDopInfo(DataSet, 'F_GOOD_DOP_INFO');
 end;
 
 procedure TFrmTemplateDoc.FormCreate(Sender: TObject);
 var
-  tf: TFloatField;//tStringfield;
+  tf: TFloatField; // tStringfield;
 begin
 
   dm.dsSklad.First;
 
   while not dm.dsSklad.Eof do
   begin
-    //tf:=TStringField.Create(dsDocStrings);
-    tf:=TFloatField.Create(dsDocStrings);
-    tf.Calculated:=true;
-    tf.Index:=dsDocStrings.FieldCount;
-    tf.FieldName:='Sklad_'+dm.dsSklad.FieldByName('f_id').AsString;
-    tf.tag:=dm.dsSklad.FieldByName('f_id').AsInteger;
-    tf.DataSet:=dsDocStrings;
+    // tf:=TStringField.Create(dsDocStrings);
+    tf := TFloatField.Create(dsDocStrings);
+    tf.Calculated := true;
+    tf.Index := dsDocStrings.FieldCount;
+    tf.FieldName := 'Sklad_' + dm.dsSklad.FieldByName('f_id').AsString;
+    tf.tag := dm.dsSklad.FieldByName('f_id').AsInteger;
+    tf.DataSet := dsDocStrings;
     with cxGrid1DBTableView1.CreateColumn do
     begin
-      DataBinding.FieldName:=tf.FieldName;
-      Summary.FooterKind:=skSum;
-      Summary.GroupFooterKind:=skSum;
-      Summary.GroupKind:=skSum;
-      Caption:=dm.dsSklad.FieldByName('f_name').AsString;
-      visible:=false;
+      DataBinding.FieldName := tf.FieldName;
+      Summary.FooterKind := skSum;
+      Summary.GroupFooterKind := skSum;
+      Summary.GroupKind := skSum;
+      Caption := dm.dsSklad.FieldByName('f_name').AsString;
+      visible := false;
     end;
     dm.dsSklad.Next;
   end;
@@ -375,10 +406,10 @@ begin
   inherited;
 end;
 
-function TFrmTemplateDoc.GetDocId: integer;
+function TFrmTemplateDoc.GetDocId: Integer;
 begin
-  if dsDocHead.active then
-    result := dsDocHead.fieldByName('DOC_ID').asInteger
+  if dsDocHead.Active then
+    result := dsDocHead.FieldByName('DOC_ID').AsInteger
   else
     result := 0;
 end;
@@ -390,23 +421,23 @@ end;
 
 procedure TFrmTemplateDoc.InsPosition;
 var
-  i     : integer;
-  cnt   : integer;
-  goods : Tdigits;
+  i: Integer;
+  cnt: Integer;
+  goods: Tdigits;
 begin
-//  showMessage(scan);
-  goods:=GetNsiGood(date(),scan);
+  // showMessage(scan);
+  goods := GetNsiGood(Date(), scan);
 
-  cnt:=length(goods);
-  if cnt>0 then
+  cnt := length(goods);
+  if cnt > 0 then
   begin
-    for I := 0 to cnt - 1 do
+    for i := 0 to cnt - 1 do
     begin
       dsDocStrings.Insert;
-      dsDocStringsF_GOOD.Value:=goods[i];
+      dsDocStringsF_GOOD.Value := goods[i];
       dsDocStrings.Post;
-      cxGrid1DBTableView1.DataController.SelectRows(
-        cxGrid1DBTableView1.DataController.FocusedRowIndex,
+      cxGrid1DBTableView1.DataController.SelectRows
+        (cxGrid1DBTableView1.DataController.FocusedRowIndex,
         cxGrid1DBTableView1.DataController.FocusedRowIndex);
     end;
   end
@@ -414,8 +445,9 @@ begin
   begin
     beep;
   end;
-  scan:='';
+  scan := '';
 end;
+
 procedure TFrmTemplateDoc.RefreshDoc;
 begin
   BtnRefreshClick(Self);
@@ -423,13 +455,13 @@ end;
 
 procedure TFrmTemplateDoc.RzDBButtonEdit3ButtonClick(Sender: TObject);
 var
-  key : integer;
+  Key: Integer;
 begin
-  key:=GetNsiPrice;
-  if (key>0) then
+  Key := GetNsiPrice;
+  if (Key > 0) then
   begin
     dsDocHead.Edit;
-    dsDocHeadF_PRICE.Value:=key;
+    dsDocHeadF_PRICE.Value := Key;
     dsDocHead.Post;
     RefreshDs(dsDocHead);
     RefreshDs(dsDocStrings);
