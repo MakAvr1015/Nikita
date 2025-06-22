@@ -76,20 +76,29 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       end
       inherited BtnExecute: TRzToolButton
         Top = 0
+        Width = 44
+        DropDownMenu = PopupMenuExec
+        ToolStyle = tsDropDown
         Enabled = True
-        OnClick = BtnExecuteClick
         ExplicitTop = 0
+        ExplicitWidth = 44
       end
       inherited BtnDelete: TRzToolButton
+        Left = 287
         Top = 0
+        ExplicitLeft = 287
         ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
+        Left = 312
         Top = 0
+        ExplicitLeft = 312
         ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
+        Left = 376
         Top = 0
+        ExplicitLeft = 376
         ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
@@ -97,12 +106,16 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         ExplicitTop = 0
       end
       inherited BtnExport: TRzToolButton
+        Left = 337
         Top = 0
+        ExplicitLeft = 337
         ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
+        Left = 401
         Top = 2
         Properties.OnChange = nil
+        ExplicitLeft = 401
         ExplicitTop = 2
       end
     end
@@ -119,7 +132,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 7
@@ -200,7 +212,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         Align = alClient
         TabOrder = 0
         LookAndFeel.SkinName = 'MoneyTwins'
-        ExplicitHeight = 325
         object cxGrid1DBTableView1: TcxGridDBTableView
           OnDragDrop = prGridDragDropEvent
           OnDragOver = prGridOverEvent
@@ -365,7 +376,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         Properties.GraphicClassName = 'TdxSmartImage'
         Properties.ReadOnly = True
         TabOrder = 1
-        ExplicitHeight = 325
         Height = 327
         Width = 140
       end
@@ -419,7 +429,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         Width = 1147
         Height = 12
         AlignSplitter = salBottom
-        ExplicitTop = 326
       end
     end
   end
@@ -490,7 +499,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000F80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2730,5 +2739,19 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
     DataSet = dsGoodPhoto
     Left = 696
     Top = 160
+  end
+  object PopupMenuExec: TPopupMenu
+    Left = 224
+    Top = 192
+    object N1: TMenuItem
+      Tag = 1
+      Caption = #1055#1086#1084#1077#1090#1080#1090#1100' '#1074#1089#1077' '#1082#1072#1082' '#1085#1086#1074#1080#1085#1082#1080
+      OnClick = SetAsNew
+    end
+    object N2: TMenuItem
+      Tag = -1
+      Caption = #1059#1073#1088#1072#1090#1100' '#1074#1089#1077' '#1080#1079' '#1085#1086#1074#1080#1085#1086#1082
+      OnClick = SetAsNew
+    end
   end
 end
