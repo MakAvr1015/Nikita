@@ -114,7 +114,6 @@ inherited FrmOutputPay: TFrmOutputPay
       GradientColorStop = clGradientActiveCaption
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -258,8 +257,6 @@ inherited FrmOutputPay: TFrmOutputPay
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 145
-      ExplicitHeight = 236
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Visible = True
@@ -315,7 +312,7 @@ inherited FrmOutputPay: TFrmOutputPay
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000C80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2387,11 +2384,6 @@ inherited FrmOutputPay: TFrmOutputPay
       FieldName = 'F_STATE'
       Size = 0
     end
-    object dsMoneyInHeadF_SUMMA: TFIBFloatField
-      FieldName = 'F_SUMMA'
-      DisplayFormat = '0.00'
-      EditFormat = '0.00'
-    end
     object dsMoneyInHeadF_TYPE_NAME: TFIBStringField
       FieldName = 'F_TYPE_NAME'
       Size = 100
@@ -2420,6 +2412,10 @@ inherited FrmOutputPay: TFrmOutputPay
       FieldName = 'F_OWNER_NAME'
       Size = 255
       EmptyStrToNull = True
+    end
+    object dsMoneyInHeadF_SUMMA: TFIBBCDField
+      FieldName = 'F_SUMMA'
+      Size = 2
     end
   end
   object srMoneyInHead: TDataSource
@@ -2455,6 +2451,7 @@ inherited FrmOutputPay: TFrmOutputPay
     AfterDelete = dsMoneyInBodyAfterDelete
     AfterPost = dsMoneyInBodyAfterPost
     OnNewRecord = dsMoneyInBodyNewRecord
+    Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
     AutoCommit = True
     DataSource = srMoneyInHead
@@ -2479,17 +2476,18 @@ inherited FrmOutputPay: TFrmOutputPay
       Visible = False
       Size = 0
     end
-    object dsMoneyInBodyF_SUMMA: TFIBFloatField
-      DisplayLabel = #1057#1091#1084#1084#1072' '#1088#1072#1079#1085#1086#1089#1082#1080
-      FieldName = 'F_SUMMA'
-    end
     object dsMoneyInBodyF_DOC_INFO: TFIBStringField
       DisplayLabel = #1058#1086#1074#1072#1088#1085#1099#1081' '#1076#1086#1082#1091#1084#1077#1085#1090
       FieldName = 'F_DOC_INFO'
       ReadOnly = True
-      Size = 100
+      Size = 255
       Transliterate = False
       EmptyStrToNull = True
+    end
+    object dsMoneyInBodyF_SUMMA: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072' '#1088#1072#1079#1085#1086#1089#1082#1080
+      FieldName = 'F_SUMMA'
+      Size = 2
     end
   end
   object srMoneyInBody: TDataSource

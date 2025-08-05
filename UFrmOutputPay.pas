@@ -46,7 +46,6 @@ type
     dsMoneyInHeadF_DATE: TFIBDateField;
     dsMoneyInHeadF_STATE_NAME: TFIBStringField;
     dsMoneyInHeadF_STATE: TFIBBCDField;
-    dsMoneyInHeadF_SUMMA: TFIBFloatField;
     dsMoneyInHeadF_TYPE_NAME: TFIBStringField;
     dsMoneyInHeadF_TYPE: TFIBBCDField;
     dsMoneyInHeadF_PAY: TFIBBCDField;
@@ -55,7 +54,6 @@ type
     dsMoneyInBodyF_ID: TFIBBCDField;
     dsMoneyInBodyF_DOC: TFIBBCDField;
     dsMoneyInBodyF_PAY: TFIBBCDField;
-    dsMoneyInBodyF_SUMMA: TFIBFloatField;
     dsMoneyInBodyF_DOC_INFO: TFIBStringField;
     srMoneyInBody: TDataSource;
     spMakePay: TpFIBStoredProc;
@@ -85,6 +83,8 @@ type
     RzLabel6: TRzLabel;
     dsMoneyInHeadF_OWNER: TFIBBCDField;
     dsMoneyInHeadF_OWNER_NAME: TFIBStringField;
+    dsMoneyInHeadF_SUMMA: TFIBBCDField;
+    dsMoneyInBodyF_SUMMA: TFIBBCDField;
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure dsMoneyInHeadAfterOpen(DataSet: TDataSet);
     procedure dsMoneyInBodyNewRecord(DataSet: TDataSet);
