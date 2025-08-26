@@ -26,6 +26,8 @@ inherited FrmZakazList: TFrmZakazList
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoShowTextLabels
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1066
       ExplicitHeight = 71
       ToolbarControls = (
@@ -155,10 +157,10 @@ inherited FrmZakazList: TFrmZakazList
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 848
+        Left = 862
         Top = 0
         Layout = blGlyphTop
-        ExplicitLeft = 848
+        ExplicitLeft = 862
         ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
@@ -177,12 +179,12 @@ inherited FrmZakazList: TFrmZakazList
       inherited BtnExport: TRzToolButton
         Left = 786
         Top = 0
-        Width = 62
+        Width = 76
         Height = 40
         Layout = blGlyphTop
         ExplicitLeft = 786
         ExplicitTop = 0
-        ExplicitWidth = 62
+        ExplicitWidth = 76
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
@@ -200,7 +202,6 @@ inherited FrmZakazList: TFrmZakazList
       AutoSize = True
       Caption = 'ToolBar1'
       TabOrder = 1
-      ExplicitTop = 43
       object Editstr_date: TDateTimePicker
         Left = 0
         Top = 0
@@ -228,8 +229,6 @@ inherited FrmZakazList: TFrmZakazList
       Align = alClient
       TabOrder = 2
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 65
-      ExplicitHeight = 379
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = cxGrid1DBTableView1DblClick
         Navigator.Buttons.CustomButtons = <>
@@ -425,7 +424,7 @@ inherited FrmZakazList: TFrmZakazList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
