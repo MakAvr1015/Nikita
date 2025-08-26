@@ -20,8 +20,6 @@ inherited FrmZakazDoc: TFrmZakazDoc
     inherited RzToolbar: TRzToolbar
       Width = 981
       Height = 25
-      ExplicitLeft = 0
-      ExplicitTop = 4
       ExplicitWidth = 981
       ExplicitHeight = 25
       ToolbarControls = (
@@ -274,6 +272,7 @@ inherited FrmZakazDoc: TFrmZakazDoc
       TabIndex = 0
       TabOrder = 2
       TabStyle = tsRoundCorners
+      ExplicitLeft = 0
       FixedDimension = 19
       object TabSheet1: TRzTabSheet
         Color = clGradientActiveCaption
@@ -347,34 +346,42 @@ inherited FrmZakazDoc: TFrmZakazDoc
             object cxGrid1DBTableViewGoodsF_GOOD_NAME: TcxGridDBColumn
               DataBinding.FieldName = 'F_GOOD_NAME'
               Options.Editing = False
+              Width = 388
             end
             object cxGrid1DBTableViewGoodsF_GOOD_ARTICLE: TcxGridDBColumn
               DataBinding.FieldName = 'F_GOOD_ARTICLE'
               Options.Editing = False
+              Width = 104
             end
             object cxGrid1DBTableViewGoodsF_CNT: TcxGridDBColumn
               DataBinding.FieldName = 'F_CNT'
+              Width = 56
             end
             object cxGrid1DBTableViewGoodsF_CNT_FACT: TcxGridDBColumn
               DataBinding.FieldName = 'F_CNT_FACT'
               Options.Editing = False
+              Width = 55
             end
             object cxGrid1DBTableViewGoodsF_PRICE_VAL: TcxGridDBColumn
               DataBinding.FieldName = 'F_PRICE_VAL'
               Options.Editing = False
+              Width = 55
             end
             object cxGrid1DBTableViewGoodsF_SUM: TcxGridDBColumn
               DataBinding.FieldName = 'F_SUM'
               Options.Editing = False
+              Width = 53
             end
             object cxGrid1DBTableViewGoodsF_DISCOUNT: TcxGridDBColumn
               Caption = #1057#1080#1076#1082#1072' %'
               DataBinding.FieldName = 'F_DISCOUNT'
               Options.Editing = False
+              Width = 56
             end
             object cxGrid1DBTableViewGoodsF_DISCOUNT_SUM: TcxGridDBColumn
               DataBinding.FieldName = 'F_DISCOUNT_SUM'
               Options.Editing = False
+              Width = 55
             end
           end
           object cxGrid1Level1: TcxGridLevel
@@ -412,6 +419,8 @@ inherited FrmZakazDoc: TFrmZakazDoc
           BorderWidth = 0
           TabOrder = 0
           VisualStyle = vsGradient
+          ExplicitLeft = 3
+          ExplicitTop = 8
           ToolbarControls = (
             BtnNew1
             BtnImport
@@ -454,6 +463,8 @@ inherited FrmZakazDoc: TFrmZakazDoc
           Align = alClient
           TabOrder = 1
           LookAndFeel.SkinName = 'Blue'
+          ExplicitLeft = 3
+          ExplicitTop = 33
           object cxGrid2DBTableView1: TcxGridDBTableView
             OnDblClick = cxGrid2DBTableView1DblClick
             Navigator.Buttons.CustomButtons = <>
@@ -537,6 +548,154 @@ inherited FrmZakazDoc: TFrmZakazDoc
           end
           object cxGrid2Level1: TcxGridLevel
             GridView = cxGrid2DBTableView1
+          end
+        end
+      end
+      object TabSheet3: TRzTabSheet
+        Color = clGradientActiveCaption
+        Caption = #1055#1077#1088#1077#1084#1077#1097#1077#1085#1080#1103
+        object RzToolbar2: TRzToolbar
+          Left = 0
+          Top = 0
+          Width = 979
+          Height = 25
+          Images = dm.ImageList
+          ShowButtonCaptions = True
+          TextOptions = ttoCustom
+          AutoSize = True
+          BorderInner = fsNone
+          BorderOuter = fsGroove
+          BorderSides = [sdTop]
+          BorderWidth = 0
+          TabOrder = 0
+          VisualStyle = vsGradient
+          ToolbarControls = (
+            RzToolButton1
+            RzToolButton2
+            RzToolButton3)
+          object RzToolButton1: TRzToolButton
+            Left = 4
+            Top = 0
+            Width = 71
+            Hint = 'New'
+            DisabledIndex = 2
+            ImageIndex = 1
+            Caption = #1057#1086#1079#1076#1072#1090#1100
+            OnClick = BtnNew1Click
+          end
+          object RzToolButton2: TRzToolButton
+            Left = 75
+            Top = 0
+            Width = 82
+            Hint = 'Import'
+            DisabledIndex = 55
+            ImageIndex = 54
+            Caption = #1055#1088#1080#1074#1103#1079#1072#1090#1100
+          end
+          object RzToolButton3: TRzToolButton
+            Left = 157
+            Top = 0
+            Width = 72
+            Hint = 'Recycle'
+            DisabledIndex = 57
+            ImageIndex = 56
+            Caption = #1059#1076#1072#1083#1080#1090#1100
+            OnClick = BtnRecycleClick
+          end
+        end
+        object cxGrid3: TcxGrid
+          Left = 0
+          Top = 25
+          Width = 979
+          Height = 238
+          Align = alClient
+          TabOrder = 1
+          LookAndFeel.SkinName = 'Blue'
+          ExplicitLeft = 3
+          ExplicitTop = 33
+          object cxGridDBTableView1: TcxGridDBTableView
+            OnDblClick = cxGrid2DBTableView1DblClick
+            Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
+            DataController.DataSource = srOutDocs
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+                Column = cxGridDBColumn9
+              end
+              item
+                Kind = skSum
+                Column = cxGridDBColumn10
+              end>
+            DataController.Summary.SummaryGroups = <>
+            OptionsCustomize.ColumnsQuickCustomization = True
+            OptionsSelection.CellSelect = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.Footer = True
+            OptionsView.GroupByBox = False
+            OptionsView.HeaderAutoHeight = True
+            object cxGridDBColumn1: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ID'
+              Visible = False
+            end
+            object cxGridDBColumn2: TcxGridDBColumn
+              DataBinding.FieldName = 'F_NUMBER'
+              Width = 47
+            end
+            object cxGridDBColumn3: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DATE'
+              Width = 57
+            end
+            object cxGridDBColumn4: TcxGridDBColumn
+              DataBinding.FieldName = 'F_STATE_NAME'
+              Width = 121
+            end
+            object cxGridDBColumn5: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD'
+              Visible = False
+            end
+            object cxGridDBColumn6: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_NAME'
+              Width = 214
+            end
+            object cxGridDBColumn7: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PRICE'
+              Visible = False
+            end
+            object cxGridDBColumn8: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PRICE_NAME'
+              Width = 140
+            end
+            object cxGridDBColumn9: TcxGridDBColumn
+              DataBinding.FieldName = 'F_CNT'
+              Width = 99
+            end
+            object cxGridDBColumn10: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SUM'
+              Width = 89
+            end
+            object cxGridDBColumn11: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DOP_INFO'
+              Width = 136
+            end
+            object cxGridDBColumn12: TcxGridDBColumn
+              DataBinding.FieldName = 'F_USR'
+              Width = 74
+            end
+            object cxGridDBColumn13: TcxGridDBColumn
+              DataBinding.FieldName = 'F_STATE'
+              Visible = False
+            end
+          end
+          object cxGridLevel1: TcxGridLevel
+            GridView = cxGridDBTableView1
           end
         end
       end
@@ -902,7 +1061,7 @@ inherited FrmZakazDoc: TFrmZakazDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2898,5 +3057,17 @@ inherited FrmZakazDoc: TFrmZakazDoc
     Database = dm.pFIBDatabase
     Left = 256
     Top = 328
+  end
+  object dsMoveDocs: TpFIBDataSet
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    DataSource = srDocHead
+    Left = 552
+    Top = 256
+  end
+  object srMoveDocs: TDataSource
+    DataSet = dsMoveDocs
+    Left = 560
+    Top = 240
   end
 end
