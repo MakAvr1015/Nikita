@@ -280,6 +280,26 @@ inherited FrmDocList_template: TFrmDocList_template
           DataBinding.FieldName = 'DOC_ID'
           Visible = False
         end
+        object cxGrid1DBTableView1F_SKLAD: TcxGridDBColumn
+          DataBinding.FieldName = 'F_SKLAD'
+          Visible = False
+        end
+        object cxGrid1DBTableView1F_SKLAD_NAME: TcxGridDBColumn
+          DataBinding.FieldName = 'F_SKLAD_NAME'
+        end
+        object cxGrid1DBTableView1F_PARTNER: TcxGridDBColumn
+          DataBinding.FieldName = 'F_PARTNER'
+          Visible = False
+        end
+        object cxGrid1DBTableView1F_PARTNER_NAME: TcxGridDBColumn
+          DataBinding.FieldName = 'F_PARTNER_NAME'
+        end
+        object cxGrid1DBTableView1F_CNT: TcxGridDBColumn
+          DataBinding.FieldName = 'F_CNT'
+        end
+        object cxGrid1DBTableView1F_SUM: TcxGridDBColumn
+          DataBinding.FieldName = 'F_SUM'
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -301,7 +321,8 @@ inherited FrmDocList_template: TFrmDocList_template
     SelectSQL.Strings = (
       
         'select f_id as doc_id,f_number,f_date,f_author,f_state,f_state_n' +
-        'ame'
+        'ame,f_sklad,f_sklad_name,f_partner,f_partner_name'
+      ',f_cnt,f_sum'
       'from SP_T_DOC_TEMPLATE_S(:str_date,:end_date)')
     BeforeOpen = dsDocTemplateListBeforeOpen
     Transaction = dm.pFIBTransaction
@@ -341,6 +362,38 @@ inherited FrmDocList_template: TFrmDocList_template
       FieldName = 'DOC_ID'
       Visible = False
       Size = 0
+    end
+    object dsDocTemplateListF_SKLAD: TFIBBCDField
+      FieldName = 'F_SKLAD'
+      Visible = False
+      Size = 0
+    end
+    object dsDocTemplateListF_SKLAD_NAME: TFIBStringField
+      DisplayLabel = #1057#1082#1083#1072#1076
+      FieldName = 'F_SKLAD_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocTemplateListF_PARTNER: TFIBBCDField
+      FieldName = 'F_PARTNER'
+      Visible = False
+      Size = 0
+    end
+    object dsDocTemplateListF_PARTNER_NAME: TFIBStringField
+      DisplayLabel = #1055#1072#1088#1090#1085#1077#1088
+      FieldName = 'F_PARTNER_NAME'
+      Size = 255
+      EmptyStrToNull = True
+    end
+    object dsDocTemplateListF_CNT: TFIBBCDField
+      DisplayLabel = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086
+      FieldName = 'F_CNT'
+      Size = 0
+    end
+    object dsDocTemplateListF_SUM: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'F_SUM'
+      Size = 2
     end
   end
   object srDocTemplateList: TDataSource [7]
@@ -384,7 +437,7 @@ inherited FrmDocList_template: TFrmDocList_template
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000D00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

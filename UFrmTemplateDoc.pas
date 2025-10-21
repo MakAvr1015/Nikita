@@ -33,7 +33,8 @@ uses
   cxSplitter,
   UInterfaces, cxTextEdit, cxMaskEdit, cxDropDownEdit, System.ImageList,
   Vcl.ImgList, frxDBSet, frxChBox, frxTableObject, frxRich, frxExportBaseDialog,
-  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs;
+  frxExportDOCX, frxOLE, dxDateRanges, dxScrollbarAnnotations, dxShellDialogs,
+  dxBarBuiltInMenu, cxButtons, cxPC, FIBQuery, pFIBQuery, pFIBStoredProc;
 
 /// <summary>
 /// Документ - заготовка
@@ -107,6 +108,74 @@ type
     PopupMenuExec: TPopupMenu;
     N1: TMenuItem;
     N2: TMenuItem;
+    cxPageControl1: TcxPageControl;
+    GoodPage: TcxTabSheet;
+    DocsPage: TcxTabSheet;
+    funcCreateDoc: TpFIBDataSet;
+    dsDocHeadF_SKLAD: TFIBBCDField;
+    dsDocHeadF_SKLAD_NAME: TFIBStringField;
+    dsDocHeadF_PARTNER: TFIBBCDField;
+    dsDocHeadF_PARTNER_NAME: TFIBStringField;
+    RzDBButtonEdit1: TRzDBButtonEdit;
+    RzDBButtonEdit2: TRzDBButtonEdit;
+    RzLabel3: TRzLabel;
+    RzLabel4: TRzLabel;
+    dsDocsList: TpFIBDataSet;
+    dsDocsListF_ID: TFIBBCDField;
+    dsDocsListF_DOC_ID: TFIBBCDField;
+    dsDocsListF_TYPE: TFIBBCDField;
+    dsDocsListF_NAME: TFIBStringField;
+    dsDocsListF_NUMBER: TFIBStringField;
+    dsDocsListF_DATE: TFIBDateField;
+    dsDocsListF_PARTNER: TFIBBCDField;
+    dsDocsListF_PARTNER_NAME: TFIBStringField;
+    dsDocsListF_PRICE: TFIBBCDField;
+    dsDocsListF_PRICE_NAME: TFIBStringField;
+    dsDocsListF_SKLAD_FROM: TFIBBCDField;
+    dsDocsListF_SKLAD_FROM_NAME: TFIBStringField;
+    dsDocsListF_SKLAD_TO: TFIBBCDField;
+    dsDocsListF_SKLAD_TO_NAME: TFIBStringField;
+    dsDocsListF_STATE: TFIBBCDField;
+    dsDocsListF_STATE_NAME: TFIBStringField;
+    dsDocsListF_CNT: TFIBBCDField;
+    dsDocsListF_SUM: TFIBBCDField;
+    srDocList: TDataSource;
+    RzToolbar1: TRzToolbar;
+    BtnNew1: TRzToolButton;
+    BtnInsertRecord: TRzToolButton;
+    BtnDeleteRecord: TRzToolButton;
+    pFIBStoredProcLinkDocs: TpFIBStoredProc;
+    dsDocStringsF_CNT_OUT: TFIBBCDField;
+    dsDocStringsF_CNT_MOVE: TFIBBCDField;
+    dsDocStringsF_SUM_OUT: TFIBBCDField;
+    dsDocStringsF_SUM_MOVE: TFIBBCDField;
+    cxGrid1DBTableView1F_CNT_OUT: TcxGridDBColumn;
+    cxGrid1DBTableView1F_CNT_MOVE: TcxGridDBColumn;
+    cxGrid1DBTableView1F_SUM_OUT: TcxGridDBColumn;
+    cxGrid1DBTableView1F_SUM_MOVE: TcxGridDBColumn;
+    BtnNewLinkedDoc: TRzToolButton;
+    funcCreateLinkDoc: TpFIBDataSet;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2Level1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    cxGrid2DBTableView1F_ID: TcxGridDBColumn;
+    cxGrid2DBTableView1F_DOC_ID: TcxGridDBColumn;
+    cxGrid2DBTableView1F_TYPE: TcxGridDBColumn;
+    cxGrid2DBTableView1F_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1F_NUMBER: TcxGridDBColumn;
+    cxGrid2DBTableView1F_DATE: TcxGridDBColumn;
+    cxGrid2DBTableView1F_PARTNER: TcxGridDBColumn;
+    cxGrid2DBTableView1F_PARTNER_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1F_PRICE: TcxGridDBColumn;
+    cxGrid2DBTableView1F_PRICE_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1F_SKLAD_FROM: TcxGridDBColumn;
+    cxGrid2DBTableView1F_SKLAD_FROM_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1F_SKLAD_TO: TcxGridDBColumn;
+    cxGrid2DBTableView1F_SKLAD_TO_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1F_STATE: TcxGridDBColumn;
+    cxGrid2DBTableView1F_STATE_NAME: TcxGridDBColumn;
+    cxGrid2DBTableView1F_CNT: TcxGridDBColumn;
+    cxGrid2DBTableView1F_SUM: TcxGridDBColumn;
     procedure RzDBButtonEdit3ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
@@ -127,6 +196,15 @@ type
     procedure SetAsNew(Sender: TObject);
     procedure dsDocStringsAfterScroll(DataSet: TDataSet);
     procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure cxButton1Click(Sender: TObject);
+    procedure RzDBButtonEdit2ButtonClick(Sender: TObject);
+    procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
+    procedure BtnInsertRecordClick(Sender: TObject);
+    procedure BtnDeleteRecordClick(Sender: TObject);
+    procedure BtnNewLinkedDocClick(Sender: TObject);
+    procedure cxGrid2DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
   private
@@ -153,7 +231,7 @@ implementation
 {$R *.dfm}
 
 uses
-  uDm, uPublic, UTypes;
+  uDm, uPublic, UTypes, UDocClass, uDlgCreateDocFromTemplate;
 
 procedure TFrmTemplateDoc.AddPosition(P_good, p_cnt: Integer;
   p_price: Currency);
@@ -198,6 +276,98 @@ begin
   end;
 end;
 
+procedure TFrmTemplateDoc.BtnDeleteRecordClick(Sender: TObject);
+begin
+  dsDocsList.Delete;
+  dsDocsList.Transaction.CommitRetaining;
+  RefreshDs(dsDocsList, 'F_ID', dsDocsListF_ID.AsInteger);
+end;
+
+procedure TFrmTemplateDoc.BtnInsertRecordClick(Sender: TObject);
+var
+  vl_ListDocType  : Tstrings;
+  vl_selected     : Tstrings;
+  vl_index        : integer;
+  vl_doc_id       : integer;
+  vl_doc_type     : integer;
+begin
+  vl_ListDocType := TStringList.create;
+  vl_ListDocType.Add('1=Расходный документ');
+  vl_ListDocType.Add('2=Перемещение');
+  vl_selected := ShowDlgSelectVal('Выберите тип документа',vl_ListDocType,false);
+  for vl_index := 0 to vl_selected.Count-1 do
+  begin
+    vl_doc_id := 0;
+    if vl_selected[vl_index] = '1' then
+    begin
+       vl_doc_id := GetDocOut;
+       vl_doc_type := 1;
+    end;
+    if vl_selected[vl_index] = '2' then
+    begin
+       vl_doc_id := GetDocMove;
+       vl_doc_type := 2;
+    end;
+    if vl_doc_id >0 then
+    begin
+      pFIBStoredProcLinkDocs.Params.ClearValues;
+      pFIBStoredProcLinkDocs.ParamByName('P_DOC').Value := vl_doc_id;
+      pFIBStoredProcLinkDocs.ParamByName('P_DOCTYPE').Value := vl_doc_type;
+      pFIBStoredProcLinkDocs.ParamByName('P_TEMPLATE').Value := dsDocHeadDOC_ID.AsInteger;
+      pFIBStoredProcLinkDocs.ExecProc;
+      pFIBStoredProcLinkDocs.Transaction.CommitRetaining;
+    end;
+  end;
+  RefreshDs(dsDocsList, 'F_ID', dsDocsListF_ID.AsInteger);
+  vl_selected.Free;
+  vl_ListDocType.Free;
+end;
+
+procedure TFrmTemplateDoc.BtnNewLinkedDocClick(Sender: TObject);
+var
+  vl_ListDocType  : Tstrings;
+  vl_selected     : Tstrings;
+  vl_index        : integer;
+  vl_doc_id       : integer;
+  vl_doc_type     : integer;
+
+begin
+  vl_ListDocType := TStringList.create;
+  vl_ListDocType.Add('1=Расходный документ');
+  vl_ListDocType.Add('2=Перемещение');
+  vl_selected := ShowDlgSelectVal('Выберите тип документа',vl_ListDocType,false);
+  for vl_index := 0 to vl_selected.Count-1 do
+  begin
+    vl_doc_id := 0;
+    if vl_selected[vl_index] = '1' then
+    begin
+       vl_doc_type := 1;
+    end;
+    if vl_selected[vl_index] = '2' then
+    begin
+       vl_doc_type := 2;
+    end;
+    if dsDocsListF_ID.AsInteger >0 then
+    begin
+      funcCreateLinkDoc.Active := false;
+      funcCreateLinkDoc.Params.ClearValues;
+      funcCreateLinkDoc.ParamByName('P_TEMPLATE').AsInteger :=
+        dsDocHeadDOC_ID.AsInteger;
+      funcCreateLinkDoc.ParamByName('P_DST_TYPE').AsInteger :=
+        vl_doc_type;
+      funcCreateLinkDoc.ParamByName('P_SRC_DOC').AsInteger :=
+        dsDocsListF_DOC_ID.AsInteger;
+      funcCreateLinkDoc.ParamByName('P_SRC_TYPE').AsInteger :=
+        dsDocsListF_TYPE.AsInteger;
+      funcCreateLinkDoc.Active := true;
+      funcCreateLinkDoc.Transaction.CommitRetaining;
+    end;
+  end;
+  RefreshDs(dsDocsList, 'F_ID', dsDocsListF_ID.AsInteger);
+  vl_selected.Free;
+  vl_ListDocType.Free;
+end;
+
 procedure TFrmTemplateDoc.BtnOpenClick(Sender: TObject);
 begin
   inherited;
@@ -207,6 +377,32 @@ end;
 procedure TFrmTemplateDoc.BtnRefreshClick(Sender: TObject);
 begin
   RefreshDs(dsDocStrings, 'F_ID', dsDocStringsF_ID.AsInteger);
+end;
+
+procedure TFrmTemplateDoc.cxButton1Click(Sender: TObject);
+begin
+  with TDlgCreateDocFromTemplate.Create(self) do
+  begin
+    if ShowModal = mrOk then
+    begin
+      funcCreateDoc.Active := false;
+      funcCreateDoc.Params.ClearValues;
+      funcCreateDoc.ParamByName('P_TEMPLATE').AsInteger :=
+        dsDocHeadDOC_ID.AsInteger;
+      funcCreateDoc.ParamByName('P_DOC_TYPE').AsInteger :=
+        cxComboDocType.ItemIndex + 1;
+      funcCreateDoc.ParamByName('P_SKLAD').AsInteger :=
+        cxLookupComboBoxSklad.EditValue;
+      funcCreateDoc.ParamByName('P_COPY_BODY').AsInteger :=
+        cxRadioGroupGood.Properties.Items[cxRadioGroupGood.ItemIndex].Value;
+      funcCreateDoc.ParamByName('P_BODY_CNT').AsInteger :=
+        cxRadioGroupCnt.Properties.Items[cxRadioGroupCnt.ItemIndex].Value;
+      funcCreateDoc.Active := true;
+      funcCreateDoc.Transaction.CommitRetaining;
+      RefreshDs(dsDocsList, 'F_ID', dsDocsListF_ID.AsInteger);
+    end;
+    free;
+  end;
 end;
 
 procedure TFrmTemplateDoc.cxGrid1DBTableView1CellDblClick
@@ -289,12 +485,38 @@ begin
 
 end;
 
+procedure TFrmTemplateDoc.cxGrid2DBTableView1CellDblClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var
+  Key: Integer;
+begin
+  key := dsDocsListF_DOC_ID.AsInteger;
+  case dsDocsListF_TYPE.AsInteger of
+    1:
+      with TOutDoc.Create(key, dsDocsList) do
+      begin
+        doc_type := 1;
+        OpenEditFrm;
+      end;
+    2:
+      with TMoveDoc.Create(key) do
+      begin
+        doc_type := 1;
+        OpenEditFrm;
+      end;
+  end;
+end;
+
 procedure TFrmTemplateDoc.dsDocHeadAfterOpen(DataSet: TDataSet);
 begin
   inherited;
   dsDocHead.ParamByName('doc_id').Value := dsDocHeadDOC_ID.Value;
   dsDocStrings.ParamByName('doc_id').Value := dsDocHeadDOC_ID.Value;
   dsDocStrings.Active := true;
+  dsDocsList.Active := false;
+  dsDocsList.ParamByName('P_TEMPLATE').Value := dsDocHeadDOC_ID.Value;
+  dsDocsList.Active := true;
 end;
 
 procedure TFrmTemplateDoc.dsDocStringsAfterDelete(DataSet: TDataSet);
@@ -371,7 +593,7 @@ begin
       end;
     end;
   end;
-  v_val.Free;
+  v_val.free;
   CalcFieldsDopInfo(DataSet, 'F_GOOD_DOP_INFO');
 end;
 
@@ -450,7 +672,37 @@ end;
 
 procedure TFrmTemplateDoc.RefreshDoc;
 begin
-  BtnRefreshClick(Self);
+  BtnRefreshClick(self);
+end;
+
+procedure TFrmTemplateDoc.RzDBButtonEdit1ButtonClick(Sender: TObject);
+var
+  Key: Integer;
+begin
+  Key := GetNsiPartner;
+  if (Key > 0) then
+  begin
+    dsDocHead.Edit;
+    dsDocHeadF_PARTNER.Value := Key;
+    dsDocHead.Post;
+    RefreshDs(dsDocHead);
+    RefreshDs(dsDocStrings);
+  end;
+end;
+
+procedure TFrmTemplateDoc.RzDBButtonEdit2ButtonClick(Sender: TObject);
+var
+  Key: Integer;
+begin
+  Key := GetNsiSklad;
+  if (Key > 0) then
+  begin
+    dsDocHead.Edit;
+    dsDocHeadF_SKLAD.Value := Key;
+    dsDocHead.Post;
+    RefreshDs(dsDocHead);
+    RefreshDs(dsDocStrings);
+  end;
 end;
 
 procedure TFrmTemplateDoc.RzDBButtonEdit3ButtonClick(Sender: TObject);

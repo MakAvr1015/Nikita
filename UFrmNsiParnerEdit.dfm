@@ -167,6 +167,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -526,7 +527,7 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2575,6 +2576,12 @@ inherited FrmNsiParnerEdit: TFrmNsiParnerEdit
   end
   object pFIBTransaction: TpFIBTransaction
     DefaultDatabase = dm.pFIBDatabase
+    TRParams.Strings = (
+      'write'
+      'nowait'
+      'rec_version'
+      'read_committed')
+    TPBMode = tpbDefault
     Left = 416
     Top = 16
   end

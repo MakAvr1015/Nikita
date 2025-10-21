@@ -59,6 +59,18 @@ type
     spInsDocStr: TpFIBStoredProc;
     dsImportDoc: TpFIBDataSet;
     OpenDialog: TOpenDialog;
+    dsDocTemplateListF_SKLAD: TFIBBCDField;
+    dsDocTemplateListF_SKLAD_NAME: TFIBStringField;
+    dsDocTemplateListF_PARTNER: TFIBBCDField;
+    dsDocTemplateListF_PARTNER_NAME: TFIBStringField;
+    cxGrid1DBTableView1F_SKLAD: TcxGridDBColumn;
+    cxGrid1DBTableView1F_SKLAD_NAME: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PARTNER: TcxGridDBColumn;
+    cxGrid1DBTableView1F_PARTNER_NAME: TcxGridDBColumn;
+    dsDocTemplateListF_CNT: TFIBBCDField;
+    dsDocTemplateListF_SUM: TFIBBCDField;
+    cxGrid1DBTableView1F_CNT: TcxGridDBColumn;
+    cxGrid1DBTableView1F_SUM: TcxGridDBColumn;
     procedure dsDocTemplateListBeforeOpen(DataSet: TDataSet);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);

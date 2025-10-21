@@ -62,9 +62,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     ExplicitHeight = 562
     inherited RzToolbar: TRzToolbar
       Width = 1061
-      Height = 25
       ExplicitWidth = 1061
-      ExplicitHeight = 25
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -81,75 +79,24 @@ inherited FrmOutputDoc: TFrmOutputDoc
         BtnExport
         BtnExit
         cxComboBoxStyles)
-      inherited BtnNew: TRzToolButton
-        Top = 0
-      end
       inherited BtnOpen: TRzToolButton
-        Top = 0
         OnClick = BtnOpenClick
-        ExplicitTop = 0
-      end
-      inherited BtnFind: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnPrint: TRzToolButton
-        Top = 0
         AllowAllUp = True
         OnClick = nil
-        ExplicitTop = 0
-      end
-      inherited BtnOK: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnCancel: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnRefresh: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnEdit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExecute: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnDelete: TRzToolButton
-        Top = 0
         Enabled = True
         Visible = True
-        ExplicitTop = 0
-      end
-      inherited BtnSave: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited BtnExit: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
-        Top = 0
         Visible = False
-        ExplicitTop = 0
-      end
-      inherited BtnExport: TRzToolButton
-        Top = 0
-        ExplicitTop = 0
-      end
-      inherited cxComboBoxStyles: TcxComboBox
-        Top = 2
-        ExplicitTop = 2
       end
     end
     object RzPanel1: TRzPanel
       Left = 1
-      Top = 26
+      Top = 30
       Width = 1061
       Height = 111
       Align = alTop
@@ -164,6 +111,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
       GradientColorStop = clGradientActiveCaption
       ParentFont = False
       TabOrder = 1
+      ExplicitTop = 26
       object RzLabel1: TRzLabel
         Left = 8
         Top = 9
@@ -333,6 +281,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
         Height = 27
         DataSource = srDocHead
         DataField = 'F_SKIDKA'
+        Alignment = taRightJustify
         TabOrder = 9
         OnExit = RzDBSpinEdit1Exit
         AllowKeyEdit = True
@@ -395,12 +344,21 @@ inherited FrmOutputDoc: TFrmOutputDoc
         TabOrder = 12
         OnClick = Button2Click
       end
+      object Button1: TButton
+        Left = 355
+        Top = 72
+        Width = 61
+        Height = 25
+        Caption = #1070' '#1082#1072#1089#1089#1072
+        TabOrder = 13
+        OnClick = Button1Click
+      end
     end
     object RzPageControl1: TRzPageControl
       Left = 1
-      Top = 137
+      Top = 141
       Width = 1061
-      Height = 424
+      Height = 420
       Hint = ''
       ActivePage = TabSheet1
       Align = alClient
@@ -408,10 +366,16 @@ inherited FrmOutputDoc: TFrmOutputDoc
       TabIndex = 0
       TabOrder = 2
       TabStyle = tsRoundCorners
+      ExplicitTop = 137
+      ExplicitHeight = 424
       FixedDimension = 19
       object TabSheet1: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1058#1086#1074#1072#1088
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Panel1: TPanel
           Left = 0
           Top = 0
@@ -601,7 +565,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
             Properties.GraphicClassName = 'TdxSmartImage'
             Properties.ReadOnly = True
             TabOrder = 1
-            Height = 396
+            Height = 392
             Width = 140
           end
         end
@@ -609,6 +573,10 @@ inherited FrmOutputDoc: TFrmOutputDoc
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1054#1087#1083#1072#1090#1072
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
@@ -669,33 +637,29 @@ inherited FrmOutputDoc: TFrmOutputDoc
       object TabSheet3: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = 'Json'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Memo1: TMemo
           Left = 0
           Top = 0
           Width = 1057
-          Height = 398
+          Height = 394
           Align = alClient
           Lines.Strings = (
             'Memo1')
           TabOrder = 0
+          ExplicitHeight = 398
         end
       end
     end
-  end
-  object Button1: TButton [3]
-    Left = 356
-    Top = 98
-    Width = 61
-    Height = 25
-    Caption = #1070' '#1082#1072#1089#1089#1072
-    TabOrder = 2
-    OnClick = Button1Click
   end
   inherited PrnMenu: TPopupMenu
     Left = 48
     Top = 256
   end
-  object dsDocHead: TpFIBDataSet [5]
+  object dsDocHead: TpFIBDataSet [4]
     UpdateSQL.Strings = (
       'execute procedure SP_T_DOC_out_U(:f_doc_out,:F_SKLAD,'
       
@@ -868,7 +832,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
       EmptyStrToNull = True
     end
   end
-  object dsDocStrings: TpFIBDataSet [6]
+  object dsDocStrings: TpFIBDataSet [5]
     UpdateSQL.Strings = (
       'execute procedure SP_T_DOC_OUT_STR_U('
       '    :F_ID,'
@@ -1058,17 +1022,17 @@ inherited FrmOutputDoc: TFrmOutputDoc
       FieldName = 'F_RESERVED'
     end
   end
-  object srDocStrings: TDataSource [7]
+  object srDocStrings: TDataSource [6]
     DataSet = dsDocStrings
     Left = 368
     Top = 224
   end
-  object srDocHead: TDataSource [8]
+  object srDocHead: TDataSource [7]
     DataSet = dsDocHead
     Left = 152
     Top = 320
   end
-  object pFIBTransaction: TpFIBTransaction [9]
+  object pFIBTransaction: TpFIBTransaction [8]
     DefaultDatabase = dm.pFIBDatabase
     Left = 600
     Top = 224
@@ -1080,7 +1044,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     Variables = <>
     Style = <>
   end
-  object dsPaymentsList: TpFIBDataSet [13]
+  object dsPaymentsList: TpFIBDataSet [12]
     UpdateSQL.Strings = (
       
         'execute procedure SP_T_MONEY_IN_STR_U(:f_id,:f_doc,:f_money,:f_s' +
@@ -1141,12 +1105,12 @@ inherited FrmOutputDoc: TFrmOutputDoc
       Size = 3
     end
   end
-  object srPaymentsList: TDataSource [14]
+  object srPaymentsList: TDataSource [13]
     DataSet = dsPaymentsList
     Left = 496
     Top = 304
   end
-  object spMakePayDoc: TpFIBStoredProc [15]
+  object spMakePayDoc: TpFIBStoredProc [14]
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
     SQL.Strings = (
@@ -1155,7 +1119,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     Left = 600
     Top = 264
   end
-  object dsGoodPhoto: TpFIBDataSet [16]
+  object dsGoodPhoto: TpFIBDataSet [15]
     SelectSQL.Strings = (
       'select f_memo as f_photo from SP_T_NSI_GOODS_MMEDIA_S(:f_good)')
     Transaction = dm.pFIBTransaction
@@ -1168,7 +1132,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
     WaitEndMasterScroll = True
     dcForceOpen = True
   end
-  object srGoodPhoto: TDataSource [17]
+  object srGoodPhoto: TDataSource [16]
     DataSet = dsGoodPhoto
     Left = 880
     Top = 152
@@ -1179,7 +1143,7 @@ inherited FrmOutputDoc: TFrmOutputDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000100110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000180110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

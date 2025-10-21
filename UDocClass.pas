@@ -1205,6 +1205,8 @@ begin
     dsDocHead.Active := true;
     if ID_Doc = -10 then
       ID_Doc := dsDocHeadDoc_id.Value;
+    caption := translateCapt('Заготовка №', Language, TranslateFile) +
+      dsDocHeadF_NUMBER.AsString + ' от ' + dsDocHeadF_DATE.AsString;
     ShowAsChild;
   end;
   self.Free;
@@ -1288,6 +1290,7 @@ begin
 
         end;
         dsDocHead.Transaction.CommitRetaining;
+        RefreshDs(dsDocHead, 'F_DOC', dsDocHeadF_DOC.Value);
         RefreshDs(dsDocBody, 'F_GOOD', dsDocBodyF_GOOD.Value);
         caption := translateCapt('Заказ №', Language,
           TranslateFile) + dsDocHeadF_NUMBER.AsString + ' от ' +

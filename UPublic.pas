@@ -8,7 +8,7 @@ uses
   Forms, Controls, SysUtils, Dialogs, Windows, Db, cxCustomData, Variants,
   UTypes, IniFiles,
   FIBDatabase, dxDockPanel, cxGridDbTableView, pFIBDataSet, TypInfo, SHFolder,
-  Xml.XMLIntf;
+  Xml.XMLIntf, System.Classes;
 
 
 procedure ShowNsiPartner;
@@ -105,6 +105,14 @@ procedure ExportDsXml(p_DataSet : Pointer; p_FileName : String);
 ///  Выгрузка в XML dxGridView
 ///  </summary>
 procedure ExportDxCridView(p_GridView : Pointer; p_FileName : String);
+/// <summary>
+///  Показать диалог со списком для выбора
+///  </summary>
+function ShowDlgSelectVal(p_Caption : String; p_list : TStrings; p_multy : boolean) : Tstrings;
+/// <summary>
+///  Выбрать документ перемещения
+///  </summary>
+function GetDocMove : integer;
 var
   dll_path: String;
   Prg_path: string;
@@ -149,8 +157,8 @@ uses
   uFrmNSIGoodType, UFrmListInputDocsHz, UFrmDocOutListHz, uFrmNSIDocProperty,
   uContextPasswordDlg, OutDocumentServicesImpl11,
   uFrmConsole, UNsiClass, uFrmNSIGoodsInfo, uFrmZapasNew, UFrmNSIGoodsLinks,
-  UDocumentsClasses, UPlanner, UFrmZakazList, System.Classes, Xml.XMLDoc,
-  cxGridTableView;
+  UDocumentsClasses, UPlanner, UFrmZakazList, Xml.XMLDoc,
+  cxGridTableView, UDlgSelectFromList;
 
 
 procedure ExportDxCridView(p_GridView : Pointer; p_FileName : String);
@@ -1174,5 +1182,45 @@ begin
     showAsChild;
   end;
 end;
+function ShowDlgSelectVal(p_Caption : String; p_list : TStrings; p_multy : boolean) : Tstrings;
+var
+  vl_result : Tstrings;
+  vl_index  : Integer;
+begin
+  vl_result := TstringList.Create;
+  with TDlgSelectFromList.Create(Application.MainForm) do
+  begin
+    Caption := p_Caption;
+    for vl_index := 0 to p_list.Count-1 do
+    begin
+      cxListBoxVals.Items.Add(p_list.ValueFromIndex[vl_index]);
+    end;
+    //cxListBoxVals.Items := p_list;
+    cxListBoxVals.MultiSelect := p_multy;
+    if ShowModal=mrOk then
+    begin
+      for vl_index := 0 to cxListBoxVals.Items.Count - 1 do
+      begin
+        if cxListBoxVals.Selected[vl_index] then
+          vl_result.Add(p_list.Names[vl_index]);
+      end;
 
+    end;
+    free;
+  end;
+  result := vl_result;
+end;
+function GetDocMove : integer;
+var
+  vl_result : integer;
+begin
+  vl_result := 0;
+  with TFrmMoveDocList.Create(Application.MainForm) do
+  begin
+    if ShowAsDialog then
+      vl_result := dsMoveDocsList.FieldByName('F_ID').AsInteger;
+    free;
+  end;
+  result := vl_result;
+end;
 end.
