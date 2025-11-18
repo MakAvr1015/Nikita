@@ -11249,8 +11249,10 @@ END
 /* C:\GitRepository\Nikita\UFrmMoveDocSpisan.dfm */
 /* C:\GitRepository\Nikita\UFrmMoveDocPrihod.dfm */
 /* C:\GitRepository\Nikita\UFramBanner.dfm */
+/* C:\GitRepository\Nikita\UDlgCreateDocFromTemplate.dfm */
 /* C:\GitRepository\Nikita\UFrmTemplateDoc.dfm */
 /* C:\GitRepository\Nikita\UDlgMakeDocFromZakaz.dfm */
+/* C:\GitRepository\Nikita\UnDlgMakeMoveFromZakaz.dfm */
 /* C:\GitRepository\Nikita\UFrmZakazDoc.dfm */
 /* C:\GitRepository\Nikita\UFrmViewDoc.dfm */
 /* C:\GitRepository\Nikita\UFrmDocView.dfm */
@@ -11323,6 +11325,7 @@ END
 /* C:\Users\mak\Downloads\DevExpress_VCL_23.2.6_Full_Source_Downloadly.ir\DevExpress VCL 23.2.6 Full Source\VCL\Library\RS25\dxRibbonCustomizationForm.dfm */
 /* C:\GitRepository\Nikita\UPlanner.dfm */
 /* C:\GitRepository\Nikita\UFrmZakazList.dfm */
+/* C:\GitRepository\Nikita\UDlgSelectFromList.dfm */
 /* C:\Users\mak\Downloads\DevExpress_VCL_23.2.6_Full_Source_Downloadly.ir\DevExpress VCL 23.2.6 Full Source\VCL\Library\RS25\cxGridChartView.res */
 /* C:\Users\mak\Downloads\DevExpress_VCL_23.2.6_Full_Source_Downloadly.ir\DevExpress VCL 23.2.6 Full Source\VCL\Library\RS25\cxGridChartView_svg.res */
 /* C:\GitRepository\Nikita\UFrmPrototype.dfm */

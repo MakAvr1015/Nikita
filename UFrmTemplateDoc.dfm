@@ -40,7 +40,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -76,29 +75,29 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       end
       inherited BtnExecute: TRzToolButton
         Top = 0
-        Width = 44
+        Width = 39
         DropDownMenu = PopupMenuExec
         ToolStyle = tsDropDown
         Enabled = True
         ExplicitTop = 0
-        ExplicitWidth = 44
+        ExplicitWidth = 39
       end
       inherited BtnDelete: TRzToolButton
-        Left = 287
+        Left = 282
         Top = 0
-        ExplicitLeft = 287
+        ExplicitLeft = 282
         ExplicitTop = 0
       end
       inherited BtnSave: TRzToolButton
-        Left = 312
+        Left = 307
         Top = 0
-        ExplicitLeft = 312
+        ExplicitLeft = 307
         ExplicitTop = 0
       end
       inherited BtnExit: TRzToolButton
-        Left = 376
+        Left = 371
         Top = 0
-        ExplicitLeft = 376
+        ExplicitLeft = 371
         ExplicitTop = 0
       end
       inherited BtnView: TRzToolButton
@@ -106,16 +105,16 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         ExplicitTop = 0
       end
       inherited BtnExport: TRzToolButton
-        Left = 337
+        Left = 332
         Top = 0
-        ExplicitLeft = 337
+        ExplicitLeft = 332
         ExplicitTop = 0
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 401
+        Left = 396
         Top = 2
         Properties.OnChange = nil
-        ExplicitLeft = 401
+        ExplicitLeft = 396
         ExplicitTop = 2
       end
     end
@@ -123,7 +122,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Left = 1
       Top = 26
       Width = 1149
-      Height = 43
+      Height = 79
       Align = alTop
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -152,6 +151,20 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         Width = 42
         Height = 19
         Caption = #1055#1088#1072#1081#1089
+      end
+      object RzLabel3: TRzLabel
+        Left = 8
+        Top = 38
+        Width = 41
+        Height = 19
+        Caption = #1057#1082#1083#1072#1076
+      end
+      object RzLabel4: TRzLabel
+        Left = 224
+        Top = 38
+        Width = 57
+        Height = 19
+        Caption = #1055#1072#1088#1090#1085#1077#1088
       end
       object RzDBEdit1: TRzDBEdit
         Left = 54
@@ -184,211 +197,50 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         ButtonWidth = 15
         OnButtonClick = RzDBButtonEdit3ButtonClick
       end
+      object RzDBButtonEdit1: TRzDBButtonEdit
+        Left = 307
+        Top = 38
+        Width = 347
+        Height = 27
+        DataSource = srDocHead
+        DataField = 'F_PARTNER_NAME'
+        TabOrder = 3
+        AltBtnWidth = 15
+        ButtonWidth = 15
+        OnButtonClick = RzDBButtonEdit1ButtonClick
+      end
+      object RzDBButtonEdit2: TRzDBButtonEdit
+        Left = 55
+        Top = 38
+        Width = 136
+        Height = 27
+        DataSource = srDocHead
+        DataField = 'F_SKLAD_NAME'
+        TabOrder = 4
+        AltBtnWidth = 15
+        ButtonWidth = 15
+        OnButtonClick = RzDBButtonEdit2ButtonClick
+      end
     end
     object Panel1: TPanel
       Left = 1
-      Top = 69
+      Top = 501
       Width = 1149
-      Height = 618
-      Align = alClient
+      Height = 186
+      Align = alBottom
       Caption = 'Panel1'
       TabOrder = 2
-      ExplicitTop = 73
-      ExplicitHeight = 614
-      object Splitter1: TSplitter
-        Left = 1005
-        Top = 1
-        Height = 327
-        Align = alRight
-        ExplicitLeft = 631
-        ExplicitTop = 79
-        ExplicitHeight = 255
-      end
-      object cxGrid1: TcxGrid
-        Left = 1
-        Top = 1
-        Width = 1004
-        Height = 327
-        Align = alClient
-        TabOrder = 0
-        LookAndFeel.SkinName = 'MoneyTwins'
-        object cxGrid1DBTableView1: TcxGridDBTableView
-          OnDragDrop = prGridDragDropEvent
-          OnDragOver = prGridOverEvent
-          OnKeyPress = cxGrid1DBTableView1KeyPress
-          Navigator.Buttons.CustomButtons = <>
-          Navigator.Buttons.Insert.Visible = False
-          Navigator.Visible = True
-          ScrollbarAnnotations.CustomAnnotations = <>
-          OnCellDblClick = cxGrid1DBTableView1CellDblClick
-          OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
-          DataController.DataSource = srDocStrings
-          DataController.Summary.DefaultGroupSummaryItems = <
-            item
-              Kind = skSum
-              Position = spFooter
-            end
-            item
-              Kind = skSum
-              Position = spFooter
-            end
-            item
-              Kind = skSum
-              Position = spFooter
-              Column = cxGrid1DBTableView1F_CNT
-            end
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1F_CNT
-            end
-            item
-              Kind = skSum
-              Position = spFooter
-              Column = cxGrid1DBTableView1F_SUM
-            end
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1F_SUM
-            end>
-          DataController.Summary.FooterSummaryItems = <
-            item
-              Kind = skSum
-              FieldName = 'F_SUM'
-              DisplayText = #1048#1090#1086#1075#1086#1074#1072#1103' '#1089#1091#1084#1084#1072
-            end
-            item
-              Kind = skSum
-            end
-            item
-              Kind = skSum
-            end
-            item
-              Kind = skSum
-            end
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1F_CNT
-            end
-            item
-              Kind = skSum
-              Column = cxGrid1DBTableView1F_SUM
-            end>
-          DataController.Summary.SummaryGroups = <>
-          OptionsCustomize.ColumnsQuickCustomization = True
-          OptionsSelection.MultiSelect = True
-          OptionsView.CellAutoHeight = True
-          OptionsView.ColumnAutoWidth = True
-          OptionsView.Footer = True
-          OptionsView.FooterAutoHeight = True
-          OptionsView.GroupFooterMultiSummaries = True
-          OptionsView.GroupFooters = gfAlwaysVisible
-          OptionsView.GroupSummaryLayout = gslAlignWithColumns
-          OptionsView.HeaderAutoHeight = True
-          Styles.StyleSheet = dm.GridTableViewStyleSheetDevExpress
-          object cxGrid1DBTableView1F_ID: TcxGridDBColumn
-            DataBinding.FieldName = 'F_ID'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_DOC_TEMPLATE: TcxGridDBColumn
-            DataBinding.FieldName = 'F_DOC_TEMPLATE'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_ARTICLE: TcxGridDBColumn
-            DataBinding.FieldName = 'F_ARTICLE'
-            Options.Editing = False
-            Width = 32
-          end
-          object cxGrid1DBTableView1F_GOOD_NAME: TcxGridDBColumn
-            DataBinding.FieldName = 'F_GOOD_NAME'
-            Options.Editing = False
-            Width = 106
-          end
-          object cxGrid1DBTableView1F_GOOD_DOP_INFO: TcxGridDBColumn
-            DataBinding.FieldName = 'F_GOOD_DOP_INFO'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_ED_IZM_SHORT_NAME: TcxGridDBColumn
-            DataBinding.FieldName = 'F_ED_IZM_SHORT_NAME'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_ED_IZM_NAME: TcxGridDBColumn
-            DataBinding.FieldName = 'F_ED_IZM_NAME'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_GOOD: TcxGridDBColumn
-            DataBinding.FieldName = 'F_GOOD'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_DESCR: TcxGridDBColumn
-            DataBinding.FieldName = 'F_DESCR'
-            Width = 85
-          end
-          object cxGrid1DBTableView1F_CNT: TcxGridDBColumn
-            DataBinding.FieldName = 'F_CNT'
-            Width = 91
-          end
-          object cxGrid1DBTableView1F_PRICE_VAL: TcxGridDBColumn
-            DataBinding.FieldName = 'F_PRICE_VAL'
-            Options.Editing = False
-            Width = 92
-          end
-          object cxGrid1DBTableView1F_SUM: TcxGridDBColumn
-            DataBinding.FieldName = 'F_SUM'
-            Options.Editing = False
-            Width = 87
-          end
-          object cxGrid1DBTableView1F_OST_SKLAD_DEF: TcxGridDBColumn
-            DataBinding.FieldName = 'F_OST_SKLAD_DEF'
-            Visible = False
-            Options.Editing = False
-            Width = 96
-          end
-          object cxGrid1DBTableView1F_RESERVED: TcxGridDBColumn
-            DataBinding.FieldName = 'F_RESERVED'
-            Options.Editing = False
-            Width = 65
-          end
-          object cxGrid1DBTableView1F_GOOD_GRP_COLOR: TcxGridDBColumn
-            DataBinding.FieldName = 'F_GOOD_GRP_COLOR'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_OST: TcxGridDBColumn
-            DataBinding.FieldName = 'F_OST'
-            Visible = False
-          end
-          object cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn
-            DataBinding.FieldName = 'F_SCANCODE'
-            Visible = False
-            Width = 233
-          end
-        end
-        object cxGrid1Level1: TcxGridLevel
-          GridView = cxGrid1DBTableView1
-        end
-      end
-      object cxDBImage1: TcxDBImage
-        Left = 1008
-        Top = 1
-        Align = alRight
-        DataBinding.DataField = 'f_photo'
-        DataBinding.DataSource = srGoodPhoto
-        Properties.FitMode = ifmProportionalStretch
-        Properties.GraphicClassName = 'TdxSmartImage'
-        Properties.ReadOnly = True
-        TabOrder = 1
-        Height = 327
-        Width = 140
-      end
+      Visible = False
       inline FramBanner1: TFramBanner
         Left = 1
-        Top = 340
+        Top = -92
         Width = 1147
         Height = 277
         Align = alBottom
-        TabOrder = 2
+        TabOrder = 0
         Visible = False
         ExplicitLeft = 1
-        ExplicitTop = 336
+        ExplicitTop = -92
         ExplicitWidth = 1147
         inherited cxPageControl1: TcxPageControl
           Width = 1147
@@ -410,6 +262,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
               ExplicitWidth = 1147
               ExplicitHeight = 253
               inherited cxGrid1DBTableAnalog: TcxGridDBTableView
+                OptionsData.Appending = True
+                OptionsData.Deleting = True
+                OptionsData.Inserting = True
                 inherited cxGrid1DBTableAnalogF_GOOD_MMEDIA: TcxGridDBColumn
                   Properties.FitMode = ifmFit
                 end
@@ -425,10 +280,416 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       end
       object cxSplitter1: TcxSplitter
         Left = 1
-        Top = 328
+        Top = -104
         Width = 1147
         Height = 12
         AlignSplitter = salBottom
+      end
+    end
+    object cxPageControl1: TcxPageControl
+      Left = 1
+      Top = 105
+      Width = 1149
+      Height = 396
+      Align = alClient
+      TabOrder = 3
+      Properties.ActivePage = GoodPage
+      Properties.CustomButtons.Buttons = <>
+      ClientRectBottom = 396
+      ClientRectRight = 1149
+      ClientRectTop = 24
+      object GoodPage: TcxTabSheet
+        Caption = #1058#1086#1074#1072#1088#1099
+        ImageIndex = 0
+        object Splitter1: TSplitter
+          Left = 1006
+          Top = 0
+          Height = 372
+          Align = alRight
+          ExplicitLeft = 152
+          ExplicitTop = -14
+          ExplicitHeight = 169
+        end
+        object cxGrid1: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 1006
+          Height = 372
+          Align = alClient
+          TabOrder = 0
+          LookAndFeel.SkinName = 'MoneyTwins'
+          object cxGrid1DBTableView1: TcxGridDBTableView
+            OnDragDrop = prGridDragDropEvent
+            OnDragOver = prGridOverEvent
+            OnKeyPress = cxGrid1DBTableView1KeyPress
+            Navigator.Buttons.CustomButtons = <>
+            Navigator.Buttons.Insert.Visible = False
+            Navigator.Visible = True
+            ScrollbarAnnotations.CustomAnnotations = <>
+            OnCellDblClick = cxGrid1DBTableView1CellDblClick
+            OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
+            DataController.DataSource = srDocStrings
+            DataController.Summary.DefaultGroupSummaryItems = <
+              item
+                Kind = skSum
+                Position = spFooter
+              end
+              item
+                Kind = skSum
+                Position = spFooter
+              end
+              item
+                Kind = skSum
+                Position = spFooter
+                Column = cxGrid1DBTableView1F_CNT
+              end
+              item
+                Kind = skSum
+                Column = cxGrid1DBTableView1F_CNT
+              end
+              item
+                Kind = skSum
+                Position = spFooter
+                Column = cxGrid1DBTableView1F_SUM
+              end
+              item
+                Kind = skSum
+                Column = cxGrid1DBTableView1F_SUM
+              end>
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+                FieldName = 'F_SUM'
+                DisplayText = #1048#1090#1086#1075#1086#1074#1072#1103' '#1089#1091#1084#1084#1072
+              end
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+                Column = cxGrid1DBTableView1F_CNT
+              end
+              item
+                Kind = skSum
+                Column = cxGrid1DBTableView1F_SUM
+              end
+              item
+                Kind = skSum
+                Column = cxGrid1DBTableView1F_CNT_OUT
+              end
+              item
+                Kind = skSum
+                Column = cxGrid1DBTableView1F_CNT_MOVE
+              end>
+            DataController.Summary.SummaryGroups = <>
+            OptionsCustomize.ColumnsQuickCustomization = True
+            OptionsData.Inserting = False
+            OptionsSelection.MultiSelect = True
+            OptionsView.CellAutoHeight = True
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.Footer = True
+            OptionsView.FooterAutoHeight = True
+            OptionsView.GroupFooterMultiSummaries = True
+            OptionsView.GroupFooters = gfAlwaysVisible
+            OptionsView.GroupSummaryLayout = gslAlignWithColumns
+            OptionsView.HeaderAutoHeight = True
+            Styles.StyleSheet = dm.GridTableViewStyleSheetDevExpress
+            object cxGrid1DBTableView1F_ID: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ID'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_DOC_TEMPLATE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DOC_TEMPLATE'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_ARTICLE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ARTICLE'
+              Options.Editing = False
+              Width = 32
+            end
+            object cxGrid1DBTableView1F_GOOD_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_GOOD_NAME'
+              Options.Editing = False
+              Width = 106
+            end
+            object cxGrid1DBTableView1F_GOOD_DOP_INFO: TcxGridDBColumn
+              DataBinding.FieldName = 'F_GOOD_DOP_INFO'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_ED_IZM_SHORT_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ED_IZM_SHORT_NAME'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_ED_IZM_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ED_IZM_NAME'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_GOOD: TcxGridDBColumn
+              DataBinding.FieldName = 'F_GOOD'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_DESCR: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DESCR'
+              Width = 85
+            end
+            object cxGrid1DBTableView1F_CNT: TcxGridDBColumn
+              DataBinding.FieldName = 'F_CNT'
+              Width = 91
+            end
+            object cxGrid1DBTableView1F_CNT_OUT: TcxGridDBColumn
+              DataBinding.FieldName = 'F_CNT_OUT'
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_CNT_MOVE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_CNT_MOVE'
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_PRICE_VAL: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PRICE_VAL'
+              Options.Editing = False
+              Width = 92
+            end
+            object cxGrid1DBTableView1F_SUM: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SUM'
+              Options.Editing = False
+              Width = 87
+            end
+            object cxGrid1DBTableView1F_SUM_OUT: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SUM_OUT'
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_SUM_MOVE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SUM_MOVE'
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_OST_SKLAD_DEF: TcxGridDBColumn
+              DataBinding.FieldName = 'F_OST_SKLAD_DEF'
+              Visible = False
+              Options.Editing = False
+              Width = 96
+            end
+            object cxGrid1DBTableView1F_RESERVED: TcxGridDBColumn
+              DataBinding.FieldName = 'F_RESERVED'
+              Options.Editing = False
+              Width = 65
+            end
+            object cxGrid1DBTableView1F_GOOD_GRP_COLOR: TcxGridDBColumn
+              DataBinding.FieldName = 'F_GOOD_GRP_COLOR'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_OST: TcxGridDBColumn
+              DataBinding.FieldName = 'F_OST'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SCANCODE'
+              Visible = False
+              Options.Editing = False
+              Width = 233
+            end
+          end
+          object cxGrid1Level1: TcxGridLevel
+            GridView = cxGrid1DBTableView1
+          end
+        end
+        object cxDBImage1: TcxDBImage
+          Left = 1009
+          Top = 0
+          Align = alRight
+          DataBinding.DataField = 'f_photo'
+          DataBinding.DataSource = srGoodPhoto
+          Properties.FitMode = ifmProportionalStretch
+          Properties.GraphicClassName = 'TdxSmartImage'
+          Properties.ReadOnly = True
+          TabOrder = 1
+          Height = 372
+          Width = 140
+        end
+      end
+      object DocsPage: TcxTabSheet
+        Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
+        ImageIndex = 1
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
+        object RzToolbar1: TRzToolbar
+          Left = 0
+          Top = 0
+          Width = 1149
+          Height = 29
+          Images = ImageList
+          ButtonWidth = 60
+          ShowButtonCaptions = True
+          TextOptions = ttoCustom
+          BorderInner = fsNone
+          BorderOuter = fsGroove
+          BorderSides = [sdTop]
+          BorderWidth = 0
+          TabOrder = 0
+          ToolbarControls = (
+            BtnNew1
+            BtnInsertRecord
+            BtnDeleteRecord
+            BtnNewLinkedDoc)
+          object BtnNew1: TRzToolButton
+            Left = 4
+            Top = 2
+            Width = 71
+            Hint = 'New'
+            DisabledIndex = 59
+            ImageIndex = 0
+            Caption = #1057#1086#1079#1076#1072#1090#1100
+            OnClick = cxButton1Click
+          end
+          object BtnInsertRecord: TRzToolButton
+            Left = 75
+            Top = 2
+            Width = 70
+            Hint = 'Insert Record'
+            DisabledIndex = 61
+            ImageIndex = 58
+            Caption = #1057#1074#1103#1079#1072#1090#1100
+            OnClick = BtnInsertRecordClick
+          end
+          object BtnDeleteRecord: TRzToolButton
+            Left = 145
+            Top = 2
+            Width = 77
+            Hint = 'Delete Record'
+            DisabledIndex = 63
+            ImageIndex = 62
+            Caption = #1054#1090#1074#1103#1079#1072#1090#1100
+            OnClick = BtnDeleteRecordClick
+          end
+          object BtnNewLinkedDoc: TRzToolButton
+            Left = 222
+            Top = 2
+            Width = 128
+            Hint = 'Word Wrap'
+            DisabledIndex = 65
+            ImageIndex = 64
+            Caption = #1057#1086#1079#1076#1072#1090#1100' '#1089#1074#1103#1079#1072#1085#1085#1099#1081
+            OnClick = BtnNewLinkedDocClick
+          end
+        end
+        object cxGrid2: TcxGrid
+          Left = 0
+          Top = 29
+          Width = 1149
+          Height = 339
+          Align = alClient
+          TabOrder = 1
+          ExplicitHeight = 343
+          object cxGrid2DBTableView1: TcxGridDBTableView
+            Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
+            OnCellDblClick = cxGrid2DBTableView1CellDblClick
+            DataController.DataSource = srDocList
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <>
+            DataController.Summary.SummaryGroups = <>
+            OptionsCustomize.ColumnsQuickCustomization = True
+            OptionsView.CellAutoHeight = True
+            OptionsView.ColumnAutoWidth = True
+            Styles.StyleSheet = dm.GridTableViewStyleSheetDevExpress
+            object cxGrid2DBTableView1F_ID: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ID'
+              Visible = False
+            end
+            object cxGrid2DBTableView1F_DOC_ID: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DOC_ID'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_TYPE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_TYPE'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_NAME'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_NUMBER: TcxGridDBColumn
+              DataBinding.FieldName = 'F_NUMBER'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_DATE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DATE'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_PARTNER: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PARTNER'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_PARTNER_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PARTNER_NAME'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_PRICE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PRICE'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_PRICE_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PRICE_NAME'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_SKLAD_FROM: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_FROM'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_SKLAD_FROM_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_FROM_NAME'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_SKLAD_TO: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_TO'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_SKLAD_TO_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_TO_NAME'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_STATE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_STATE'
+              Visible = False
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_STATE_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_STATE_NAME'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_CNT: TcxGridDBColumn
+              DataBinding.FieldName = 'F_CNT'
+              Options.Editing = False
+            end
+            object cxGrid2DBTableView1F_SUM: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SUM'
+              Options.Editing = False
+            end
+          end
+          object cxGrid2Level1: TcxGridLevel
+            GridView = cxGrid2DBTableView1
+          end
+        end
       end
     end
   end
@@ -499,8 +760,264 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000F80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
-      000000000000360000002800000040000000F0000000010020000000000000F0
+      494C01014200D000180110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000400000001001000001002000000000000010
+      0100000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600CC99
+      6600CC996600CC996600CC996600CC996600CC996600CC996600CC996600CC99
+      6600CC996600CC99660000000000000000000000000000000000999999009999
+      9900999999009999990099999900999999009999990099999900999999009999
+      9900999999009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00CCCCCC00CCCCCC00CCCCCC00CCCCCC00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000CCCCCC00CCCCCC00CCCCCC00CCCCCC000000000000000000000000000000
+      0000000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0099330000FFFFFF00FFFF
+      FF00FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000000000000000000000000000000000000000000099999900000000000000
+      0000000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00CCCCCC00CCCCCC00FFFFFF00FFFFFF009933000099330000FFFFFF00FFFF
+      FF00FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000CCCCCC00CCCCCC0000000000000000009999990099999900000000000000
+      0000000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF0099330000993300009933000099330000CC99
+      6600FFFFFF00CC99660000000000000000000000000000000000999999000000
+      000000000000000000000000000099999900999999009999990099999900CCCC
+      CC00000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00CCCCCC00CCCCCC00FFFFFF00FFFFFF009933000099330000FFFFFF009933
+      0000FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000CCCCCC00CCCCCC0000000000000000009999990099999900000000009999
+      9900000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0099330000FFFFFF009933
+      0000FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000000000000000000000000000000000000000000099999900000000009999
+      9900000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00CCCCCC00CCCCCC00CCCCCC00FFFFFF00FFFFFF00FFFFFF00FFFFFF009933
+      0000FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000CCCCCC00CCCCCC00CCCCCC00000000000000000000000000000000009999
+      9900000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF009933
+      0000FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000000000000000000000000000000000000000000000000000000000009999
+      9900000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF009933000099330000993300009933000099330000CC99
+      6600FFFFFF00CC99660000000000000000000000000000000000999999000000
+      000000000000000000009999990099999900999999009999990099999900CCCC
+      CC00000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00CC99660000000000000000000000000000000000999999000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000CC996600CC99
+      6600CC996600CC996600CC996600CC996600CC996600CC996600CC996600CC99
+      6600CC996600CC99660000000000000000000000000000000000999999009999
+      9900999999009999990099999900999999009999990099999900999999009999
+      9900999999009999990000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000993300009933000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900999999009999990099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000993300009933
+      0000993300009933000099330000CC660000CC66000099330000993300009933
+      0000993300009933000000000000000000000000000000000000999999009999
+      9900999999009999990099999900CCCCCC00CCCCCC0099999900999999009999
+      9900999999009999990000000000000000000000000000000000993300009933
+      0000993300009933000099330000993300009933000099330000993300009933
+      0000993300009933000000000000000000000000000000000000999999009999
+      9900999999009999990099999900999999009999990099999900999999009999
+      990099999900999999000000000000000000000000000000000099330000CC66
+      0000CC660000CC660000CC660000CC660000CC660000CC660000CC660000CC66
+      0000CC660000993300000000000000000000000000000000000099999900CCCC
+      CC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
+      CC00CCCCCC00999999000000000000000000000000000000000099330000CC66
+      0000CC660000CC660000CC660000CC660000CC660000CC660000CC660000CC66
+      0000CC660000993300000000000000000000000000000000000099999900CCCC
+      CC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
+      CC00CCCCCC00999999000000000000000000000000000000000099330000CC66
+      0000CC660000CC660000CC660000CC660000CC660000CC660000CC660000CC66
+      0000CC660000993300000000000000000000000000000000000099999900CCCC
+      CC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
+      CC00CCCCCC00999999000000000000000000000000000000000099330000CC66
+      0000CC660000CC660000CC660000CC660000CC660000CC660000CC660000CC66
+      0000CC660000993300000000000000000000000000000000000099999900CCCC
+      CC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
+      CC00CCCCCC009999990000000000000000000000000000000000993300009933
+      0000993300009933000099330000CC660000CC66000099330000993300009933
+      0000993300009933000000000000000000000000000000000000999999009999
+      9900999999009999990099999900CCCCCC00CCCCCC0099999900999999009999
+      9900999999009999990000000000000000000000000000000000993300009933
+      0000993300009933000099330000993300009933000099330000993300009933
+      0000993300009933000000000000000000000000000000000000999999009999
+      9900999999009999990099999900999999009999990099999900999999009999
+      9900999999009999990000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000993300009933000099330000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900999999009999990099999900000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -522,97 +1039,97 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       B200E5E5E5000000000000000000000000000000000000000000CCCCCC00CCCC
       CC00C0C0C000C0C0C000C0C0C00099999900808080009999990080808000B2B2
       B200000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000993300009933000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900999999009999990099999900000000000000
       00000000000000000000000000000000000000000000E5E5E500FFFFCC00F2EA
       BF00F2EABF00CCCC9900ECC6D900FFCC9900F2EABF00F2EABF00808080006666
       660099999900E5E5E50000000000000000000000000000000000000000000000
       000000000000C0C0C000CCCCCC00C0C0C0000000000000000000808080009999
       9900999999000000000000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
       00000000000000000000000000000000000000000000FFCC9900F2EABF00F2EA
       BF00CCCCCC00ECC6D90000990000CCCCCC00CCCCCC00CCCCCC00FFFFCC00B2B2
       B200646F7100CCCCCC00000000000000000000000000C0C0C000000000000000
       0000CCCCCC00CCCCCC0099999900CCCCCC00CCCCCC00CCCCCC0000000000B2B2
       B20099999900CCCCCC0000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
       00000000000000000000000000000000000000000000FFCC9900FFCC9900E5E5
       E500ECC6D900ECC6D9000099000000990000009900000099000099CC9900F2EA
       BF0080808000B2B2B200E2EFF1000000000000000000C0C0C000C0C0C0000000
       0000CCCCCC00CCCCCC0099999900999999009999990099999900B2B2B2000000
       000080808000B2B2B20000000000000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
       000000000000000000000000000000000000E5E5E500FFCC9900E5E5E500E5E5
       E500ECC6D900C0C0C000009900000099000066CC6600CCFFCC0033CC3300FFCC
       990080808000B2B2B200E2EFF1000000000000000000C0C0C000000000000000
       0000CCCCCC00C0C0C0009999990099999900CCCCCC000000000099999900C0C0
-      C00080808000B2B2B20000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000F2EABF00F2EABF00FFFFFF00FFFF
+      C00080808000B2B2B20000000000000000000000000000000000993300009933
+      0000993300009933000099330000CC660000CC66000099330000993300009933
+      0000993300009933000000000000000000000000000000000000999999009999
+      9900999999009999990099999900CCCCCC00CCCCCC0099999900999999009999
+      990099999900999999000000000000000000F2EABF00F2EABF00FFFFFF00FFFF
       FF00CC999900ECC6D90099CC9900CCCC990033CC330099CC990099CC9900CCCC
       99009999990099999900E5E5E50000000000CCCCCC0000000000000000000000
       000099999900CCCCCC00B2B2B200C0C0C00099999900B2B2B200B2B2B200C0C0
-      C000999999009999990000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000F2EABF00FFFFCC00FFFFFF00ECC6
+      C00099999900999999000000000000000000000000000000000099330000CC66
+      0000CC660000CC660000CC660000CC660000CC660000CC660000CC660000CC66
+      0000CC660000993300000000000000000000000000000000000099999900CCCC
+      CC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
+      CC00CCCCCC00999999000000000000000000F2EABF00FFFFCC00FFFFFF00ECC6
       D900CC999900ECC6D90066993300FFFFFF0066CC66000099000000990000F2EA
       BF009999990099999900E5E5E50000000000CCCCCC000000000000000000CCCC
       CC0099999900CCCCCC009999990000000000CCCCCC0099999900999999000000
-      0000999999009999990000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000F2EABF00FFFFFF00FFFFFF00ECC6
+      000099999900999999000000000000000000000000000000000099330000CC66
+      0000CC660000CC660000CC660000CC660000CC660000CC660000CC660000CC66
+      0000CC660000993300000000000000000000000000000000000099999900CCCC
+      CC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
+      CC00CCCCCC00999999000000000000000000F2EABF00FFFFFF00FFFFFF00ECC6
       D900ECC6D900ECC6D90099CC990000990000339933000099000000990000F2EA
       BF00CCCC990080808000E5E5E50000000000CCCCCC000000000000000000CCCC
       CC00CCCCCC00CCCCCC00B2B2B200999999009999990099999900999999000000
-      0000C0C0C0008080800000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000FFFFCC00FFFFCC00FFFFCC00FFFF
+      0000C0C0C0008080800000000000000000000000000000000000993300009933
+      0000993300009933000099330000CC660000CC66000099330000993300009933
+      0000993300009933000000000000000000000000000000000000999999009999
+      9900999999009999990099999900CCCCCC00CCCCCC0099999900999999009999
+      990099999900999999000000000000000000FFFFCC00FFFFCC00FFFFCC00FFFF
       FF00FFFFFF00E2EFF100E5E5E50099CC990099CC990066CC660000990000FFFF
       CC00C0C0C00080808000CCCCCC0000000000CCCCCC0000000000000000000000
       0000000000000000000000000000B2B2B200B2B2B200CCCCCC00999999000000
       0000C0C0C00080808000CCCCCC00000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
       000000000000000000000000000000000000FFFFCC00FFFFCC00FFFFCC00FFFF
       CC00E2EFF100E2EFF100E2EFF100FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFCC00646F7100CCCCCC0000000000CCCCCC0000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000099999900CCCCCC00000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
       000000000000000000000000000000000000F2EABF00F2EABF00F2EABF00E5E5
       E500E5E5E500E5E5E500E5E5E500E5E5E500E5E5E500E2EFF100F2EABF00FFFF
       CC00FFFFCC00646F7100CCCCCC000000000000000000CCCCCC00CCCCCC000000
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000099999900CCCCCC00000000000000000000000000000000000000
+      0000000000000000000099330000CC660000CC66000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900CCCCCC00CCCCCC0099999900000000000000
       00000000000000000000000000000000000000000000E5E5E500E5E5E50099CC
       FF00CCFFFF00CCFFFF00CCFFFF00CCFFFF00E2EFF10099CCFF00FFCC9900FFCC
       9900FFFFCC0080808000E5E5E50000000000000000000000000000000000CCCC
       CC000000000000000000000000000000000000000000CCCCCC00C0C0C000C0C0
       C000000000008080800000000000000000000000000000000000000000000000
+      0000000000000000000099330000993300009933000099330000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000099999900999999009999990099999900000000000000
       000000000000000000000000000000000000000000000000000000000000E2EF
       F10099CCFF0099CCFF0099CCFF00CCFFFF00CCFFFF0099CCFF00FFCC9900FFCC
       9900FFCC9900C0C0C000E2EFF100000000000000000000000000000000000000
@@ -2422,12 +2939,20 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       0000840000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000848400008484
       000084840000000000000000000000000000424D3E000000000000003E000000
-      2800000040000000F00000000100010000000000800700000000000000000000
-      000000000000000000000000FFFFFF00E07FFFFF00000000C00FE01F00000000
-      C007C00F000000008003F8C7000000008003B023000000008001901300000000
-      0001B04300000000000170030000000000016113000000000001601300000000
-      00017E110000000000017FF90000000000019FF9000000008001EF8B00000000
-      E001F18300000000FE03FE3F00000000FFFFFFFFFFFFFFFFFFFFFFFFFBFFFBFF
+      2800000040000000100100000100010000000000800800000000000000000000
+      000000000000000000000000FFFFFF00FFFFFFFF00000000C003C00300000000
+      C003DFFB00000000C003D0FB00000000C003DFBB00000000C003D33B00000000
+      C003DE0B00000000C003D32B00000000C003DFAB00000000C003D1EB00000000
+      C003DFEB00000000C003DC0B00000000C003DFFB00000000C003DFFB00000000
+      C003C00300000000FFFFFFFF00000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FC3FFC3FFFFFFFFFFC3FFC3FFFFFFFFFFC3FFC3FFFFFFFFFFC3FFC3FFFFFFFFF
+      C003C003C003C003C003C003C003C003C003C003C003C003C003C003C003C003
+      FC3FFC3FFFFFFFFFFC3FFC3FFFFFFFFFFC3FFC3FFFFFFFFFFC3FFC3FFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE07FFFFFFFFFFFFFC00FE01FFFFFFFFF
+      C007C00FFC3FFC3F8003F8C7FC3FFC3F8003B023FC3FFC3F80019013FC3FFC3F
+      0001B043C003C00300017003C003C00300016113C003C00300016013C003C003
+      00017E11FC3FFC3F00017FF9FC3FFC3F00019FF9FC3FFC3F8001EF8BFC3FFC3F
+      E001F183FFFFFFFFFE03FE3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFFFBFF
       0E1F0E1FF3FFF3FF060F060FE007E00783078307F3FFF3FFC183C183FBFFFBFF
       E0C1E0C1FFFFFFFFF060F06001800180F060F060018001BEE0C1E0C1018001BE
       C183C183018001BE83078307018001BE060F060F018001B00E1F0E1F038103B1
@@ -2522,8 +3047,12 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       '    F_ARTICLE,'
       '    F_GOOD,'
       '    F_CNT,'
+      '    F_CNT_OUT,'
+      '    F_CNT_MOVE,'
       '    F_PRICE_VAL,'
       '    F_SUM,'
+      '    F_SUM_OUT,'
+      '    F_SUM_MOVE,'
       '    F_OST_SKLAD_DEF,'
       '    f_descr,'
       '    F_GOOD_GRP_COLOR,'
@@ -2646,6 +3175,26 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       FieldName = 'F_SCANCODE'
       Size = 10000
     end
+    object dsDocStringsF_CNT_OUT: TFIBBCDField
+      DisplayLabel = #1050#1086#1083'-'#1074#1086' '#1074' '#1086#1090#1075#1088#1091#1079#1082#1077
+      FieldName = 'F_CNT_OUT'
+      Size = 0
+    end
+    object dsDocStringsF_CNT_MOVE: TFIBBCDField
+      DisplayLabel = #1050#1086#1083'-'#1074#1086' '#1074' '#1087#1077#1088#1077#1084#1077#1097#1077#1085#1080#1080
+      FieldName = 'F_CNT_MOVE'
+      Size = 0
+    end
+    object dsDocStringsF_SUM_OUT: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072' '#1074' '#1086#1090#1075#1088#1091#1079#1082#1077
+      FieldName = 'F_SUM_OUT'
+      Size = 2
+    end
+    object dsDocStringsF_SUM_MOVE: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072' '#1074' '#1087#1077#1088#1077#1084#1077#1097#1077#1085#1080#1080
+      FieldName = 'F_SUM_MOVE'
+      Size = 2
+    end
   end
   object dsDocHead: TpFIBDataSet
     UpdateSQL.Strings = (
@@ -2653,7 +3202,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       '  :F_NUMBER,'
       '  :F_DATE,'
       '  :f_STATE,'
-      '  :F_PRICE)'
+      '  :F_PRICE,'
+      '  :F_SKLAD,'
+      '  :F_PARTNER)'
       '    ')
     SelectSQL.Strings = (
       'SELECT'
@@ -2664,7 +3215,11 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       '    F_STATE,'
       '    F_STATE_NAME,'
       '    F_PRICE,'
-      '    F_PRICE_NAME'
+      '    F_PRICE_NAME,'
+      '    F_SKLAD,'
+      '    F_SKLAD_NAME,'
+      '    F_PARTNER,'
+      '    F_PARTNER_NAME'
       'FROM'
       '    SP_T_DOC_TEMPLATE_GET(:DOC_ID) ')
     AfterOpen = dsDocHeadAfterOpen
@@ -2712,6 +3267,24 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Transliterate = False
       EmptyStrToNull = True
     end
+    object dsDocHeadF_SKLAD: TFIBBCDField
+      FieldName = 'F_SKLAD'
+      Size = 0
+    end
+    object dsDocHeadF_SKLAD_NAME: TFIBStringField
+      FieldName = 'F_SKLAD_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocHeadF_PARTNER: TFIBBCDField
+      FieldName = 'F_PARTNER'
+      Size = 0
+    end
+    object dsDocHeadF_PARTNER_NAME: TFIBStringField
+      FieldName = 'F_PARTNER_NAME'
+      Size = 255
+      EmptyStrToNull = True
+    end
   end
   object srDocHead: TDataSource
     DataSet = dsDocHead
@@ -2753,5 +3326,146 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       Caption = #1059#1073#1088#1072#1090#1100' '#1074#1089#1077' '#1080#1079' '#1085#1086#1074#1080#1085#1086#1082
       OnClick = SetAsNew
     end
+  end
+  object funcCreateDoc: TpFIBDataSet
+    SelectSQL.Strings = (
+      
+        'select pak_t_doc.CREATE_DOC_FROM_TEMPLATE(:P_TEMPLATE,:P_DOC_TYP' +
+        'E,:P_SKLAD,:P_COPY_BODY,:P_BODY_CNT) f_id from rdb$database')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    Left = 248
+    Top = 312
+  end
+  object dsDocsList: TpFIBDataSet
+    DeleteSQL.Strings = (
+      'execute procedure PAK_T_DOC.UNLINK_DOC_FROM_TEMPLATE(:F_ID)')
+    SelectSQL.Strings = (
+      'select * from PAK_T_DOC.GET_TEMPLATE_DOC_LIST(:P_TEMPLATE)')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    Left = 352
+    Top = 304
+    object dsDocsListF_ID: TFIBBCDField
+      FieldName = 'F_ID'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_DOC_ID: TFIBBCDField
+      FieldName = 'F_DOC_ID'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_TYPE: TFIBBCDField
+      FieldName = 'F_TYPE'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_NAME: TFIBStringField
+      DisplayLabel = #1058#1080#1087' '#1076#1086#1082#1091#1084#1077#1085#1090#1072
+      FieldName = 'F_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocsListF_NUMBER: TFIBStringField
+      DisplayLabel = #1053#1086#1084#1077#1088
+      FieldName = 'F_NUMBER'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocsListF_DATE: TFIBDateField
+      DisplayLabel = #1044#1072#1090#1072
+      FieldName = 'F_DATE'
+    end
+    object dsDocsListF_PARTNER: TFIBBCDField
+      FieldName = 'F_PARTNER'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_PARTNER_NAME: TFIBStringField
+      DisplayLabel = #1055#1072#1088#1090#1085#1077#1088
+      FieldName = 'F_PARTNER_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocsListF_PRICE: TFIBBCDField
+      FieldName = 'F_PRICE'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_PRICE_NAME: TFIBStringField
+      DisplayLabel = #1055#1088#1072#1081#1089
+      FieldName = 'F_PRICE_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocsListF_SKLAD_FROM: TFIBBCDField
+      FieldName = 'F_SKLAD_FROM'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_SKLAD_FROM_NAME: TFIBStringField
+      DisplayLabel = #1057#1082#1083#1072#1076' '#1086#1090#1087#1088#1072#1074#1080#1090#1077#1083#1100
+      FieldName = 'F_SKLAD_FROM_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocsListF_SKLAD_TO: TFIBBCDField
+      FieldName = 'F_SKLAD_TO'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_SKLAD_TO_NAME: TFIBStringField
+      DisplayLabel = #1057#1082#1083#1072#1076' '#1087#1088#1080#1077#1084#1085#1080#1082
+      FieldName = 'F_SKLAD_TO_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocsListF_STATE: TFIBBCDField
+      FieldName = 'F_STATE'
+      Visible = False
+      Size = 0
+    end
+    object dsDocsListF_STATE_NAME: TFIBStringField
+      DisplayLabel = #1057#1090#1072#1090#1091#1089
+      FieldName = 'F_STATE_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsDocsListF_CNT: TFIBBCDField
+      DisplayLabel = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086
+      FieldName = 'F_CNT'
+      Size = 0
+    end
+    object dsDocsListF_SUM: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'F_SUM'
+      Size = 2
+    end
+  end
+  object srDocList: TDataSource
+    DataSet = dsDocsList
+    Left = 360
+    Top = 312
+  end
+  object pFIBStoredProcLinkDocs: TpFIBStoredProc
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    SQL.Strings = (
+      
+        'execute procedure PAK_T_DOC.LINK_DOC_TO_TEMPLATE(:P_DOC,:P_DOCTY' +
+        'PE,:P_TEMPLATE)')
+    Left = 112
+    Top = 336
+  end
+  object funcCreateLinkDoc: TpFIBDataSet
+    SelectSQL.Strings = (
+      
+        'select pak_t_doc.CREATE_DOC_FROM_DOC(:P_TEMPLATE,:P_SRC_DOC,:P_S' +
+        'RC_TYPE,:P_DST_TYPE) f_id from rdb$database')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    Left = 248
+    Top = 376
   end
 end

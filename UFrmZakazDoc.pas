@@ -104,17 +104,6 @@ type
     cxGrid1DBTableViewGoodsF_DISCOUNT: TcxGridDBColumn;
     cxGrid1DBTableViewGoodsF_DISCOUNT_SUM: TcxGridDBColumn;
     dsDocHeadF_DOC: TFIBBCDField;
-    dsDocBodyF_ID: TFIBBCDField;
-    dsDocBodyF_DOC: TFIBBCDField;
-    dsDocBodyF_GOOD: TFIBBCDField;
-    dsDocBodyF_GOOD_NAME: TFIBStringField;
-    dsDocBodyF_GOOD_ARTICLE: TFIBStringField;
-    dsDocBodyF_CNT: TFIBBCDField;
-    dsDocBodyF_CNT_FACT: TFIBBCDField;
-    dsDocBodyF_PRICE_VAL: TFIBBCDField;
-    dsDocBodyF_SUM: TFIBBCDField;
-    dsDocBodyF_DISCOUNT: TFIBFloatField;
-    dsDocBodyF_DISCOUNT_SUM: TFIBBCDField;
     RzDBMemo1: TRzDBMemo;
     RzToolbar1: TRzToolbar;
     BtnNew1: TRzToolButton;
@@ -145,6 +134,60 @@ type
     cxGrid2DBTableView1F_STATE_NAME: TcxGridDBColumn;
     dsOutDocsF_STATE: TBCDField;
     dsOutDocsF_DOC_OUT: TBCDField;
+    TabSheet3: TRzTabSheet;
+    dsMoveDocs: TpFIBDataSet;
+    srMoveDocs: TDataSource;
+    RzToolbar2: TRzToolbar;
+    RzToolButton1: TRzToolButton;
+    RzToolButton2: TRzToolButton;
+    RzToolButton3: TRzToolButton;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    dsMoveDocsF_ID: TFIBBCDField;
+    dsMoveDocsF_DOC_MOVE: TFIBBCDField;
+    dsMoveDocsF_NUMBER: TFIBStringField;
+    dsMoveDocsF_DATE: TFIBDateField;
+    dsMoveDocsF_STATE: TFIBBCDField;
+    dsMoveDocsF_STATE_NAME: TFIBStringField;
+    dsMoveDocsF_SKLAD_FROM: TFIBBCDField;
+    dsMoveDocsF_SKLAD_FROM_NAME: TFIBStringField;
+    dsMoveDocsF_SKLAD_TO: TFIBBCDField;
+    dsMoveDocsF_SKLAD_TO_NAME: TFIBStringField;
+    dsMoveDocsF_PRICE: TFIBBCDField;
+    dsMoveDocsF_PRICE_NAME: TFIBStringField;
+    dsMoveDocsF_CNT: TFIBBCDField;
+    dsMoveDocsF_SUM: TFIBBCDField;
+    dsMoveDocsF_DOP_INFO: TFIBStringField;
+    dsMoveDocsF_USR: TFIBStringField;
+    cxGridDBTableView1F_ID: TcxGridDBColumn;
+    cxGridDBTableView1F_DOC_MOVE: TcxGridDBColumn;
+    cxGridDBTableView1F_NUMBER: TcxGridDBColumn;
+    cxGridDBTableView1F_DATE: TcxGridDBColumn;
+    cxGridDBTableView1F_STATE: TcxGridDBColumn;
+    cxGridDBTableView1F_STATE_NAME: TcxGridDBColumn;
+    cxGridDBTableView1F_SKLAD_FROM: TcxGridDBColumn;
+    cxGridDBTableView1F_SKLAD_FROM_NAME: TcxGridDBColumn;
+    cxGridDBTableView1F_SKLAD_TO: TcxGridDBColumn;
+    cxGridDBTableView1F_SKLAD_TO_NAME: TcxGridDBColumn;
+    cxGridDBTableView1F_PRICE: TcxGridDBColumn;
+    cxGridDBTableView1F_PRICE_NAME: TcxGridDBColumn;
+    cxGridDBTableView1F_CNT: TcxGridDBColumn;
+    cxGridDBTableView1F_SUM: TcxGridDBColumn;
+    cxGridDBTableView1F_DOP_INFO: TcxGridDBColumn;
+    cxGridDBTableView1F_USR: TcxGridDBColumn;
+    dsMakeMoveDoc: TpFIBDataSet;
+    dsDocBodyF_ID: TFIBBCDField;
+    dsDocBodyF_DOC: TFIBBCDField;
+    dsDocBodyF_GOOD: TFIBBCDField;
+    dsDocBodyF_GOOD_NAME: TFIBStringField;
+    dsDocBodyF_GOOD_ARTICLE: TFIBStringField;
+    dsDocBodyF_CNT: TFIBBCDField;
+    dsDocBodyF_CNT_FACT: TFIBBCDField;
+    dsDocBodyF_PRICE_VAL: TFIBBCDField;
+    dsDocBodyF_SUM: TFIBBCDField;
+    dsDocBodyF_DISCOUNT: TFIBBCDField;
+    dsDocBodyF_DISCOUNT_SUM: TFIBBCDField;
     dsDocBodyF_OST: TFIBStringField;
     procedure cxGrid1DBTableViewGoodsKeyPress(Sender: TObject; var Key: Char);
     procedure RzDBSpinEdit1Exit(Sender: TObject);
@@ -166,6 +209,9 @@ type
     procedure cxGrid1DBTableViewGoodsCustomDrawCell(
       Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
       AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+    procedure RzToolButton1Click(Sender: TObject);
+    procedure cxGridDBTableView1DblClick(Sender: TObject);
+    procedure RzToolButton3Click(Sender: TObject);
 
   public
     procedure AddPosition(P_good: Integer; p_cnt: Integer;
@@ -190,7 +236,7 @@ var
 implementation
 
 uses
-    udm, upublic, UTypes, UNsiClass, UDocClass, UDlgMakeDocFromZakaz;
+    udm, upublic, UTypes, UNsiClass, UDocClass, UDlgMakeDocFromZakaz, UnDlgMakeMoveFromZakaz;
 {$R *.dfm}
 { TFrmZakazDoc }
 
@@ -256,7 +302,7 @@ begin
 
   udm.RefreshDs(dsOutDocs,'F_ID',dsOutDocsF_ID.AsInteger);
   udm.RefreshDs(dsDocBody,'F_ID',dsDocBodyF_ID.AsInteger);
-
+  udm.RefreshDs(dsMoveDocs,'F_ID',dsMoveDocsF_ID.AsInteger);
 end;
 
 procedure TFrmZakazDoc.cxGrid1DBTableViewGoodsCellDblClick
@@ -334,6 +380,20 @@ begin
   end;
 end;
 
+procedure TFrmZakazDoc.cxGridDBTableView1DblClick(Sender: TObject);
+var
+  key: integer;
+begin
+  key := dsMoveDocsF_DOC_MOVE.Value;
+  // inherited;
+  with TMoveDoc.Create(key) do
+  begin
+    doc_type := 1;
+    OpenEditFrm;
+  end;
+
+end;
+
 procedure TFrmZakazDoc.dsDocBodyAfterPost(DataSet: TDataSet);
 begin
   if self.Visible then
@@ -381,7 +441,6 @@ procedure TFrmZakazDoc.FormCreate(Sender: TObject);
 var
   tf: tStringfield;
 begin
-  inherited;
   cxGrid1DBTableViewGoods.OnDragOver := self.GoodGridDragOverEvent;
 
   dm.dsSklad.First;
@@ -402,6 +461,8 @@ begin
     end;
     dm.dsSklad.Next;
   end;
+  AddInfoColumns(cxGrid1DBTableViewGoods);
+  inherited;
 end;
 
 function TFrmZakazDoc.GetDocId: Integer;
@@ -485,6 +546,39 @@ begin
     RefreshDs(dsDocHead);
     RefreshDs(dsDocBody);
   end;
+end;
+
+procedure TFrmZakazDoc.RzToolButton1Click(Sender: TObject);
+begin
+  with TDlgMakeMoveFromZakaz.Create(self) do
+  begin
+    if ShowModal = mrOk then
+    begin
+      dsMakeMoveDoc.Active :=false;
+      dsMakeMoveDoc.Params.ClearValues;
+      dsMakeMoveDoc.ParamByName('P_ZAKAZ').Value := dsDocHeadF_DOC.Value;
+      dsMakeMoveDoc.ParamByName('P_SKLAD_FROM').Value := cxLookupComboBoxSkladFrom.EditingValue;
+      dsMakeMoveDoc.ParamByName('P_SKLAD_TO').Value := cxLookupComboBoxSkladTo.EditingValue;
+      if not cxCheckBoxEmpty.Checked then
+      begin
+        if cxRadioButtonZakOst.Checked then
+          dsMakeMoveDoc.ParamByName('P_CNT').Value := 2;
+        if cxRadioButtonSkldOst.Checked then
+          dsMakeMoveDoc.ParamByName('P_CNT').Value := 1;
+      end;
+      dsMakeMoveDoc.Active:=true;
+      dsMakeMoveDoc.Transaction.CommitRetaining;
+      RefreshDs(dsMoveDocs, 'F_DOC_MOVE');
+    end;
+    free;
+  end;
+
+end;
+
+procedure TFrmZakazDoc.RzToolButton3Click(Sender: TObject);
+begin
+  dsMoveDocs.Delete;
+  dsMoveDocs.Transaction.CommitRetaining;
 end;
 
 end.

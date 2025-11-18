@@ -280,7 +280,7 @@ begin
   jsonInvoice := TJSONObject.Create;
   jsonReciept := TJSONObject.Create;
   jsonCustomer := TJSONObject.Create;
-  jsonCustomer.AddPair('full_name',dsDocHeadF_PARTNER_NAME.AsString);
+  jsonCustomer.AddPair('full_name',StringReplace(dsDocHeadF_PARTNER_NAME.AsString,AnsiString(#13#10),'',[]));
   jsonCustomer.AddPair('email',dsDocHeadF_EMAIL.AsString);
   jsonReciept.AddPair('customer',jsonCustomer);
   jsonPaymentData := TJSONObject.Create;

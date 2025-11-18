@@ -125,7 +125,10 @@ uses
   UDlgMakeDocFromZakaz in 'UDlgMakeDocFromZakaz.pas',
   Vcl.ActnMan {DlgMakeDocFromZakaz},
   UNsiGoodScancodeFrame in 'UNsiGoodScancodeFrame.pas' {NsiGoodScancodeFrame: TFrame},
-  UFrmNsiPartnerFl in 'UFrmNsiPartnerFl.pas' {FrmNsiPartnerFl};
+  UFrmNsiPartnerFl in 'UFrmNsiPartnerFl.pas' {FrmNsiPartnerFl},
+  UnDlgMakeMoveFromZakaz in 'UnDlgMakeMoveFromZakaz.pas' {DlgMakeMoveFromZakaz},
+  UDlgCreateDocFromTemplate in 'UDlgCreateDocFromTemplate.pas' {DlgCreateDocFromTemplate},
+  UDlgSelectFromList in 'UDlgSelectFromList.pas' {DlgSelectFromList};
 
 // StringUtils in 'ShtrihDrv\StringUtils.pas';
 

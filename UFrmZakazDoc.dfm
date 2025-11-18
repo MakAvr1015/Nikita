@@ -20,8 +20,6 @@ inherited FrmZakazDoc: TFrmZakazDoc
     inherited RzToolbar: TRzToolbar
       Width = 981
       Height = 25
-      ExplicitLeft = 0
-      ExplicitTop = 4
       ExplicitWidth = 981
       ExplicitHeight = 25
       ToolbarControls = (
@@ -337,44 +335,61 @@ inherited FrmZakazDoc: TFrmZakazDoc
               Visible = False
             end
             object cxGrid1DBTableViewGoodsF_DOC: TcxGridDBColumn
+              Caption = #1047#1072#1082#1072#1079
               DataBinding.FieldName = 'F_DOC'
               Visible = False
             end
             object cxGrid1DBTableViewGoodsF_GOOD: TcxGridDBColumn
+              Caption = #1058#1086#1074#1072#1088
               DataBinding.FieldName = 'F_GOOD'
               Visible = False
             end
             object cxGrid1DBTableViewGoodsF_GOOD_NAME: TcxGridDBColumn
+              Caption = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
               DataBinding.FieldName = 'F_GOOD_NAME'
               Options.Editing = False
+              Width = 388
             end
             object cxGrid1DBTableViewGoodsF_GOOD_ARTICLE: TcxGridDBColumn
+              Caption = #1040#1088#1090#1080#1082#1091#1083
               DataBinding.FieldName = 'F_GOOD_ARTICLE'
               Options.Editing = False
+              Width = 104
             end
             object cxGrid1DBTableViewGoodsF_CNT: TcxGridDBColumn
+              Caption = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086
               DataBinding.FieldName = 'F_CNT'
+              Width = 56
             end
             object cxGrid1DBTableViewGoodsF_CNT_FACT: TcxGridDBColumn
+              Caption = #1060#1072#1082#1090
               DataBinding.FieldName = 'F_CNT_FACT'
               Options.Editing = False
+              Width = 55
             end
             object cxGrid1DBTableViewGoodsF_PRICE_VAL: TcxGridDBColumn
+              Caption = #1062#1077#1085#1072
               DataBinding.FieldName = 'F_PRICE_VAL'
               Options.Editing = False
+              Width = 55
             end
             object cxGrid1DBTableViewGoodsF_SUM: TcxGridDBColumn
+              Caption = #1057#1091#1084#1084#1072
               DataBinding.FieldName = 'F_SUM'
               Options.Editing = False
+              Width = 53
             end
             object cxGrid1DBTableViewGoodsF_DISCOUNT: TcxGridDBColumn
               Caption = #1057#1080#1076#1082#1072' %'
               DataBinding.FieldName = 'F_DISCOUNT'
               Options.Editing = False
+              Width = 56
             end
             object cxGrid1DBTableViewGoodsF_DISCOUNT_SUM: TcxGridDBColumn
+              Caption = #1057#1082#1080#1076#1082#1072' '#1089#1091#1084#1084#1072
               DataBinding.FieldName = 'F_DISCOUNT_SUM'
               Options.Editing = False
+              Width = 55
             end
           end
           object cxGrid1Level1: TcxGridLevel
@@ -397,6 +412,10 @@ inherited FrmZakazDoc: TFrmZakazDoc
       object TabSheet2: TRzTabSheet
         Color = clGradientActiveCaption
         Caption = #1054#1090#1075#1088#1091#1079#1082#1072
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object RzToolbar1: TRzToolbar
           Left = 0
           Top = 0
@@ -450,10 +469,11 @@ inherited FrmZakazDoc: TFrmZakazDoc
           Left = 0
           Top = 25
           Width = 979
-          Height = 238
+          Height = 234
           Align = alClient
           TabOrder = 1
           LookAndFeel.SkinName = 'Blue'
+          ExplicitHeight = 238
           object cxGrid2DBTableView1: TcxGridDBTableView
             OnDblClick = cxGrid2DBTableView1DblClick
             Navigator.Buttons.CustomButtons = <>
@@ -537,6 +557,163 @@ inherited FrmZakazDoc: TFrmZakazDoc
           end
           object cxGrid2Level1: TcxGridLevel
             GridView = cxGrid2DBTableView1
+          end
+        end
+      end
+      object TabSheet3: TRzTabSheet
+        Color = clGradientActiveCaption
+        Caption = #1055#1077#1088#1077#1084#1077#1097#1077#1085#1080#1103
+        object RzToolbar2: TRzToolbar
+          Left = 0
+          Top = 0
+          Width = 979
+          Height = 25
+          Images = dm.ImageList
+          ShowButtonCaptions = True
+          TextOptions = ttoCustom
+          AutoSize = True
+          BorderInner = fsNone
+          BorderOuter = fsGroove
+          BorderSides = [sdTop]
+          BorderWidth = 0
+          TabOrder = 0
+          VisualStyle = vsGradient
+          ToolbarControls = (
+            RzToolButton1
+            RzToolButton2
+            RzToolButton3)
+          object RzToolButton1: TRzToolButton
+            Left = 4
+            Top = 0
+            Width = 71
+            Hint = 'New'
+            DisabledIndex = 2
+            ImageIndex = 1
+            Caption = #1057#1086#1079#1076#1072#1090#1100
+            OnClick = RzToolButton1Click
+          end
+          object RzToolButton2: TRzToolButton
+            Left = 75
+            Top = 0
+            Width = 82
+            Hint = 'Import'
+            DisabledIndex = 55
+            ImageIndex = 54
+            Caption = #1055#1088#1080#1074#1103#1079#1072#1090#1100
+          end
+          object RzToolButton3: TRzToolButton
+            Left = 157
+            Top = 0
+            Width = 72
+            Hint = 'Recycle'
+            DisabledIndex = 57
+            ImageIndex = 56
+            Caption = #1059#1076#1072#1083#1080#1090#1100
+            OnClick = RzToolButton3Click
+          end
+        end
+        object cxGrid3: TcxGrid
+          Left = 0
+          Top = 25
+          Width = 979
+          Height = 238
+          Align = alClient
+          TabOrder = 1
+          LookAndFeel.SkinName = 'Blue'
+          object cxGridDBTableView1: TcxGridDBTableView
+            OnDblClick = cxGridDBTableView1DblClick
+            Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
+            DataController.DataSource = srMoveDocs
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+              end
+              item
+                Kind = skSum
+              end>
+            DataController.Summary.SummaryGroups = <>
+            OptionsCustomize.ColumnsQuickCustomization = True
+            OptionsSelection.CellSelect = False
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.Footer = True
+            OptionsView.GroupByBox = False
+            OptionsView.HeaderAutoHeight = True
+            object cxGridDBTableView1F_ID: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ID'
+              Visible = False
+            end
+            object cxGridDBTableView1F_DOC_MOVE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DOC_MOVE'
+              Visible = False
+              Width = 72
+            end
+            object cxGridDBTableView1F_NUMBER: TcxGridDBColumn
+              DataBinding.FieldName = 'F_NUMBER'
+              Width = 71
+            end
+            object cxGridDBTableView1F_DATE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DATE'
+              Width = 73
+            end
+            object cxGridDBTableView1F_STATE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_STATE'
+              Visible = False
+            end
+            object cxGridDBTableView1F_STATE_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_STATE_NAME'
+              Width = 95
+            end
+            object cxGridDBTableView1F_SKLAD_FROM: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_FROM'
+              Visible = False
+            end
+            object cxGridDBTableView1F_SKLAD_FROM_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_FROM_NAME'
+              Width = 161
+            end
+            object cxGridDBTableView1F_SKLAD_TO: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_TO'
+              Visible = False
+            end
+            object cxGridDBTableView1F_SKLAD_TO_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SKLAD_TO_NAME'
+              Width = 112
+            end
+            object cxGridDBTableView1F_PRICE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PRICE'
+              Visible = False
+            end
+            object cxGridDBTableView1F_PRICE_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_PRICE_NAME'
+              Width = 117
+            end
+            object cxGridDBTableView1F_CNT: TcxGridDBColumn
+              DataBinding.FieldName = 'F_CNT'
+              Width = 104
+            end
+            object cxGridDBTableView1F_SUM: TcxGridDBColumn
+              DataBinding.FieldName = 'F_SUM'
+              Width = 75
+            end
+            object cxGridDBTableView1F_DOP_INFO: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DOP_INFO'
+              Width = 106
+            end
+            object cxGridDBTableView1F_USR: TcxGridDBColumn
+              DataBinding.FieldName = 'F_USR'
+              Width = 51
+            end
+          end
+          object cxGridLevel1: TcxGridLevel
+            GridView = cxGridDBTableView1
           end
         end
       end
@@ -713,42 +890,35 @@ inherited FrmZakazDoc: TFrmZakazDoc
       Size = 0
     end
     object dsDocBodyF_GOOD_NAME: TFIBStringField
-      DisplayLabel = #1053#1086#1084#1077#1085#1082#1083#1072#1090#1091#1088#1072
       FieldName = 'F_GOOD_NAME'
       Size = 255
       EmptyStrToNull = True
     end
     object dsDocBodyF_GOOD_ARTICLE: TFIBStringField
-      DisplayLabel = #1040#1088#1090#1080#1082#1091#1083
       FieldName = 'F_GOOD_ARTICLE'
       EmptyStrToNull = True
     end
     object dsDocBodyF_CNT: TFIBBCDField
-      DisplayLabel = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086
       FieldName = 'F_CNT'
       Size = 0
     end
     object dsDocBodyF_CNT_FACT: TFIBBCDField
-      DisplayLabel = #1054#1090#1075#1088#1091#1078#1077#1085#1086
       FieldName = 'F_CNT_FACT'
       Size = 0
     end
     object dsDocBodyF_PRICE_VAL: TFIBBCDField
-      DisplayLabel = #1062#1077#1085#1072
       FieldName = 'F_PRICE_VAL'
       Size = 3
     end
     object dsDocBodyF_SUM: TFIBBCDField
-      DisplayLabel = #1057#1091#1084#1084#1072
       FieldName = 'F_SUM'
       Size = 3
     end
-    object dsDocBodyF_DISCOUNT: TFIBFloatField
-      DisplayLabel = #1057#1082#1080#1076#1082#1072
+    object dsDocBodyF_DISCOUNT: TFIBBCDField
       FieldName = 'F_DISCOUNT'
+      Size = 2
     end
     object dsDocBodyF_DISCOUNT_SUM: TFIBBCDField
-      DisplayLabel = #1057#1091#1084#1084#1072' '#1089#1082#1080#1076#1082#1080
       FieldName = 'F_DISCOUNT_SUM'
       Size = 3
     end
@@ -902,7 +1072,7 @@ inherited FrmZakazDoc: TFrmZakazDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000
@@ -2896,7 +3066,121 @@ inherited FrmZakazDoc: TFrmZakazDoc
         'SKLAD_OST) f_doc_out from rdb$database')
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
-    Left = 256
-    Top = 328
+    Left = 48
+    Top = 288
+  end
+  object dsMoveDocs: TpFIBDataSet
+    DeleteSQL.Strings = (
+      'execute procedure PAK_T_DOC_ZAKAZ.DEL_MOVE_DOC(:F_ID)')
+    SelectSQL.Strings = (
+      'select * from PAK_T_DOC_ZAKAZ.GET_MOVE_LIST(:F_DOC)')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    DataSource = srDocHead
+    Left = 552
+    Top = 256
+    dcForceOpen = True
+    object dsMoveDocsF_ID: TFIBBCDField
+      FieldName = 'F_ID'
+      Visible = False
+      Size = 0
+    end
+    object dsMoveDocsF_DOC_MOVE: TFIBBCDField
+      DisplayLabel = #1055#1077#1088#1077#1084#1077#1097#1077#1085#1080#1077
+      FieldName = 'F_DOC_MOVE'
+      Visible = False
+      Size = 0
+    end
+    object dsMoveDocsF_NUMBER: TFIBStringField
+      DisplayLabel = #1053#1086#1084#1077#1088
+      FieldName = 'F_NUMBER'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsMoveDocsF_DATE: TFIBDateField
+      DisplayLabel = #1044#1072#1090#1072
+      FieldName = 'F_DATE'
+    end
+    object dsMoveDocsF_STATE: TFIBBCDField
+      FieldName = 'F_STATE'
+      Visible = False
+      Size = 0
+    end
+    object dsMoveDocsF_STATE_NAME: TFIBStringField
+      DisplayLabel = #1057#1090#1072#1090#1091#1089
+      FieldName = 'F_STATE_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsMoveDocsF_SKLAD_FROM: TFIBBCDField
+      FieldName = 'F_SKLAD_FROM'
+      Visible = False
+      Size = 0
+    end
+    object dsMoveDocsF_SKLAD_FROM_NAME: TFIBStringField
+      DisplayLabel = #1057#1082#1083#1072#1076' '#1080#1089#1090#1086#1095#1085#1080#1082
+      FieldName = 'F_SKLAD_FROM_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsMoveDocsF_SKLAD_TO: TFIBBCDField
+      FieldName = 'F_SKLAD_TO'
+      Visible = False
+      Size = 0
+    end
+    object dsMoveDocsF_SKLAD_TO_NAME: TFIBStringField
+      DisplayLabel = #1057#1082#1083#1072#1076' '#1087#1088#1080#1077#1084#1085#1080#1082
+      FieldName = 'F_SKLAD_TO_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsMoveDocsF_PRICE: TFIBBCDField
+      FieldName = 'F_PRICE'
+      Visible = False
+      Size = 0
+    end
+    object dsMoveDocsF_PRICE_NAME: TFIBStringField
+      DisplayLabel = #1055#1088#1072#1081#1089
+      FieldName = 'F_PRICE_NAME'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsMoveDocsF_CNT: TFIBBCDField
+      DisplayLabel = #1050#1086#1083#1080#1095#1077#1089#1090#1074#1086
+      FieldName = 'F_CNT'
+      Size = 0
+    end
+    object dsMoveDocsF_SUM: TFIBBCDField
+      DisplayLabel = #1057#1091#1084#1084#1072
+      FieldName = 'F_SUM'
+      Size = 2
+    end
+    object dsMoveDocsF_DOP_INFO: TFIBStringField
+      DisplayLabel = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
+      FieldName = 'F_DOP_INFO'
+      Size = 10000
+      EmptyStrToNull = True
+    end
+    object dsMoveDocsF_USR: TFIBStringField
+      DisplayLabel = #1040#1074#1090#1086#1088
+      FieldName = 'F_USR'
+      Size = 60
+      EmptyStrToNull = True
+    end
+  end
+  object srMoveDocs: TDataSource
+    DataSet = dsMoveDocs
+    Left = 560
+    Top = 240
+  end
+  object dsMakeMoveDoc: TpFIBDataSet
+    SelectSQL.Strings = (
+      
+        'select PAK_T_DOC_ZAKAZ.MAKE_MOVE_DOC(:p_zakaz,:p_SKLAD_FROM,:P_S' +
+        'KLAD_TO,:P_CNT) f_doc_out from rdb$database')
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    Left = 50
+    Top = 352
   end
 end
