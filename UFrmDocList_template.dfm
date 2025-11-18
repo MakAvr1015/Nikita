@@ -300,6 +300,12 @@ inherited FrmDocList_template: TFrmDocList_template
         object cxGrid1DBTableView1F_SUM: TcxGridDBColumn
           DataBinding.FieldName = 'F_SUM'
         end
+        object cxGrid1DBTableView1F_PRICE_NAME: TcxGridDBColumn
+          DataBinding.FieldName = 'F_PRICE_NAME'
+        end
+        object cxGrid1DBTableView1F_PRICE: TcxGridDBColumn
+          DataBinding.FieldName = 'F_PRICE'
+        end
       end
       object cxGrid1Level1: TcxGridLevel
         GridView = cxGrid1DBTableView1
@@ -322,7 +328,7 @@ inherited FrmDocList_template: TFrmDocList_template
       
         'select f_id as doc_id,f_number,f_date,f_author,f_state,f_state_n' +
         'ame,f_sklad,f_sklad_name,f_partner,f_partner_name'
-      ',f_cnt,f_sum'
+      ',f_cnt,f_sum,f_price,f_price_name'
       'from SP_T_DOC_TEMPLATE_S(:str_date,:end_date)')
     BeforeOpen = dsDocTemplateListBeforeOpen
     Transaction = dm.pFIBTransaction
@@ -395,6 +401,15 @@ inherited FrmDocList_template: TFrmDocList_template
       FieldName = 'F_SUM'
       Size = 2
     end
+    object dsDocTemplateListF_PRICE_NAME: TStringField
+      DisplayLabel = #1055#1088#1072#1081#1089
+      FieldName = 'F_PRICE_NAME'
+      Size = 60
+    end
+    object dsDocTemplateListF_PRICE: TBCDField
+      FieldName = 'F_PRICE'
+      Size = 0
+    end
   end
   object srDocTemplateList: TDataSource [7]
     DataSet = dsDocTemplateList
@@ -437,7 +452,7 @@ inherited FrmDocList_template: TFrmDocList_template
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

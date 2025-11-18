@@ -40,7 +40,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
-        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -263,6 +262,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
               ExplicitWidth = 1147
               ExplicitHeight = 253
               inherited cxGrid1DBTableAnalog: TcxGridDBTableView
+                OptionsData.Appending = True
+                OptionsData.Deleting = True
+                OptionsData.Inserting = True
                 inherited cxGrid1DBTableAnalogF_GOOD_MMEDIA: TcxGridDBColumn
                   Properties.FitMode = ifmFit
                 end
@@ -387,7 +389,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
               end>
             DataController.Summary.SummaryGroups = <>
             OptionsCustomize.ColumnsQuickCustomization = True
-            OptionsData.Editing = False
             OptionsData.Inserting = False
             OptionsSelection.MultiSelect = True
             OptionsView.CellAutoHeight = True
@@ -402,10 +403,12 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             object cxGrid1DBTableView1F_ID: TcxGridDBColumn
               DataBinding.FieldName = 'F_ID'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_DOC_TEMPLATE: TcxGridDBColumn
               DataBinding.FieldName = 'F_DOC_TEMPLATE'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_ARTICLE: TcxGridDBColumn
               DataBinding.FieldName = 'F_ARTICLE'
@@ -420,18 +423,22 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             object cxGrid1DBTableView1F_GOOD_DOP_INFO: TcxGridDBColumn
               DataBinding.FieldName = 'F_GOOD_DOP_INFO'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_ED_IZM_SHORT_NAME: TcxGridDBColumn
               DataBinding.FieldName = 'F_ED_IZM_SHORT_NAME'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_ED_IZM_NAME: TcxGridDBColumn
               DataBinding.FieldName = 'F_ED_IZM_NAME'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_GOOD: TcxGridDBColumn
               DataBinding.FieldName = 'F_GOOD'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_DESCR: TcxGridDBColumn
               DataBinding.FieldName = 'F_DESCR'
@@ -443,9 +450,11 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             end
             object cxGrid1DBTableView1F_CNT_OUT: TcxGridDBColumn
               DataBinding.FieldName = 'F_CNT_OUT'
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_CNT_MOVE: TcxGridDBColumn
               DataBinding.FieldName = 'F_CNT_MOVE'
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_PRICE_VAL: TcxGridDBColumn
               DataBinding.FieldName = 'F_PRICE_VAL'
@@ -459,9 +468,11 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             end
             object cxGrid1DBTableView1F_SUM_OUT: TcxGridDBColumn
               DataBinding.FieldName = 'F_SUM_OUT'
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_SUM_MOVE: TcxGridDBColumn
               DataBinding.FieldName = 'F_SUM_MOVE'
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_OST_SKLAD_DEF: TcxGridDBColumn
               DataBinding.FieldName = 'F_OST_SKLAD_DEF'
@@ -477,14 +488,17 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
             object cxGrid1DBTableView1F_GOOD_GRP_COLOR: TcxGridDBColumn
               DataBinding.FieldName = 'F_GOOD_GRP_COLOR'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_OST: TcxGridDBColumn
               DataBinding.FieldName = 'F_OST'
               Visible = False
+              Options.Editing = False
             end
             object cxGrid1DBTableView1F_SCANCODE: TcxGridDBColumn
               DataBinding.FieldName = 'F_SCANCODE'
               Visible = False
+              Options.Editing = False
               Width = 233
             end
           end
@@ -509,6 +523,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       object DocsPage: TcxTabSheet
         Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
         ImageIndex = 1
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object RzToolbar1: TRzToolbar
           Left = 0
           Top = 0
@@ -573,9 +590,10 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
           Left = 0
           Top = 29
           Width = 1149
-          Height = 343
+          Height = 339
           Align = alClient
           TabOrder = 1
+          ExplicitHeight = 343
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             ScrollbarAnnotations.CustomAnnotations = <>
@@ -742,7 +760,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01014200D000140110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014200D000180110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001001000001002000000000000010
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

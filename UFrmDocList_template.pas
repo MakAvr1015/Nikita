@@ -71,6 +71,10 @@ type
     dsDocTemplateListF_SUM: TFIBBCDField;
     cxGrid1DBTableView1F_CNT: TcxGridDBColumn;
     cxGrid1DBTableView1F_SUM: TcxGridDBColumn;
+    dsDocTemplateListF_PRICE_NAME: TStringField;
+    cxGrid1DBTableView1F_PRICE_NAME: TcxGridDBColumn;
+    dsDocTemplateListF_PRICE: TBCDField;
+    cxGrid1DBTableView1F_PRICE: TcxGridDBColumn;
     procedure dsDocTemplateListBeforeOpen(DataSet: TDataSet);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
