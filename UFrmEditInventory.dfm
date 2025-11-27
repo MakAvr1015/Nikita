@@ -119,7 +119,6 @@ inherited FrmEditInventory: TFrmEditInventory
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = 28
       object RzLabel1: TRzLabel
         Left = 8
         Top = 10
@@ -198,20 +197,73 @@ inherited FrmEditInventory: TFrmEditInventory
       Width = 689
       Height = 344
       Hint = ''
-      ActivePage = TabSheet1
+      ActivePage = TabSheet2
       Align = alClient
       HotTrackStyle = htsText
       TabIndex = 0
       TabOrder = 2
       TabStyle = tsRoundCorners
-      ExplicitTop = 103
-      ExplicitHeight = 342
       FixedDimension = 19
+      object TabSheet2: TRzTabSheet
+        Color = clGradientActiveCaption
+        Caption = #1053#1086#1084#1077#1085#1082#1083#1072#1090#1091#1088#1072
+        object cxGrid3: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 685
+          Height = 318
+          Align = alClient
+          TabOrder = 0
+          LookAndFeel.SkinName = 'MoneyTwins'
+          object cxGridDBTableView2: TcxGridDBTableView
+            OnDblClick = BtnEditClick
+            OnKeyPress = cxGridDBTableView2KeyPress
+            Navigator.Buttons.CustomButtons = <>
+            ScrollbarAnnotations.CustomAnnotations = <>
+            DataController.DataSource = srGoodsList
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Kind = skSum
+              end>
+            DataController.Summary.SummaryGroups = <>
+            OptionsCustomize.ColumnsQuickCustomization = True
+            OptionsSelection.CellSelect = False
+            OptionsView.CellAutoHeight = True
+            OptionsView.ColumnAutoWidth = True
+            OptionsView.Footer = True
+            OptionsView.HeaderAutoHeight = True
+            Styles.StyleSheet = dm.GridTableViewStyleSheetDevExpress
+            object cxGridDBTableView2F_ID: TcxGridDBColumn
+              DataBinding.FieldName = 'F_ID'
+              Visible = False
+            end
+            object cxGridDBTableView2F_GOOD: TcxGridDBColumn
+              DataBinding.FieldName = 'F_GOOD'
+              Visible = False
+            end
+            object cxGridDBTableView2F_GOOD_ARTICLE: TcxGridDBColumn
+              DataBinding.FieldName = 'F_GOOD_ARTICLE'
+              Width = 119
+            end
+            object cxGridDBTableView2F_GOOD_NAME: TcxGridDBColumn
+              DataBinding.FieldName = 'F_GOOD_NAME'
+              Width = 354
+            end
+            object cxGridDBTableView2F_DOP_INFO: TcxGridDBColumn
+              DataBinding.FieldName = 'F_DOP_INFO'
+              Width = 198
+            end
+          end
+          object cxGridLevel2: TcxGridLevel
+            GridView = cxGridDBTableView2
+          end
+        end
+      end
       object TabSheet1: TRzTabSheet
         Color = clGradientActiveCaption
         OnShow = TabSheet1Show
         Caption = #1042#1077#1076#1086#1084#1086#1089#1090#1080
-        ExplicitHeight = 316
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
@@ -220,7 +272,6 @@ inherited FrmEditInventory: TFrmEditInventory
           Align = alClient
           TabOrder = 0
           LookAndFeel.SkinName = 'MoneyTwins'
-          ExplicitHeight = 316
           object cxGrid1DBTableView1: TcxGridDBTableView
             OnDblClick = BtnEditClick
             Navigator.Buttons.CustomButtons = <>
@@ -278,7 +329,6 @@ inherited FrmEditInventory: TFrmEditInventory
         Color = clGradientActiveCaption
         OnShow = TabSheet3Show
         Caption = #1048#1090#1086#1075
-        ExplicitHeight = 316
         object cxGrid2: TcxGrid
           Left = 0
           Top = 29
@@ -286,7 +336,6 @@ inherited FrmEditInventory: TFrmEditInventory
           Height = 289
           Align = alClient
           TabOrder = 0
-          ExplicitHeight = 287
           object cxGridDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             ScrollbarAnnotations.CustomAnnotations = <>
@@ -396,7 +445,7 @@ inherited FrmEditInventory: TFrmEditInventory
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013C00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2706,8 +2755,10 @@ inherited FrmEditInventory: TFrmEditInventory
     Transaction = pFIBTransaction
     Database = dm.pFIBDatabase
     SQL.Strings = (
-      'EXECUTE PROCEDURE SP_CALC_INVENTORY (?F_INVENTORY_ID)')
-    StoredProcName = 'SP_CALC_INVENTORY'
+      
+        'EXECUTE PROCEDURE PAK_T_INVENTORY.CALC_INVENTORY(:f_inventory_id' +
+        ') ')
+    StoredProcName = 'PAK_INVENTORY.CALC_INVENTORY'
     Left = 408
     Top = 152
   end
@@ -2735,5 +2786,56 @@ inherited FrmEditInventory: TFrmEditInventory
   object SaveDialog: TSaveDialog
     Left = 488
     Top = 280
+  end
+  object dsGoodsList: TpFIBDataSet
+    DeleteSQL.Strings = (
+      'execute procedure PAK_T_INVENTORY.DEL_GOOD(:F_ID)')
+    InsertSQL.Strings = (
+      'execute procedure PAK_T_INVENTORY.INS_GOOD(:F_INV,:F_GOOD)')
+    SelectSQL.Strings = (
+      
+        'select f_id,f_good,f_good_article,f_good_name,f_dop_info from PA' +
+        'K_T_INVENTORY.GET_GOOD_LIST(:F_INV)')
+    AfterDelete = dsGoodsListAfterPost
+    AfterPost = dsGoodsListAfterPost
+    Transaction = dm.pFIBTransaction
+    Database = dm.pFIBDatabase
+    DataSource = srDocHead
+    Left = 146
+    Top = 236
+    dcForceOpen = True
+    object dsGoodsListF_ID: TFIBBCDField
+      FieldName = 'F_ID'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodsListF_GOOD: TFIBBCDField
+      FieldName = 'F_GOOD'
+      Visible = False
+      Size = 0
+    end
+    object dsGoodsListF_GOOD_ARTICLE: TFIBStringField
+      DisplayLabel = #1040#1088#1090#1080#1082#1091#1083
+      FieldName = 'F_GOOD_ARTICLE'
+      Size = 60
+      EmptyStrToNull = True
+    end
+    object dsGoodsListF_GOOD_NAME: TFIBStringField
+      DisplayLabel = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+      FieldName = 'F_GOOD_NAME'
+      Size = 255
+      EmptyStrToNull = True
+    end
+    object dsGoodsListF_DOP_INFO: TFIBStringField
+      DisplayLabel = #1044#1086#1087#1086#1083#1085#1080#1090#1077#1083#1100#1085#1086
+      FieldName = 'F_DOP_INFO'
+      Size = 10000
+      EmptyStrToNull = True
+    end
+  end
+  object srGoodsList: TDataSource
+    DataSet = dsGoodsList
+    Left = 160
+    Top = 224
   end
 end
