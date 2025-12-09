@@ -3,6 +3,7 @@ unit UFrmEditInventory;
 interface
 
 uses
+  uinterfaces,
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UFrmPrototype, cxPropertiesStore, RzForms, frxExportRTF,
   frxExportXML, frxExportXLS, frxExportHTML, frxClass, frxExportPDF, frxCross,
@@ -20,7 +21,7 @@ uses
   cxDropDownEdit;
 
 type
-  TFrmEditInventory = class(TFrmPrototype)
+  TFrmEditInventory = class(TFrmPrototype,IFrmDoc)
     RzPanel1: TRzPanel;
     RzDBEdit1: TRzDBEdit;
     RzLabel1: TRzLabel;
@@ -123,8 +124,16 @@ type
     scan_time : ttime;
 
     procedure InsPosition;
+
+
   public
     { Public declarations }
+    procedure AddPosition(P_good: Integer; p_cnt: Integer; p_price: Currency);
+    procedure RefreshDoc;
+    function GetTableName: String;
+    function GetDocId: Integer;
+    property TableName: String read GetTableName;
+    property DocId: Integer read GetDocId;
   end;
 
 var
@@ -135,6 +144,16 @@ implementation
 {$R *.dfm}
 uses
   Udm,uPublic,uDocClass,uFrmEditInventoryDoc,uTypes;
+
+
+
+
+
+procedure TFrmEditInventory.AddPosition(P_good, p_cnt: Integer;
+  p_price: Currency);
+begin
+
+end;
 
 procedure TFrmEditInventory.BtnEditClick(Sender: TObject);
 begin
@@ -177,7 +196,7 @@ end;
 
 procedure TFrmEditInventory.BtnRefreshClick(Sender: TObject);
 begin
-  RefreshDs(dsListInventoryDocs);
+  RefreshDoc;
 end;
 
 procedure TFrmEditInventory.BtnSaveClick(Sender: TObject);
@@ -237,6 +256,20 @@ begin
 
 end;
 
+
+function TFrmEditInventory.GetDocId: Integer;
+begin
+  if dsDocHead.Active then
+    result := dsDocHeadF_INV.AsInteger
+  else
+    result := 0;
+end;
+
+function TFrmEditInventory.GetTableName: String;
+begin
+   result := 'T_INVENTORY_GOODS';
+end;
+
 procedure TFrmEditInventory.InsPosition;
 var
   i     : integer;
@@ -266,6 +299,14 @@ begin
     beep;
   end;
   scan:='';
+end;
+
+
+procedure TFrmEditInventory.RefreshDoc;
+begin
+  RefreshDs(dsListInventoryDocs);
+  RefreshDs(dsGoodsList);
+  RefreshDs(dsListResult);
 end;
 
 procedure TFrmEditInventory.RzDBButtonEdit2ButtonClick(Sender: TObject);
