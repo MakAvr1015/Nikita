@@ -1,29 +1,29 @@
 inherited FrmInventoryList: TFrmInventoryList
   Caption = #1046#1091#1088#1085#1072#1083' '#1080#1085#1074#1077#1085#1090#1072#1088#1080#1079#1072#1094#1080#1081
-  ClientWidth = 814
-  ExplicitWidth = 830
+  ClientWidth = 932
+  ExplicitWidth = 948
   PixelsPerInch = 96
   TextHeight = 13
   inherited RzStatusBar1: TRzStatusBar
-    Width = 814
+    Width = 932
     ExplicitWidth = 814
     inherited DsFormName: TRzStatusPane
       Caption = 'dsInventoryList'
     end
   end
   inherited Panel3: TPanel
-    Width = 814
-    ExplicitWidth = 814
+    Width = 932
+    ExplicitWidth = 932
     inherited RzToolbar: TRzToolbar
-      Width = 812
-      Height = 65
+      Width = 930
+      Height = 56
       ButtonLayout = blGlyphTop
       ButtonWidth = 60
       ButtonHeight = 40
       ShowButtonCaptions = True
       TextOptions = ttoCustom
-      ExplicitWidth = 812
-      ExplicitHeight = 65
+      ExplicitWidth = 930
+      ExplicitHeight = 56
       ToolbarControls = (
         BtnNew
         BtnEdit
@@ -39,7 +39,9 @@ inherited FrmInventoryList: TFrmInventoryList
         BtnSave
         BtnExport
         BtnExit
-        cxComboBoxStyles)
+        cxComboBoxStyles
+        DateEnd
+        DateStart)
       inherited BtnNew: TRzToolButton
         Top = 0
         Layout = blGlyphTop
@@ -153,11 +155,11 @@ inherited FrmInventoryList: TFrmInventoryList
         ExplicitHeight = 40
       end
       inherited BtnExit: TRzToolButton
-        Left = 66
-        Top = 25
+        Left = 862
+        Top = 0
         Layout = blGlyphTop
-        ExplicitLeft = 66
-        ExplicitTop = 25
+        ExplicitLeft = 862
+        ExplicitTop = 0
         ExplicitWidth = 60
         ExplicitHeight = 40
       end
@@ -174,33 +176,34 @@ inherited FrmInventoryList: TFrmInventoryList
         ExplicitHeight = 40
       end
       inherited BtnExport: TRzToolButton
-        Left = 4
-        Top = 25
-        Width = 62
+        Left = 786
+        Top = 0
+        Width = 76
         Height = 40
         Layout = blGlyphTop
-        ExplicitLeft = 4
-        ExplicitTop = 25
-        ExplicitWidth = 62
+        ExplicitLeft = 786
+        ExplicitTop = 0
+        ExplicitWidth = 76
         ExplicitHeight = 40
       end
       inherited cxComboBoxStyles: TcxComboBox
-        Left = 126
+        Left = 4
         Top = 35
-        ExplicitLeft = 126
+        ExplicitLeft = 4
         ExplicitTop = 35
       end
     end
     object cxGrid1: TcxGrid
       Left = 1
-      Top = 66
-      Width = 812
-      Height = 539
+      Top = 78
+      Width = 930
+      Height = 527
       Align = alClient
       TabOrder = 1
       LookAndFeel.SkinName = 'MoneyTwins'
-      ExplicitTop = 127
-      ExplicitHeight = 478
+      ExplicitTop = 66
+      ExplicitWidth = 812
+      ExplicitHeight = 539
       object cxGrid1DBTableView1: TcxGridDBTableView
         OnDblClick = BtnEditClick
         Navigator.Buttons.CustomButtons = <>
@@ -245,6 +248,41 @@ inherited FrmInventoryList: TFrmInventoryList
         GridView = cxGrid1DBTableView1
       end
     end
+    object RzToolbar1: TRzToolbar
+      Left = 1
+      Top = 57
+      Width = 930
+      Height = 21
+      AutoSize = True
+      BorderInner = fsNone
+      BorderOuter = fsGroove
+      BorderSides = [sdTop]
+      BorderWidth = 0
+      Color = clGradientActiveCaption
+      GradientColorStop = clGradientActiveCaption
+      TabOrder = 2
+      ToolbarControls = (
+        DateStart
+        DateEnd)
+      object DateStart: TDateTimePicker
+        Left = 4
+        Top = 0
+        Width = 106
+        Height = 21
+        Date = 45986.395931145830000000
+        Time = 45986.395931145830000000
+        TabOrder = 0
+      end
+      object DateEnd: TDateTimePicker
+        Left = 110
+        Top = 0
+        Width = 91
+        Height = 21
+        Date = 45986.395278032410000000
+        Time = 45986.395278032410000000
+        TabOrder = 1
+      end
+    end
   end
   inherited frxReport2: TfrxReport
     Datasets = <>
@@ -253,7 +291,7 @@ inherited FrmInventoryList: TFrmInventoryList
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013C00D000DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2374,7 +2412,10 @@ inherited FrmInventoryList: TFrmInventoryList
   end
   object dsInventoryList: TpFIBDataSet
     SelectSQL.Strings = (
-      'select * from SP_T_INVENTORY_s')
+      
+        'select * from SP_T_INVENTORY_s where f_date_start >= :d_begin an' +
+        'd f_date_start <= :d_end')
+    BeforeOpen = dsInventoryListBeforeOpen
     Transaction = dm.pFIBTransaction
     Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
@@ -2450,8 +2491,8 @@ inherited FrmInventoryList: TFrmInventoryList
     Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
-    Left = 624
-    Top = 128
+    Left = 584
+    Top = 152
   end
   object dsInventoryDoc: TpFIBDataSet
     UpdateSQL.Strings = (
@@ -2481,7 +2522,7 @@ inherited FrmInventoryList: TFrmInventoryList
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
     Left = 624
-    Top = 160
+    Top = 224
   end
   object prInventoryStr: TpFIBStoredProc
     Transaction = pFIBTransaction

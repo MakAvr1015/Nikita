@@ -3,6 +3,7 @@ unit UFrmEditInventory;
 interface
 
 uses
+  uinterfaces,
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UFrmPrototype, cxPropertiesStore, RzForms, frxExportRTF,
   frxExportXML, frxExportXLS, frxExportHTML, frxClass, frxExportPDF, frxCross,
@@ -20,7 +21,7 @@ uses
   cxDropDownEdit;
 
 type
-  TFrmEditInventory = class(TFrmPrototype)
+  TFrmEditInventory = class(TFrmPrototype,IFrmDoc)
     RzPanel1: TRzPanel;
     RzDBEdit1: TRzDBEdit;
     RzLabel1: TRzLabel;
@@ -90,6 +91,22 @@ type
     prcMakeSkladDocs: TpFIBStoredProc;
     dsExportInventory: TpFIBDataSet;
     SaveDialog: TSaveDialog;
+    TabSheet2: TRzTabSheet;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    dsGoodsList: TpFIBDataSet;
+    srGoodsList: TDataSource;
+    dsGoodsListF_ID: TFIBBCDField;
+    dsGoodsListF_GOOD: TFIBBCDField;
+    dsGoodsListF_GOOD_ARTICLE: TFIBStringField;
+    dsGoodsListF_GOOD_NAME: TFIBStringField;
+    dsGoodsListF_DOP_INFO: TFIBStringField;
+    cxGridDBTableView2F_ID: TcxGridDBColumn;
+    cxGridDBTableView2F_GOOD: TcxGridDBColumn;
+    cxGridDBTableView2F_GOOD_ARTICLE: TcxGridDBColumn;
+    cxGridDBTableView2F_GOOD_NAME: TcxGridDBColumn;
+    cxGridDBTableView2F_DOP_INFO: TcxGridDBColumn;
     procedure TabSheet1Show(Sender: TObject);
     procedure BtnNewClick(Sender: TObject);
     procedure TabSheet3Show(Sender: TObject);
@@ -99,10 +116,24 @@ type
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnSaveClick(Sender: TObject);
     procedure RzDBButtonEdit2ButtonClick(Sender: TObject);
+    procedure cxGridDBTableView2KeyPress(Sender: TObject; var Key: Char);
+    procedure dsGoodsListAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
+    scan  : string;
+    scan_time : ttime;
+
+    procedure InsPosition;
+
+
   public
     { Public declarations }
+    procedure AddPosition(P_good: Integer; p_cnt: Integer; p_price: Currency);
+    procedure RefreshDoc;
+    function GetTableName: String;
+    function GetDocId: Integer;
+    property TableName: String read GetTableName;
+    property DocId: Integer read GetDocId;
   end;
 
 var
@@ -112,7 +143,17 @@ implementation
 
 {$R *.dfm}
 uses
-  Udm,uPublic,uDocClass,uFrmEditInventoryDoc;
+  Udm,uPublic,uDocClass,uFrmEditInventoryDoc,uTypes;
+
+
+
+
+
+procedure TFrmEditInventory.AddPosition(P_good, p_cnt: Integer;
+  p_price: Currency);
+begin
+
+end;
 
 procedure TFrmEditInventory.BtnEditClick(Sender: TObject);
 begin
@@ -155,7 +196,7 @@ end;
 
 procedure TFrmEditInventory.BtnRefreshClick(Sender: TObject);
 begin
-  RefreshDs(dsListInventoryDocs);
+  RefreshDoc;
 end;
 
 procedure TFrmEditInventory.BtnSaveClick(Sender: TObject);
@@ -188,6 +229,84 @@ begin
     expFile.SaveToFile(SaveDialog.FileName);
     expFile.Free;
   end;
+end;
+
+procedure TFrmEditInventory.cxGridDBTableView2KeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  case key of
+    Char(vk_insert):
+      InsPosition;
+    Char(VK_RETURN):
+      InsPosition;
+    else
+    begin
+      if (time()- scan_time)<0.000001 then
+        scan:=scan+key
+      ELSE
+        scan:=key;
+      scan_time:=time();
+    end;
+  end;
+end;
+
+procedure TFrmEditInventory.dsGoodsListAfterPost(DataSet: TDataSet);
+begin
+  dsGoodsList.Transaction.CommitRetaining;
+
+end;
+
+
+function TFrmEditInventory.GetDocId: Integer;
+begin
+  if dsDocHead.Active then
+    result := dsDocHeadF_INV.AsInteger
+  else
+    result := 0;
+end;
+
+function TFrmEditInventory.GetTableName: String;
+begin
+   result := 'T_INVENTORY_GOODS';
+end;
+
+procedure TFrmEditInventory.InsPosition;
+var
+  i     : integer;
+  cnt   : integer;
+  goods : Tdigits;
+begin
+//  goods:=GetNsiGood(date(),scan);
+  goods:=GetNsiGood(dsDocHeadF_DATE_START.Value,scan,dsDocHeadF_SKLAD.Value,0);
+  cnt:=length(goods);
+  if cnt>0 then
+  begin
+    for I := 0 to cnt - 1 do
+    begin
+      dsGoodsList.Insert;
+      dsGoodsListF_GOOD.Value:=goods[i];
+      //dsDocStringsF_SCANCODE.Value:=goods[i];
+      dsGoodsList.Post;
+      cxGrid1DBTableView1.DataController.SelectRows(
+        cxGrid1DBTableView1.DataController.FocusedRowIndex,
+        cxGrid1DBTableView1.DataController.FocusedRowIndex);
+
+    end;
+    RefreshDs(dsGoodsList);
+  end
+  else
+  begin
+    beep;
+  end;
+  scan:='';
+end;
+
+
+procedure TFrmEditInventory.RefreshDoc;
+begin
+  RefreshDs(dsListInventoryDocs);
+  RefreshDs(dsGoodsList);
+  RefreshDs(dsListResult);
 end;
 
 procedure TFrmEditInventory.RzDBButtonEdit2ButtonClick(Sender: TObject);

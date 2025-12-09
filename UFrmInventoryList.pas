@@ -16,7 +16,7 @@ uses
   cxContainer, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
   dxShellDialogs, System.ImageList, Vcl.ImgList, frxDBSet, frxChBox,
   frxTableObject, frxRich, frxExportBaseDialog, frxExportDOCX, frxOLE,
-  cxTextEdit, cxMaskEdit, cxDropDownEdit;
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.ComCtrls;
 
 type
   TFrmInventoryList = class(TFrmPrototype)
@@ -44,10 +44,15 @@ type
     dsInventory: TpFIBDataSet;
     dsInventoryDoc: TpFIBDataSet;
     prInventoryStr: TpFIBStoredProc;
+    DateEnd: TDateTimePicker;
+    DateStart: TDateTimePicker;
+    RzToolbar1: TRzToolbar;
     procedure BtnNewClick(Sender: TObject);
     procedure BtnEditClick(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure BtnOpenClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure dsInventoryListBeforeOpen(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -160,6 +165,19 @@ procedure TFrmInventoryList.BtnRefreshClick(Sender: TObject);
 begin
   inherited;
   RefreshDs(dsInventoryList);
+end;
+
+procedure TFrmInventoryList.dsInventoryListBeforeOpen(DataSet: TDataSet);
+begin
+  dsInventoryList.ParamByName('d_begin').value:=dateStart.Date;
+  dsInventoryList.ParamByName('d_end').value:=dateEnd.Date;
+end;
+
+procedure TFrmInventoryList.FormCreate(Sender: TObject);
+begin
+  inherited;
+  DateStart.Date:=date;
+  DateEnd.Date:=date;
 end;
 
 end.
