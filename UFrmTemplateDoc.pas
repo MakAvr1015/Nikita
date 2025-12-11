@@ -176,6 +176,8 @@ type
     cxGrid2DBTableView1F_STATE_NAME: TcxGridDBColumn;
     cxGrid2DBTableView1F_CNT: TcxGridDBColumn;
     cxGrid2DBTableView1F_SUM: TcxGridDBColumn;
+    RzLabel5: TRzLabel;
+    RzDBLookupComboBox1: TRzDBLookupComboBox;
     procedure RzDBButtonEdit3ButtonClick(Sender: TObject);
     procedure dsDocHeadAfterOpen(DataSet: TDataSet);
     procedure cxGrid1DBTableView1KeyPress(Sender: TObject; var Key: Char);
