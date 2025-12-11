@@ -443,8 +443,8 @@ inherited FrmDocList_template: TFrmDocList_template
     Database = dm.pFIBDatabase
     DefaultFormats.DateTimeDisplayFormat = 'dd.mm.yyyy hh:mm'
     DefaultFormats.DisplayFormatTime = 'hh:mm'
-    Left = 672
-    Top = 192
+    Left = 616
+    Top = 240
   end
   object OpenDialog: TOpenDialog [10]
     Left = 592
@@ -452,7 +452,7 @@ inherited FrmDocList_template: TFrmDocList_template
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01013A00D000E00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013A00D000E40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000000000000000000000000000E2EF
       F100E5E5E500E5E5E500E5E5E500E5E5E500E5E5E50000000000000000000000

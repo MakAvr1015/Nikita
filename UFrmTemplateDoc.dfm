@@ -40,6 +40,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         cxComboBoxStyles)
       inherited BtnNew: TRzToolButton
         Top = 0
+        ExplicitTop = 0
       end
       inherited BtnOpen: TRzToolButton
         Top = 0
@@ -166,6 +167,13 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         Height = 19
         Caption = #1055#1072#1088#1090#1085#1077#1088
       end
+      object RzLabel5: TRzLabel
+        Left = 560
+        Top = 9
+        Width = 46
+        Height = 19
+        Caption = #1057#1090#1072#1090#1091#1089
+      end
       object RzDBEdit1: TRzDBEdit
         Left = 54
         Top = 5
@@ -186,9 +194,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         EditType = etDate
       end
       object RzDBButtonEdit3: TRzDBButtonEdit
-        Left = 414
+        Left = 397
         Top = 6
-        Width = 144
+        Width = 161
         Height = 27
         DataSource = srDocHead
         DataField = 'F_PRICE_NAME'
@@ -220,6 +228,18 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
         AltBtnWidth = 15
         ButtonWidth = 15
         OnButtonClick = RzDBButtonEdit2ButtonClick
+      end
+      object RzDBLookupComboBox1: TRzDBLookupComboBox
+        Left = 612
+        Top = 6
+        Width = 141
+        Height = 27
+        DataField = 'F_STATE'
+        DataSource = srDocHead
+        KeyField = 'f_id'
+        ListField = 'f_name'
+        ListSource = dm.srStateSource
+        TabOrder = 5
       end
     end
     object Panel1: TPanel
@@ -523,9 +543,6 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       object DocsPage: TcxTabSheet
         Caption = #1044#1086#1082#1091#1084#1077#1085#1090#1099
         ImageIndex = 1
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object RzToolbar1: TRzToolbar
           Left = 0
           Top = 0
@@ -590,10 +607,9 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
           Left = 0
           Top = 29
           Width = 1149
-          Height = 339
+          Height = 343
           Align = alClient
           TabOrder = 1
-          ExplicitHeight = 343
           object cxGrid2DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             ScrollbarAnnotations.CustomAnnotations = <>
@@ -693,6 +709,10 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
       end
     end
   end
+  inherited PrnMenu: TPopupMenu
+    Left = 328
+    Top = 32
+  end
   inherited frxReport2: TfrxReport
     Left = 160
     Top = 80
@@ -760,7 +780,7 @@ inherited FrmTemplateDoc: TFrmTemplateDoc
   end
   inherited ImageList: TImageList
     Bitmap = {
-      494C01014200D000180110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014200D0001C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001001000001002000000000000010
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
